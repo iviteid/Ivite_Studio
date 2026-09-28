@@ -1,0 +1,1139 @@
+<!DOCTYPE html><html class="scroll-smooth" lang="id" style=""><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><meta content="web_standard" name="shell-type"><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}@keyframes soundwave{0%,100%{height:4px;}50%{height:16px;}}
+@keyframes floatGentle{0%,100%{transform:translateY(0) rotate(0deg);}50%{transform:translateY(-8px) rotate(2deg);}}
+.animate-float-gentle{animation:floatGentle 6s ease-in-out infinite;}
+@keyframes shimmerGold{0%{background-position:0% 50%;}50%{background-position:100% 50%;}100%{background-position:0% 50%;}}
+.animate-shimmer-gold{background-size:200% 200%;animation:shimmerGold 3.5s ease infinite;}
+</style><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-bright":"#fff8f3","on-error-container":"#93000a","tertiary-fixed-dim":"#f9bc5c","on-tertiary-container":"#5f3e00","on-tertiary-fixed-variant":"#614000","on-secondary-fixed":"#1c1c17","outline-variant":"#d0c5af","on-background":"#1e1b17","tertiary-container":"#e3a84b","on-primary":"#ffffff","error-container":"#ffdad6","on-secondary":"#ffffff","surface-container-high":"#eee7e0","on-primary-container":"#554300","surface":"#fff8f3","secondary-fixed-dim":"#c9c6bf","surface-container-highest":"#e8e1db","primary-fixed-dim":"#e9c349","outline":"#7f7663","surface-container":"#f4ede6","secondary-container":"#e6e2da","surface-container-low":"#faf2ec","secondary":"#605e58","tertiary-fixed":"#ffddb0","background":"#fff8f3","tertiary":"#805600","on-surface-variant":"#4d4635","on-secondary-fixed-variant":"#484741","surface-container-lowest":"#ffffff","error":"#ba1a1a","on-secondary-container":"#66645e","inverse-surface":"#33302c","on-error":"#ffffff","primary-fixed":"#ffe088","primary":"#735c00","on-surface":"#1e1b17","inverse-on-surface":"#f7efe9","on-tertiary":"#ffffff","on-primary-fixed":"#241a00","secondary-fixed":"#e6e2da","on-tertiary-fixed":"#281800","surface-dim":"#e0d9d2","surface-variant":"#e8e1db","surface-tint":"#735c00","inverse-primary":"#e9c349","on-primary-fixed-variant":"#574500","primary-container":"#d4af37"},borderRadius:{DEFAULT:"1rem",lg:"2rem",xl:"3rem",full:"9999px"},spacing:{"space-sm":"0.5rem","space-2xl":"4rem","space-xl":"2.5rem","margin-mobile":"1rem","space-md":"1rem",gutter:"1.25rem","space-xs":"0.25rem","space-lg":"1.5rem","gutter-mobile":"0.75rem",margin:"2rem"},fontFamily:{"label-lg":["Plus Jakarta Sans"],"title-md":["Plus Jakarta Sans"],"headline-lg":["Playfair Display"],"title-lg":["Plus Jakarta Sans"],"headline-md":["Playfair Display"],"headline-sm":["Playfair Display"],"body-lg":["Plus Jakarta Sans"],"label-sm":["Plus Jakarta Sans"],"headline-lg-mobile":["Playfair Display"],"body-md":["Plus Jakarta Sans"],"display-hero-mobile":["Playfair Display"],"display-hero":["Playfair Display"]},fontSize:{"label-lg":["13px",{lineHeight:"18px",letterSpacing:"0.08em",fontWeight:"600"}],"title-md":["16px",{lineHeight:"24px",letterSpacing:"0.02em",fontWeight:"600"}],"headline-lg":["36px",{lineHeight:"44px",letterSpacing:"-0.01em",fontWeight:"500"}],"title-lg":["18px",{lineHeight:"26px",letterSpacing:"0.01em",fontWeight:"600"}],"headline-md":["26px",{lineHeight:"34px",letterSpacing:"0em",fontWeight:"500"}],"headline-sm":["20px",{lineHeight:"28px",letterSpacing:"0.01em",fontWeight:"600"}],"body-lg":["16px",{lineHeight:"26px",letterSpacing:"0.01em",fontWeight:"400"}],"label-sm":["11px",{lineHeight:"16px",letterSpacing:"0.12em",fontWeight:"600"}],"headline-lg-mobile":["28px",{lineHeight:"36px",letterSpacing:"0em",fontWeight:"500"}],"body-md":["14px",{lineHeight:"22px",letterSpacing:"0.01em",fontWeight:"400"}],"display-hero-mobile":["38px",{lineHeight:"46px",letterSpacing:"-0.01em",fontWeight:"400"}],"display-hero":["56px",{lineHeight:"64px",letterSpacing:"-0.02em",fontWeight:"400"}]}}}};</script></head><body class="bg-background font-body-md text-on-surface antialiased selection:bg-primary-fixed selection:text-on-primary-fixed overflow-hidden">
+<!-- ==================== INTERACTIVE CANVAS: FALLING/FLOATING FLORAL PETALS ==================== -->
+<canvas class="fixed inset-0 pointer-events-none z-30 w-full h-full transition-opacity duration-500" id="flower-petals-container" width="1280" height="8320"></canvas>
+<!-- ==================== WELCOME COVER MODAL / ENVELOPE GATE OVERLAY ==================== -->
+<div class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#1e1b17]/70 backdrop-blur-md transition-all duration-700 ease-out" id="welcome-overlay">
+<!-- Ambient glow effects in background -->
+<div class="absolute -top-24 left-1/2 -translate-x-1/2 w-96 h-96 bg-[#d4af37]/25 rounded-full blur-[100px] pointer-events-none"></div>
+<div class="absolute -bottom-24 left-1/2 -translate-x-1/2 w-80 h-80 bg-[#e3a84b]/20 rounded-full blur-[90px] pointer-events-none"></div>
+<!-- Card Container: Islamic Dome / Arch Envelope Styling -->
+<div class="relative w-[min(520px,94vw)] h-[min(520px,94vw)] bg-[#fff8f3] border-2 border-[#d4af37]/60 shadow-[0_25px_60px_-15px_rgba(115,92,0,0.35)] p-6 sm:p-8 text-center overflow-hidden transition-all duration-500 transform scale-100 rounded-full flex flex-col items-center justify-center ring-4 ring-[#d4af37]/20" id="welcome-card">
+  <!-- Concentric Islamic Circular Sacred Geometry Watermarks -->
+  <div class="absolute inset-0 pointer-events-none opacity-[0.09] text-[#735c00] flex items-center justify-center">
+    <svg class="w-full h-full p-4" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="250" cy="250" r="240" fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="6 6"></circle>
+      <circle cx="250" cy="250" r="215" fill="none" stroke="currentColor" stroke-width="2"></circle>
+      <circle cx="250" cy="250" r="175" fill="none" stroke="currentColor" stroke-width="1" stroke-dasharray="4 4"></circle>
+      <circle cx="250" cy="250" r="135" fill="none" stroke="currentColor" stroke-width="2.5"></circle>
+      <circle cx="250" cy="250" r="95" fill="none" stroke="currentColor" stroke-width="1"></circle>
+      <circle cx="250" cy="250" r="50" fill="none" stroke="currentColor" stroke-width="1.5"></circle>
+      <g stroke="currentColor" stroke-width="1" opacity="0.5">
+        <line x1="250" y1="10" x2="250" y2="490"></line>
+        <line x1="10" y1="250" x2="490" y2="250"></line>
+        <line x1="80" y1="80" x2="420" y2="420"></line>
+        <line x1="80" y1="420" x2="420" y2="80"></line>
+      </g>
+    </svg>
+  </div>
+
+  <div class="relative z-10 flex flex-col items-center justify-center max-w-[380px] w-full px-2">
+    <!-- Monogram Seal Rub el Hizb with Botanical Ring -->
+    <div class="relative w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-1 flex items-center justify-center">
+      <svg class="absolute inset-0 w-full h-full text-[#d4af37]/50 animate-[spin_36s_linear_infinite]" viewBox="0 0 100 100">
+        <circle cx="50" cy="50" fill="none" r="46" stroke="currentColor" stroke-dasharray="2 6" stroke-width="1.2"></circle>
+        <circle cx="50" cy="4" fill="#aa771c" r="2.5"></circle>
+        <circle cx="50" cy="96" fill="#aa771c" r="2.5"></circle>
+        <circle cx="4" cy="50" fill="#aa771c" r="2.5"></circle>
+        <circle cx="96" cy="50" fill="#aa771c" r="2.5"></circle>
+      </svg>
+      <div class="w-14 h-14 sm:w-16 sm:h-16 bg-white/90 shadow-sm flex items-center justify-center p-2 border border-[#d4af37]/40 rounded-full">
+        <img alt="Monogram A&amp;F Rub el Hizb" class="w-full h-full object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1WlMAU-ySdOUHTFDrAL2hEoDPSrN917HchGWKT39SWA38zvFF3vMXJlE1SzOi-JWpaT97_kY2-3435U3-CrH97g8G_hY56HL5fwkEIEtMTz6rzgOAyEqvWKQqzdr9AadC9KI_vh6hoMVUWZ9XUeRBElE6aIyj02a_5js50yeG9XIa33KSwCX0q0CR8ihENfuYUZhXaUaVh0YEp-JociGLwS37AGVM0dLW3RemkjioRqqOJ903bjQJR_fAE">
+      </div>
+    </div>
+
+    <!-- Overline Label -->
+    <div class="flex items-center justify-center gap-2 mb-0.5">
+      <span class="w-5 h-[1px] bg-gradient-to-r from-transparent to-[#aa771c]"></span>
+      <span class="text-[11px] font-semibold uppercase tracking-[0.25em] text-[#aa771c] font-serif">WALIMATUL 'URS</span>
+      <span class="w-5 h-[1px] bg-gradient-to-l from-transparent to-[#aa771c]"></span>
+    </div>
+
+    <!-- Couple Names -->
+    <h1 class="font-headline-lg text-2xl sm:text-3xl text-[#1e1b17] my-0.5 tracking-tight leading-tight">
+      Aditya <span class="italic text-[#735c00] font-normal">&amp;</span> Fatimah
+    </h1>
+
+    <!-- Botanical Flourish Divider -->
+    <div class="flex items-center justify-center gap-1.5 my-1 text-[#aa771c]/80">
+      <span class="w-8 h-[1px] bg-gradient-to-r from-transparent to-[#aa771c]"></span>
+      <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M12,2 C12.8,5.5 15.5,8.2 19,9 C15.5,9.8 12.8,12.5 12,16 C11.2,12.5 8.5,9.8 5,9 C8.5,8.2 11.2,5.5 12,2 Z"></path></svg>
+      <span class="w-8 h-[1px] bg-gradient-to-l from-transparent to-[#aa771c]"></span>
+    </div>
+
+    <!-- Guest Invitation Box -->
+    <div class="w-full bg-[#f4ede6] border border-[#d4af37]/45 rounded-2xl py-2 px-3 sm:px-4 my-1.5 shadow-sm text-center">
+      <p class="text-[10px] text-[#7f7663] tracking-wider uppercase font-semibold">Kepada Yth. Bapak/Ibu/Saudara/i:</p>
+      <div class="text-base sm:text-lg font-headline-sm font-bold text-[#1e1b17] mt-0.5" id="guest-name">Tamu Undangan</div>
+      <p class="text-[11px] text-[#605e58] mt-1 italic leading-snug line-clamp-2">
+        Dengan penuh rasa syukur dan memohon ridho Allah SWT, kami mengundang Anda untuk hadir di hari bahagia kami.
+      </p>
+    </div>
+
+    <!-- CTA Button: Buka Undangan -->
+    <button class="w-full sm:w-auto min-w-[200px] bg-gradient-to-r from-[#d4af37] via-[#f9bc5c] to-[#aa771c] animate-shimmer-gold text-[#241a00] font-semibold py-2.5 px-6 rounded-full shadow-[0_8px_25px_-4px_rgba(212,175,55,0.5)] hover:shadow-[0_12px_30px_-2px_rgba(212,175,55,0.7)] hover:scale-[1.03] active:scale-[0.98] transition-all duration-300 flex items-center justify-center gap-2 mx-auto mt-2 cursor-pointer relative z-10 group" id="btn-open-invitation" onclick="openInvitation()">
+      <span class="material-symbols-outlined text-[18px] transition-transform group-hover:rotate-12">drafts</span>
+      <span class="tracking-wide text-xs sm:text-sm font-bold">Buka Undangan</span>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+    </button>
+
+    <!-- Polite Disclaimer -->
+    <p class="text-[10px] text-[#7f7663] italic mt-1.5">
+      *Mohon maaf bila ada kesalahan penulisan nama/gelar
+    </p>
+  </div>
+</div>
+</div>
+<header class="fixed top-0 left-0 right-0 z-40 bg-surface/85 backdrop-blur-xl border-b border-outline-variant/30 shadow-[0_4px_20px_-2px_rgba(115,92,0,0.05)]"><div class="h-20 max-w-7xl mx-auto px-margin-mobile md:px-margin flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-sm"><img alt="Monogram Rub el Hizb A&amp;F" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1WlMAU-ySdOUHTFDrAL2hEoDPSrN917HchGWKT39SWA38zvFF3vMXJlE1SzOi-JWpaT97_kY2-3435U3-CrH97g8G_hY56HL5fwkEIEtMTz6rzgOAyEqvWKQqzdr9AadC9KI_vh6hoMVUWZ9XUeRBElE6aIyj02a_5js50yeG9XIa33KSwCX0q0CR8ihENfuYUZhXaUaVh0YEp-JociGLwS37AGVM0dLW3RemkjioRqqOJ903bjQJR_fAE"><a class="font-headline-sm text-headline-sm tracking-wide text-primary flex items-center gap-space-xs" data-path="undangan-utama" href="#"><span class="font-medium">Aditya</span><span class="font-headline-sm text-tertiary-container italic text-[16px]">&amp;</span><span class="font-medium">Fatimah</span></a></div><nav class="hidden lg:flex items-center gap-space-md bg-surface-container-lowest/70 p-space-xs rounded-full border border-outline-variant/40 shadow-sm" data-active-classes="bg-primary-container text-on-primary-container font-label-lg text-label-lg rounded-full px-space-md py-space-xs"><a class="px-space-md py-space-xs rounded-full text-on-surface-variant hover:text-on-surface font-label-lg text-label-lg transition-colors" data-path="mempelai" href="#mempelai">Mempelai</a><a class="px-space-md py-space-xs rounded-full text-on-surface-variant hover:text-on-surface font-label-lg text-label-lg transition-colors" data-path="acara" href="#acara">Acara</a><a class="px-space-md py-space-xs rounded-full text-on-surface-variant hover:text-on-surface font-label-lg text-label-lg transition-colors" data-path="kisah" href="#kisah">Kisah</a><a class="px-space-md py-space-xs rounded-full text-on-surface-variant hover:text-on-surface font-label-lg text-label-lg transition-colors" data-path="galeri" href="#galeri">Galeri</a><a class="px-space-md py-space-xs rounded-full text-on-surface-variant hover:text-on-surface font-label-lg text-label-lg transition-colors" data-path="rsvp" href="#rsvp">RSVP</a><a class="px-space-md py-space-xs rounded-full text-on-surface-variant hover:text-on-surface font-label-lg text-label-lg transition-colors" data-path="hadiah" href="#hadiah">Hadiah</a></nav><div class="flex items-center gap-space-sm">
+<!-- Petal Toggle Pill Button in Header -->
+<button class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-container border border-outline-variant/40 text-primary hover:bg-surface-container-high transition-all text-xs font-semibold" id="nav-petal-toggle" onclick="togglePetals()" title="Aktif/Nonaktifkan Kelopak Bunga">
+<span class="material-symbols-outlined text-[16px] text-primary">local_florist</span>
+<span class="hidden sm:inline" id="nav-petal-status">Bunga: On</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center ring-2 ring-primary-container/40"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header>
+<main class="w-full pt-20 bg-background min-h-screen"><div class="flex flex-col w-full relative overflow-hidden selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- Toast Notification Feedback -->
+<div class="fixed top-24 left-1/2 -translate-x-1/2 z-50 transition-all duration-300 transform opacity-0 translate-y-[-12px] pointer-events-none" id="copy-toast">
+<div class="flex items-center gap-space-sm bg-inverse-surface text-inverse-on-surface px-space-md py-space-xs rounded-full shadow-xl">
+<span class="material-symbols-outlined text-primary-fixed text-[18px]">verified</span>
+<span class="font-label-sm text-label-sm" id="copy-toast-msg">Berhasil disalin ke papan klip!</span>
+</div>
+</div>
+<!-- ==================== 1. HERO SECTION ==================== -->
+<section class="relative min-h-[94vh] flex flex-col items-center justify-center text-center px-margin-mobile md:px-margin py-space-2xl overflow-hidden bg-gradient-to-b from-surface-bright via-surface-container-low to-surface">
+<!-- Grand Mosque Skyline Line-Art Illustration Background -->
+<div class="absolute inset-x-0 bottom-0 pointer-events-none opacity-[0.18] text-primary flex justify-center items-end z-0"><svg class="w-full max-w-7xl h-64 sm:h-96 object-cover" viewBox="0 0 1200 400" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg"><circle cx="600" cy="200" r="190" fill="none" stroke="currentColor" stroke-width="1" stroke-dasharray="4 8"></circle><circle cx="600" cy="200" r="160" fill="none" stroke="currentColor" stroke-width="2"></circle><circle cx="600" cy="200" r="130" fill="none" stroke="currentColor" stroke-width="1"></circle><circle cx="600" cy="200" r="100" fill="none" stroke="currentColor" stroke-width="2.5" stroke-dasharray="6 6"></circle><circle cx="600" cy="200" r="70" fill="none" stroke="currentColor" stroke-width="1.2"></circle><circle cx="600" cy="200" r="40" fill="none" stroke="currentColor" stroke-width="1.5"></circle><circle cx="240" cy="260" r="120" fill="none" stroke="currentColor" stroke-width="1" stroke-dasharray="3 6"></circle><circle cx="240" cy="260" r="80" fill="none" stroke="currentColor" stroke-width="1.5"></circle><circle cx="960" cy="260" r="120" fill="none" stroke="currentColor" stroke-width="1" stroke-dasharray="3 6"></circle><circle cx="960" cy="260" r="80" fill="none" stroke="currentColor" stroke-width="1.5"></circle></svg></div>
+<!-- Ambient Golden Glow Spheres -->
+<div class="absolute -top-32 left-1/2 -translate-x-1/2 w-[580px] h-[580px] bg-primary-fixed-dim/20 rounded-full blur-[120px] pointer-events-none"></div>
+<div class="absolute bottom-10 -right-24 w-80 h-80 bg-tertiary-fixed/30 rounded-full blur-[90px] pointer-events-none"></div>
+<div class="relative z-10 max-w-4xl mx-auto flex flex-col items-center"><div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full border border-primary/10 pointer-events-none -z-10 flex items-center justify-center"><div class="w-[550px] h-[550px] rounded-full border border-primary-container/20 border-dashed flex items-center justify-center"><div class="w-[400px] h-[400px] rounded-full border border-primary/10"></div></div></div>
+<!-- Monogram Seal & Delicate Arabesque Wreath -->
+<div class="relative mb-space-lg group">
+<!-- Gold Botanical Wreath Ring -->
+<div class="absolute -inset-4 pointer-events-none flex items-center justify-center">
+<svg class="w-36 h-36 sm:w-40 sm:h-40 text-primary-container/40 animate-[spin_40s_linear_infinite]" viewBox="0 0 200 200">
+<path d="M100,10 C140,10 180,45 180,95 C180,145 140,185 95,185 C45,185 15,145 15,95 C15,45 55,10 100,10" fill="none" stroke="currentColor" stroke-dasharray="4 8" stroke-width="1.5"></path>
+<!-- Small botanical buds around -->
+<circle cx="100" cy="10" fill="#AA771C" r="3.5"></circle>
+<circle cx="180" cy="95" fill="#AA771C" r="3.5"></circle>
+<circle cx="95" cy="185" fill="#AA771C" r="3.5"></circle>
+<circle cx="15" cy="95" fill="#AA771C" r="3.5"></circle>
+</svg>
+</div>
+<div class="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl bg-surface-container-lowest shadow-md flex items-center justify-center p-3 relative transform transition-transform group-hover:scale-105 duration-500 border border-primary-container/30">
+<img alt="Monogram A&amp;F Rub el Hizb" class="w-full h-full object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1WlMAU-ySdOUHTFDrAL2hEoDPSrN917HchGWKT39SWA38zvFF3vMXJlE1SzOi-JWpaT97_kY2-3435U3-CrH97g8G_hY56HL5fwkEIEtMTz6rzgOAyEqvWKQqzdr9AadC9KI_vh6hoMVUWZ9XUeRBElE6aIyj02a_5js50yeG9XIa33KSwCX0q0CR8ihENfuYUZhXaUaVh0YEp-JociGLwS37AGVM0dLW3RemkjioRqqOJ903bjQJR_fAE">
+</div>
+</div>
+<!-- Overline Subtitle with Botanical Flourish -->
+<div class="flex items-center gap-space-sm mb-space-xs">
+<svg class="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C13.5 6 17.5 9 22 9C17.5 10 13.5 13 12 18C10.5 13 6.5 10 2 9C6.5 9 10.5 6 12 2Z"></path></svg>
+<span class="w-6 h-[1px] bg-gradient-to-r from-transparent to-primary"></span>
+<span class="font-label-lg text-label-lg tracking-[0.25em] text-primary uppercase font-semibold">Walimatul 'Urs</span>
+<span class="w-6 h-[1px] bg-gradient-to-l from-transparent to-primary"></span>
+<svg class="w-5 h-5 text-primary scale-x-[-1]" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C13.5 6 17.5 9 22 9C17.5 10 13.5 13 12 18C10.5 13 6.5 10 2 9C6.5 9 10.5 6 12 2Z"></path></svg>
+</div>
+<!-- Main Headline Couple Names -->
+<h1 class="font-display-hero text-headline-lg md:text-display-hero text-on-surface tracking-tight mt-space-xs mb-space-sm leading-tight">
+        Aditya <span class="italic text-primary font-serif font-light">&amp;</span> Fatimah
+      </h1>
+<!-- Botanical Line Flourish under Headline -->
+<div class="flex items-center justify-center gap-2 mb-space-md text-primary">
+<span class="w-16 sm:w-24 h-[1px] bg-gradient-to-r from-transparent via-primary-container to-primary"></span>
+<svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
+<path d="M12,3 C13,7 16,10 20,11 C16,12 13,15 12,19 C11,15 8,12 4,11 C8,10 11,7 12,3 Z M12,7 C12.5,9.5 14.5,11.5 17,12 C14.5,12.5 12.5,14.5 12,17 C11.5,14.5 9.5,12.5 7,12 C9.5,11.5 11.5,9.5 12,7 Z"></path>
+</svg>
+<span class="w-16 sm:w-24 h-[1px] bg-gradient-to-l from-transparent via-primary-container to-primary"></span>
+</div>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl mx-auto mb-space-md">
+        Dengan penuh rasa syukur dan memohon ridho Allah SWT, kami mengundang Bapak/Ibu/Saudara/i untuk hadir dalam perayaan pernikahan suci kami.
+      </p>
+<!-- Date Badge -->
+<div class="inline-flex items-center gap-space-sm bg-surface-container-lowest/90 px-space-md py-space-xs rounded-full shadow-sm mb-space-xl border border-primary-container/30">
+<span class="material-symbols-outlined text-primary text-[18px]">calendar_today</span>
+<span class="font-label-lg text-label-lg text-on-surface font-semibold tracking-wider">SABTU, 28 OKTOBER 2025</span>
+<span class="text-primary-container">•</span>
+<span class="font-label-lg text-label-lg text-secondary">JAKARTA SELATAN</span>
+</div>
+<!-- Live Interactive Countdown Card Group -->
+<div class="w-full max-w-xl grid grid-cols-4 gap-2 sm:gap-4 mb-space-xl">
+<div class="bg-surface-container-lowest/80 backdrop-blur-md rounded-2xl p-space-sm sm:p-space-md shadow-sm text-center border border-outline-variant/30">
+<span class="font-headline-lg text-headline-md sm:text-headline-lg font-bold text-primary block leading-none mb-1" id="countdown-days">00</span>
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-outline">Hari</span>
+</div>
+<div class="bg-surface-container-lowest/80 backdrop-blur-md rounded-2xl p-space-sm sm:p-space-md shadow-sm text-center border border-outline-variant/30">
+<span class="font-headline-lg text-headline-md sm:text-headline-lg font-bold text-primary block leading-none mb-1" id="countdown-hours">00</span>
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-outline">Jam</span>
+</div>
+<div class="bg-surface-container-lowest/80 backdrop-blur-md rounded-2xl p-space-sm sm:p-space-md shadow-sm text-center border border-outline-variant/30">
+<span class="font-headline-lg text-headline-md sm:text-headline-lg font-bold text-primary block leading-none mb-1" id="countdown-minutes">00</span>
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-outline">Menit</span>
+</div>
+<div class="bg-surface-container-lowest/80 backdrop-blur-md rounded-2xl p-space-sm sm:p-space-md shadow-sm text-center border border-outline-variant/30">
+<span class="font-headline-lg text-headline-md sm:text-headline-lg font-bold text-primary block leading-none mb-1" id="countdown-seconds">00</span>
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-outline">Detik</span>
+</div>
+</div>
+<!-- CTA Buttons -->
+<div class="flex flex-wrap items-center justify-center gap-space-md mb-space-2xl">
+<a class="inline-flex items-center gap-space-xs bg-surface-container-lowest text-on-surface font-label-lg text-label-lg px-space-lg py-space-md rounded-full shadow-sm hover:bg-surface-container transition-all border border-outline-variant/40" href="#acara">
+<span class="material-symbols-outlined text-primary text-[20px]">schedule</span>
+<span class="">Rangkaian Acara</span>
+</a>
+</div>
+<!-- Editorial Arch Couple Banner with Mosque Arch Silhouette Frame -->
+<div class="w-full max-w-3xl relative mt-space-sm">
+<!-- Islamic Arch Top Border Contour SVG -->
+<div class="relative overflow-hidden rounded-3xl shadow-[0_20px_50px_-10px_rgba(115,92,0,0.18)] bg-surface-container-high border-4 border-[#D4AF37]/30">
+<img alt="Potret Prewedding Aditya &amp; Fatimah dalam balutan busana elegan bernuansa emas dan champage" class="w-full h-[360px] sm:h-[500px] object-cover object-center filter brightness-[0.98] transition-transform duration-700 hover:scale-105" src="https://lh3.googleusercontent.com/aida/AEtjO1WM4ZVpA9j5VmeoA6hV6rXi8aJQDwOGixvUcOikeUBUz7xhC40DDn3689zZgssFcsj86L1zP5jtbSzgPYTJ_OX3F_1Dhh2Od46XxJnp2PpeZtL1y-BmZ4vB_3435s_ca0LvEwRvM_vhmnzKnCmXfMlvJbbUQtjA_yZf8_vnDE3bEnc1Bgq1NnVlVjtlpAZwuwUXe4bGqDBLt2Gt1NwmY3Gl_l899JGkWJCKk9IpdOLXdwKW2NKWHeqSZNvw">
+<div class="absolute inset-0 bg-gradient-to-t from-on-background/80 via-transparent to-transparent flex items-end justify-between p-space-lg">
+<div class="text-left text-surface-lowest">
+<p class="font-label-sm text-label-sm text-primary-fixed uppercase tracking-widest">Prewedding Moments</p>
+<p class="font-headline-sm text-headline-sm text-surface-bright">The Sacred Union of Hearts</p>
+</div>
+<span class="hidden sm:inline-block font-label-sm text-label-sm text-surface-container-high bg-on-background/40 backdrop-blur-md px-space-md py-space-xs rounded-full">
+        Yogyakarta, 2025
+      </span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ==================== 2. QURAN QUOTE & SYIAR SECTION (MIHRAB DOME MOTIF) ==================== -->
+<section class="py-space-2xl px-margin-mobile md:px-margin bg-surface-container-low flex justify-center relative">
+<div class="max-w-3xl w-full bg-surface-container-lowest rounded-3xl p-space-lg sm:p-space-2xl shadow-sm text-center relative overflow-hidden border border-primary-container/30">
+<!-- Islamic Mihrab Arch Outline Motif in Background -->
+<div class="absolute inset-x-0 top-0 h-full pointer-events-none opacity-[0.08] text-primary flex justify-center"><svg class="h-full w-auto" viewBox="0 0 400 400" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg"><circle cx="200" cy="200" r="190" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="4 6"></circle><circle cx="200" cy="200" r="160" fill="none" stroke="currentColor" stroke-width="1.5"></circle><circle cx="200" cy="200" r="130" fill="none" stroke="currentColor" stroke-width="2"></circle><circle cx="200" cy="200" r="100" fill="none" stroke="currentColor" stroke-width="1" stroke-dasharray="2 4"></circle><circle cx="200" cy="200" r="70" fill="none" stroke="currentColor" stroke-width="2"></circle><circle cx="200" cy="200" r="40" fill="none" stroke="currentColor" stroke-width="1.5"></circle><circle cx="200" cy="10" fill="currentColor" r="3"></circle><circle cx="200" cy="390" fill="currentColor" r="3"></circle><circle cx="10" cy="200" fill="currentColor" r="3"></circle><circle cx="390" cy="200" fill="currentColor" r="3"></circle></svg></div>
+<!-- Top Subtle Watermark -->
+<div class="absolute -top-12 -right-12 w-48 h-48 bg-primary-container/10 rounded-full blur-2xl pointer-events-none"></div>
+<!-- Mosque Mihrab Finial Emblem -->
+<div class="flex justify-center mb-space-md relative z-10">
+<div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center ring-2 ring-primary-container/40">
+<svg class="w-6 h-6 text-primary fill-current" viewBox="0 0 24 24">
+<path d="M12,2 C10.5,5 7.5,7 4,7.5 C6.5,10 7,13.5 6,17 C9,15.5 12,17.5 12,21 C12,17.5 15,15.5 18,17 C17,13.5 17.5,10 20,7.5 C16.5,7 13.5,5 12,2 Z"></path>
+</svg>
+</div>
+</div>
+<!-- Basmalah Calligraphy -->
+<div class="mb-space-md relative z-10">
+<p class="font-serif text-2xl sm:text-3xl text-primary leading-relaxed" dir="rtl" lang="ar">
+          بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
+        </p>
+</div>
+<!-- Quranic Ayah -->
+<div class="mb-space-lg max-w-2xl mx-auto relative z-10">
+<p class="font-serif text-xl sm:text-2xl text-on-surface leading-loose tracking-wide" dir="rtl" lang="ar">
+          وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً ۚ إِنَّ فِي ذَٰلِكَ لَآيَاتٍ لِّقَوْمٍ يَتَفَكَّرُونَ
+        </p>
+</div>
+<!-- Divider Motif with Floral Leaf Garland -->
+<div class="flex items-center justify-center gap-space-sm mb-space-md relative z-10">
+<svg class="w-8 h-4 text-outline-variant" fill="currentColor" viewBox="0 0 40 20"><path d="M0,10 Q20,2 40,10 Q20,18 0,10 Z"></path></svg>
+<span class="text-primary text-[16px]">✦</span>
+<svg class="w-8 h-4 text-outline-variant scale-x-[-1]" fill="currentColor" viewBox="0 0 40 20"><path d="M0,10 Q20,2 40,10 Q20,18 0,10 Z"></path></svg>
+</div>
+<!-- Indonesian Translation -->
+<p class="font-body-md text-body-md text-on-surface-variant italic max-w-xl mx-auto leading-relaxed mb-space-sm relative z-10">
+        “Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang. Sungguh, pada yang demikian itu benar-benar terdapat tanda-tanda bagi kaum yang berpikir.”
+      </p>
+<span class="inline-block font-label-sm text-label-sm text-primary tracking-widest font-semibold uppercase relative z-10">
+        (QS. Ar-Rum: 21)
+      </span>
+</div>
+</section>
+<!-- ==================== 3. PROFIL MEMPELAI ==================== -->
+<section class="py-space-2xl px-margin-mobile md:px-margin max-w-6xl mx-auto w-full relative" id="mempelai">
+<div class="text-center mb-space-2xl">
+<span class="font-label-lg text-label-lg uppercase tracking-[0.2em] text-primary block mb-space-xs font-semibold">Pasangan Pengantin</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">Sang Mempelai</h2>
+<!-- Botanical Branch Divider -->
+<div class="flex items-center justify-center gap-2 mt-2 mb-2 text-primary/70">
+<span class="w-12 h-[1px] bg-gradient-to-r from-transparent to-primary"></span>
+<svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2L15 9L22 12L15 15L12 22L9 15L2 12L9 9L12 2Z"></path></svg>
+<span class="w-12 h-[1px] bg-gradient-to-l from-transparent to-primary"></span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-lg mx-auto mt-space-xs">
+        Maha Suci Allah yang telah mempertemukan dua insan dalam ikatan suci pernikahan.
+      </p>
+</div>
+<!-- Dual Profile Cards -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-space-xl items-center relative">
+<!-- Groom Card -->
+<div class="bg-surface-container-lowest rounded-3xl p-space-xl shadow-sm hover:shadow-md transition-all flex flex-col items-center text-center relative overflow-hidden group border border-outline-variant/30">
+<!-- Islamic Arch Window Frame for Groom -->
+<div class="w-48 h-48 sm:w-52 sm:h-52 rounded-full overflow-hidden mb-space-lg shadow-md bg-surface-container relative p-1.5 border-4 border-primary-container/40 ring-4 ring-primary/20"><div class="w-full h-full rounded-full overflow-hidden relative"><img alt="Aditya Pratama, S.T. - Mempelai Pria" class="w-full h-full object-cover object-top filter contrast-[1.02] group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida/AEtjO1WM4ZVpA9j5VmeoA6hV6rXi8aJQDwOGixvUcOikeUBUz7xhC40DDn3689zZgssFcsj86L1zP5jtbSzgPYTJ_OX3F_1Dhh2Od46XxJnp2PpeZtL1y-BmZ4vB_3435s_ca0LvEwRvM_vhmnzKnCmXfMlvJbbUQtjA_yZf8_vnDE3bEnc1Bgq1NnVlVjtlpAZwuwUXe4bGqDBLt2Gt1NwmY3Gl_l899JGkWJCKk9IpdOLXdwKW2NKWHeqSZNvw"></div></div>
+<span class="font-label-sm text-label-sm bg-primary-fixed/40 text-on-primary-fixed px-space-md py-space-xs rounded-full uppercase tracking-wider mb-space-xs font-semibold">
+          Mempelai Pria
+        </span>
+<h3 class="font-headline-md text-headline-md text-on-surface font-semibold mb-space-xs">
+          Aditya Pratama, S.T.
+        </h3>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-sm mb-space-md leading-relaxed">
+          Putra pertama dari <br>
+<span class="font-semibold text-on-surface">Bpk. Ir. Hendra Gunawan</span> &amp; <span class="font-semibold text-on-surface">Ibu Hj. Siti Rahmawati</span>
+</p>
+<a class="inline-flex items-center gap-space-xs font-label-sm text-label-sm text-secondary hover:text-primary transition-colors bg-surface-container px-space-md py-space-xs rounded-full" href="https://instagram.com" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[16px]">photo_camera</span>
+<span class="">@adityapratama</span>
+</a>
+</div>
+<!-- Center Ornate Ampersand Connection with Botanical Petal Ring -->
+<div class="hidden lg:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20 w-16 h-16 rounded-full bg-surface-container-lowest shadow-md items-center justify-center text-primary font-headline-lg text-headline-lg italic pointer-events-none border border-primary-container/40">
+<span class="relative z-10">&amp;</span>
+</div>
+<!-- Bride Card -->
+<div class="bg-surface-container-lowest rounded-3xl p-space-xl shadow-sm hover:shadow-md transition-all flex flex-col items-center text-center relative overflow-hidden group border border-outline-variant/30">
+<!-- Islamic Arch Window Frame for Bride -->
+<div class="w-48 h-48 sm:w-52 sm:h-52 rounded-full overflow-hidden mb-space-lg shadow-md bg-surface-container relative p-1.5 border-4 border-primary-container/40 ring-4 ring-primary/20"><div class="w-full h-full rounded-full overflow-hidden relative"><img alt="Fatimah Azzahra, B.Des. - Mempelai Wanita" class="w-full h-full object-cover object-center filter contrast-[1.02] group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida/AEtjO1WM4ZVpA9j5VmeoA6hV6rXi8aJQDwOGixvUcOikeUBUz7xhC40DDn3689zZgssFcsj86L1zP5jtbSzgPYTJ_OX3F_1Dhh2Od46XxJnp2PpeZtL1y-BmZ4vB_3435s_ca0LvEwRvM_vhmnzKnCmXfMlvJbbUQtjA_yZf8_vnDE3bEnc1Bgq1NnVlVjtlpAZwuwUXe4bGqDBLt2Gt1NwmY3Gl_l899JGkWJCKk9IpdOLXdwKW2NKWHeqSZNvw"></div></div>
+<span class="font-label-sm text-label-sm bg-tertiary-fixed/50 text-on-tertiary-fixed px-space-md py-space-xs rounded-full uppercase tracking-wider mb-space-xs font-semibold">
+          Mempelai Wanita
+        </span>
+<h3 class="font-headline-md text-headline-md text-on-surface font-semibold mb-space-xs">
+          Fatimah Azzahra, B.Des.
+        </h3>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-sm mb-space-md leading-relaxed">
+          Putri kedua dari <br>
+<span class="font-semibold text-on-surface">Bpk. Dr. Ahmad Fauzi</span> &amp; <span class="font-semibold text-on-surface">Ibu Dra. Nur Hasanah</span>
+</p>
+<a class="inline-flex items-center gap-space-xs font-label-sm text-label-sm text-secondary hover:text-primary transition-colors bg-surface-container px-space-md py-space-xs rounded-full" href="https://instagram.com" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[16px]">photo_camera</span>
+<span class="">@fatimahazzahra</span>
+</a>
+</div>
+</div>
+</section>
+<!-- ==================== 4. JADWAL & LOKASI ACARA (MOSQUE ARCHES & DOMES) ==================== -->
+<section class="py-space-2xl px-margin-mobile md:px-margin bg-surface-container-low w-full relative" id="acara">
+<div class="max-w-6xl mx-auto">
+<div class="text-center mb-space-2xl">
+<!-- Islamic Arch Silhouette Header Icon -->
+<div class="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-surface-container-lowest border border-primary-container/40 text-primary mb-2 shadow-sm">
+<svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
+<path d="M12 2C8.5 5 4 8 4 13V21H20V13C20 8 15.5 5 12 2ZM12 4.5C14.5 7 18 9.5 18 13.5V19H6V13.5C6 9.5 9.5 7 12 4.5ZM12 8C10.5 8 9 9.5 9 11.5V17H15V11.5C15 9.5 13.5 8 12 8Z"></path>
+</svg>
+</div>
+<span class="font-label-lg text-label-lg uppercase tracking-[0.2em] text-primary block mb-space-xs font-semibold">Agenda Pernikahan</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">Rangkaian Acara &amp; Lokasi</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-lg mx-auto mt-space-xs">
+          Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir untuk memberikan doa restu.
+        </p>
+</div>
+<!-- Events Dual Cards with Mosque Arch Header Styling -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-lg mb-space-xl">
+<!-- Akad Nikah Card -->
+<div class="bg-surface-container-lowest rounded-3xl p-space-xl shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow relative overflow-hidden border border-outline-variant/30">
+<!-- Decorative Mosque Dome Watermark Top Right -->
+<svg class="absolute -right-6 -top-6 w-36 h-36 text-primary-fixed/20 pointer-events-none" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="45" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="3 3"></circle><circle cx="50" cy="50" r="36" fill="none" stroke="currentColor" stroke-width="3"></circle><circle cx="50" cy="50" r="26" fill="none" stroke="currentColor" stroke-width="1.5"></circle><circle cx="50" cy="50" r="16" fill="none" stroke="currentColor" stroke-width="2"></circle><circle cx="50" cy="50" r="6" fill="currentColor"></circle></svg>
+<div>
+<div class="flex items-center justify-between mb-space-md">
+<span class="font-label-sm text-label-sm bg-primary-fixed/40 text-on-primary-fixed font-semibold px-space-md py-space-xs rounded-full uppercase tracking-wider">
+                Akad Nikah
+              </span>
+<div class="w-8 h-8 rounded-full bg-primary-container/20 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]">mosque</span>
+</div>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-space-xs">Ijab &amp; Qobul</h3>
+<div class="space-y-space-sm mb-space-lg text-on-surface-variant">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[20px]">event</span>
+<span class="font-body-md text-body-md font-medium text-on-surface">Sabtu, 28 Oktober 2025</span>
+</div>
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[20px]">schedule</span>
+<span class="font-body-md text-body-md">08:00 – 10:00 WIB</span>
+</div>
+<div class="flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[20px] shrink-0 mt-0.5">location_on</span>
+<div class="font-body-md text-body-md">
+<p class="font-semibold text-on-surface">Masjid Raya Al-Barkah (Ballroom Lt. 2)</p>
+<p class="text-secondary text-sm">Jl. Melati Raya No. 45, Kebayoran Baru, Jakarta Selatan</p>
+</div>
+</div>
+</div>
+</div>
+<div class="flex flex-col sm:flex-row gap-space-sm pt-space-md">
+<a class="flex-1 inline-flex items-center justify-center gap-space-xs bg-primary text-on-primary font-label-lg text-label-lg px-space-md py-space-sm rounded-full shadow-sm hover:opacity-95 transition-all" href="https://maps.google.com" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[18px]">map</span>
+<span class="">Buka Google Maps</span>
+</a>
+<button class="inline-flex items-center justify-center gap-space-xs bg-surface-container text-on-surface font-label-lg text-label-lg px-space-md py-space-sm rounded-full hover:bg-surface-container-high transition-all" onclick="downloadCalendar('Akad Nikah Aditya &amp; Fatimah', 'Masjid Raya Al-Barkah Lt. 2 Jakarta Selatan', '2025-10-28T08:00:00', '2025-10-28T10:00:00')">
+<span class="material-symbols-outlined text-[18px]">calendar_add_on</span>
+<span class="">Simpan Agenda</span>
+</button>
+</div>
+</div>
+<!-- Resepsi Pernikahan Card -->
+<div class="bg-surface-container-lowest rounded-3xl p-space-xl shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow relative overflow-hidden border border-outline-variant/30">
+<!-- Decorative Floral Corner Vine Watermark -->
+<svg class="absolute -right-6 -top-6 w-36 h-36 text-tertiary-fixed/30 pointer-events-none" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="45" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="3 3"></circle><circle cx="50" cy="50" r="36" fill="none" stroke="currentColor" stroke-width="3"></circle><circle cx="50" cy="50" r="26" fill="none" stroke="currentColor" stroke-width="1.5"></circle><circle cx="50" cy="50" r="16" fill="none" stroke="currentColor" stroke-width="2"></circle><circle cx="50" cy="50" r="6" fill="currentColor"></circle></svg>
+<div>
+<div class="flex items-center justify-between mb-space-md">
+<span class="font-label-sm text-label-sm bg-tertiary-fixed/60 text-on-tertiary-fixed font-semibold px-space-md py-space-xs rounded-full uppercase tracking-wider">
+                Resepsi Pernikahan
+              </span>
+<div class="w-8 h-8 rounded-full bg-tertiary-fixed/40 flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined text-[18px]">celebration</span>
+</div>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-space-xs">Walimatul 'Urs</h3>
+<div class="space-y-space-sm mb-space-lg text-on-surface-variant">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[20px]">event</span>
+<span class="font-body-md text-body-md font-medium text-on-surface">Sabtu, 28 Oktober 2025</span>
+</div>
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[20px]">schedule</span>
+<span class="font-body-md text-body-md">11:30 – 16:00 WIB</span>
+</div>
+<div class="flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[20px] shrink-0 mt-0.5">location_on</span>
+<div class="font-body-md text-body-md">
+<p class="font-semibold text-on-surface">The Glasshouse Grand Ballroom</p>
+<p class="text-secondary text-sm">Dharmawangsa, Jl. Wijaya II No. 12, Kebayoran Baru, Jakarta Selatan</p>
+</div>
+</div>
+</div>
+</div>
+<div class="flex flex-col sm:flex-row gap-space-sm pt-space-md">
+<a class="flex-1 inline-flex items-center justify-center gap-space-xs bg-primary text-on-primary font-label-lg text-label-lg px-space-md py-space-sm rounded-full shadow-sm hover:opacity-95 transition-all" href="https://maps.google.com" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[18px]">map</span>
+<span class="">Buka Google Maps</span>
+</a>
+<button class="inline-flex items-center justify-center gap-space-xs bg-surface-container text-on-surface font-label-lg text-label-lg px-space-md py-space-sm rounded-full hover:bg-surface-container-high transition-all" onclick="downloadCalendar('Resepsi Pernikahan Aditya &amp; Fatimah', 'The Glasshouse Grand Ballroom Dharmawangsa Jakarta Selatan', '2025-10-28T11:30:00', '2025-10-28T16:00:00')">
+<span class="material-symbols-outlined text-[18px]">calendar_add_on</span>
+<span class="">Simpan Agenda</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Protocols Card -->
+<div class="bg-surface-container rounded-2xl p-space-md text-center max-w-2xl mx-auto flex items-center justify-center gap-space-sm border border-outline-variant/30">
+<span class="material-symbols-outlined text-primary text-[20px]">info</span>
+<span class="font-body-md text-body-md text-on-surface-variant">
+          Mohon kehadiran tepat waktu dan mengikuti adab serta protokol acara yang khidmat.
+        </span>
+</div>
+</div>
+</section>
+<!-- ==================== 5. PERJALANAN HATI (TIMELINE WITH FLORAL ACCENTS) ==================== -->
+<section class="py-space-2xl px-margin-mobile md:px-margin max-w-4xl mx-auto w-full relative" id="kisah">
+<div class="text-center mb-space-2xl">
+<span class="font-label-lg text-label-lg uppercase tracking-[0.2em] text-primary block mb-space-xs font-semibold">Our Journey</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">Kisah Cinta &amp; Perjalanan Hati</h2>
+<!-- Botanical Flourish Garland -->
+<div class="flex items-center justify-center gap-2 mt-2 mb-2 text-primary">
+<span class="w-12 h-[1px] bg-gradient-to-r from-transparent to-primary"></span>
+<svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12,2 C12.8,5.5 15.5,8.2 19,9 C15.5,9.8 12.8,12.5 12,16 C11.2,12.5 8.5,9.8 5,9 C8.5,8.2 11.2,5.5 12,2 Z"></path></svg>
+<span class="w-12 h-[1px] bg-gradient-to-l from-transparent to-primary"></span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-md mx-auto mt-space-xs">
+        Setiap babak dalam perjalanan kami selalu dibimbing oleh doa dan takdir-Nya yang indah.
+      </p>
+</div>
+<!-- Timeline Container -->
+<div class="relative pl-6 sm:pl-10 space-y-space-xl before:content-[''] before:absolute before:left-2 sm:before:left-3 before:top-2 before:bottom-2 before:w-[2px] before:bg-gradient-to-b before:from-primary before:via-tertiary-container before:to-primary">
+<!-- Node 1 -->
+<div class="relative group">
+<div class="absolute -left-6 sm:-left-10 top-1 w-6 h-6 rounded-full bg-surface-container-lowest flex items-center justify-center shadow-md">
+<div class="w-3 h-3 rounded-full bg-primary group-hover:scale-125 transition-transform"></div>
+</div>
+<div class="bg-surface-container-lowest rounded-2xl p-space-lg shadow-sm hover:shadow-md transition-shadow border border-outline-variant/30">
+<div class="flex items-center justify-between mb-space-xs">
+<span class="font-label-sm text-label-sm bg-primary-fixed/40 text-on-primary-fixed px-space-sm py-0.5 rounded-full font-semibold">2020</span>
+<span class="material-symbols-outlined text-outline text-[18px]">volunteer_activism</span>
+</div>
+<h3 class="font-title-lg text-title-lg text-on-surface mb-space-xs">Pertemuan Pertama</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+            Bertemu dalam proyek relawan sosial pendidikan di Yogyakarta. Komunikasi santun berawal dari visi pengabdian bersama dan kekaguman pada akhlak masing-masing.
+          </p>
+</div>
+</div>
+<!-- Node 2 -->
+<div class="relative group">
+<div class="absolute -left-6 sm:-left-10 top-1 w-6 h-6 rounded-full bg-surface-container-lowest flex items-center justify-center shadow-md">
+<div class="w-3 h-3 rounded-full bg-tertiary-container group-hover:scale-125 transition-transform"></div>
+</div>
+<div class="bg-surface-container-lowest rounded-2xl p-space-lg shadow-sm hover:shadow-md transition-shadow border border-outline-variant/30">
+<div class="flex items-center justify-between mb-space-xs">
+<span class="font-label-sm text-label-sm bg-tertiary-fixed/60 text-on-tertiary-fixed px-space-sm py-0.5 rounded-full font-semibold">2022</span>
+<span class="material-symbols-outlined text-outline text-[18px]">handshake</span>
+</div>
+<h3 class="font-title-lg text-title-lg text-on-surface mb-space-xs">Komitmen Bersama &amp; Ta'aruf</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+            Melangkah ke tahapan ta'aruf yang terarah dan berlandaskan syariat dengan restu kedua orang tua. Membicarakan visi rumah tangga sakinah.
+          </p>
+</div>
+</div>
+<!-- Node 3 -->
+<div class="relative group">
+<div class="absolute -left-6 sm:-left-10 top-1 w-6 h-6 rounded-full bg-surface-container-lowest flex items-center justify-center shadow-md">
+<div class="w-3 h-3 rounded-full bg-primary-fixed-dim group-hover:scale-125 transition-transform"></div>
+</div>
+<div class="bg-surface-container-lowest rounded-2xl p-space-lg shadow-sm hover:shadow-md transition-shadow border border-outline-variant/30">
+<div class="flex items-center justify-between mb-space-xs">
+<span class="font-label-sm text-label-sm bg-primary-fixed/40 text-on-primary-fixed px-space-sm py-0.5 rounded-full font-semibold">2024</span>
+<span class="material-symbols-outlined text-outline text-[18px]">ring_volume</span>
+</div>
+<h3 class="font-title-lg text-title-lg text-on-surface mb-space-xs">Hari Lamaran (Khitbah)</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+            Mengikat janji suci dalam prosesi khitbah hangat dihadiri keluarga besar kedua belah pihak di kediaman mempelai wanita.
+          </p>
+</div>
+</div>
+<!-- Node 4 -->
+<div class="relative group">
+<div class="absolute -left-6 sm:-left-10 top-1 w-6 h-6 rounded-full bg-surface-container-lowest flex items-center justify-center shadow-md ring-4 ring-primary/20">
+<div class="w-3 h-3 rounded-full bg-primary group-hover:scale-125 transition-transform"></div>
+</div>
+<div class="bg-surface-container-lowest rounded-2xl p-space-lg shadow-sm hover:shadow-md transition-shadow border border-outline-variant/30">
+<div class="flex items-center justify-between mb-space-xs">
+<span class="font-label-sm text-label-sm bg-primary text-on-primary px-space-sm py-0.5 rounded-full font-semibold">2025</span>
+<span class="material-symbols-outlined text-primary text-[18px]">favorite</span>
+</div>
+<h3 class="font-title-lg text-title-lg text-on-surface mb-space-xs">Menuju Halal (Walimatul 'Urs)</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+            Menggenapkan separuh agama dalam ikatan pernikahan yang diridhai Allah SWT untuk membina bahtera rumah tangga yang sakinah, mawaddah, wa rahmah.
+          </p>
+</div>
+</div>
+</div>
+</section>
+<!-- ==================== 6. GALERI FOTO & VISUAL INTERAKTIF ==================== -->
+<section class="py-space-2xl px-margin-mobile md:px-margin bg-surface-container-low w-full" id="galeri">
+<div class="max-w-6xl mx-auto">
+<div class="text-center mb-space-xl">
+<span class="font-label-lg text-label-lg uppercase tracking-[0.2em] text-primary block mb-space-xs font-semibold">Memories &amp; Moments</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">Galeri Kenangan Indah</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-lg mx-auto mt-space-xs">
+          Potret kebahagiaan kami yang terabadikan dalam kehangatan cinta dan doa.
+        </p>
+<!-- Gallery Controls & Petal Toggle -->
+<div class="flex flex-wrap items-center justify-center gap-space-sm mt-space-lg">
+<button class="gallery-tab active-tab bg-primary text-on-primary font-label-sm text-label-sm px-space-md py-space-xs rounded-full transition-all" onclick="filterGallery('all')">
+            Semua Momen
+          </button>
+<button class="gallery-tab bg-surface-container text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm px-space-md py-space-xs rounded-full transition-all" onclick="filterGallery('prewed')">
+            Prewedding
+          </button>
+<button class="gallery-tab bg-surface-container text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm px-space-md py-space-xs rounded-full transition-all" onclick="filterGallery('detail')">
+            Detail Busana
+          </button>
+<button class="inline-flex items-center gap-1.5 bg-surface-container-lowest text-primary font-label-sm text-label-sm px-space-md py-space-xs rounded-full shadow-sm hover:bg-surface-container transition-all border border-outline-variant/30" id="petal-toggle-btn" onclick="togglePetals()">
+<span class="material-symbols-outlined text-[16px]">local_florist</span>
+<span class="" id="petal-status-text">Efek Kelopak: Aktif</span>
+</button>
+</div>
+</div>
+<!-- Bento-style Curated Gallery Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-space-md" id="gallery-grid">
+<!-- Item 1 (Large Featured Arch Top) -->
+<div class="gallery-item prewed md:col-span-2 relative overflow-hidden rounded-3xl bg-surface-container shadow-sm group">
+<img alt="Editorial potret busana haute couture pengantin Aditya &amp; Fatimah" class="w-full h-80 sm:h-96 object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida/AEtjO1WM4ZVpA9j5VmeoA6hV6rXi8aJQDwOGixvUcOikeUBUz7xhC40DDn3689zZgssFcsj86L1zP5jtbSzgPYTJ_OX3F_1Dhh2Od46XxJnp2PpeZtL1y-BmZ4vB_3435s_ca0LvEwRvM_vhmnzKnCmXfMlvJbbUQtjA_yZf8_vnDE3bEnc1Bgq1NnVlVjtlpAZwuwUXe4bGqDBLt2Gt1NwmY3Gl_l899JGkWJCKk9IpdOLXdwKW2NKWHeqSZNvw">
+<div class="absolute inset-0 bg-gradient-to-t from-on-background/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-space-md text-surface-lowest">
+<div>
+<p class="font-title-md text-title-md text-surface-bright">Keanggunan Tradisi Modern</p>
+<p class="font-body-md text-body-md text-outline-variant">Haute Couture Beskap &amp; Ivory Veil</p>
+</div>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="gallery-item detail relative overflow-hidden rounded-3xl bg-surface-container shadow-sm group">
+<img class="w-full h-80 sm:h-96 object-cover group-hover:scale-105 transition-transform duration-700" data-alt="Close up detailed shot of bride hands with elegant white henna floral motifs holding a bouquet of cream peonies and gold wrapped ribbon, soft golden hour lighting, fine art wedding photography" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-8EqdIXDGp3JNkmIxEzx-L0_M-Mp1EaD5qMBkurlTqy_HV0M06w68NBW94y4MdLzkNk2aBOJXrjXmFWoXz31NlYb-PVOEjtd9n39wDbJvPIgxB2XpN6ifO57eD1MsFz4i7wyAuQjiclxTW3vpJCENEHeJAGibP_BTtPrD_kFltQr4y6wAUrbNjUzFVrMm3pguCvLVOyvlZSb0zSEdFSnrE9wWLZyS1Q92v-cGvJT6vMmIhFVFVIz4WQ">
+<div class="absolute inset-0 bg-gradient-to-t from-on-background/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-space-md text-surface-lowest">
+<p class="font-title-md text-title-md text-surface-bright">Detail Henna &amp; Hand Bouquet</p>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="gallery-item prewed relative overflow-hidden rounded-3xl bg-surface-container shadow-sm group">
+<img class="w-full h-72 sm:h-80 object-cover group-hover:scale-105 transition-transform duration-700" data-alt="Indonesian Muslim groom wearing bespoke champagne gold luxury beskap suit looking gracefully at bride, majestic Islamic arch corridor in soft warm sunlight, editorial wedding aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8WUN2YTsv9z_MgzgqimtnO5tlXcrZKcvleOAFlhWUe3y-v5K8nfV1L0atwNe5ztxxI7zj-1uAVALk1XMMpQv2VJRxkQVeMvnNIf3CZY9nhoiXnS7Q5WDV9CANDmG2fsi6YjT_lDcODk400FXYitVmzi38OCUyZsA5PGRgn7p5ArXR1aIMNkU4GJH1DV-APC_tulwMma0xgKIpbBJNuS3Asz6ZzfnLXHghX0wnSzX3ggMA9a8At5bYxw">
+<div class="absolute inset-0 bg-gradient-to-t from-on-background/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-space-md text-surface-lowest">
+<p class="font-title-md text-title-md text-surface-bright">Tatap Penuh Syukur</p>
+</div>
+</div>
+<!-- Item 4 -->
+<div class="gallery-item detail relative overflow-hidden rounded-3xl bg-surface-container shadow-sm group">
+<img class="w-full h-72 sm:h-80 object-cover group-hover:scale-105 transition-transform duration-700" data-alt="Macro luxury photography of bespoke wedding rings on velvet champagne pillow surrounded by gold flakes and white jasmine flowers, warm soft bridal glow" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCftp6JDSD2Xez21z66rbyBPmESjtWzsNc-V5hb2lakyj42-s5j4WONLB4ek8_gGSwSjMKyhaa217yNqtoOx1FXF0FThztCaI9z9pUSnNUZs7X7mCAoFMmyziWTPozwxIxLZ7PRj7pi4SUkco-oQQQrgBCrrv75n8dA3l7M6qARFbIYMrHu6MolT8LMD3UGMCTflX4ZD9mEjMGN0LG5DRrKViPTiJwuhnXDcBDj04yzBNBGEXmKppMCFw">
+<div class="absolute inset-0 bg-gradient-to-t from-on-background/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-space-md text-surface-lowest">
+<p class="font-title-md text-title-md text-surface-bright">Cincin Pengikat Janji</p>
+</div>
+</div>
+<!-- Item 5 -->
+<div class="gallery-item prewed relative overflow-hidden rounded-3xl bg-surface-container shadow-sm group">
+<img class="w-full h-72 sm:h-80 object-cover group-hover:scale-105 transition-transform duration-700" data-alt="Muslim bride in opulent modest champagne lace bridal gown standing beside groom in modern architecture with Islamic geometric screens, warm natural golden morning sunrays" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNsHLhJ8hoB_7RqsqjD6FF3zMV6e8ZgBqxZ9jSGqCAjLTrfXBgNIlvP63R1FXI0l99O2-bnhr_wGdJhmkIfBysfwtSWLhLl4UyuGB3DSYjBte8uPXgrWlw2KpWbFz7VQdR9wWZ13qkHwU_gpa9OsDKCP6BL4b5KVZnajWc4HOkkvfzY4Ufc2if3uJx6qlPYFCh3grlQ27uRe1alB4LeAPCqi0Ltysp1pMyOnCGb32wlQUzprKmlxFrxg">
+<div class="absolute inset-0 bg-gradient-to-t from-on-background/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-space-md text-surface-lowest">
+<p class="font-title-md text-title-md text-surface-bright">Langkah Menuju Hari Bahagia</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ==================== 7. RSVP & BUKU TAMU DIGITAL ==================== -->
+<section class="py-space-2xl px-margin-mobile md:px-margin max-w-5xl mx-auto w-full" id="rsvp">
+<div class="text-center mb-space-xl">
+<span class="font-label-lg text-label-lg uppercase tracking-[0.2em] text-primary block mb-space-xs font-semibold">Konfirmasi &amp; Doa</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">RSVP &amp; Buku Tamu Digital</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-md mx-auto mt-space-xs">
+        Pastikan kehadiran Anda untuk membantu kami mempersiapkan jamuan terbaik dengan sepenuh hati.
+      </p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-xl items-start">
+<!-- RSVP Input Form Card -->
+<div class="lg:col-span-7 bg-surface-container-lowest rounded-3xl p-space-xl shadow-sm border border-outline-variant/30">
+<form class="space-y-space-md" id="rsvp-form" onsubmit="handleRsvpSubmit(event)">
+<!-- Field: Full Name -->
+<div>
+<label class="block font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant mb-space-xs font-semibold" for="rsvp-name">
+              Nama Lengkap
+            </label>
+<input class="w-full bg-surface-container-low text-on-surface px-space-md py-space-sm rounded-full font-body-md text-body-md placeholder:text-outline focus:outline-none focus:ring-2 focus:ring-primary transition-all border border-outline-variant/30" id="rsvp-name" placeholder="Contoh: Bpk. Rizky Ramadhan &amp; Keluarga" required="" type="text">
+</div>
+<!-- Field: Attendance -->
+<div>
+<label class="block font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant mb-space-xs font-semibold">
+              Konfirmasi Kehadiran
+            </label>
+<div class="grid grid-cols-2 gap-space-sm">
+<label class="flex items-center justify-center gap-space-xs p-space-sm rounded-full bg-surface-container-low cursor-pointer transition-all has-[:checked]:bg-primary has-[:checked]:text-on-primary border border-outline-variant/30">
+<input checked="" class="hidden" name="attendance" type="radio" value="Hadir">
+<span class="material-symbols-outlined text-[18px]">check_circle</span>
+<span class="font-label-lg text-label-lg">Insya Allah Hadir</span>
+</label>
+<label class="flex items-center justify-center gap-space-xs p-space-sm rounded-full bg-surface-container-low cursor-pointer transition-all has-[:checked]:bg-secondary has-[:checked]:text-on-secondary border border-outline-variant/30">
+<input class="hidden" name="attendance" type="radio" value="Tidak Hadir">
+<span class="material-symbols-outlined text-[18px]">cancel</span>
+<span class="font-label-lg text-label-lg">Maaf Berhalangan</span>
+</label>
+</div>
+</div>
+<!-- Field: Guest Count -->
+<div>
+<label class="block font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant mb-space-xs font-semibold" for="rsvp-pax">
+              Jumlah Tamu
+            </label>
+<select class="w-full bg-surface-container-low text-on-surface px-space-md py-space-sm rounded-full font-body-md text-body-md focus:outline-none focus:ring-2 focus:ring-primary transition-all border border-outline-variant/30" id="rsvp-pax">
+<option value="1">1 Orang</option>
+<option value="2">2 Orang</option>
+</select>
+</div>
+<!-- Field: Wishes & Prayers -->
+<div>
+<label class="block font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant mb-space-xs font-semibold" for="rsvp-wishes">
+              Ucapan &amp; Doa Restu
+            </label>
+<textarea class="w-full bg-surface-container-low text-on-surface p-space-md rounded-2xl font-body-md text-body-md placeholder:text-outline focus:outline-none focus:ring-2 focus:ring-primary transition-all resize-none border border-outline-variant/30" id="rsvp-wishes" placeholder="Tuliskan ucapan dan doa restu terbaik untuk kedua mempelai..." required="" rows="4"></textarea>
+</div>
+<!-- Submit Button -->
+<button class="w-full inline-flex items-center justify-center gap-space-xs bg-gradient-to-r from-primary via-primary-container to-tertiary text-on-primary font-label-lg text-label-lg py-space-md rounded-full shadow-[0_8px_20px_-4px_rgba(115,92,0,0.3)] hover:scale-[1.01] active:scale-[0.99] transition-all" type="submit">
+<span class="material-symbols-outlined text-[20px]">send</span>
+<span class="">Kirim Konfirmasi &amp; Doa Restu</span>
+</button>
+</form>
+</div>
+<!-- Live Wishes Feed -->
+<div class="lg:col-span-5 flex flex-col space-y-space-md">
+<div class="flex items-center justify-between">
+<span class="font-title-md text-title-md text-on-surface font-semibold">Doa Dari Sahabat &amp; Keluarga</span>
+<span class="font-label-sm text-label-sm bg-surface-container text-primary px-space-sm py-0.5 rounded-full font-bold" id="wishes-counter">4 Doa</span>
+</div>
+<div class="space-y-space-sm max-h-[480px] overflow-y-auto pr-1" id="wishes-stream">
+<!-- Wish Card 1 -->
+<div class="bg-surface-container-lowest rounded-2xl p-space-md shadow-sm border border-outline-variant/30">
+<div class="flex items-center justify-between mb-1">
+<span class="font-title-sm text-title-md font-semibold text-on-surface">Ustadz Hanif &amp; Istri</span>
+<span class="font-label-sm text-label-sm text-outline">10 mnt lalu</span>
+</div>
+<div class="flex items-center gap-1 text-primary mb-space-xs">
+<span class="material-symbols-outlined text-[14px]">verified</span>
+<span class="font-label-sm text-label-sm">Konfirmasi Hadir</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+              Barakallahu laka wa baraka 'alaika wa jama'a bainakuma fii khoir. Semoga Allah limpahkan berkah dan kebahagiaan dalam rumah tangga Mas Aditya dan Mbak Fatimah.
+            </p>
+</div>
+<!-- Wish Card 2 -->
+<div class="bg-surface-container-lowest rounded-2xl p-space-md shadow-sm border border-outline-variant/30">
+<div class="flex items-center justify-between mb-1">
+<span class="font-title-sm text-title-md font-semibold text-on-surface">Dinda Larasati</span>
+<span class="font-label-sm text-label-sm text-outline">1 jam lalu</span>
+</div>
+<div class="flex items-center gap-1 text-primary mb-space-xs">
+<span class="material-symbols-outlined text-[14px]">verified</span>
+<span class="font-label-sm text-label-sm">Konfirmasi Hadir</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+              Masya Allah terharu banget melihat perjalanan cinta kalian. Lancar sampai hari H yaa Fatimah sayang! Sampai jumpa di Glasshouse!
+            </p>
+</div>
+<!-- Wish Card 3 -->
+<div class="bg-surface-container-lowest rounded-2xl p-space-md shadow-sm border border-outline-variant/30">
+<div class="flex items-center justify-between mb-1">
+<span class="font-title-sm text-title-md font-semibold text-on-surface">Bpk. Ir. Sulaiman</span>
+<span class="font-label-sm text-label-sm text-outline">3 jam lalu</span>
+</div>
+<div class="flex items-center gap-1 text-secondary mb-space-xs">
+<span class="material-symbols-outlined text-[14px]">mail</span>
+<span class="font-label-sm text-label-sm">Maaf Berhalangan</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+              Selamat menempuh hidup baru untuk kedua mempelai. Mohon maaf belum bisa hadir langsung, doa kami senantiasa menyertai keluarga baru Ananda sekalian.
+            </p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ==================== 8. AMPLOP DIGITAL & HADIAH ==================== -->
+<section class="py-space-2xl px-margin-mobile md:px-margin bg-surface-container-low w-full" id="hadiah">
+<div class="max-w-4xl mx-auto">
+<div class="text-center mb-space-2xl">
+<span class="font-label-lg text-label-lg uppercase tracking-[0.2em] text-primary block mb-space-xs font-semibold">Wedding Gift</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">Tanda Kasih &amp; Amplop Digital</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-lg mx-auto mt-space-xs">
+          Doa restu Anda merupakan karunia terindah bagi kami. Namun jika berkenan memberikan tanda kasih secara digital, Anda dapat melalui:
+        </p>
+</div>
+<!-- Bank Cards Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-lg mb-space-xl">
+<!-- Bank Card 1 (BCA) -->
+<div class="bg-surface-container-lowest rounded-3xl p-space-xl shadow-sm hover:shadow-md transition-all flex flex-col justify-between relative overflow-hidden border border-outline-variant/30">
+<div class="flex items-center justify-between mb-space-lg">
+<span class="font-headline-sm text-headline-sm font-bold tracking-wider text-primary">BCA</span>
+<span class="material-symbols-outlined text-tertiary-container text-[28px]">credit_card</span>
+</div>
+<div class="mb-space-lg">
+<p class="font-label-sm text-label-sm text-outline uppercase tracking-wider mb-1">Nomor Rekening</p>
+<p class="font-mono text-xl sm:text-2xl font-bold tracking-widest text-on-surface mb-1" id="acc-num-1">8735 0192 44</p>
+<p class="font-body-md text-body-md text-on-surface-variant">a.n. Aditya Pratama</p>
+</div>
+<button class="w-full inline-flex items-center justify-center gap-space-xs bg-surface-container hover:bg-surface-container-high text-on-surface font-label-lg text-label-lg py-space-sm rounded-full transition-all" onclick="copyToClipboard('8735019244', 'Nomor rekening BCA berhasil disalin!')">
+<span class="material-symbols-outlined text-[18px]">content_copy</span>
+<span class="">Salin No. Rekening</span>
+</button>
+</div>
+<!-- Bank Card 2 (Mandiri) -->
+<div class="bg-surface-container-lowest rounded-3xl p-space-xl shadow-sm hover:shadow-md transition-all flex flex-col justify-between relative overflow-hidden border border-outline-variant/30">
+<div class="flex items-center justify-between mb-space-lg">
+<span class="font-headline-sm text-headline-sm font-bold tracking-wider text-tertiary">MANDIRI</span>
+<span class="material-symbols-outlined text-tertiary-container text-[28px]">credit_card</span>
+</div>
+<div class="mb-space-lg">
+<p class="font-label-sm text-label-sm text-outline uppercase tracking-wider mb-1">Nomor Rekening</p>
+<p class="font-mono text-xl sm:text-2xl font-bold tracking-widest text-on-surface mb-1" id="acc-num-2">137 00 2489 1029</p>
+<p class="font-body-md text-body-md text-on-surface-variant">a.n. Fatimah Azzahra</p>
+</div>
+<button class="w-full inline-flex items-center justify-center gap-space-xs bg-surface-container hover:bg-surface-container-high text-on-surface font-label-lg text-label-lg py-space-sm rounded-full transition-all" onclick="copyToClipboard('1370024891029', 'Nomor rekening Mandiri berhasil disalin!')">
+<span class="material-symbols-outlined text-[18px]">content_copy</span>
+<span class="">Salin No. Rekening</span>
+</button>
+</div>
+</div>
+<!-- Physical Gift Address Card -->
+<div class="bg-surface-container-lowest rounded-3xl p-space-lg sm:p-space-xl shadow-sm text-center max-w-xl mx-auto border border-outline-variant/30">
+<div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center mx-auto mb-space-sm">
+<span class="material-symbols-outlined text-primary text-[24px]">inventory_2</span>
+</div>
+<h3 class="font-title-lg text-title-lg text-on-surface mb-space-xs">Kirim Kado Fisik</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-space-md leading-relaxed" id="gift-address">
+          Komp. Magnolia Residence Blok C No. 14, Kebayoran Baru, Jakarta Selatan (Kode Pos 12560)<br>
+<span class="text-xs text-outline">Penerima: Aditya &amp; Fatimah (0812-9988-7766)</span>
+</p>
+<button class="inline-flex items-center gap-space-xs bg-surface-container hover:bg-surface-container-high text-on-surface font-label-lg text-label-lg px-space-lg py-space-sm rounded-full transition-all" onclick="copyToClipboard('Komp. Magnolia Residence Blok C No. 14, Kebayoran Baru, Jakarta Selatan (Kode Pos 12560)', 'Alamat pengiriman kado berhasil disalin!')">
+<span class="material-symbols-outlined text-[18px]">content_copy</span>
+<span class="">Salin Alamat Pengiriman</span>
+</button>
+</div>
+</div>
+</section>
+<!-- ==================== 9. CLOSING SECTION & BLESSING ==================== -->
+<section class="py-space-2xl px-margin-mobile md:px-margin text-center bg-surface relative overflow-hidden">
+<!-- Grand Mosque Skyline Line-Art In Closing Section Background -->
+<div class="absolute inset-x-0 bottom-0 pointer-events-none opacity-[0.14] text-primary flex justify-center items-end"><svg class="w-full max-w-5xl h-36 object-cover" viewBox="0 0 800 160" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><circle cx="400" cy="160" r="150" fill="none" stroke="currentColor" stroke-width="1" stroke-dasharray="4 6"></circle><circle cx="400" cy="160" r="120" fill="none" stroke="currentColor" stroke-width="2"></circle><circle cx="400" cy="160" r="90" fill="none" stroke="currentColor" stroke-width="1"></circle><circle cx="400" cy="160" r="60" fill="none" stroke="currentColor" stroke-width="2.5"></circle><circle cx="400" cy="160" r="30" fill="none" stroke="currentColor" stroke-width="1"></circle><circle cx="150" cy="160" r="80" fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="3 3"></circle><circle cx="650" cy="160" r="80" fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="3 3"></circle></svg></div>
+<div class="max-w-2xl mx-auto flex flex-col items-center relative z-10">
+<!-- Botanical Wreath Around Closing Monogram -->
+<div class="relative w-20 h-20 rounded-2xl bg-surface-container-lowest shadow-sm flex items-center justify-center p-2 mb-space-md border border-primary-container/30">
+<img alt="Monogram A&amp;F Rub el Hizb" class="w-full h-full object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1WlMAU-ySdOUHTFDrAL2hEoDPSrN917HchGWKT39SWA38zvFF3vMXJlE1SzOi-JWpaT97_kY2-3435U3-CrH97g8G_hY56HL5fwkEIEtMTz6rzgOAyEqvWKQqzdr9AadC9KI_vh6hoMVUWZ9XUeRBElE6aIyj02a_5js50yeG9XIa33KSwCX0q0CR8ihENfuYUZhXaUaVh0YEp-JociGLwS37AGVM0dLW3RemkjioRqqOJ903bjQJR_fAE">
+</div>
+<!-- Floral Botanical Flourish Divider Above Headline -->
+<div class="flex items-center justify-center gap-2 mb-space-sm text-primary">
+<span class="w-10 h-[1px] bg-gradient-to-r from-transparent to-primary"></span>
+<svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 2C13.5 6 17.5 9 22 9C17.5 10 13.5 13 12 18C10.5 13 6.5 10 2 9C6.5 9 10.5 6 12 2Z"></path></svg>
+<span class="w-10 h-[1px] bg-gradient-to-l from-transparent to-primary"></span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface tracking-tight mb-space-sm">
+        Jazakumullah Khairan Katsiran
+      </h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed mb-space-lg">
+        Merupakan suatu kehormatan dan kebahagiaan mendalam bagi kami sekeluarga atas kehadiran serta untaian doa restu Bapak/Ibu/Saudara/i sekalian. Semoga kebaikan senantiasa tercurah bagi kita semua.
+      </p>
+<p class="font-headline-sm text-headline-sm text-primary italic font-serif">
+        Kami yang berbahagia,<br>
+        Aditya &amp; Fatimah<br>
+<span class="text-sm font-sans font-normal text-secondary">Beserta Keluarga Besar Kedua Mempelai</span>
+</p>
+</div>
+</section>
+</div>
+<script>
+  // ================= 0. WELCOME OVERLAY & URL PARAMETER =================
+  let bgAudioPlaying = false;
+  const weddingAudio = new Audio("https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=acoustic-guitar-ambient-112702.mp3");
+  weddingAudio.loop = true;
+
+  document.addEventListener("DOMContentLoaded", () => {
+    // Read query parameter ?to= or ?guest=
+    const urlParams = new URLSearchParams(window.location.search);
+    const guestParam = urlParams.get('to') || urlParams.get('guest');
+    if (guestParam) {
+      const guestElement = document.getElementById("guest-name");
+      if (guestElement) {
+        guestElement.innerText = guestParam.trim();
+      }
+    }
+    initPetalCanvas();
+  });
+
+  function openInvitation() {
+    const overlay = document.getElementById("welcome-overlay");
+    const card = document.getElementById("welcome-card");
+    if (overlay) {
+      if (card) {
+        card.style.transform = "scale(0.92) translateY(-25px)";
+        card.style.opacity = "0";
+      }
+      overlay.style.opacity = "0";
+      overlay.style.pointerEvents = "none";
+      setTimeout(() => {
+        overlay.style.display = "none";
+      }, 700);
+    }
+    
+    // Unlock body scroll
+    document.body.classList.remove("overflow-hidden");
+    document.body.classList.add("overflow-auto");
+
+    // Ensure petals active
+    if (!petalsActive) {
+      togglePetals();
+    }
+
+    // Play wedding background music
+    weddingAudio.play().then(() => {
+      bgAudioPlaying = true;
+      const audioIcon = document.getElementById('audio-icon');
+      if (audioIcon) audioIcon.innerText = 'music_note';
+    }).catch(err => {
+      console.log("Audio autoplay was restricted:", err);
+    });
+  }
+
+  // ================= 1. COUNTDOWN TIMER =================
+  const targetWeddingDate = new Date("October 28, 2025 08:00:00").getTime();
+
+  function updateCountdown() {
+    const now = new Date().getTime();
+    const distance = targetWeddingDate - now;
+
+    if (distance < 0) {
+      document.getElementById("countdown-days").innerText = "00";
+      document.getElementById("countdown-hours").innerText = "00";
+      document.getElementById("countdown-minutes").innerText = "00";
+      document.getElementById("countdown-seconds").innerText = "00";
+      return;
+    }
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    const pad = (n) => String(n).padStart(2, '0');
+
+    document.getElementById("countdown-days").innerText = pad(days);
+    document.getElementById("countdown-hours").innerText = pad(hours);
+    document.getElementById("countdown-minutes").innerText = pad(minutes);
+    document.getElementById("countdown-seconds").innerText = pad(seconds);
+  }
+
+  setInterval(updateCountdown, 1000);
+  updateCountdown();
+
+  // ================= 2. COPY TO CLIPBOARD & TOAST FEEDBACK =================
+  function copyToClipboard(text, message) {
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(text);
+    } else {
+      const textArea = document.createElement("textarea");
+      textArea.value = text;
+      textArea.style.position = "fixed";
+      textArea.style.left = "-999999px";
+      document.body.appendChild(textArea);
+      textArea.focus();
+      textArea.select();
+      try {
+        document.execCommand('copy');
+      } catch (err) {
+        console.error('Unable to copy', err);
+      }
+      textArea.remove();
+    }
+
+    const toast = document.getElementById("copy-toast");
+    const toastMsg = document.getElementById("copy-toast-msg");
+    toastMsg.innerText = message || "Berhasil disalin ke papan klip!";
+    toast.classList.remove("opacity-0", "translate-y-[-12px]");
+    toast.classList.add("opacity-100", "translate-y-0");
+
+    setTimeout(() => {
+      toast.classList.remove("opacity-100", "translate-y-0");
+      toast.classList.add("opacity-0", "translate-y-[-12px]");
+    }, 2800);
+  }
+
+  // ================= 3. RSVP FORM & DYNAMIC WISHES FEED =================
+  let wishCount = 3;
+
+  function handleRsvpSubmit(e) {
+    e.preventDefault();
+    const nameInput = document.getElementById("rsvp-name");
+    const wishesInput = document.getElementById("rsvp-wishes");
+    const attendanceInput = document.querySelector('input[name="attendance"]:checked');
+
+    if (!nameInput.value || !wishesInput.value) return;
+
+    wishCount++;
+    document.getElementById("wishes-counter").innerText = wishCount + " Doa";
+
+    const isAttending = attendanceInput.value === "Hadir";
+    const statusIcon = isAttending ? "verified" : "mail";
+    const statusText = isAttending ? "Konfirmasi Hadir" : "Maaf Berhalangan";
+    const statusColor = isAttending ? "text-primary" : "text-secondary";
+
+    const newWish = document.createElement("div");
+    newWish.className = "bg-surface-container-lowest rounded-2xl p-space-md shadow-sm transition-all duration-500 transform translate-y-2 opacity-0 border border-outline-variant/30";
+    newWish.innerHTML = `
+      <div class="flex items-center justify-between mb-1">
+        <span class="font-title-sm text-title-md font-semibold text-on-surface">${escapeHtml(nameInput.value)}</span>
+        <span class="font-label-sm text-label-sm text-outline">Baru saja</span>
+      </div>
+      <div class="flex items-center gap-1 ${statusColor} mb-space-xs">
+        <span class="material-symbols-outlined text-[14px]">${statusIcon}</span>
+        <span class="font-label-sm text-label-sm">${statusText}</span>
+      </div>
+      <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+        ${escapeHtml(wishesInput.value)}
+      </p>
+    `;
+
+    const stream = document.getElementById("wishes-stream");
+    stream.prepend(newWish);
+
+    setTimeout(() => {
+      newWish.classList.remove("translate-y-2", "opacity-0");
+    }, 50);
+
+    copyToClipboard("", "Terima kasih! Doa dan konfirmasi kehadiran Anda telah tersimpan.");
+    nameInput.value = "";
+    wishesInput.value = "";
+  }
+
+  function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.innerText = text;
+    return div.innerHTML;
+  }
+
+  // ================= 4. GALLERY FILTER =================
+  function filterGallery(category) {
+    const items = document.querySelectorAll('.gallery-item');
+    const tabs = document.querySelectorAll('.gallery-tab');
+
+    tabs.forEach(t => {
+      t.classList.remove('bg-primary', 'text-on-primary');
+      t.classList.add('bg-surface-container', 'text-on-surface-variant');
+    });
+
+    event.target.classList.add('bg-primary', 'text-on-primary');
+    event.target.classList.remove('bg-surface-container', 'text-on-surface-variant');
+
+    items.forEach(item => {
+      if (category === 'all' || item.classList.contains(category)) {
+        item.style.display = 'block';
+      } else {
+        item.style.display = 'none';
+      }
+    });
+  }
+
+  // ================= 5. FLOATING & FALLING FLORAL PETALS SIMULATION (CANVAS) =================
+  let petalsActive = true;
+  let canvas, ctx;
+  let petals = [];
+  const petalCount = 28;
+  const petalColors = [
+    { r: 232, g: 195, b: 155, a: 0.75 }, // Champagne rose
+    { r: 245, g: 230, b: 215, a: 0.8 },  // Luminous ivory
+    { r: 212, g: 175, b: 55, a: 0.6 },   // Soft gold highlight
+    { r: 248, g: 218, b: 205, a: 0.7 }   // Blush peach
+  ];
+
+  class Petal {
+    constructor() {
+      this.reset(true);
+    }
+    reset(initial = false) {
+      this.x = Math.random() * (canvas ? canvas.width : window.innerWidth);
+      this.y = initial ? Math.random() * (canvas ? canvas.height : window.innerHeight) : -20;
+      this.size = Math.random() * 9 + 8; // Size between 8 and 17
+      this.speedY = Math.random() * 0.9 + 0.6; // Gentle fall
+      this.speedX = Math.sin(Math.random() * Math.PI) * 0.8 - 0.4;
+      this.rotation = Math.random() * 360;
+      this.rotSpeed = (Math.random() - 0.5) * 1.5;
+      this.swing = Math.random() * 2 + 1;
+      this.swingSpeed = Math.random() * 0.02 + 0.01;
+      this.color = petalColors[Math.floor(Math.random() * petalColors.length)];
+      this.opacity = this.color.a * (Math.random() * 0.35 + 0.65);
+    }
+    update(time) {
+      this.y += this.speedY;
+      this.x += Math.sin(time * this.swingSpeed + this.swing) * 0.75 + this.speedX;
+      this.rotation += this.rotSpeed;
+
+      if (this.y > canvas.height + 25 || this.x < -30 || this.x > canvas.width + 30) {
+        this.reset(false);
+      }
+    }
+    draw(ctx) {
+      ctx.save();
+      ctx.translate(this.x, this.y);
+      ctx.rotate((this.rotation * Math.PI) / 180);
+      ctx.fillStyle = `rgba(${this.color.r}, ${this.color.g}, ${this.color.b}, ${this.opacity})`;
+      ctx.beginPath();
+      // Organic rounded petal shape with central ribbing
+      ctx.moveTo(0, -this.size);
+      ctx.bezierCurveTo(this.size * 0.8, -this.size * 0.5, this.size * 0.7, this.size * 0.6, 0, this.size);
+      ctx.bezierCurveTo(-this.size * 0.7, this.size * 0.6, -this.size * 0.8, -this.size * 0.5, 0, -this.size);
+      ctx.fill();
+
+      // Subtle gold vein accent
+      ctx.strokeStyle = `rgba(212, 175, 55, ${this.opacity * 0.5})`;
+      ctx.lineWidth = 0.6;
+      ctx.beginPath();
+      ctx.moveTo(0, -this.size * 0.6);
+      ctx.quadraticCurveTo(this.size * 0.1, 0, 0, this.size * 0.7);
+      ctx.stroke();
+
+      ctx.restore();
+    }
+  }
+
+  function initPetalCanvas() {
+    canvas = document.getElementById("flower-petals-container");
+    if (!canvas) return;
+    ctx = canvas.getContext("2d");
+
+    function resize() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    resize();
+    window.addEventListener("resize", resize);
+
+    petals = [];
+    for (let i = 0; i < petalCount; i++) {
+      petals.push(new Petal());
+    }
+
+    let startTime = 0;
+    function animate(time) {
+      if (!startTime) startTime = time;
+      if (petalsActive && ctx) {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        for (let p of petals) {
+          p.update(time);
+          p.draw(ctx);
+        }
+      }
+      requestAnimationFrame(animate);
+    }
+    requestAnimationFrame(animate);
+  }
+
+  function togglePetals() {
+    const canvasEl = document.getElementById("flower-petals-container");
+    const statusText = document.getElementById("petal-status-text");
+    const navStatus = document.getElementById("nav-petal-status");
+    petalsActive = !petalsActive;
+    if (petalsActive) {
+      if (canvasEl) canvasEl.style.opacity = "1";
+      if (statusText) statusText.innerText = "Efek Kelopak: Aktif";
+      if (navStatus) navStatus.innerText = "Bunga: On";
+    } else {
+      if (canvasEl) {
+        canvasEl.style.opacity = "0";
+        if (ctx) ctx.clearRect(0, 0, canvas.width, canvas.height);
+      }
+      if (statusText) statusText.innerText = "Efek Kelopak: Nonaktif";
+      if (navStatus) navStatus.innerText = "Bunga: Off";
+    }
+  }
+
+  // ================= 6. CALENDAR DOWNLOAD (.ICS) =================
+  function downloadCalendar(title, location, startIso, endIso) {
+    const formatDate = (isoStr) => isoStr.replace(/[-:]/g, "");
+    const icsData = [
+      "BEGIN:VCALENDAR",
+      "VERSION:2.0",
+      "PRODID:-//Aditya & Fatimah Wedding Invitation//ID",
+      "BEGIN:VEVENT",
+      `SUMMARY:${title}`,
+      `LOCATION:${location}`,
+      `DESCRIPTION:Walimatul 'Urs Aditya Pratama & Fatimah Azzahra`,
+      `DTSTART:${formatDate(startIso)}`,
+      `DTEND:${formatDate(endIso)}`,
+      "STATUS:CONFIRMED",
+      "END:VEVENT",
+      "END:VCALENDAR"
+    ].join("\r\n");
+
+    const blob = new Blob([icsData], { type: "text/calendar;charset=utf-8" });
+    const link = document.createElement("a");
+    link.href = window.URL.createObjectURL(blob);
+    link.setAttribute("download", `${title.replace(/\s+/g, "_")}.ics`);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  }
+</script></main>
+<aside class="fixed bottom-space-lg right-space-lg z-40"><div class="flex items-center gap-space-sm bg-surface/90 backdrop-blur-xl border border-primary-container/40 rounded-full px-space-md py-space-sm shadow-[0_12px_32px_-4px_rgba(42,39,35,0.12)] hover:border-primary-container transition-all group cursor-pointer" onclick="toggleAudioPlayback()"><div class="w-9 h-9 rounded-full bg-primary flex items-center justify-center text-on-primary shadow-sm relative group-hover:scale-105 transition-transform"><span class="material-symbols-outlined text-[18px]" id="audio-icon">music_note</span><span class="absolute inset-0 rounded-full bg-primary-container animate-ping opacity-20 pointer-events-none"></span></div><div class="hidden sm:flex flex-col text-left pr-space-xs"><span class="font-label-sm text-label-sm text-tertiary tracking-widest uppercase">Islamic Acoustic</span><span class="font-body-md text-[12px] text-on-surface-variant leading-tight truncate max-w-[120px]">Kisah Cinta &amp; Doa</span></div><div aria-hidden="true" class="flex items-end gap-[3px] h-4 px-1"><span class="w-[3px] bg-primary rounded-full animate-[soundwave_1.2s_ease-in-out_infinite]"></span><span class="w-[3px] bg-primary rounded-full animate-[soundwave_0.8s_ease-in-out_infinite_0.2s]"></span><span class="w-[3px] bg-primary rounded-full animate-[soundwave_1.4s_ease-in-out_infinite_0.4s]"></span></div></div></aside><script>
+  function toggleAudioPlayback() {
+    if (weddingAudio.paused) {
+      weddingAudio.play();
+      document.getElementById('audio-icon').innerText = 'music_note';
+    } else {
+      weddingAudio.pause();
+      document.getElementById('audio-icon').innerText = 'music_off';
+    }
+  }
+</script>
+<footer class="w-full bg-surface-container-low border-t border-outline-variant/30 py-space-2xl relative overflow-hidden">
+<!-- Gold Mosque Silhouette Footer Skyline -->
+<div class="absolute inset-x-0 bottom-0 pointer-events-none opacity-[0.12] text-primary flex justify-center items-end"><svg class="w-full max-w-6xl h-24 object-cover" viewBox="0 0 1000 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><circle cx="500" cy="100" r="90" fill="none" stroke="currentColor" stroke-width="2"></circle><circle cx="500" cy="100" r="70" fill="none" stroke="currentColor" stroke-width="1" stroke-dasharray="4 4"></circle><circle cx="500" cy="100" r="50" fill="none" stroke="currentColor" stroke-width="1.5"></circle><circle cx="250" cy="100" r="60" fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="3 3"></circle><circle cx="750" cy="100" r="60" fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="3 3"></circle><circle cx="50" cy="100" r="40" fill="none" stroke="currentColor" stroke-width="1"></circle><circle cx="950" cy="100" r="40" fill="none" stroke="currentColor" stroke-width="1"></circle></svg></div>
+<div class="max-w-7xl mx-auto px-margin-mobile md:px-margin flex flex-col items-center justify-center text-center relative z-10">
+<div class="w-12 h-12 mb-space-md rounded-full bg-surface-container flex items-center justify-center border border-outline-variant/40"><span class="font-headline-sm text-headline-sm text-primary italic">A&amp;F</span></div>
+<p class="font-headline-sm text-headline-sm text-on-surface mb-space-xs">The Wedding of Aditya &amp; Fatimah</p>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-md mb-space-lg">Maha Suci Allah yang telah menciptakan makhluk-Nya berpasang-pasangan. Semoga Allah memberkahi pernikahan ini dalam sakinah, mawaddah, wa rahmah.</p>
+<!-- Botanical Divider -->
+<div class="flex items-center justify-center gap-2 mb-space-md text-primary-container">
+<span class="w-12 h-[1px] bg-gradient-to-r from-transparent to-primary-container"></span>
+<svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2L14 8L20 10L14 12L12 18L10 12L4 10L10 8L12 2Z"></path></svg>
+<span class="w-12 h-[1px] bg-gradient-to-l from-transparent to-primary-container"></span>
+</div>
+<p class="font-label-sm text-label-sm text-outline tracking-widest uppercase">© 2025 ADITYA &amp; FATIMAH WEDDING COUTURE. ALL RIGHTS RESERVED.</p></div></footer>
+
+
+</body></html>

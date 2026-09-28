@@ -1,0 +1,154 @@
+/* styles.css — Custom styles diluar Tailwind */
+
+@layer base {
+  html, body {
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    overscroll-behavior: none;
+  }
+  main > :first-child { margin-top: 0 !important; }
+  main > :last-child  { margin-bottom: 0 !important; }
+}
+
+/* Sembunyikan scrollbar di semua browser */
+::-webkit-scrollbar { display: none; }
+
+/* ─── Floating Petal Animation ─── */
+@keyframes petalFall {
+  0% {
+    transform: translate3d(0, -10%, 0) rotate(0deg) rotateY(0deg) rotateX(0deg);
+    opacity: 0;
+  }
+  12% { opacity: 0.9; }
+  85% { opacity: 0.85; }
+  100% {
+    transform: translate3d(var(--drift, 60px), 110%, 0) rotate(360deg) rotateY(240deg) rotateX(180deg);
+    opacity: 0;
+  }
+}
+
+.floating-petal {
+  position: absolute;
+  top: -5%;
+  pointer-events: none;
+  animation: petalFall linear infinite;
+  will-change: transform, opacity;
+  filter: drop-shadow(0 2px 5px rgba(116, 91, 0, 0.12));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .floating-petal       { animation: none !important; display: none !important; }
+  .floral-sway          { animation: none !important; }
+  .floral-float         { animation: none !important; }
+  .floral-pulse         { animation: none !important; }
+}
+
+/* ─── Floral Static Ornament Animations ─── */
+@keyframes floralSway {
+  0%, 100% { transform: rotate(-3deg) scale(1);   }
+  50%       { transform: rotate(3deg)  scale(1.02); }
+}
+
+@keyframes floralFloat {
+  0%, 100% { transform: translateY(0px);   }
+  50%       { transform: translateY(-6px);  }
+}
+
+@keyframes floralPulse {
+  0%, 100% { transform: scale(1);    opacity: 0.7; }
+  50%       { transform: scale(1.08); opacity: 0.9; }
+}
+
+@keyframes petalDrift {
+  0%, 100% { transform: translate(0, 0) rotate(0deg);     opacity: 0.6; }
+  33%       { transform: translate(6px, -4px) rotate(10deg);  opacity: 0.8; }
+  66%       { transform: translate(-4px, -7px) rotate(-8deg); opacity: 0.7; }
+}
+
+.floral-sway  { animation: floralSway  6s ease-in-out infinite; transform-origin: bottom center; }
+.floral-float { animation: floralFloat 4s ease-in-out infinite; }
+.floral-pulse { animation: floralPulse 3s ease-in-out infinite; }
+.petal-drift  { animation: petalDrift  5s ease-in-out infinite; }
+
+/* ─── Floral Divider ─── */
+.floral-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+  pointer-events: none;
+  user-select: none;
+}
+.floral-divider svg { overflow: visible; }
+
+/* ─── Corner Floral Ornament ─── */
+.floral-corner {
+  position: absolute;
+  pointer-events: none;
+  overflow: visible;
+  user-select: none;
+}
+
+/* ─── Cover Page (Buka Undangan) ─── */
+#cover-page {
+  will-change: transform, opacity;
+  transition: none;
+}
+
+@keyframes coverExit {
+  0%   { transform: translateY(0);    opacity: 1; }
+  70%  { transform: translateY(-15%); opacity: 0.6; }
+  100% { transform: translateY(-100%); opacity: 0; }
+}
+
+@keyframes coverEntranceFade {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+#cover-page.is-closing {
+  animation: coverExit 0.85s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+  pointer-events: none;
+}
+
+.cover-enter {
+  opacity: 0;
+  animation: coverEntranceFade 0.8s ease forwards;
+}
+
+@keyframes envelopeWiggle {
+  0%, 100% { transform: rotate(0deg) scale(1); }
+  25%       { transform: rotate(-8deg) scale(1.06); }
+  75%       { transform: rotate(8deg)  scale(1.06); }
+}
+.envelope-wiggle:hover { animation: envelopeWiggle 0.6s ease; }
+
+@keyframes coverPetalFall {
+  0% {
+    transform: translate3d(0, -8%, 0) rotate(0deg) rotateY(0deg);
+    opacity: 0;
+  }
+  10% { opacity: 0.75; }
+  90% { opacity: 0.6; }
+  100% {
+    transform: translate3d(var(--drift, 40px), 108%, 0) rotate(320deg) rotateY(200deg);
+    opacity: 0;
+  }
+}
+
+.cover-petal {
+  position: absolute;
+  pointer-events: none;
+  animation: coverPetalFall linear infinite;
+  will-change: transform, opacity;
+  filter: drop-shadow(0 2px 4px rgba(116, 91, 0, 0.14));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #cover-page.is-closing { animation: none !important; opacity: 0; }
+  .cover-enter           { animation: none !important; opacity: 1; }
+  .cover-petal           { animation: none !important; display: none; }
+  .envelope-wiggle:hover { animation: none !important; }
+}

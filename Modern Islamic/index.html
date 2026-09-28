@@ -1,0 +1,1908 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Undangan Pernikahan Aditya & Fatimah</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..600;1,400..600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/styles.css">
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+  <!-- Wedding Config (data + Tailwind config) — harus sebelum scripts lain -->
+  <script src="js/config.js"></script>
+
+  <!-- Konfigurasi Tailwind dari data config -->
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: WEDDING_CONFIG.tailwind.colors,
+          borderRadius: {
+            DEFAULT: '1rem', lg: '2rem', xl: '3rem', full: '9999px',
+          },
+          spacing: {
+            'gutter-sm': '1rem', 'margin-mobile': '1.25rem', 'space-sm': '0.75rem',
+            'space-xs': '0.375rem', 'space-lg': '2.5rem', 'space-xl': '4rem',
+            'margin': '2rem', 'space-xxl': '6.5rem', 'space-md': '1.5rem',
+            'gutter': '1.5rem', 'gutter-lg': '2.5rem',
+          },
+          fontFamily: {
+            'headline-md': ['EB Garamond'], 'headline-lg': ['EB Garamond'],
+            'body-md': ['Montserrat'], 'title-md': ['Montserrat'],
+            'display-md-mobile': ['EB Garamond'], 'body-lg': ['Montserrat'],
+            'headline-sm': ['EB Garamond'], 'title-lg': ['Montserrat'],
+            'display-lg': ['EB Garamond'], 'display-md': ['EB Garamond'],
+            'label-lg': ['Montserrat'], 'label-md': ['Montserrat'],
+            'display-lg-mobile': ['EB Garamond'],
+          },
+          fontSize: {
+            'headline-md': ['26px', { lineHeight: '34px', letterSpacing: '0.01em', fontWeight: '500' }],
+            'headline-lg': ['32px', { lineHeight: '40px', letterSpacing: '0', fontWeight: '500' }],
+            'body-md': ['14px', { lineHeight: '22px', letterSpacing: '0.02em', fontWeight: '300' }],
+            'title-md': ['16px', { lineHeight: '24px', letterSpacing: '0.04em', fontWeight: '500' }],
+            'display-md-mobile': ['32px', { lineHeight: '40px', letterSpacing: '0', fontWeight: '400' }],
+            'body-lg': ['16px', { lineHeight: '26px', letterSpacing: '0.02em', fontWeight: '300' }],
+            'headline-sm': ['22px', { lineHeight: '30px', letterSpacing: '0.01em', fontWeight: '600' }],
+            'title-lg': ['18px', { lineHeight: '26px', letterSpacing: '0.05em', fontWeight: '600' }],
+            'display-lg': ['56px', { lineHeight: '64px', letterSpacing: '-0.01em', fontWeight: '400' }],
+            'display-md': ['44px', { lineHeight: '52px', letterSpacing: '-0.01em', fontWeight: '400' }],
+            'label-lg': ['12px', { lineHeight: '16px', letterSpacing: '0.15em', fontWeight: '600' }],
+            'label-md': ['10px', { lineHeight: '14px', letterSpacing: '0.2em', fontWeight: '600' }],
+            'display-lg-mobile': ['40px', { lineHeight: '48px', letterSpacing: '0', fontWeight: '400' }],
+          },
+        },
+      },
+    };
+  </script>
+</head>
+
+<body class="bg-surface font-body-md text-on-surface antialiased selection:bg-primary-container selection:text-on-primary-container relative min-h-screen">
+
+  <!-- ══════════════════════════════════════════════════════════════════
+       COVER PAGE — BUKA UNDANGAN
+  ══════════════════════════════════════════════════════════════════ -->
+  <div id="cover-page" role="dialog" aria-modal="true" aria-label="Sampul Undangan"
+       class="fixed inset-0 z-[200] flex flex-col overflow-hidden bg-surface">
+
+    <!-- Latar: gradient halus cream-gold -->
+    <div class="absolute inset-0 pointer-events-none"
+         style="background: radial-gradient(ellipse 80% 70% at 50% 30%, rgba(197,160,40,0.09) 0%, transparent 65%), linear-gradient(180deg,#fdf9f1 0%,#f5ead8 100%)"></div>
+
+    <!-- Kelopak bunga cover -->
+    <div id="cover-petals" aria-hidden="true"
+         class="absolute inset-0 pointer-events-none overflow-hidden z-[1]"></div>
+
+    <!-- Mini top bar (logo kiri + avatar kanan) -->
+    <div class="relative z-10 flex items-center justify-between px-5 pt-5 pb-0 shrink-0">
+      <div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center shadow-sm border border-outline-variant/30">
+        <img src="https://lh3.googleusercontent.com/aida/AEtjO1UFUMHd4DsBVvs_dxZtTulwqBD8QyVbDLgf_8PVTVjL2gZ6j3nVPDQX25pqSF0V6aB7yKLh7TjMjfntkbObapOYDCvtItltoBfdGPHNLKcsPiEhns6vREdHbcQdTzAR9VH5r0Sgow4HU0ye2Tpvl362OowvEi9ea10o2jSf4irmJlhzlWc9dbLDB5mmUgry59ZyYVI3KLFiEOBVxY6GBQ2oC8-tTDUlmYipVjo8hqb8D6EaPyBGnnQ0S_M"
+             alt="" class="w-5 h-5 object-contain opacity-80">
+      </div>
+      <div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shadow-sm">
+        <span class="material-symbols-outlined text-on-primary text-[16px]">person</span>
+      </div>
+    </div>
+
+    <!-- Card utama — mengisi sisa layar, bisa scroll jika kecil -->
+    <div class="relative z-10 flex-1 flex items-start justify-center overflow-y-auto px-4 py-4">
+      <div class="w-full max-w-[420px] bg-surface-container-lowest/95 backdrop-blur-xl
+                  border border-outline-variant/25 shadow-[0_16px_48px_-8px_rgba(116,91,0,0.18)]
+                  rounded-t-[10rem] rounded-b-3xl
+                  flex flex-col items-center text-center px-6 pt-10 pb-7">
+
+        <!-- Monogram badge -->
+        <div class="cover-enter -mt-4 mb-4" style="animation-delay:0.05s">
+          <div class="w-[72px] h-[72px] rounded-full bg-surface-container-low border-2 border-primary-container/60
+                      flex items-center justify-center shadow-md overflow-hidden">
+            <img src="https://lh3.googleusercontent.com/aida/AEtjO1UFUMHd4DsBVvs_dxZtTulwqBD8QyVbDLgf_8PVTVjL2gZ6j3nVPDQX25pqSF0V6aB7yKLh7TjMjfntkbObapOYDCvtItltoBfdGPHNLKcsPiEhns6vREdHbcQdTzAR9VH5r0Sgow4HU0ye2Tpvl362OowvEi9ea10o2jSf4irmJlhzlWc9dbLDB5mmUgry59ZyYVI3KLFiEOBVxY6GBQ2oC8-tTDUlmYipVjo8hqb8D6EaPyBGnnQ0S_M"
+                 alt="Monogram" class="w-10 h-10 object-contain">
+          </div>
+        </div>
+
+        <!-- Label atas -->
+        <p class="cover-enter font-label-lg text-label-lg text-primary/60 tracking-[0.2em] uppercase mb-1"
+           style="animation-delay:0.15s" id="cover-subtitle">
+          WALIMATUL 'URS · THE WEDDING OF
+        </p>
+
+        <!-- Nama mempelai -->
+        <h1 class="cover-enter font-display-lg-mobile text-display-lg-mobile sm:font-display-lg sm:text-display-lg
+                   text-primary italic leading-tight mt-1 mb-2"
+            style="animation-delay:0.25s" id="cover-couple-names">
+          Aditya &amp; Fatimah
+        </h1>
+
+        <!-- Divider kecil + bunga -->
+        <div class="cover-enter flex items-center gap-2 mb-2" style="animation-delay:0.32s" aria-hidden="true">
+          <div class="h-px w-10 bg-primary-container/60"></div>
+          <svg viewBox="0 0 16 16" width="14" height="14" xmlns="http://www.w3.org/2000/svg">
+            <g transform="translate(8,8)" opacity="0.75">
+              <ellipse cx="0" cy="-4" rx="2" ry="4" fill="#c5a028" transform="rotate(0)"/>
+              <ellipse cx="0" cy="-4" rx="2" ry="4" fill="#c5a028" transform="rotate(72)"/>
+              <ellipse cx="0" cy="-4" rx="2" ry="4" fill="#c5a028" transform="rotate(144)"/>
+              <ellipse cx="0" cy="-4" rx="2" ry="4" fill="#c5a028" transform="rotate(216)"/>
+              <ellipse cx="0" cy="-4" rx="2" ry="4" fill="#c5a028" transform="rotate(288)"/>
+              <circle cx="0" cy="0" r="1.8" fill="#8a6e00"/>
+            </g>
+          </svg>
+          <div class="h-px w-10 bg-primary-container/60"></div>
+        </div>
+
+        <!-- Tanggal & lokasi -->
+        <p class="cover-enter font-label-lg text-label-lg text-on-surface-variant tracking-[0.12em] uppercase mb-5"
+           style="animation-delay:0.38s">
+          <span id="cover-event-date">SABTU, 28 OKTOBER 2025</span>
+          <span class="text-primary-container/80 mx-1">·</span>
+          <span id="cover-event-venue">JAKARTA SELATAN</span>
+        </p>
+
+        <!-- Countdown -->
+        <div class="cover-enter w-full mb-5" style="animation-delay:0.46s">
+          <div class="grid grid-cols-4 gap-2">
+            <div class="flex flex-col items-center bg-surface-container rounded-2xl pt-3 pb-2 shadow-sm">
+              <span class="font-headline-lg text-headline-lg text-primary leading-none" id="cover-cd-days">00</span>
+              <span class="font-label-md text-label-md text-on-surface-variant uppercase mt-1 tracking-wider">Hari</span>
+            </div>
+            <div class="flex flex-col items-center bg-surface-container rounded-2xl pt-3 pb-2 shadow-sm">
+              <span class="font-headline-lg text-headline-lg text-primary leading-none" id="cover-cd-hours">00</span>
+              <span class="font-label-md text-label-md text-on-surface-variant uppercase mt-1 tracking-wider">Jam</span>
+            </div>
+            <div class="flex flex-col items-center bg-surface-container rounded-2xl pt-3 pb-2 shadow-sm">
+              <span class="font-headline-lg text-headline-lg text-primary leading-none" id="cover-cd-mins">00</span>
+              <span class="font-label-md text-label-md text-on-surface-variant uppercase mt-1 tracking-wider">Menit</span>
+            </div>
+            <div class="flex flex-col items-center bg-surface-container rounded-2xl pt-3 pb-2 shadow-sm">
+              <span class="font-headline-lg text-headline-lg text-primary leading-none" id="cover-cd-secs">00</span>
+              <span class="font-label-md text-label-md text-on-surface-variant uppercase mt-1 tracking-wider">Detik</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sapaan tamu -->
+        <div class="cover-enter w-full mb-5" style="animation-delay:0.55s">
+          <p class="font-label-md text-label-md text-on-surface-variant/70 tracking-[0.18em] uppercase mb-1">
+            KEPADA YTH. BAPAK/IBU/SAUDARA(I):
+          </p>
+          <p class="font-headline-md text-headline-md text-primary font-semibold" id="cover-guest-name">
+            Bapak / Ibu / Saudara(i)
+          </p>
+        </div>
+
+        <!-- Tombol Buka Undangan -->
+        <div class="cover-enter w-full mb-4" style="animation-delay:0.65s">
+          <button
+            onclick="openInvitation()"
+            class="envelope-wiggle group w-full flex items-center justify-center gap-2.5
+                   py-4 px-6 rounded-full
+                   bg-primary text-on-primary
+                   font-title-lg text-title-lg tracking-widest uppercase
+                   shadow-[0_6px_24px_-4px_rgba(116,91,0,0.35)]
+                   hover:bg-primary/90 hover:shadow-[0_8px_28px_-4px_rgba(116,91,0,0.45)]
+                   active:scale-[0.97] transition-all duration-200
+                   focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+            aria-label="Buka undangan pernikahan">
+            <span class="material-symbols-outlined text-[20px] transition-transform group-hover:-translate-y-0.5">mail</span>
+            <span>Buka Undangan</span>
+            <span class="material-symbols-outlined text-[18px] opacity-75 transition-transform group-hover:translate-y-0.5">keyboard_arrow_down</span>
+          </button>
+        </div>
+
+        <!-- Ornamen bunga bawah card -->
+        <div class="cover-enter w-full flex items-center justify-center gap-3 mt-1" style="animation-delay:0.72s" aria-hidden="true">
+          <!-- Ranting kiri -->
+          <svg viewBox="0 0 80 28" width="80" height="28" xmlns="http://www.w3.org/2000/svg" style="transform:scaleX(-1)">
+            <path d="M78 20 C58 18,38 14,20 10" fill="none" stroke="#8A9A86" stroke-width="1" stroke-opacity="0.55" stroke-linecap="round"/>
+            <path d="M60 17 C55 10,52 8,46 6" fill="none" stroke="#8A9A86" stroke-width="0.8" stroke-opacity="0.45" stroke-linecap="round"/>
+            <path d="M40 14 C36 8,34 6,28 5" fill="none" stroke="#8A9A86" stroke-width="0.7" stroke-opacity="0.40" stroke-linecap="round"/>
+            <ellipse cx="55" cy="12" rx="7" ry="2.5" fill="#8A9A86" opacity="0.38" transform="rotate(-28 55 12)"/>
+            <ellipse cx="38" cy="11" rx="6" ry="2.2" fill="#8A9A86" opacity="0.35" transform="rotate(-20 38 11)"/>
+            <g transform="translate(22,10)" opacity="0.65">
+              <ellipse cx="0" cy="-4" rx="2.2" ry="4" fill="#c5a028" transform="rotate(0)"/>
+              <ellipse cx="0" cy="-4" rx="2.2" ry="4" fill="#c5a028" transform="rotate(72)"/>
+              <ellipse cx="0" cy="-4" rx="2.2" ry="4" fill="#c5a028" transform="rotate(144)"/>
+              <ellipse cx="0" cy="-4" rx="2.2" ry="4" fill="#c5a028" transform="rotate(216)"/>
+              <ellipse cx="0" cy="-4" rx="2.2" ry="4" fill="#c5a028" transform="rotate(288)"/>
+              <circle cx="0" cy="0" r="1.8" fill="#8a6e00"/>
+            </g>
+          </svg>
+          <!-- Bunga tengah -->
+          <svg viewBox="0 0 24 24" width="22" height="22" xmlns="http://www.w3.org/2000/svg">
+            <g transform="translate(12,12)" opacity="0.80">
+              <ellipse cx="0" cy="-6" rx="3" ry="6" fill="#c5a028" transform="rotate(0)"/>
+              <ellipse cx="0" cy="-6" rx="3" ry="6" fill="#c5a028" transform="rotate(60)"/>
+              <ellipse cx="0" cy="-6" rx="3" ry="6" fill="#c5a028" transform="rotate(120)"/>
+              <ellipse cx="0" cy="-6" rx="3" ry="6" fill="#c5a028" transform="rotate(180)"/>
+              <ellipse cx="0" cy="-6" rx="3" ry="6" fill="#c5a028" transform="rotate(240)"/>
+              <ellipse cx="0" cy="-6" rx="3" ry="6" fill="#c5a028" transform="rotate(300)"/>
+              <circle cx="0" cy="0" r="3" fill="#8a6e00"/>
+              <circle cx="0" cy="0" r="1.4" fill="#ffe8a0"/>
+            </g>
+          </svg>
+          <!-- Ranting kanan -->
+          <svg viewBox="0 0 80 28" width="80" height="28" xmlns="http://www.w3.org/2000/svg">
+            <path d="M78 20 C58 18,38 14,20 10" fill="none" stroke="#8A9A86" stroke-width="1" stroke-opacity="0.55" stroke-linecap="round"/>
+            <path d="M60 17 C55 10,52 8,46 6" fill="none" stroke="#8A9A86" stroke-width="0.8" stroke-opacity="0.45" stroke-linecap="round"/>
+            <path d="M40 14 C36 8,34 6,28 5" fill="none" stroke="#8A9A86" stroke-width="0.7" stroke-opacity="0.40" stroke-linecap="round"/>
+            <ellipse cx="55" cy="12" rx="7" ry="2.5" fill="#8A9A86" opacity="0.38" transform="rotate(-28 55 12)"/>
+            <ellipse cx="38" cy="11" rx="6" ry="2.2" fill="#8A9A86" opacity="0.35" transform="rotate(-20 38 11)"/>
+            <g transform="translate(22,10)" opacity="0.65">
+              <ellipse cx="0" cy="-4" rx="2.2" ry="4" fill="#c5a028" transform="rotate(0)"/>
+              <ellipse cx="0" cy="-4" rx="2.2" ry="4" fill="#c5a028" transform="rotate(72)"/>
+              <ellipse cx="0" cy="-4" rx="2.2" ry="4" fill="#c5a028" transform="rotate(144)"/>
+              <ellipse cx="0" cy="-4" rx="2.2" ry="4" fill="#c5a028" transform="rotate(216)"/>
+              <ellipse cx="0" cy="-4" rx="2.2" ry="4" fill="#c5a028" transform="rotate(288)"/>
+              <circle cx="0" cy="0" r="1.8" fill="#8a6e00"/>
+            </g>
+          </svg>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Tombol musik kanan bawah -->
+    <div class="relative z-10 flex justify-end px-5 pb-5 pt-2 shrink-0">
+      <button id="cover-music-btn"
+              class="w-11 h-11 rounded-full bg-primary text-on-primary flex items-center justify-center
+                     shadow-md hover:bg-primary/90 active:scale-95 transition-all"
+              aria-label="Putar musik" onclick="coverToggleMusic()">
+        <span class="material-symbols-outlined text-[20px]" id="cover-music-icon">music_note</span>
+      </button>
+    </div>
+
+  </div><!-- /#cover-page -->
+
+  <!-- ══════════════════════════════════════════════════════════════════
+       HEADER / NAVIGASI
+  ══════════════════════════════════════════════════════════════════ -->
+  <header id="main-header" class="fixed top-0 inset-x-0 z-50 bg-surface/85 backdrop-blur-md shadow-[0_4px_20px_rgba(116,91,0,0.06)]" style="opacity:0;pointer-events:none;transition:opacity 0.5s ease">
+    <div class="h-20 max-w-[1240px] mx-auto px-margin-mobile lg:px-margin flex items-center justify-between">
+      <!-- Logo / Monogram -->
+      <div class="flex items-center gap-space-sm">
+        <img src="https://lh3.googleusercontent.com/aida/AEtjO1UFUMHd4DsBVvs_dxZtTulwqBD8QyVbDLgf_8PVTVjL2gZ6j3nVPDQX25pqSF0V6aB7yKLh7TjMjfntkbObapOYDCvtItltoBfdGPHNLKcsPiEhns6vREdHbcQdTzAR9VH5r0Sgow4HU0ye2Tpvl362OowvEi9ea10o2jSf4irmJlhzlWc9dbLDB5mmUgry59ZyYVI3KLFiEOBVxY6GBQ2oC8-tTDUlmYipVjo8hqb8D6EaPyBGnnQ0S_M"
+             alt="Islamic Wedding Monogram Emblem" class="h-8 w-auto object-contain">
+        <span class="font-headline-sm text-headline-sm text-primary tracking-wide hidden sm:inline-block">The Wedding</span>
+      </div>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden md:flex items-center gap-space-xs p-1 rounded-full bg-surface-container/70 backdrop-blur-sm">
+        <a href="#mempelai" class="px-space-md py-1.5 font-label-lg uppercase transition-colors bg-primary text-on-primary rounded-full shadow-sm">Mempelai</a>
+        <a href="#acara"    class="px-space-md py-1.5 rounded-full font-label-lg text-label-lg uppercase text-on-surface-variant hover:text-on-surface transition-colors">Acara</a>
+        <a href="#kisah"    class="px-space-md py-1.5 rounded-full font-label-lg text-label-lg uppercase text-on-surface-variant hover:text-on-surface transition-colors">Kisah</a>
+        <a href="#galeri"   class="px-space-md py-1.5 rounded-full font-label-lg text-label-lg uppercase text-on-surface-variant hover:text-on-surface transition-colors">Galeri</a>
+        <a href="#panduan"  class="px-space-md py-1.5 rounded-full font-label-lg text-label-lg uppercase text-on-surface-variant hover:text-on-surface transition-colors">Panduan</a>
+        <a href="#rsvp"     class="px-space-md py-1.5 rounded-full font-label-lg text-label-lg uppercase text-on-surface-variant hover:text-on-surface transition-colors">RSVP</a>
+        <a href="#checkin"  class="px-space-md py-1.5 rounded-full font-label-lg text-label-lg uppercase text-on-surface-variant hover:text-on-surface transition-colors">Check-In</a>
+        <a href="#hadiah"   class="px-space-md py-1.5 rounded-full font-label-lg text-label-lg uppercase text-on-surface-variant hover:text-on-surface transition-colors">Hadiah</a>
+      </nav>
+
+      <!-- User Avatar -->
+      <div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center">
+        <span class="material-symbols-outlined text-on-primary text-[18px]">person</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ══════════════════════════════════════════════════════════════════
+       GLOBAL FLOATING PETALS — fixed overlay, mencakup seluruh halaman
+  ══════════════════════════════════════════════════════════════════ -->
+  <div id="petals-global" aria-hidden="true"
+       class="fixed inset-0 pointer-events-none z-[6] overflow-hidden"></div>
+
+  <!-- ══════════════════════════════════════════════════════════════════
+       MAIN CONTENT
+  ══════════════════════════════════════════════════════════════════ -->
+  <main class="w-full pt-20 bg-surface relative">
+    <div class="flex flex-col w-full relative selection:bg-primary-container selection:text-on-primary-container">
+
+      <!-- Audio Player (tersembunyi) -->
+      <audio id="wedding-audio" loop preload="none">
+        <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=acoustic-guitars-ambient-uplifting-112191.mp3" type="audio/mpeg">
+      </audio>
+
+      <!-- Latar Islamic Geometric -->
+      <div class="fixed inset-0 pointer-events-none z-0 opacity-40 overflow-hidden">
+        <svg class="w-full h-full text-outline-variant/30" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <pattern id="islamic-arabesque" width="80" height="80" patternUnits="userSpaceOnUse">
+              <path d="M40 0 L48 24 L72 32 L48 40 L40 64 L32 40 L8 32 L32 24 Z" fill="none" stroke="currentColor" stroke-width="0.75" opacity="0.6"/>
+              <circle cx="40" cy="40" r="14" fill="none" stroke="currentColor" stroke-dasharray="2 2" stroke-width="0.5"/>
+              <path d="M0 40 L8 16 L32 8 L8 0 L0 -24 L-8 0 L-32 8 L-8 16 Z" fill="none" stroke="currentColor" stroke-width="0.5" opacity="0.4"/>
+              <path d="M80 40 L88 16 L112 8 L88 0 L80 -24 L72 0 L48 8 L72 16 Z" fill="none" stroke="currentColor" stroke-width="0.5" opacity="0.4"/>
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#islamic-arabesque)"/>
+        </svg>
+      </div>
+
+      <!-- ──────────────────────────────────────────────────────────────
+           SEKSI 1: HERO / COVER
+      ────────────────────────────────────────────────────────────── -->
+      <section class="relative z-10 w-full min-h-[calc(100vh-5rem)] flex flex-col items-center justify-center px-margin-mobile lg:px-margin text-center py-space-xl">
+        <div class="absolute w-[600px] h-[600px] rounded-full bg-gradient-to-tr from-primary-fixed/30 via-tertiary-fixed/20 to-transparent blur-3xl pointer-events-none -z-10"></div>
+
+        <!-- Ornamen sudut kiri-bawah hero -->
+        <div class="floral-corner bottom-0 left-0 w-52 h-52 sm:w-72 sm:h-72 opacity-30" aria-hidden="true">
+          <svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg" class="w-full h-full overflow-visible">
+            <path d="M5 215 C25 190,40 160,60 135 C80 110,105 88,128 65 C148 45,168 28,188 12"
+                  fill="none" stroke="#c5a028" stroke-width="1.8" stroke-opacity="0.55" stroke-linecap="round"/>
+            <path d="M60 135 C76 124,96 118,118 114"
+                  fill="none" stroke="#c5a028" stroke-width="1.1" stroke-opacity="0.38" stroke-linecap="round"/>
+            <path d="M105 88 C115 78,128 70,148 60"
+                  fill="none" stroke="#c5a028" stroke-width="0.9" stroke-opacity="0.32" stroke-linecap="round"/>
+            <!-- Daun-daun -->
+            <ellipse cx="34" cy="178" rx="16" ry="6" fill="#8A9A86" opacity="0.5" transform="rotate(-50 34 178)"/>
+            <ellipse cx="52" cy="155" rx="13" ry="5" fill="#8A9A86" opacity="0.45" transform="rotate(-42 52 155)"/>
+            <ellipse cx="38" cy="158" rx="11" ry="4.5" fill="#9E8B79" opacity="0.35" transform="rotate(-68 38 158)"/>
+            <ellipse cx="88" cy="112" rx="13" ry="5" fill="#8A9A86" opacity="0.42" transform="rotate(-28 88 112)"/>
+            <ellipse cx="118" cy="88"  rx="11" ry="4" fill="#8A9A86" opacity="0.38" transform="rotate(-18 118 88)"/>
+            <ellipse cx="145" cy="62"  rx="10" ry="4" fill="#8A9A86" opacity="0.42" transform="rotate(-12 145 62)"/>
+            <ellipse cx="168" cy="42"  rx="9"  ry="3.5" fill="#8A9A86" opacity="0.35" transform="rotate(-8 168 42)"/>
+            <!-- Bunga besar bawah -->
+            <g transform="translate(22,198)" opacity="0.7">
+              <ellipse cx="0" cy="-8" rx="5" ry="8.5" fill="#D4AF37"/>
+              <ellipse cx="0" cy="-8" rx="5" ry="8.5" fill="#D4AF37" transform="rotate(72)"/>
+              <ellipse cx="0" cy="-8" rx="5" ry="8.5" fill="#D4AF37" transform="rotate(144)"/>
+              <ellipse cx="0" cy="-8" rx="5" ry="8.5" fill="#D4AF37" transform="rotate(216)"/>
+              <ellipse cx="0" cy="-8" rx="5" ry="8.5" fill="#D4AF37" transform="rotate(288)"/>
+              <circle cx="0" cy="0" r="4" fill="#c5a028"/><circle cx="0" cy="0" r="2" fill="#ffe08b"/>
+            </g>
+            <!-- Bunga tengah -->
+            <g transform="translate(108,100)" opacity="0.62">
+              <ellipse cx="0" cy="-6.5" rx="4" ry="7" fill="#ffe08b"/>
+              <ellipse cx="0" cy="-6.5" rx="4" ry="7" fill="#ffe08b" transform="rotate(72)"/>
+              <ellipse cx="0" cy="-6.5" rx="4" ry="7" fill="#ffe08b" transform="rotate(144)"/>
+              <ellipse cx="0" cy="-6.5" rx="4" ry="7" fill="#ffe08b" transform="rotate(216)"/>
+              <ellipse cx="0" cy="-6.5" rx="4" ry="7" fill="#ffe08b" transform="rotate(288)"/>
+              <circle cx="0" cy="0" r="3" fill="#c5a028"/>
+            </g>
+            <!-- Bunga ujung cabang -->
+            <g transform="translate(118,114)" opacity="0.55">
+              <ellipse cx="0" cy="-5" rx="3.2" ry="5" fill="#D4AF37"/>
+              <ellipse cx="0" cy="-5" rx="3.2" ry="5" fill="#D4AF37" transform="rotate(72)"/>
+              <ellipse cx="0" cy="-5" rx="3.2" ry="5" fill="#D4AF37" transform="rotate(144)"/>
+              <ellipse cx="0" cy="-5" rx="3.2" ry="5" fill="#D4AF37" transform="rotate(216)"/>
+              <ellipse cx="0" cy="-5" rx="3.2" ry="5" fill="#D4AF37" transform="rotate(288)"/>
+              <circle cx="0" cy="0" r="2.2" fill="#c5a028"/>
+            </g>
+            <!-- Bunga puncak -->
+            <g transform="translate(188,12)" opacity="0.55">
+              <ellipse cx="0" cy="-5.5" rx="3.5" ry="5.5" fill="#ffe08b"/>
+              <ellipse cx="0" cy="-5.5" rx="3.5" ry="5.5" fill="#ffe08b" transform="rotate(72)"/>
+              <ellipse cx="0" cy="-5.5" rx="3.5" ry="5.5" fill="#ffe08b" transform="rotate(144)"/>
+              <ellipse cx="0" cy="-5.5" rx="3.5" ry="5.5" fill="#ffe08b" transform="rotate(216)"/>
+              <ellipse cx="0" cy="-5.5" rx="3.5" ry="5.5" fill="#ffe08b" transform="rotate(288)"/>
+              <circle cx="0" cy="0" r="2.5" fill="#c5a028"/>
+            </g>
+            <!-- Titik-titik bunga kecil melayang -->
+            <circle cx="14" cy="207" r="2.8" fill="#ffe08b" opacity="0.55"/>
+            <circle cx="68" cy="158" r="2.2" fill="#D4AF37"  opacity="0.45"/>
+            <circle cx="82" cy="126" r="1.8" fill="#ffe08b"  opacity="0.48"/>
+            <circle cx="152" cy="54" r="2.2" fill="#D4AF37"  opacity="0.42"/>
+            <circle cx="172" cy="32" r="1.5" fill="#ffe08b"  opacity="0.38"/>
+            <circle cx="130" cy="78" r="1.5" fill="#D4AF37"  opacity="0.35"/>
+          </svg>
+        </div>
+
+        <!-- Ornamen sudut kanan-bawah hero (mirror horizontal) -->
+        <div class="floral-corner bottom-0 right-0 w-52 h-52 sm:w-72 sm:h-72 opacity-30" aria-hidden="true"
+             style="transform: scaleX(-1);">
+          <svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg" class="w-full h-full overflow-visible">
+            <path d="M5 215 C25 190,40 160,60 135 C80 110,105 88,128 65 C148 45,168 28,188 12"
+                  fill="none" stroke="#c5a028" stroke-width="1.8" stroke-opacity="0.55" stroke-linecap="round"/>
+            <path d="M60 135 C76 124,96 118,118 114"
+                  fill="none" stroke="#c5a028" stroke-width="1.1" stroke-opacity="0.38" stroke-linecap="round"/>
+            <ellipse cx="34" cy="178" rx="16" ry="6" fill="#8A9A86" opacity="0.5" transform="rotate(-50 34 178)"/>
+            <ellipse cx="52" cy="155" rx="13" ry="5" fill="#8A9A86" opacity="0.45" transform="rotate(-42 52 155)"/>
+            <ellipse cx="88" cy="112" rx="13" ry="5" fill="#8A9A86" opacity="0.42" transform="rotate(-28 88 112)"/>
+            <ellipse cx="145" cy="62"  rx="10" ry="4" fill="#8A9A86" opacity="0.42" transform="rotate(-12 145 62)"/>
+            <g transform="translate(22,198)" opacity="0.7">
+              <ellipse cx="0" cy="-8" rx="5" ry="8.5" fill="#D4AF37"/>
+              <ellipse cx="0" cy="-8" rx="5" ry="8.5" fill="#D4AF37" transform="rotate(72)"/>
+              <ellipse cx="0" cy="-8" rx="5" ry="8.5" fill="#D4AF37" transform="rotate(144)"/>
+              <ellipse cx="0" cy="-8" rx="5" ry="8.5" fill="#D4AF37" transform="rotate(216)"/>
+              <ellipse cx="0" cy="-8" rx="5" ry="8.5" fill="#D4AF37" transform="rotate(288)"/>
+              <circle cx="0" cy="0" r="4" fill="#c5a028"/><circle cx="0" cy="0" r="2" fill="#ffe08b"/>
+            </g>
+            <g transform="translate(108,100)" opacity="0.62">
+              <ellipse cx="0" cy="-6.5" rx="4" ry="7" fill="#ffe08b"/>
+              <ellipse cx="0" cy="-6.5" rx="4" ry="7" fill="#ffe08b" transform="rotate(72)"/>
+              <ellipse cx="0" cy="-6.5" rx="4" ry="7" fill="#ffe08b" transform="rotate(144)"/>
+              <ellipse cx="0" cy="-6.5" rx="4" ry="7" fill="#ffe08b" transform="rotate(216)"/>
+              <ellipse cx="0" cy="-6.5" rx="4" ry="7" fill="#ffe08b" transform="rotate(288)"/>
+              <circle cx="0" cy="0" r="3" fill="#c5a028"/>
+            </g>
+            <circle cx="14" cy="207" r="2.8" fill="#ffe08b" opacity="0.55"/>
+            <circle cx="68" cy="158" r="2.2" fill="#D4AF37"  opacity="0.45"/>
+          </svg>
+        </div>
+
+        <!-- Kluster bunga melayang di dekat monogram (kiri & kanan) -->
+        <div class="absolute top-[22%] left-[5%] sm:left-[8%] hidden sm:block opacity-25 floral-float" aria-hidden="true" style="animation-delay:1s">
+          <svg viewBox="0 0 60 80" xmlns="http://www.w3.org/2000/svg" width="50" height="66" class="overflow-visible">
+            <path d="M30 78 C28 60,25 40,30 20" fill="none" stroke="#c5a028" stroke-width="1.2" stroke-opacity="0.5"/>
+            <ellipse cx="22" cy="55" rx="10" ry="4" fill="#8A9A86" opacity="0.5" transform="rotate(-30 22 55)"/>
+            <ellipse cx="38" cy="42" rx="9"  ry="3.5" fill="#8A9A86" opacity="0.45" transform="rotate(25 38 42)"/>
+            <g transform="translate(30,20)">
+              <ellipse cx="0" cy="-6" rx="4"   ry="6"   fill="#D4AF37" opacity="0.8"/>
+              <ellipse cx="0" cy="-6" rx="4"   ry="6"   fill="#D4AF37" opacity="0.8" transform="rotate(72)"/>
+              <ellipse cx="0" cy="-6" rx="4"   ry="6"   fill="#D4AF37" opacity="0.8" transform="rotate(144)"/>
+              <ellipse cx="0" cy="-6" rx="4"   ry="6"   fill="#D4AF37" opacity="0.8" transform="rotate(216)"/>
+              <ellipse cx="0" cy="-6" rx="4"   ry="6"   fill="#D4AF37" opacity="0.8" transform="rotate(288)"/>
+              <circle cx="0" cy="0" r="3" fill="#c5a028"/>
+            </g>
+            <g transform="translate(18,38)">
+              <ellipse cx="0" cy="-4" rx="2.8" ry="4"   fill="#ffe08b" opacity="0.7"/>
+              <ellipse cx="0" cy="-4" rx="2.8" ry="4"   fill="#ffe08b" opacity="0.7" transform="rotate(72)"/>
+              <ellipse cx="0" cy="-4" rx="2.8" ry="4"   fill="#ffe08b" opacity="0.7" transform="rotate(144)"/>
+              <ellipse cx="0" cy="-4" rx="2.8" ry="4"   fill="#ffe08b" opacity="0.7" transform="rotate(216)"/>
+              <ellipse cx="0" cy="-4" rx="2.8" ry="4"   fill="#ffe08b" opacity="0.7" transform="rotate(288)"/>
+              <circle cx="0" cy="0" r="2" fill="#c5a028"/>
+            </g>
+          </svg>
+        </div>
+        <div class="absolute top-[22%] right-[5%] sm:right-[8%] hidden sm:block opacity-25 floral-float" aria-hidden="true" style="animation-delay:2.5s;transform:scaleX(-1)">
+          <svg viewBox="0 0 60 80" xmlns="http://www.w3.org/2000/svg" width="50" height="66" class="overflow-visible">
+            <path d="M30 78 C28 60,25 40,30 20" fill="none" stroke="#c5a028" stroke-width="1.2" stroke-opacity="0.5"/>
+            <ellipse cx="22" cy="55" rx="10" ry="4" fill="#8A9A86" opacity="0.5" transform="rotate(-30 22 55)"/>
+            <ellipse cx="38" cy="42" rx="9"  ry="3.5" fill="#8A9A86" opacity="0.45" transform="rotate(25 38 42)"/>
+            <g transform="translate(30,20)">
+              <ellipse cx="0" cy="-6" rx="4"   ry="6"   fill="#D4AF37" opacity="0.8"/>
+              <ellipse cx="0" cy="-6" rx="4"   ry="6"   fill="#D4AF37" opacity="0.8" transform="rotate(72)"/>
+              <ellipse cx="0" cy="-6" rx="4"   ry="6"   fill="#D4AF37" opacity="0.8" transform="rotate(144)"/>
+              <ellipse cx="0" cy="-6" rx="4"   ry="6"   fill="#D4AF37" opacity="0.8" transform="rotate(216)"/>
+              <ellipse cx="0" cy="-6" rx="4"   ry="6"   fill="#D4AF37" opacity="0.8" transform="rotate(288)"/>
+              <circle cx="0" cy="0" r="3" fill="#c5a028"/>
+            </g>
+          </svg>
+        </div>
+        <div class="max-w-4xl mx-auto flex flex-col items-center">
+          <!-- Monogram -->
+          <div class="relative w-28 h-28 sm:w-32 sm:h-32 mb-space-md flex items-center justify-center">
+            <div class="absolute inset-0 rotate-45 rounded-2xl bg-surface-container-lowest/80 shadow-md"></div>
+            <div class="absolute inset-1.5 rotate-45 rounded-2xl bg-gradient-to-tr from-primary-container via-primary to-primary-container p-[1.5px] opacity-80">
+              <div class="w-full h-full bg-surface rounded-2xl"></div>
+            </div>
+            <div class="relative z-10 w-20 h-20 sm:w-24 sm:h-24 rounded-full flex flex-col items-center justify-center bg-surface shadow-inner">
+              <div class="absolute inset-1 rounded-full border border-dashed border-primary-container/60"></div>
+              <span class="font-headline-lg text-primary tracking-widest font-normal text-2xl sm:text-3xl">A &amp; F</span>
+              <div class="w-6 h-[1.5px] bg-primary-container mt-0.5 rounded-full"></div>
+            </div>
+          </div>
+
+          <p class="font-label-lg text-label-lg uppercase tracking-[0.35em] text-on-surface-variant mb-space-xs">Walimatul 'Urs • The Wedding of</p>
+          <h1 class="font-display-lg text-display-lg text-primary font-normal tracking-tight my-space-xs drop-shadow-sm">Aditya &amp; Fatimah</h1>
+
+          <div class="flex items-center justify-center gap-space-sm my-space-xs text-primary-container">
+            <span class="w-16 h-[1px] bg-gradient-to-r from-transparent to-primary-container"></span>
+            <span class="material-symbols-outlined text-sm">auto_awesome</span>
+            <span class="w-16 h-[1px] bg-gradient-to-l from-transparent to-primary-container"></span>
+          </div>
+
+          <p class="font-title-md text-title-md text-on-surface-variant font-light tracking-widest uppercase mt-space-xs mb-space-lg">
+            Sabtu, 28 Oktober 2025 • Jakarta Selatan
+          </p>
+
+          <!-- Countdown -->
+          <div class="grid grid-cols-4 gap-space-xs sm:gap-space-sm max-w-lg w-full mb-space-xl">
+            <div class="flex flex-col items-center justify-center p-3 sm:p-4 rounded-t-full rounded-b-2xl bg-surface-container-lowest/90 backdrop-blur-md shadow-[0_8px_20px_rgba(116,91,0,0.07)]">
+              <span id="cd-days"  class="font-headline-lg text-headline-lg text-primary font-medium">00</span>
+              <span class="font-label-md text-label-md uppercase tracking-widest text-on-surface-variant mt-1">Hari</span>
+            </div>
+            <div class="flex flex-col items-center justify-center p-3 sm:p-4 rounded-t-full rounded-b-2xl bg-surface-container-lowest/90 backdrop-blur-md shadow-[0_8px_20px_rgba(116,91,0,0.07)]">
+              <span id="cd-hours" class="font-headline-lg text-headline-lg text-primary font-medium">00</span>
+              <span class="font-label-md text-label-md uppercase tracking-widest text-on-surface-variant mt-1">Jam</span>
+            </div>
+            <div class="flex flex-col items-center justify-center p-3 sm:p-4 rounded-t-full rounded-b-2xl bg-surface-container-lowest/90 backdrop-blur-md shadow-[0_8px_20px_rgba(116,91,0,0.07)]">
+              <span id="cd-mins"  class="font-headline-lg text-headline-lg text-primary font-medium">00</span>
+              <span class="font-label-md text-label-md uppercase tracking-widest text-on-surface-variant mt-1">Menit</span>
+            </div>
+            <div class="flex flex-col items-center justify-center p-3 sm:p-4 rounded-t-full rounded-b-2xl bg-surface-container-lowest/90 backdrop-blur-md shadow-[0_8px_20px_rgba(116,91,0,0.07)]">
+              <span id="cd-secs"  class="font-headline-lg text-headline-lg text-primary font-medium">00</span>
+              <span class="font-label-md text-label-md uppercase tracking-widest text-on-surface-variant mt-1">Detik</span>
+            </div>
+          </div>
+
+          <!-- Nama Tamu & Tombol Buka -->
+          <div class="mb-space-md flex flex-col items-center">
+            <span class="font-label-md text-label-md uppercase tracking-[0.2em] text-on-surface-variant/70">Kepada Yth. Bapak/Ibu/Saudara(i):</span>
+            <span id="hero-guest-name" class="font-headline-sm text-headline-sm text-primary font-semibold mt-0.5">Bapak / Ibu / Saudara(i)</span>
+          </div>
+          <a href="#holy-verse" class="group inline-flex items-center gap-space-sm px-space-lg py-3.5 rounded-full bg-gradient-to-r from-primary-container via-primary to-primary-container text-on-primary font-label-lg text-label-lg uppercase tracking-[0.2em] shadow-[0_10px_25px_rgba(116,91,0,0.25)] hover:shadow-[0_15px_30px_rgba(116,91,0,0.35)] hover:-translate-y-0.5 transition-all duration-300">
+            <span class="material-symbols-outlined text-lg">mail</span>
+            <span>Buka Undangan</span>
+            <span class="material-symbols-outlined text-base group-hover:translate-y-0.5 transition-transform">keyboard_arrow_down</span>
+          </a>
+        </div>
+      </section>
+
+      <!-- ✦ Floral Divider 1 ✦ -->
+      <div class="floral-divider relative z-10 w-full py-2 px-4 overflow-visible" aria-hidden="true">
+        <svg viewBox="0 0 500 52" xmlns="http://www.w3.org/2000/svg" class="w-full max-w-2xl mx-auto h-13 overflow-visible" style="height:52px">
+          <line x1="0"   y1="26" x2="90"  y2="26" stroke="#c5a028" stroke-width="0.7" stroke-opacity="0.35"/>
+          <line x1="410" y1="26" x2="500" y2="26" stroke="#c5a028" stroke-width="0.7" stroke-opacity="0.35"/>
+          <path d="M90 26 C108 22,122 24,140 22" fill="none" stroke="#c5a028" stroke-width="0.7" stroke-opacity="0.3" stroke-linecap="round"/>
+          <path d="M90 26 C108 30,122 28,140 30" fill="none" stroke="#c5a028" stroke-width="0.7" stroke-opacity="0.3" stroke-linecap="round"/>
+          <ellipse cx="112" cy="21" rx="10" ry="3.8" fill="#8A9A86" opacity="0.42" transform="rotate(-18 112 21)"/>
+          <ellipse cx="128" cy="30" rx="9"  ry="3.5" fill="#8A9A86" opacity="0.38" transform="rotate(15 128 30)"/>
+          <g transform="translate(148,26)" opacity="0.72">
+            <ellipse cx="0" cy="-5.5" rx="3.5" ry="5.5" fill="#ffe08b"/>
+            <ellipse cx="0" cy="-5.5" rx="3.5" ry="5.5" fill="#ffe08b" transform="rotate(72)"/>
+            <ellipse cx="0" cy="-5.5" rx="3.5" ry="5.5" fill="#ffe08b" transform="rotate(144)"/>
+            <ellipse cx="0" cy="-5.5" rx="3.5" ry="5.5" fill="#ffe08b" transform="rotate(216)"/>
+            <ellipse cx="0" cy="-5.5" rx="3.5" ry="5.5" fill="#ffe08b" transform="rotate(288)"/>
+            <circle cx="0" cy="0" r="2.5" fill="#c5a028"/>
+          </g>
+          <line x1="157" y1="26" x2="218" y2="26" stroke="#c5a028" stroke-width="0.7" stroke-opacity="0.3"/>
+          <g transform="translate(250,26)" opacity="0.88">
+            <ellipse cx="0" cy="-11" rx="6.5" ry="11" fill="#D4AF37"/>
+            <ellipse cx="0" cy="-11" rx="6.5" ry="11" fill="#D4AF37" transform="rotate(45)"/>
+            <ellipse cx="0" cy="-11" rx="6.5" ry="11" fill="#D4AF37" transform="rotate(90)"/>
+            <ellipse cx="0" cy="-11" rx="6.5" ry="11" fill="#D4AF37" transform="rotate(135)"/>
+            <ellipse cx="0" cy="-11" rx="6.5" ry="11" fill="#D4AF37" transform="rotate(180)"/>
+            <ellipse cx="0" cy="-11" rx="6.5" ry="11" fill="#D4AF37" transform="rotate(225)"/>
+            <ellipse cx="0" cy="-11" rx="6.5" ry="11" fill="#D4AF37" transform="rotate(270)"/>
+            <ellipse cx="0" cy="-11" rx="6.5" ry="11" fill="#D4AF37" transform="rotate(315)"/>
+            <circle cx="0" cy="0" r="5.5" fill="#c5a028"/>
+            <circle cx="0" cy="0" r="2.8" fill="#ffe08b"/>
+          </g>
+          <line x1="282" y1="26" x2="343" y2="26" stroke="#c5a028" stroke-width="0.7" stroke-opacity="0.3"/>
+          <g transform="translate(352,26)" opacity="0.72">
+            <ellipse cx="0" cy="-5.5" rx="3.5" ry="5.5" fill="#ffe08b"/>
+            <ellipse cx="0" cy="-5.5" rx="3.5" ry="5.5" fill="#ffe08b" transform="rotate(72)"/>
+            <ellipse cx="0" cy="-5.5" rx="3.5" ry="5.5" fill="#ffe08b" transform="rotate(144)"/>
+            <ellipse cx="0" cy="-5.5" rx="3.5" ry="5.5" fill="#ffe08b" transform="rotate(216)"/>
+            <ellipse cx="0" cy="-5.5" rx="3.5" ry="5.5" fill="#ffe08b" transform="rotate(288)"/>
+            <circle cx="0" cy="0" r="2.5" fill="#c5a028"/>
+          </g>
+          <path d="M360 26 C378 22,392 24,410 22" fill="none" stroke="#c5a028" stroke-width="0.7" stroke-opacity="0.3" stroke-linecap="round"/>
+          <path d="M360 26 C378 30,392 28,410 30" fill="none" stroke="#c5a028" stroke-width="0.7" stroke-opacity="0.3" stroke-linecap="round"/>
+          <ellipse cx="376" cy="21" rx="10" ry="3.8" fill="#8A9A86" opacity="0.42" transform="rotate(18 376 21)"/>
+          <ellipse cx="390" cy="30" rx="9"  ry="3.5" fill="#8A9A86" opacity="0.38" transform="rotate(-15 390 30)"/>
+        </svg>
+      </div>
+
+      <!-- ──────────────────────────────────────────────────────────────
+           SEKSI 2: AYAT QUR'AN (AR-RUM 21)
+      ────────────────────────────────────────────────────────────── -->
+      <section id="holy-verse" class="relative z-10 w-full py-space-xxl px-margin-mobile lg:px-margin flex flex-col items-center">
+        <div class="max-w-3xl w-full mx-auto relative">
+          <div class="relative bg-surface-container-lowest/95 backdrop-blur-xl rounded-t-[10rem] sm:rounded-t-[14rem] rounded-b-3xl p-space-md sm:p-space-xl shadow-[0_20px_50px_rgba(116,91,0,0.08)] text-center flex flex-col items-center overflow-hidden">
+            <div class="absolute inset-3 sm:inset-4 rounded-t-[9.25rem] sm:rounded-t-[13.25rem] rounded-b-2xl pointer-events-none opacity-40 bg-gradient-to-b from-primary-container/20 to-transparent"></div>
+
+            <div class="mt-4 mb-space-md flex flex-col items-center">
+              <div class="w-12 h-12 rounded-full bg-primary-fixed/40 flex items-center justify-center text-primary mb-space-sm">
+                <span class="material-symbols-outlined text-2xl">mosque</span>
+              </div>
+              <p class="font-headline-lg text-3xl sm:text-4xl text-primary font-normal tracking-wide leading-relaxed" dir="rtl" lang="ar">
+                بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ
+              </p>
+            </div>
+
+            <div class="my-space-md px-2 sm:px-6">
+              <p class="font-headline-md text-2xl sm:text-3xl text-on-surface leading-[2.4] font-normal tracking-wide text-center" dir="rtl" lang="ar">
+                وَمِنْ اٰيٰتِهٖٓ اَنْ خَلَقَ لَكُمْ مِّنْ اَنْفُسِكُمْ اَزْوَاجًا لِّتَسْكُنُوْٓا اِلَيْهَا وَجَعَلَ بَيْنَكُمْ مَّوَدَّةً وَّرَحْمَةً ۗ اِنَّ فِيْ ذٰلِكَ لَاٰيٰتٍ لِّقَوْمٍ يَّتَفَكَّرُوْنَ
+              </p>
+            </div>
+
+            <div class="flex items-center justify-center gap-space-sm my-space-md w-48 text-primary">
+              <span class="flex-1 h-[1px] bg-gradient-to-r from-transparent to-outline-variant"></span>
+              <span class="material-symbols-outlined text-xs">grade</span>
+              <span class="flex-1 h-[1px] bg-gradient-to-l from-transparent to-outline-variant"></span>
+            </div>
+
+            <blockquote class="font-body-md text-body-md text-on-surface-variant max-w-xl mx-auto italic font-light leading-relaxed mb-space-sm">
+              "Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang. Sungguh, pada yang demikian itu benar-benar terdapat tanda-tanda bagi kaum yang berpikir."
+            </blockquote>
+            <p class="font-label-lg text-label-lg tracking-[0.25em] text-primary uppercase font-semibold mt-space-xs">(QS. Ar-Rum : 21)</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ──────────────────────────────────────────────────────────────
+           SEKSI 3: MEMPELAI
+      ────────────────────────────────────────────────────────────── -->
+      <section id="mempelai" class="relative z-10 w-full py-space-xxl px-margin-mobile lg:px-margin bg-surface-container-low/60">
+        <div class="max-w-[1240px] mx-auto flex flex-col items-center">
+          <div class="text-center mb-space-xl">
+            <span class="font-label-md text-label-md uppercase tracking-[0.3em] text-primary font-semibold">Assalamu'alaikum Warahmatullahi Wabarakatuh</span>
+            <h2 class="font-display-md text-display-md text-primary font-normal mt-space-xs">Sang Mempelai</h2>
+            <p class="font-body-md text-body-md text-on-surface-variant max-w-xl mx-auto mt-space-xs">
+              Dengan memohon rahmat dan ridho Allah Subhanahu wa Ta'ala, kami bermaksud melangsungkan syariat pernikahan putra-putri kami tercinta:
+            </p>
+          </div>
+
+          <!-- Foto Utama -->
+          <div class="relative w-full max-w-md mx-auto mb-space-xl flex flex-col items-center">
+            <div class="relative p-2 rounded-t-[12rem] rounded-b-3xl bg-gradient-to-b from-primary-container/40 via-surface-container-high to-surface-container shadow-xl group">
+              <div class="relative w-72 sm:w-80 h-96 sm:h-[420px] rounded-t-[11.5rem] rounded-b-2xl overflow-hidden bg-surface-container-high shadow-inner">
+                <img src="https://lh3.googleusercontent.com/aida/AEtjO1XYyZJMtbl8gBHRo3nUBb1LGE_aZsx7RsqGa8N40qBMkatVDDn6I1EzaJg1l6-yugJHr1WVaUa7W-YBmUSJzlC7LCvXtAwWnzePl0EwyjIIncw5VLmXYCeliXfsHQRDxsVKDNiGhI7U3H-HN_ipHzTp8qKYA-zSvKdC4mRNSo8yfNUImTsjPArNVkGZG5_nBZdeuCsIh5tXLeBf_JeVHOWzcQ6xxqhZXL8SVM6xu2iPHG96396pYfaTfiQ"
+                     alt="Potret Mempelai Aditya dan Fatimah"
+                     class="w-full h-full object-cover object-center transition-transform duration-700 hover:scale-105">
+              </div>
+              <div class="absolute -top-3 -right-3 w-10 h-10 rounded-full bg-surface-container-lowest shadow-md flex items-center justify-center text-primary">
+                <span class="material-symbols-outlined text-xl">favorite</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Kartu Pria & Wanita -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-space-lg w-full max-w-4xl mx-auto">
+            <!-- Mempelai Pria -->
+            <div class="relative bg-surface-container-lowest/90 backdrop-blur-md rounded-t-[6rem] rounded-b-3xl p-space-lg shadow-sm hover:shadow-md transition-shadow flex flex-col items-center text-center">
+              <div class="w-14 h-14 rounded-full bg-primary/10 text-primary flex items-center justify-center mb-space-sm">
+                <span class="material-symbols-outlined text-2xl">male</span>
+              </div>
+              <span class="font-label-md text-label-md uppercase tracking-[0.2em] text-primary-container font-semibold mb-1">Mempelai Pria</span>
+              <h3 class="font-headline-lg text-headline-lg text-on-surface font-normal mb-space-xs">Aditya Pratama, S.T.</h3>
+              <div class="w-12 h-[1px] bg-outline-variant my-space-xs"></div>
+              <p class="font-body-md text-body-md text-on-surface-variant max-w-xs mb-space-md">
+                Putra pertama dari pasangan<br>
+                <strong class="font-medium text-on-surface">Bpk. Ir. Hendra Gunawan</strong><br>
+                &amp; <strong class="font-medium text-on-surface">Ibu Hj. Siti Rahmawati</strong>
+              </p>
+              <a href="https://instagram.com/adityapratama" target="_blank" rel="noopener noreferrer"
+                 class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-surface-container hover:bg-surface-container-high text-on-surface-variant font-label-lg text-label-lg transition-colors">
+                <span class="material-symbols-outlined text-base text-primary">alternate_email</span>
+                <span>adityapratama</span>
+              </a>
+            </div>
+            <!-- Mempelai Wanita -->
+            <div class="relative bg-surface-container-lowest/90 backdrop-blur-md rounded-t-[6rem] rounded-b-3xl p-space-lg shadow-sm hover:shadow-md transition-shadow flex flex-col items-center text-center">
+              <div class="w-14 h-14 rounded-full bg-primary/10 text-primary flex items-center justify-center mb-space-sm">
+                <span class="material-symbols-outlined text-2xl">female</span>
+              </div>
+              <span class="font-label-md text-label-md uppercase tracking-[0.2em] text-primary-container font-semibold mb-1">Mempelai Wanita</span>
+              <h3 class="font-headline-lg text-headline-lg text-on-surface font-normal mb-space-xs">Fatimah Azzahra, B.Des.</h3>
+              <div class="w-12 h-[1px] bg-outline-variant my-space-xs"></div>
+              <p class="font-body-md text-body-md text-on-surface-variant max-w-xs mb-space-md">
+                Putri kedua dari pasangan<br>
+                <strong class="font-medium text-on-surface">Bpk. Dr. Ahmad Fauzi</strong><br>
+                &amp; <strong class="font-medium text-on-surface">Ibu Dra. Nur Hasanah</strong>
+              </p>
+              <a href="https://instagram.com/fatimah.az" target="_blank" rel="noopener noreferrer"
+                 class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-surface-container hover:bg-surface-container-high text-on-surface-variant font-label-lg text-label-lg transition-colors">
+                <span class="material-symbols-outlined text-base text-primary">alternate_email</span>
+                <span>fatimah.az</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ✦ Floral Divider 2 ✦ -->
+      <div class="floral-divider relative z-10 w-full py-2 px-4 overflow-visible" aria-hidden="true">
+        <svg viewBox="0 0 500 52" xmlns="http://www.w3.org/2000/svg" class="w-full max-w-2xl mx-auto overflow-visible" style="height:52px">
+          <line x1="0"   y1="26" x2="88"  y2="26" stroke="#c5a028" stroke-width="0.7" stroke-opacity="0.32"/>
+          <line x1="412" y1="26" x2="500" y2="26" stroke="#c5a028" stroke-width="0.7" stroke-opacity="0.32"/>
+          <path d="M88 26 C104 20,120 23,136 22" fill="none" stroke="#c5a028" stroke-width="0.75" stroke-opacity="0.28"/>
+          <path d="M88 26 C104 32,120 29,136 30" fill="none" stroke="#c5a028" stroke-width="0.75" stroke-opacity="0.28"/>
+          <ellipse cx="106" cy="20" rx="9" ry="3.5" fill="#9E8B79" opacity="0.38" transform="rotate(-22 106 20)"/>
+          <ellipse cx="124" cy="31" rx="8" ry="3"   fill="#8A9A86" opacity="0.35" transform="rotate(18 124 31)"/>
+          <g transform="translate(144,26)" opacity="0.68">
+            <ellipse cx="0" cy="-5" rx="3.2" ry="5" fill="#D4AF37"/>
+            <ellipse cx="0" cy="-5" rx="3.2" ry="5" fill="#D4AF37" transform="rotate(72)"/>
+            <ellipse cx="0" cy="-5" rx="3.2" ry="5" fill="#D4AF37" transform="rotate(144)"/>
+            <ellipse cx="0" cy="-5" rx="3.2" ry="5" fill="#D4AF37" transform="rotate(216)"/>
+            <ellipse cx="0" cy="-5" rx="3.2" ry="5" fill="#D4AF37" transform="rotate(288)"/>
+            <circle cx="0" cy="0" r="2.2" fill="#c5a028"/>
+          </g>
+          <line x1="152" y1="26" x2="222" y2="26" stroke="#c5a028" stroke-width="0.7" stroke-opacity="0.28"/>
+          <!-- Center flower — 6 kelopak -->
+          <g transform="translate(250,26)" opacity="0.85">
+            <ellipse cx="0" cy="-10" rx="5.5" ry="10" fill="#eac249"/>
+            <ellipse cx="0" cy="-10" rx="5.5" ry="10" fill="#eac249" transform="rotate(60)"/>
+            <ellipse cx="0" cy="-10" rx="5.5" ry="10" fill="#eac249" transform="rotate(120)"/>
+            <ellipse cx="0" cy="-10" rx="5.5" ry="10" fill="#eac249" transform="rotate(180)"/>
+            <ellipse cx="0" cy="-10" rx="5.5" ry="10" fill="#eac249" transform="rotate(240)"/>
+            <ellipse cx="0" cy="-10" rx="5.5" ry="10" fill="#eac249" transform="rotate(300)"/>
+            <circle cx="0" cy="0" r="5" fill="#c5a028"/>
+            <circle cx="0" cy="0" r="2.5" fill="#ffe08b"/>
+          </g>
+          <line x1="278" y1="26" x2="348" y2="26" stroke="#c5a028" stroke-width="0.7" stroke-opacity="0.28"/>
+          <g transform="translate(356,26)" opacity="0.68">
+            <ellipse cx="0" cy="-5" rx="3.2" ry="5" fill="#D4AF37"/>
+            <ellipse cx="0" cy="-5" rx="3.2" ry="5" fill="#D4AF37" transform="rotate(72)"/>
+            <ellipse cx="0" cy="-5" rx="3.2" ry="5" fill="#D4AF37" transform="rotate(144)"/>
+            <ellipse cx="0" cy="-5" rx="3.2" ry="5" fill="#D4AF37" transform="rotate(216)"/>
+            <ellipse cx="0" cy="-5" rx="3.2" ry="5" fill="#D4AF37" transform="rotate(288)"/>
+            <circle cx="0" cy="0" r="2.2" fill="#c5a028"/>
+          </g>
+          <path d="M364 26 C380 20,396 23,412 22" fill="none" stroke="#c5a028" stroke-width="0.75" stroke-opacity="0.28"/>
+          <path d="M364 26 C380 32,396 29,412 30" fill="none" stroke="#c5a028" stroke-width="0.75" stroke-opacity="0.28"/>
+          <ellipse cx="382" cy="20" rx="9" ry="3.5" fill="#9E8B79" opacity="0.38" transform="rotate(22 382 20)"/>
+          <ellipse cx="400" cy="31" rx="8" ry="3"   fill="#8A9A86" opacity="0.35" transform="rotate(-18 400 31)"/>
+        </svg>
+      </div>
+
+      <!-- ──────────────────────────────────────────────────────────────
+           SEKSI 4: JADWAL ACARA
+      ────────────────────────────────────────────────────────────── -->
+      <section id="acara" class="relative z-10 w-full py-space-xxl px-margin-mobile lg:px-margin">
+        <div class="max-w-[1240px] mx-auto flex flex-col items-center">
+          <div class="text-center mb-space-xl">
+            <span class="font-label-md text-label-md uppercase tracking-[0.3em] text-primary font-semibold">Agenda Istimewa</span>
+            <h2 class="font-display-md text-display-md text-primary font-normal mt-space-xs">Jadwal Acara</h2>
+            <p class="font-body-md text-body-md text-on-surface-variant max-w-lg mx-auto mt-space-xs">
+              Insya Allah rangkaian acara pernikahan kami akan diselenggarakan pada waktu dan tempat berikut:
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-space-lg w-full max-w-5xl mx-auto">
+            <!-- Akad Nikah -->
+            <div class="relative bg-surface-container-lowest/90 backdrop-blur-md rounded-t-[8rem] rounded-b-3xl p-space-lg sm:p-space-xl shadow-[0_15px_35px_rgba(116,91,0,0.06)] flex flex-col items-center text-center overflow-hidden">
+              <div class="w-16 h-16 rounded-full bg-primary/10 text-primary flex items-center justify-center mb-space-sm">
+                <span class="material-symbols-outlined text-3xl">volunteer_activism</span>
+              </div>
+              <span class="font-label-md text-label-md uppercase tracking-[0.25em] text-primary font-semibold">Ijab &amp; Qabul</span>
+              <h3 class="font-headline-lg text-headline-lg text-on-surface font-medium my-space-xs">Akad Nikah</h3>
+              <div class="w-16 h-[1.5px] bg-primary-container my-space-sm rounded-full"></div>
+              <div class="flex flex-col gap-1.5 mb-space-md">
+                <div class="flex items-center justify-center gap-2 text-primary font-medium">
+                  <span class="material-symbols-outlined text-lg">calendar_month</span>
+                  <span class="font-title-md text-title-md">Sabtu, 28 Oktober 2025</span>
+                </div>
+                <div class="flex items-center justify-center gap-2 text-on-surface-variant">
+                  <span class="material-symbols-outlined text-lg">schedule</span>
+                  <span class="font-body-md text-body-md">08:00 – 10:00 WIB</span>
+                </div>
+              </div>
+              <div class="bg-surface-container/60 rounded-2xl p-4 w-full mb-space-md">
+                <div class="flex items-start justify-center gap-2 text-left">
+                  <span class="material-symbols-outlined text-primary text-xl mt-0.5">location_on</span>
+                  <div>
+                    <p class="font-title-md text-title-md text-on-surface font-semibold">Masjid Raya Al-Barkah</p>
+                    <p class="font-body-md text-body-md text-on-surface-variant">Grand Ballroom Lt. 2, Jl. Tebet Barat Dalam No. 45, Jakarta Selatan</p>
+                  </div>
+                </div>
+              </div>
+              <div class="flex flex-wrap items-center justify-center gap-space-xs w-full mt-auto">
+                <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer"
+                   class="flex-1 min-w-[140px] inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-full bg-primary text-on-primary font-label-lg text-label-lg uppercase tracking-wider hover:bg-primary-container transition-colors shadow-sm">
+                  <span class="material-symbols-outlined text-base">map</span>
+                  <span>Google Maps</span>
+                </a>
+                <button type="button"
+                        onclick="addToCalendar('Akad Nikah Aditya &amp; Fatimah','Masjid Raya Al-Barkah Jakarta Selatan','20251028T080000','20251028T100000')"
+                        class="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-full bg-surface-container-high hover:bg-surface-dim text-on-surface font-label-lg text-label-lg uppercase tracking-wider transition-colors">
+                  <span class="material-symbols-outlined text-base text-primary">event</span>
+                  <span>Kalender</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Resepsi -->
+            <div class="relative bg-surface-container-lowest/90 backdrop-blur-md rounded-t-[8rem] rounded-b-3xl p-space-lg sm:p-space-xl shadow-[0_15px_35px_rgba(116,91,0,0.06)] flex flex-col items-center text-center overflow-hidden">
+              <div class="w-16 h-16 rounded-full bg-primary/10 text-primary flex items-center justify-center mb-space-sm">
+                <span class="material-symbols-outlined text-3xl">celebration</span>
+              </div>
+              <span class="font-label-md text-label-md uppercase tracking-[0.25em] text-primary font-semibold">Walimatul 'Urs</span>
+              <h3 class="font-headline-lg text-headline-lg text-on-surface font-medium my-space-xs">Resepsi Pernikahan</h3>
+              <div class="w-16 h-[1.5px] bg-primary-container my-space-sm rounded-full"></div>
+              <div class="flex flex-col gap-1.5 mb-space-md">
+                <div class="flex items-center justify-center gap-2 text-primary font-medium">
+                  <span class="material-symbols-outlined text-lg">calendar_month</span>
+                  <span class="font-title-md text-title-md">Sabtu, 28 Oktober 2025</span>
+                </div>
+                <div class="flex items-center justify-center gap-2 text-on-surface-variant">
+                  <span class="material-symbols-outlined text-lg">schedule</span>
+                  <span class="font-body-md text-body-md">11:30 – 16:00 WIB</span>
+                </div>
+              </div>
+              <div class="bg-surface-container/60 rounded-2xl p-4 w-full mb-space-md">
+                <div class="flex items-start justify-center gap-2 text-left">
+                  <span class="material-symbols-outlined text-primary text-xl mt-0.5">apartment</span>
+                  <div>
+                    <p class="font-title-md text-title-md text-on-surface font-semibold">The Glasshouse Grand Ballroom</p>
+                    <p class="font-body-md text-body-md text-on-surface-variant">Dharmawangsa Grand Park Kav. 12, Kebayoran Baru, Jakarta Selatan</p>
+                  </div>
+                </div>
+              </div>
+              <div class="flex flex-wrap items-center justify-center gap-space-xs w-full mt-auto">
+                <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer"
+                   class="flex-1 min-w-[140px] inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-full bg-primary text-on-primary font-label-lg text-label-lg uppercase tracking-wider hover:bg-primary-container transition-colors shadow-sm">
+                  <span class="material-symbols-outlined text-base">directions</span>
+                  <span>Buka Rute</span>
+                </a>
+                <button type="button"
+                        onclick="addToCalendar('Resepsi Pernikahan Aditya &amp; Fatimah','The Glasshouse Grand Ballroom Dharmawangsa','20251028T113000','20251028T160000')"
+                        class="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-full bg-surface-container-high hover:bg-surface-dim text-on-surface font-label-lg text-label-lg uppercase tracking-wider transition-colors">
+                  <span class="material-symbols-outlined text-base text-primary">event</span>
+                  <span>Kalender</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ✦ Floral Divider 3 ✦ -->
+      <div class="floral-divider relative z-10 w-full py-2 px-4 overflow-visible" aria-hidden="true">
+        <svg viewBox="0 0 500 52" xmlns="http://www.w3.org/2000/svg" class="w-full max-w-2xl mx-auto overflow-visible" style="height:52px">
+          <line x1="0"   y1="26" x2="95"  y2="26" stroke="#c5a028" stroke-width="0.7" stroke-opacity="0.3"/>
+          <line x1="405" y1="26" x2="500" y2="26" stroke="#c5a028" stroke-width="0.7" stroke-opacity="0.3"/>
+          <path d="M95 26 Q115 18 138 24" fill="none" stroke="#c5a028" stroke-width="0.75" stroke-opacity="0.28"/>
+          <path d="M95 26 Q112 34 135 28" fill="none" stroke="#c5a028" stroke-width="0.75" stroke-opacity="0.28"/>
+          <ellipse cx="114" cy="19" rx="10" ry="3.8" fill="#8A9A86" opacity="0.4" transform="rotate(-25 114 19)"/>
+          <ellipse cx="130" cy="30" rx="8.5" ry="3.2" fill="#9E8B79" opacity="0.35" transform="rotate(20 130 30)"/>
+          <g transform="translate(146,26)" opacity="0.7">
+            <ellipse cx="0" cy="-5.5" rx="3.5" ry="5.5" fill="#ffe08b"/>
+            <ellipse cx="0" cy="-5.5" rx="3.5" ry="5.5" fill="#ffe08b" transform="rotate(72)"/>
+            <ellipse cx="0" cy="-5.5" rx="3.5" ry="5.5" fill="#ffe08b" transform="rotate(144)"/>
+            <ellipse cx="0" cy="-5.5" rx="3.5" ry="5.5" fill="#ffe08b" transform="rotate(216)"/>
+            <ellipse cx="0" cy="-5.5" rx="3.5" ry="5.5" fill="#ffe08b" transform="rotate(288)"/>
+            <circle cx="0" cy="0" r="2.5" fill="#c5a028"/>
+          </g>
+          <line x1="154" y1="26" x2="220" y2="26" stroke="#c5a028" stroke-width="0.7" stroke-opacity="0.28"/>
+          <!-- Center 8-petal gold flower -->
+          <g transform="translate(250,26)" opacity="0.82">
+            <ellipse cx="0" cy="-9.5" rx="5.5" ry="9.5" fill="#D4AF37"/>
+            <ellipse cx="0" cy="-9.5" rx="5.5" ry="9.5" fill="#D4AF37" transform="rotate(45)"/>
+            <ellipse cx="0" cy="-9.5" rx="5.5" ry="9.5" fill="#D4AF37" transform="rotate(90)"/>
+            <ellipse cx="0" cy="-9.5" rx="5.5" ry="9.5" fill="#D4AF37" transform="rotate(135)"/>
+            <ellipse cx="0" cy="-9.5" rx="5.5" ry="9.5" fill="#D4AF37" transform="rotate(180)"/>
+            <ellipse cx="0" cy="-9.5" rx="5.5" ry="9.5" fill="#D4AF37" transform="rotate(225)"/>
+            <ellipse cx="0" cy="-9.5" rx="5.5" ry="9.5" fill="#D4AF37" transform="rotate(270)"/>
+            <ellipse cx="0" cy="-9.5" rx="5.5" ry="9.5" fill="#D4AF37" transform="rotate(315)"/>
+            <circle cx="0" cy="0" r="5" fill="#c5a028"/>
+            <circle cx="0" cy="0" r="2.5" fill="#ffe08b"/>
+          </g>
+          <line x1="280" y1="26" x2="346" y2="26" stroke="#c5a028" stroke-width="0.7" stroke-opacity="0.28"/>
+          <g transform="translate(354,26)" opacity="0.7">
+            <ellipse cx="0" cy="-5.5" rx="3.5" ry="5.5" fill="#ffe08b"/>
+            <ellipse cx="0" cy="-5.5" rx="3.5" ry="5.5" fill="#ffe08b" transform="rotate(72)"/>
+            <ellipse cx="0" cy="-5.5" rx="3.5" ry="5.5" fill="#ffe08b" transform="rotate(144)"/>
+            <ellipse cx="0" cy="-5.5" rx="3.5" ry="5.5" fill="#ffe08b" transform="rotate(216)"/>
+            <ellipse cx="0" cy="-5.5" rx="3.5" ry="5.5" fill="#ffe08b" transform="rotate(288)"/>
+            <circle cx="0" cy="0" r="2.5" fill="#c5a028"/>
+          </g>
+          <path d="M362 26 Q382 18 405 24" fill="none" stroke="#c5a028" stroke-width="0.75" stroke-opacity="0.28"/>
+          <path d="M362 26 Q380 34 403 28" fill="none" stroke="#c5a028" stroke-width="0.75" stroke-opacity="0.28"/>
+          <ellipse cx="382" cy="19" rx="10" ry="3.8" fill="#8A9A86" opacity="0.4" transform="rotate(25 382 19)"/>
+          <ellipse cx="396" cy="30" rx="8.5" ry="3.2" fill="#9E8B79" opacity="0.35" transform="rotate(-20 396 30)"/>
+        </svg>
+      </div>
+
+      <!-- ──────────────────────────────────────────────────────────────
+           SEKSI 5: KISAH CINTA / TIMELINE
+      ────────────────────────────────────────────────────────────── -->
+      <section id="kisah" class="relative z-10 w-full py-space-xxl px-margin-mobile lg:px-margin bg-surface-container-low/50">
+        <div class="max-w-4xl mx-auto flex flex-col items-center">
+          <div class="text-center mb-space-xl">
+            <span class="font-label-md text-label-md uppercase tracking-[0.3em] text-primary font-semibold">Perjalanan Hati</span>
+            <h2 class="font-display-md text-display-md text-primary font-normal mt-space-xs">Kisah Kami</h2>
+            <p class="font-body-md text-body-md text-on-surface-variant max-w-md mx-auto mt-space-xs">
+              Rencana indah Sang Maha Pencipta yang merajut takdir dua insan menjadi satu ikatan suci.
+            </p>
+          </div>
+
+          <div class="relative w-full max-w-2xl py-4">
+            <div class="absolute left-4 sm:left-1/2 top-0 bottom-0 w-[2px] bg-gradient-to-b from-primary/10 via-primary-container to-primary/10 -translate-x-1/2"></div>
+            <div class="flex flex-col gap-space-lg">
+
+              <!-- 2020 -->
+              <div class="relative flex flex-col sm:flex-row items-start sm:items-center group">
+                <div class="hidden sm:block w-1/2 pr-space-md text-right">
+                  <span class="font-headline-sm text-headline-sm text-primary font-semibold">Pertemuan Pertama</span>
+                  <p class="font-body-md text-body-md text-on-surface-variant mt-1">Bertemu untuk pertama kalinya dalam sebuah proyek kerelawanan sosial dan pendidikan anak di Yogyakarta. Niat berbuat baik menautkan sapa awal yang santun.</p>
+                </div>
+                <div class="absolute left-4 sm:left-1/2 -translate-x-1/2 w-8 h-8 rounded-full bg-surface-container-lowest shadow-md flex items-center justify-center text-primary z-10">
+                  <span class="w-3 h-3 rounded-full bg-primary-container"></span>
+                </div>
+                <div class="pl-12 sm:pl-space-md sm:w-1/2">
+                  <span class="inline-block px-3 py-1 rounded-full bg-surface-container text-primary font-label-lg text-label-lg font-semibold mb-2">2020</span>
+                  <div class="sm:hidden">
+                    <span class="font-headline-sm text-headline-sm text-primary font-semibold block">Pertemuan Pertama</span>
+                    <p class="font-body-md text-body-md text-on-surface-variant mt-1">Bertemu untuk pertama kalinya dalam sebuah proyek kerelawanan sosial dan pendidikan anak di Yogyakarta.</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 2022 -->
+              <div class="relative flex flex-col sm:flex-row items-start sm:items-center group">
+                <div class="hidden sm:block w-1/2 pr-space-md text-right">
+                  <span class="inline-block px-3 py-1 rounded-full bg-surface-container text-primary font-label-lg text-label-lg font-semibold mb-2">2022</span>
+                </div>
+                <div class="absolute left-4 sm:left-1/2 -translate-x-1/2 w-8 h-8 rounded-full bg-surface-container-lowest shadow-md flex items-center justify-center text-primary z-10">
+                  <span class="w-3 h-3 rounded-full bg-primary-container"></span>
+                </div>
+                <div class="pl-12 sm:pl-space-md sm:w-1/2">
+                  <span class="inline-block sm:hidden px-3 py-1 rounded-full bg-surface-container text-primary font-label-lg text-label-lg font-semibold mb-2">2022</span>
+                  <span class="font-headline-sm text-headline-sm text-primary font-semibold block">Komitmen Bersama</span>
+                  <p class="font-body-md text-body-md text-on-surface-variant mt-1">Menjalani proses taaruf yang dipandu keluarga dengan menjaga batas-batas syariat, menemukan keselarasan visi, akhlak, dan prinsip membangun keluarga sakinah.</p>
+                </div>
+              </div>
+
+              <!-- 2024 -->
+              <div class="relative flex flex-col sm:flex-row items-start sm:items-center group">
+                <div class="hidden sm:block w-1/2 pr-space-md text-right">
+                  <span class="font-headline-sm text-headline-sm text-primary font-semibold">Lamaran (Khitbah)</span>
+                  <p class="font-body-md text-body-md text-on-surface-variant mt-1">Pertemuan silaturahmi kedua keluarga besar dalam acara khitbah resmi di kediaman keluarga Fatimah, memohon restu orang tua untuk menyatukan dua takdir.</p>
+                </div>
+                <div class="absolute left-4 sm:left-1/2 -translate-x-1/2 w-8 h-8 rounded-full bg-surface-container-lowest shadow-md flex items-center justify-center text-primary z-10">
+                  <span class="w-3 h-3 rounded-full bg-primary-container"></span>
+                </div>
+                <div class="pl-12 sm:pl-space-md sm:w-1/2">
+                  <span class="inline-block px-3 py-1 rounded-full bg-surface-container text-primary font-label-lg text-label-lg font-semibold mb-2">2024</span>
+                  <div class="sm:hidden">
+                    <span class="font-headline-sm text-headline-sm text-primary font-semibold block">Lamaran (Khitbah)</span>
+                    <p class="font-body-md text-body-md text-on-surface-variant mt-1">Pertemuan silaturahmi kedua keluarga besar dalam acara khitbah resmi di kediaman keluarga Fatimah.</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 2025 -->
+              <div class="relative flex flex-col sm:flex-row items-start sm:items-center group">
+                <div class="hidden sm:block w-1/2 pr-space-md text-right">
+                  <span class="inline-block px-3 py-1 rounded-full bg-primary text-on-primary font-label-lg text-label-lg font-semibold mb-2 shadow-sm">2025</span>
+                </div>
+                <div class="absolute left-4 sm:left-1/2 -translate-x-1/2 w-8 h-8 rounded-full bg-primary text-on-primary shadow-md flex items-center justify-center z-10">
+                  <span class="material-symbols-outlined text-sm">done_all</span>
+                </div>
+                <div class="pl-12 sm:pl-space-md sm:w-1/2">
+                  <span class="inline-block sm:hidden px-3 py-1 rounded-full bg-primary text-on-primary font-label-lg text-label-lg font-semibold mb-2 shadow-sm">2025</span>
+                  <span class="font-headline-sm text-headline-sm text-primary font-semibold block">Menuju Halal</span>
+                  <p class="font-body-md text-body-md text-on-surface-variant mt-1">Dengan penuh syukur dan basmalah, kami melangkah menuju lembaran baru dalam ikatan Mitsaqan Ghalizha untuk menggapai ridho Ilahi selamanya.</p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ✦ Floral Divider 5 ✦ -->
+      <div class="floral-divider relative z-10 w-full py-2 px-4 overflow-visible" aria-hidden="true">
+        <svg viewBox="0 0 500 44" xmlns="http://www.w3.org/2000/svg" class="w-full max-w-2xl mx-auto overflow-visible" style="height:44px">
+          <line x1="0"   y1="22" x2="108" y2="22" stroke="#c5a028" stroke-width="0.6" stroke-opacity="0.28"/>
+          <line x1="392" y1="22" x2="500" y2="22" stroke="#c5a028" stroke-width="0.6" stroke-opacity="0.28"/>
+          <path d="M108 22 Q128 16 148 21" fill="none" stroke="#c5a028" stroke-width="0.7" stroke-opacity="0.25"/>
+          <path d="M108 22 Q126 28 146 23" fill="none" stroke="#c5a028" stroke-width="0.7" stroke-opacity="0.25"/>
+          <ellipse cx="122" cy="17" rx="8" ry="3"   fill="#8A9A86" opacity="0.35" transform="rotate(-18 122 17)"/>
+          <ellipse cx="138" cy="27" rx="7" ry="2.8" fill="#8A9A86" opacity="0.32" transform="rotate(14 138 27)"/>
+          <g transform="translate(156,22)" class="floral-pulse" opacity="0.65">
+            <ellipse cx="0" cy="-6" rx="3.5" ry="6" fill="#D4AF37" transform="rotate(0)"/>
+            <ellipse cx="0" cy="-6" rx="3.5" ry="6" fill="#D4AF37" transform="rotate(60)"/>
+            <ellipse cx="0" cy="-6" rx="3.5" ry="6" fill="#D4AF37" transform="rotate(120)"/>
+            <ellipse cx="0" cy="-6" rx="3.5" ry="6" fill="#D4AF37" transform="rotate(180)"/>
+            <ellipse cx="0" cy="-6" rx="3.5" ry="6" fill="#D4AF37" transform="rotate(240)"/>
+            <ellipse cx="0" cy="-6" rx="3.5" ry="6" fill="#D4AF37" transform="rotate(300)"/>
+            <circle cx="0" cy="0" r="2.5" fill="#c5a028"/>
+          </g>
+          <line x1="164" y1="22" x2="222" y2="22" stroke="#c5a028" stroke-width="0.6" stroke-opacity="0.22"/>
+          <g transform="translate(250,22)" class="floral-float" opacity="0.90">
+            <ellipse cx="0" cy="-10" rx="5.5" ry="10" fill="#D4AF37" transform="rotate(0)"/>
+            <ellipse cx="0" cy="-10" rx="5.5" ry="10" fill="#D4AF37" transform="rotate(45)"/>
+            <ellipse cx="0" cy="-10" rx="5.5" ry="10" fill="#D4AF37" transform="rotate(90)"/>
+            <ellipse cx="0" cy="-10" rx="5.5" ry="10" fill="#D4AF37" transform="rotate(135)"/>
+            <ellipse cx="0" cy="-10" rx="5.5" ry="10" fill="#D4AF37" transform="rotate(180)"/>
+            <ellipse cx="0" cy="-10" rx="5.5" ry="10" fill="#D4AF37" transform="rotate(225)"/>
+            <ellipse cx="0" cy="-10" rx="5.5" ry="10" fill="#D4AF37" transform="rotate(270)"/>
+            <ellipse cx="0" cy="-10" rx="5.5" ry="10" fill="#D4AF37" transform="rotate(315)"/>
+            <circle cx="0" cy="0" r="5" fill="#c5a028"/>
+            <circle cx="0" cy="0" r="2.5" fill="#ffe08b"/>
+          </g>
+          <line x1="278" y1="22" x2="336" y2="22" stroke="#c5a028" stroke-width="0.6" stroke-opacity="0.22"/>
+          <g transform="translate(344,22)" class="floral-pulse" opacity="0.65">
+            <ellipse cx="0" cy="-6" rx="3.5" ry="6" fill="#D4AF37" transform="rotate(0)"/>
+            <ellipse cx="0" cy="-6" rx="3.5" ry="6" fill="#D4AF37" transform="rotate(60)"/>
+            <ellipse cx="0" cy="-6" rx="3.5" ry="6" fill="#D4AF37" transform="rotate(120)"/>
+            <ellipse cx="0" cy="-6" rx="3.5" ry="6" fill="#D4AF37" transform="rotate(180)"/>
+            <ellipse cx="0" cy="-6" rx="3.5" ry="6" fill="#D4AF37" transform="rotate(240)"/>
+            <ellipse cx="0" cy="-6" rx="3.5" ry="6" fill="#D4AF37" transform="rotate(300)"/>
+            <circle cx="0" cy="0" r="2.5" fill="#c5a028"/>
+          </g>
+          <path d="M352 22 Q370 16 392 21" fill="none" stroke="#c5a028" stroke-width="0.7" stroke-opacity="0.25"/>
+          <path d="M352 22 Q368 28 390 23" fill="none" stroke="#c5a028" stroke-width="0.7" stroke-opacity="0.25"/>
+          <ellipse cx="366" cy="17" rx="8"   ry="3"   fill="#8A9A86" opacity="0.35" transform="rotate(18 366 17)"/>
+          <ellipse cx="380" cy="27" rx="7"   ry="2.8" fill="#8A9A86" opacity="0.32" transform="rotate(-14 380 27)"/>
+        </svg>
+      </div>
+
+      <!-- ──────────────────────────────────────────────────────────────
+           SEKSI 6: PANDUAN TAMU
+      ────────────────────────────────────────────────────────────── -->
+      <section id="panduan" class="relative z-10 w-full py-space-xxl px-margin-mobile lg:px-margin bg-surface-container-low/40">
+        <div class="max-w-[1240px] mx-auto flex flex-col items-center">
+          <div class="text-center mb-space-xl max-w-2xl">
+            <div class="inline-flex items-center justify-center gap-2 mb-space-xs">
+              <span class="w-8 h-[1px] bg-primary-container"></span>
+              <span class="font-label-md text-label-md uppercase tracking-[0.3em] text-primary font-semibold">PANDUAN TAMU UNDANGAN</span>
+              <span class="w-8 h-[1px] bg-primary-container"></span>
+            </div>
+            <h2 class="font-display-md text-display-md text-primary font-normal mt-space-xs">Dresscode &amp; Adab Acara</h2>
+            <p class="font-body-md text-body-md text-on-surface-variant max-w-lg mx-auto mt-space-xs leading-relaxed">
+              Demi kekhidmatan, keindahan, dan kelancaran majelis pernikahan yang diridhai Allah SWT, kami dengan hormat mengimbau panduan busana serta adab berikut:
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg w-full max-w-6xl mx-auto">
+            <!-- Dresscode Card -->
+            <div class="lg:col-span-7 bg-surface-container-lowest/95 backdrop-blur-md rounded-3xl p-space-md sm:p-space-lg shadow-[0_12px_32px_rgba(116,91,0,0.06)] border border-outline-variant/40 flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between pb-space-sm mb-space-md border-b border-outline-variant/30">
+                  <div class="flex items-center gap-3">
+                    <div class="w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center flex-shrink-0">
+                      <span class="material-symbols-outlined text-2xl">styler</span>
+                    </div>
+                    <div>
+                      <span class="font-label-md text-label-md uppercase tracking-[0.2em] text-primary font-semibold block">Gaya Berbusana</span>
+                      <h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold">Modern Islamic Couture</h3>
+                    </div>
+                  </div>
+                  <span class="hidden sm:inline-flex items-center gap-1 px-3 py-1 rounded-full bg-surface-container text-primary font-label-md text-label-md uppercase tracking-wider">
+                    <span class="material-symbols-outlined text-sm">checkroom</span> Formal Elegan
+                  </span>
+                </div>
+
+                <p class="font-body-md text-body-md text-on-surface-variant mb-space-md leading-relaxed">
+                  Para tamu dipersilakan mengenakan busana formal bernuansa santun, seperti <strong class="font-medium text-on-surface">Batik Lengan Panjang, Kebaya Elegan, Abaya Modern</strong>, atau setelan bernuansa hangat dan bersahaja.
+                </p>
+
+                <!-- Palet Warna -->
+                <div class="bg-surface-container-low/60 rounded-2xl p-4 sm:p-space-md mb-space-md border border-outline-variant/30">
+                  <div class="flex items-center justify-between mb-3">
+                    <span class="font-label-md text-label-md uppercase tracking-[0.2em] text-primary font-semibold">Rekomendasi Palet Warna</span>
+                    <span class="font-label-md text-label-md text-on-surface-variant/70">Harmoni Visual</span>
+                  </div>
+                  <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                    <div class="flex flex-col items-center p-2 rounded-xl bg-surface-container-lowest/80 border border-outline-variant/30 text-center">
+                      <div class="w-10 h-10 rounded-full shadow-sm mb-2 border-2 border-white" style="background-color:#D4AF37"></div>
+                      <span class="font-label-md text-label-md text-on-surface font-semibold">Champagne Gold</span>
+                      <span class="font-label-md text-[10px] text-on-surface-variant/70 tracking-wider">#D4AF37</span>
+                    </div>
+                    <div class="flex flex-col items-center p-2 rounded-xl bg-surface-container-lowest/80 border border-outline-variant/30 text-center">
+                      <div class="w-10 h-10 rounded-full shadow-sm mb-2 border-2 border-outline-variant/40" style="background-color:#FDFBF7"></div>
+                      <span class="font-label-md text-label-md text-on-surface font-semibold">Warm Ivory</span>
+                      <span class="font-label-md text-[10px] text-on-surface-variant/70 tracking-wider">#FDFBF7</span>
+                    </div>
+                    <div class="flex flex-col items-center p-2 rounded-xl bg-surface-container-lowest/80 border border-outline-variant/30 text-center">
+                      <div class="w-10 h-10 rounded-full shadow-sm mb-2 border-2 border-white" style="background-color:#8A9A86"></div>
+                      <span class="font-label-md text-label-md text-on-surface font-semibold">Soft Sage</span>
+                      <span class="font-label-md text-[10px] text-on-surface-variant/70 tracking-wider">#8A9A86</span>
+                    </div>
+                    <div class="flex flex-col items-center p-2 rounded-xl bg-surface-container-lowest/80 border border-outline-variant/30 text-center">
+                      <div class="w-10 h-10 rounded-full shadow-sm mb-2 border-2 border-white" style="background-color:#9E8B79"></div>
+                      <span class="font-label-md text-label-md text-on-surface font-semibold">Earthy Taupe</span>
+                      <span class="font-label-md text-[10px] text-on-surface-variant/70 tracking-wider">#9E8B79</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Panduan Gender -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-space-sm">
+                  <div class="p-3.5 rounded-2xl bg-surface-container/50 border border-outline-variant/20 flex flex-col">
+                    <div class="flex items-center gap-2 text-primary font-semibold mb-1.5">
+                      <span class="material-symbols-outlined text-lg">man</span>
+                      <span class="font-title-md text-title-md">Tamu Pria</span>
+                    </div>
+                    <ul class="font-body-md text-xs sm:text-body-md text-on-surface-variant space-y-1 list-disc list-inside leading-relaxed">
+                      <li>Kemeja Batik Lengan Panjang Sutra/Katun Premium.</li>
+                      <li>Setelan Jas Formal / Baju Koko Modern berkerah Shanghai.</li>
+                      <li>Celana bahan panjang dan sepatu pantofel rapi.</li>
+                    </ul>
+                  </div>
+                  <div class="p-3.5 rounded-2xl bg-surface-container/50 border border-outline-variant/20 flex flex-col">
+                    <div class="flex items-center gap-2 text-primary font-semibold mb-1.5">
+                      <span class="material-symbols-outlined text-lg">woman</span>
+                      <span class="font-title-md text-title-md">Tamu Wanita</span>
+                    </div>
+                    <ul class="font-body-md text-xs sm:text-body-md text-on-surface-variant space-y-1 list-disc list-inside leading-relaxed">
+                      <li>Busana Muslimah, Abaya Couture, atau Kebaya Santun.</li>
+                      <li>Hijab menutup dada dengan nuansa senada yang anggun.</li>
+                      <li>Menghindari busana transparan, ketat, atau warna terlalu menyala.</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Adab Majelis Card -->
+            <div class="lg:col-span-5 bg-surface-container-lowest/95 backdrop-blur-md rounded-3xl p-space-md sm:p-space-lg shadow-[0_12px_32px_rgba(116,91,0,0.06)] border border-outline-variant/40 flex flex-col justify-between">
+              <div>
+                <div class="flex items-center gap-3 pb-space-sm mb-space-md border-b border-outline-variant/30">
+                  <div class="w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center flex-shrink-0">
+                    <span class="material-symbols-outlined text-2xl">menu_book</span>
+                  </div>
+                  <div>
+                    <span class="font-label-md text-label-md uppercase tracking-[0.2em] text-primary font-semibold block">Etiket &amp; Kenyamanan</span>
+                    <h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold">Adab Majelis Nikah</h3>
+                  </div>
+                </div>
+                <div class="flex flex-col gap-3.5">
+                  <div class="flex items-start gap-3 p-3 rounded-2xl bg-surface-container-low/50 hover:bg-surface-container/60 transition-colors">
+                    <div class="w-8 h-8 rounded-full bg-primary-fixed/40 text-primary flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <span class="material-symbols-outlined text-base">hands_bubbles</span>
+                    </div>
+                    <div>
+                      <h4 class="font-title-md text-sm sm:text-title-md text-on-surface font-semibold">Mendoakan Keberkahan</h4>
+                      <p class="font-body-md text-xs sm:text-body-md text-on-surface-variant leading-relaxed mt-0.5">Ucapkan salam dan doa <span class="italic font-medium text-primary">"Barakallahu lakuma..."</span> kepada kedua mempelai dan keluarga.</p>
+                    </div>
+                  </div>
+                  <div class="flex items-start gap-3 p-3 rounded-2xl bg-surface-container-low/50 hover:bg-surface-container/60 transition-colors">
+                    <div class="w-8 h-8 rounded-full bg-primary-fixed/40 text-primary flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <span class="material-symbols-outlined text-base">schedule</span>
+                    </div>
+                    <div>
+                      <h4 class="font-title-md text-sm sm:text-title-md text-on-surface font-semibold">Hadir Tepat Waktu</h4>
+                      <p class="font-body-md text-xs sm:text-body-md text-on-surface-variant leading-relaxed mt-0.5">Mohon hadir 15–30 menit sebelum prosesi dimulai agar dapat mengikuti acara dengan khusyuk dan nyaman.</p>
+                    </div>
+                  </div>
+                  <div class="flex items-start gap-3 p-3 rounded-2xl bg-surface-container-low/50 hover:bg-surface-container/60 transition-colors">
+                    <div class="w-8 h-8 rounded-full bg-primary-fixed/40 text-primary flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <span class="material-symbols-outlined text-base">volume_off</span>
+                    </div>
+                    <div>
+                      <h4 class="font-title-md text-sm sm:text-title-md text-on-surface font-semibold">Kekhidmatan Ijab Qabul</h4>
+                      <p class="font-body-md text-xs sm:text-body-md text-on-surface-variant leading-relaxed mt-0.5">Mohon mengondisikan perangkat komunikasi dalam mode hening serta menjaga ketenangan anak-anak saat ikrar sakral berlangsung.</p>
+                    </div>
+                  </div>
+                  <div class="flex items-start gap-3 p-3 rounded-2xl bg-surface-container-low/50 hover:bg-surface-container/60 transition-colors">
+                    <div class="w-8 h-8 rounded-full bg-primary-fixed/40 text-primary flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <span class="material-symbols-outlined text-base">mosque</span>
+                    </div>
+                    <div>
+                      <h4 class="font-title-md text-sm sm:text-title-md text-on-surface font-semibold">Fasilitas Sholat &amp; Valet</h4>
+                      <p class="font-body-md text-xs sm:text-body-md text-on-surface-variant leading-relaxed mt-0.5">Musholla luas, tempat wudhu bersih, serta layanan drop-off valet parkir gratis tersedia di lobi utama ballroom venue.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ✦ Floral Divider 4 ✦ -->
+      <div class="floral-divider relative z-10 w-full py-2 px-4 overflow-visible" aria-hidden="true">
+        <svg viewBox="0 0 500 52" xmlns="http://www.w3.org/2000/svg" class="w-full max-w-2xl mx-auto overflow-visible" style="height:52px">
+          <line x1="0"   y1="26" x2="92"  y2="26" stroke="#c5a028" stroke-width="0.7" stroke-opacity="0.32"/>
+          <line x1="408" y1="26" x2="500" y2="26" stroke="#c5a028" stroke-width="0.7" stroke-opacity="0.32"/>
+          <path d="M92 26 Q114 19 138 25" fill="none" stroke="#c5a028" stroke-width="0.75" stroke-opacity="0.27"/>
+          <path d="M92 26 Q112 33 136 27" fill="none" stroke="#c5a028" stroke-width="0.75" stroke-opacity="0.27"/>
+          <ellipse cx="110" cy="20" rx="9.5" ry="3.6" fill="#8A9A86" opacity="0.38" transform="rotate(-20 110 20)"/>
+          <ellipse cx="128" cy="30" rx="8"   ry="3.2" fill="#8A9A86" opacity="0.35" transform="rotate(16 128 30)"/>
+          <g transform="translate(146,26)" opacity="0.68">
+            <ellipse cx="0" cy="-5" rx="3.2" ry="5" fill="#D4AF37"/>
+            <ellipse cx="0" cy="-5" rx="3.2" ry="5" fill="#D4AF37" transform="rotate(72)"/>
+            <ellipse cx="0" cy="-5" rx="3.2" ry="5" fill="#D4AF37" transform="rotate(144)"/>
+            <ellipse cx="0" cy="-5" rx="3.2" ry="5" fill="#D4AF37" transform="rotate(216)"/>
+            <ellipse cx="0" cy="-5" rx="3.2" ry="5" fill="#D4AF37" transform="rotate(288)"/>
+            <circle cx="0" cy="0" r="2.2" fill="#c5a028"/>
+          </g>
+          <line x1="154" y1="26" x2="220" y2="26" stroke="#c5a028" stroke-width="0.7" stroke-opacity="0.28"/>
+          <g transform="translate(250,26)" opacity="0.88">
+            <ellipse cx="0" cy="-11" rx="6"   ry="11" fill="#D4AF37"/>
+            <ellipse cx="0" cy="-11" rx="6"   ry="11" fill="#D4AF37" transform="rotate(40)"/>
+            <ellipse cx="0" cy="-11" rx="6"   ry="11" fill="#D4AF37" transform="rotate(80)"/>
+            <ellipse cx="0" cy="-11" rx="6"   ry="11" fill="#D4AF37" transform="rotate(120)"/>
+            <ellipse cx="0" cy="-11" rx="6"   ry="11" fill="#D4AF37" transform="rotate(160)"/>
+            <ellipse cx="0" cy="-11" rx="6"   ry="11" fill="#D4AF37" transform="rotate(200)"/>
+            <ellipse cx="0" cy="-11" rx="6"   ry="11" fill="#D4AF37" transform="rotate(240)"/>
+            <ellipse cx="0" cy="-11" rx="6"   ry="11" fill="#D4AF37" transform="rotate(280)"/>
+            <ellipse cx="0" cy="-11" rx="6"   ry="11" fill="#D4AF37" transform="rotate(320)"/>
+            <circle cx="0" cy="0" r="5.5" fill="#c5a028"/>
+            <circle cx="0" cy="0" r="2.8" fill="#ffe08b"/>
+          </g>
+          <line x1="280" y1="26" x2="346" y2="26" stroke="#c5a028" stroke-width="0.7" stroke-opacity="0.28"/>
+          <g transform="translate(354,26)" opacity="0.68">
+            <ellipse cx="0" cy="-5" rx="3.2" ry="5" fill="#D4AF37"/>
+            <ellipse cx="0" cy="-5" rx="3.2" ry="5" fill="#D4AF37" transform="rotate(72)"/>
+            <ellipse cx="0" cy="-5" rx="3.2" ry="5" fill="#D4AF37" transform="rotate(144)"/>
+            <ellipse cx="0" cy="-5" rx="3.2" ry="5" fill="#D4AF37" transform="rotate(216)"/>
+            <ellipse cx="0" cy="-5" rx="3.2" ry="5" fill="#D4AF37" transform="rotate(288)"/>
+            <circle cx="0" cy="0" r="2.2" fill="#c5a028"/>
+          </g>
+          <path d="M362 26 Q384 19 408 25" fill="none" stroke="#c5a028" stroke-width="0.75" stroke-opacity="0.27"/>
+          <path d="M362 26 Q382 33 406 27" fill="none" stroke="#c5a028" stroke-width="0.75" stroke-opacity="0.27"/>
+          <ellipse cx="380" cy="20" rx="9.5" ry="3.6" fill="#8A9A86" opacity="0.38" transform="rotate(20 380 20)"/>
+          <ellipse cx="396" cy="30" rx="8"   ry="3.2" fill="#8A9A86" opacity="0.35" transform="rotate(-16 396 30)"/>
+        </svg>
+      </div>
+
+      <!-- ──────────────────────────────────────────────────────────────
+           SEKSI 7: GALERI
+      ────────────────────────────────────────────────────────────── -->
+      <section id="galeri" class="relative z-10 w-full py-space-xxl px-margin-mobile lg:px-margin bg-surface overflow-hidden">
+        <!-- Kontainer kelopak bunga -->
+
+
+        <div class="max-w-[1240px] mx-auto flex flex-col items-center relative z-10">
+          <div class="relative w-full flex flex-col items-center mb-space-lg max-w-2xl">
+            <!-- Toggle kelopak -->
+            <div class="w-full flex justify-end mb-2">
+              <button id="petals-toggle-btn" type="button" aria-label="Nyalakan atau matikan efek kelopak bunga"
+                      onclick="togglePetalsEffect()"
+                      class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container/80 hover:bg-surface-container-high border border-outline-variant/40 text-primary font-label-md text-label-md uppercase tracking-wider backdrop-blur-md shadow-sm transition-all duration-300">
+                <span class="text-xs">🌸</span>
+                <span id="petals-toggle-text">Efek Kelopak: Aktif</span>
+              </button>
+            </div>
+            <div class="text-center">
+              <div class="inline-flex items-center justify-center gap-2 mb-space-xs">
+                <span class="w-8 h-[1px] bg-primary-container"></span>
+                <span class="font-label-md text-label-md uppercase tracking-[0.3em] text-primary font-semibold">MOMEN BAHAGIA</span>
+                <span class="w-8 h-[1px] bg-primary-container"></span>
+              </div>
+              <h2 class="font-display-md text-display-md text-primary font-normal">Galeri Cinta &amp; Bahagia</h2>
+              <p class="font-body-md text-body-md text-on-surface-variant max-w-lg mx-auto mt-space-xs leading-relaxed">
+                Potret langkah awal dan ikrar suci kebersamaan yang terukir dengan penuh berkah dan cinta.
+              </p>
+            </div>
+          </div>
+
+          <!-- Filter Tab -->
+          <div id="gallery-filters" class="flex flex-wrap items-center justify-center gap-2 sm:gap-space-xs mb-space-xl p-1.5 rounded-full bg-surface-container/70 backdrop-blur-sm shadow-inner">
+            <button class="gallery-filter-btn px-4 sm:px-space-md py-1.5 rounded-full font-label-lg text-label-lg uppercase tracking-wider transition-all duration-300 bg-primary text-on-primary shadow-sm" data-filter="all" type="button">Semua Momen</button>
+            <button class="gallery-filter-btn px-4 sm:px-space-md py-1.5 rounded-full font-label-lg text-label-lg uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-all duration-300" data-filter="prewedding" type="button">Prewedding</button>
+            <button class="gallery-filter-btn px-4 sm:px-space-md py-1.5 rounded-full font-label-lg text-label-lg uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-all duration-300" data-filter="manis" type="button">Momen Manis</button>
+            <button class="gallery-filter-btn px-4 sm:px-space-md py-1.5 rounded-full font-label-lg text-label-lg uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-all duration-300" data-filter="keluarga" type="button">Keluarga &amp; Detail</button>
+          </div>
+
+          <!-- Grid Galeri -->
+          <div id="gallery-grid" class="grid grid-cols-1 md:grid-cols-12 gap-space-md sm:gap-space-lg w-full max-w-6xl">
+            <!-- Item 1 -->
+            <div class="gallery-item group relative overflow-hidden rounded-t-[5rem] rounded-b-3xl bg-surface-container-lowest shadow-[0_12px_32px_rgba(116,91,0,0.08)] border border-outline-variant/30 md:col-span-7 cursor-pointer transition-all duration-500 hover:shadow-xl hover:-translate-y-1"
+                 data-category="manis prewedding" data-index="0"
+                 data-src="https://lh3.googleusercontent.com/aida/AEtjO1XYyZJMtbl8gBHRo3nUBb1LGE_aZsx7RsqGa8N40qBMkatVDDn6I1EzaJg1l6-yugJHr1WVaUa7W-YBmUSJzlC7LCvXtAwWnzePl0EwyjIIncw5VLmXYCeliXfsHQRDxsVKDNiGhI7U3H-HN_ipHzTp8qKYA-zSvKdC4mRNSo8yfNUImTsjPArNVkGZG5_nBZdeuCsIh5tXLeBf_JeVHOWzcQ6xxqhZXL8SVM6xu2iPHG96396pYfaTfiQ"
+                 onclick="openLightbox(0)">
+              <div class="relative w-full h-[380px] sm:h-[460px] overflow-hidden">
+                <img alt="High end luxury modern Muslim Indonesian bride and groom aesthetic portrait photo"
+                     class="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
+                     src="https://lh3.googleusercontent.com/aida/AEtjO1XYyZJMtbl8gBHRo3nUBb1LGE_aZsx7RsqGa8N40qBMkatVDDn6I1EzaJg1l6-yugJHr1WVaUa7W-YBmUSJzlC7LCvXtAwWnzePl0EwyjIIncw5VLmXYCeliXfsHQRDxsVKDNiGhI7U3H-HN_ipHzTp8qKYA-zSvKdC4mRNSo8yfNUImTsjPArNVkGZG5_nBZdeuCsIh5tXLeBf_JeVHOWzcQ6xxqhZXL8SVM6xu2iPHG96396pYfaTfiQ">
+                <div class="absolute inset-0 bg-gradient-to-t from-inverse-surface/80 via-transparent to-black/10 opacity-70 group-hover:opacity-85 transition-opacity duration-300"></div>
+                <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                  <div class="w-14 h-14 rounded-full bg-surface-container-lowest/90 backdrop-blur-md text-primary flex items-center justify-center shadow-lg transform scale-90 group-hover:scale-100 transition-transform duration-300">
+                    <span class="material-symbols-outlined text-2xl">zoom_in</span>
+                  </div>
+                </div>
+                <div class="absolute top-4 left-4">
+                  <span class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-surface-container-lowest/90 backdrop-blur-md text-primary font-label-md text-label-md font-semibold shadow-sm uppercase tracking-wider">
+                    <span class="material-symbols-outlined text-sm text-primary">verified</span>
+                    <span>Official Portrait</span>
+                  </span>
+                </div>
+                <div class="absolute bottom-0 inset-x-0 p-space-md text-on-primary">
+                  <span class="font-label-md text-label-md uppercase tracking-[0.2em] text-primary-fixed block mb-1">Momen Suci</span>
+                  <h4 class="font-headline-sm text-headline-sm text-white font-medium leading-tight">Ikrar Cinta dan Kasih Sayang Abadi</h4>
+                  <p class="font-body-md text-xs sm:text-body-md text-white/80 font-light mt-1">Busana bernuansa champagne keemasan terinspirasi keanggunan budaya Nusantara.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="gallery-item group relative overflow-hidden rounded-t-3xl rounded-b-[4rem] bg-surface-container-lowest shadow-[0_12px_32px_rgba(116,91,0,0.08)] border border-outline-variant/30 md:col-span-5 cursor-pointer transition-all duration-500 hover:shadow-xl hover:-translate-y-1"
+                 data-category="prewedding" data-index="1"
+                 data-src="https://lh3.googleusercontent.com/aida/AEtjO1V0nfRKYIiQX1FDmyCdoks11bGTFDJULEaXxGcQmUUTmtH0Gbg1Yt_UkmpzFhZ7MdPu5FG5px7ZcM5phrG7WQsiqhTjWYo3aRJh3uW3RRF6etBYKciL9cLMsW-DBYU9DJ__HyqTgBJWJOsRy0lKgkyyDph58E0S68b3Rkn7XqhXTw6AB2lsgUHWXuv-ZpWSTy1-iFzwLRjEQbdggqmd1D7uyhMnaICvpD1bOFCBFjeEt6WPqe3UcfsSp_U"
+                 onclick="openLightbox(1)">
+              <div class="relative w-full h-[380px] sm:h-[460px] overflow-hidden">
+                <img alt="Prewedding hangat memegang tangan"
+                     class="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
+                     src="https://lh3.googleusercontent.com/aida/AEtjO1V0nfRKYIiQX1FDmyCdoks11bGTFDJULEaXxGcQmUUTmtH0Gbg1Yt_UkmpzFhZ7MdPu5FG5px7ZcM5phrG7WQsiqhTjWYo3aRJh3uW3RRF6etBYKciL9cLMsW-DBYU9DJ__HyqTgBJWJOsRy0lKgkyyDph58E0S68b3Rkn7XqhXTw6AB2lsgUHWXuv-ZpWSTy1-iFzwLRjEQbdggqmd1D7uyhMnaICvpD1bOFCBFjeEt6WPqe3UcfsSp_U">
+                <div class="absolute inset-0 bg-gradient-to-t from-inverse-surface/80 via-transparent to-black/10 opacity-70 group-hover:opacity-85 transition-opacity duration-300"></div>
+                <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                  <div class="w-14 h-14 rounded-full bg-surface-container-lowest/90 backdrop-blur-md text-primary flex items-center justify-center shadow-lg">
+                    <span class="material-symbols-outlined text-2xl">favorite</span>
+                  </div>
+                </div>
+                <div class="absolute bottom-0 inset-x-0 p-space-md text-on-primary">
+                  <span class="font-label-md text-label-md uppercase tracking-[0.2em] text-primary-fixed block mb-1">Prewedding Session</span>
+                  <h4 class="font-headline-sm text-headline-sm text-white font-medium leading-tight">Langkah Pertama Menuju Halal</h4>
+                  <p class="font-body-md text-xs sm:text-body-md text-white/80 font-light mt-1">Menggenggam jemari dalam komitmen suci menggapai ridho Ilahi.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Item 3 -->
+            <div class="gallery-item group relative overflow-hidden rounded-t-[4rem] rounded-b-3xl bg-surface-container-lowest shadow-[0_12px_32px_rgba(116,91,0,0.08)] border border-outline-variant/30 md:col-span-5 cursor-pointer transition-all duration-500 hover:shadow-xl hover:-translate-y-1"
+                 data-category="keluarga manis" data-index="2"
+                 data-src="https://lh3.googleusercontent.com/aida/AEtjO1W_GmkUb7Nl6B1UvEhDje84-lxvLVnTcBUATG8qlgyS9KEM0gHu8pc1JjeKfwz1aIqp-nMYHYm8NNokfjxjXRkoqtAhpNiHTn90RDKjjhADQ-yQBt9O0Xu6B3mR1qkKmUFgraSU4INVkXnDcogHhHNB6SpPiZOAXtxMC8NtCKoJ0BkH2vvKAbHC-4R5mw8wbHUjA5E1mD2nWT5i09ALiQkEQeIvCDQ8m5iy8wx81lkeJ76yiAK-SyddmkA3"
+                 onclick="openLightbox(2)">
+              <div class="relative w-full h-[380px] sm:h-[440px] overflow-hidden">
+                <img alt="Close-up mempelai wanita anggun berhijab dengan buket bunga"
+                     class="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
+                     src="https://lh3.googleusercontent.com/aida/AEtjO1W_GmkUb7Nl6B1UvEhDje84-lxvLVnTcBUATG8qlgyS9KEM0gHu8pc1JjeKfwz1aIqp-nMYHYm8NNokfjxjXRkoqtAhpNiHTn90RDKjjhADQ-yQBt9O0Xu6B3mR1qkKmUFgraSU4INVkXnDcogHhHNB6SpPiZOAXtxMC8NtCKoJ0BkH2vvKAbHC-4R5mw8wbHUjA5E1mD2nWT5i09ALiQkEQeIvCDQ8m5iy8wx81lkeJ76yiAK-SyddmkA3">
+                <div class="absolute inset-0 bg-gradient-to-t from-inverse-surface/80 via-transparent to-black/10 opacity-70 group-hover:opacity-85 transition-opacity duration-300"></div>
+                <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                  <div class="w-14 h-14 rounded-full bg-surface-container-lowest/90 backdrop-blur-md text-primary flex items-center justify-center shadow-lg">
+                    <span class="material-symbols-outlined text-2xl">zoom_in</span>
+                  </div>
+                </div>
+                <div class="absolute bottom-0 inset-x-0 p-space-md text-on-primary">
+                  <span class="font-label-md text-label-md uppercase tracking-[0.2em] text-primary-fixed block mb-1">Detail &amp; Mahkota</span>
+                  <h4 class="font-headline-sm text-headline-sm text-white font-medium leading-tight">Anggun &amp; Bersahaja</h4>
+                  <p class="font-body-md text-xs sm:text-body-md text-white/80 font-light mt-1">Sulam renda teliti dan bunga putih melambangkan kesucian niat.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Item 4 -->
+            <div class="gallery-item group relative overflow-hidden rounded-t-3xl rounded-b-[5rem] bg-surface-container-lowest shadow-[0_12px_32px_rgba(116,91,0,0.08)] border border-outline-variant/30 md:col-span-7 cursor-pointer transition-all duration-500 hover:shadow-xl hover:-translate-y-1"
+                 data-category="prewedding manis keluarga" data-index="3"
+                 data-src="https://lh3.googleusercontent.com/aida/AEtjO1X-HXdqdgya0uDc-qCjbJtar_D2tv0pFwTKSVImOUdMuKLNEjhhoPG-Vkp97B9oej2Ed2PIHMJzph_CeKKVbtu2QDgPsItGCEqpmUI7bCB8REdx_SffRPDjZvm1edj-uqjCpUtGfoFs6U-ZDag0QUA6vWMqa27bs2UPp-GitSPPe0Qx-AZMZ0L0nRvQaNDUjNxzKEoWv4JZ7vh8g-medVitGuFQstkdGDfL9zSjg0cyaX2PKx5--So1vO6f"
+                 onclick="openLightbox(3)">
+              <div class="relative w-full h-[380px] sm:h-[440px] overflow-hidden">
+                <img alt="Pasangan berjalan bahagia di teras arsitektur bernuansa kubah Islam modern"
+                     class="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
+                     src="https://lh3.googleusercontent.com/aida/AEtjO1X-HXdqdgya0uDc-qCjbJtar_D2tv0pFwTKSVImOUdMuKLNEjhhoPG-Vkp97B9oej2Ed2PIHMJzph_CeKKVbtu2QDgPsItGCEqpmUI7bCB8REdx_SffRPDjZvm1edj-uqjCpUtGfoFs6U-ZDag0QUA6vWMqa27bs2UPp-GitSPPe0Qx-AZMZ0L0nRvQaNDUjNxzKEoWv4JZ7vh8g-medVitGuFQstkdGDfL9zSjg0cyaX2PKx5--So1vO6f">
+                <div class="absolute inset-0 bg-gradient-to-t from-inverse-surface/80 via-transparent to-black/10 opacity-70 group-hover:opacity-85 transition-opacity duration-300"></div>
+                <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                  <div class="w-14 h-14 rounded-full bg-surface-container-lowest/90 backdrop-blur-md text-primary flex items-center justify-center shadow-lg">
+                    <span class="material-symbols-outlined text-2xl">zoom_in</span>
+                  </div>
+                </div>
+                <div class="absolute bottom-0 inset-x-0 p-space-md text-on-primary">
+                  <span class="font-label-md text-label-md uppercase tracking-[0.2em] text-primary-fixed block mb-1">Arsitektur &amp; Kasih</span>
+                  <h4 class="font-headline-sm text-headline-sm text-white font-medium leading-tight">Harmoni Dalam Ridho-Nya</h4>
+                  <p class="font-body-md text-xs sm:text-body-md text-white/80 font-light mt-1">Berjalan beriringan di bawah lengkungan megah nan menenteramkan jiwa.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex items-center justify-center gap-space-sm mt-space-xl text-primary">
+            <span class="w-16 h-[1px] bg-gradient-to-r from-transparent to-outline-variant"></span>
+            <span class="material-symbols-outlined text-base">favorite</span>
+            <span class="w-16 h-[1px] bg-gradient-to-l from-transparent to-outline-variant"></span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Lightbox Modal -->
+      <div id="gallery-lightbox" role="dialog" aria-modal="true"
+           class="fixed inset-0 z-[100] hidden items-center justify-center bg-inverse-surface/90 backdrop-blur-xl p-4 transition-all duration-300 opacity-0">
+        <div class="relative max-w-5xl w-full max-h-[92vh] flex flex-col items-center justify-center">
+          <button type="button" onclick="closeLightbox()" aria-label="Tutup Galeri"
+                  class="absolute -top-12 right-0 sm:right-2 w-10 h-10 rounded-full bg-white/20 hover:bg-white/30 text-white flex items-center justify-center transition-colors">
+            <span class="material-symbols-outlined text-2xl">close</span>
+          </button>
+          <button type="button" onclick="prevLightboxSlide()" aria-label="Foto Sebelumnya"
+                  class="absolute left-2 sm:-left-12 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/20 hover:bg-white/30 text-white flex items-center justify-center transition-colors z-20">
+            <span class="material-symbols-outlined text-3xl">chevron_left</span>
+          </button>
+          <div class="relative w-full max-h-[75vh] flex items-center justify-center overflow-hidden rounded-2xl bg-black/40 p-2 border border-white/10 shadow-2xl">
+            <img id="lightbox-img" src="" alt="Lightbox Preview" class="max-h-[72vh] w-auto max-w-full object-contain rounded-xl transition-all duration-300">
+          </div>
+          <button type="button" onclick="nextLightboxSlide()" aria-label="Foto Selanjutnya"
+                  class="absolute right-2 sm:-right-12 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/20 hover:bg-white/30 text-white flex items-center justify-center transition-colors z-20">
+            <span class="material-symbols-outlined text-3xl">chevron_right</span>
+          </button>
+          <div class="mt-4 text-center text-white max-w-xl">
+            <h3 id="lightbox-title" class="font-headline-sm text-headline-sm font-medium tracking-wide text-primary-fixed"></h3>
+            <p id="lightbox-counter" class="font-label-md text-label-md text-white/70 uppercase tracking-widest mt-1"></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ✦ Floral Divider 6 ✦ -->
+      <div class="floral-divider relative z-10 w-full py-2 px-4 overflow-visible" aria-hidden="true">
+        <svg viewBox="0 0 500 48" xmlns="http://www.w3.org/2000/svg" class="w-full max-w-2xl mx-auto overflow-visible" style="height:48px">
+          <line x1="0"   y1="24" x2="98"  y2="24" stroke="#c5a028" stroke-width="0.65" stroke-opacity="0.30"/>
+          <line x1="402" y1="24" x2="500" y2="24" stroke="#c5a028" stroke-width="0.65" stroke-opacity="0.30"/>
+          <path d="M98 24 Q120 17 142 23" fill="none" stroke="#c5a028" stroke-width="0.8" stroke-opacity="0.28"/>
+          <path d="M98 24 Q118 31 140 25" fill="none" stroke="#c5a028" stroke-width="0.8" stroke-opacity="0.28"/>
+          <ellipse cx="115" cy="18" rx="9" ry="3.4" fill="#8A9A86" opacity="0.38" transform="rotate(-22 115 18)"/>
+          <ellipse cx="133" cy="29" rx="8" ry="3"   fill="#8A9A86" opacity="0.33" transform="rotate(17 133 29)"/>
+          <g transform="translate(152,24)" opacity="0.70">
+            <ellipse cx="0" cy="-5" rx="3" ry="5" fill="#D4AF37" transform="rotate(0)"/>
+            <ellipse cx="0" cy="-5" rx="3" ry="5" fill="#D4AF37" transform="rotate(72)"/>
+            <ellipse cx="0" cy="-5" rx="3" ry="5" fill="#D4AF37" transform="rotate(144)"/>
+            <ellipse cx="0" cy="-5" rx="3" ry="5" fill="#D4AF37" transform="rotate(216)"/>
+            <ellipse cx="0" cy="-5" rx="3" ry="5" fill="#D4AF37" transform="rotate(288)"/>
+            <circle cx="0" cy="0" r="2" fill="#c5a028"/>
+          </g>
+          <line x1="160" y1="24" x2="220" y2="24" stroke="#c5a028" stroke-width="0.65" stroke-opacity="0.24"/>
+          <g transform="translate(250,24)" class="floral-sway" opacity="0.88">
+            <ellipse cx="0" cy="-11" rx="5.8" ry="11" fill="#D4AF37" transform="rotate(0)"/>
+            <ellipse cx="0" cy="-11" rx="5.8" ry="11" fill="#D4AF37" transform="rotate(36)"/>
+            <ellipse cx="0" cy="-11" rx="5.8" ry="11" fill="#D4AF37" transform="rotate(72)"/>
+            <ellipse cx="0" cy="-11" rx="5.8" ry="11" fill="#D4AF37" transform="rotate(108)"/>
+            <ellipse cx="0" cy="-11" rx="5.8" ry="11" fill="#D4AF37" transform="rotate(144)"/>
+            <ellipse cx="0" cy="-11" rx="5.8" ry="11" fill="#D4AF37" transform="rotate(180)"/>
+            <ellipse cx="0" cy="-11" rx="5.8" ry="11" fill="#D4AF37" transform="rotate(216)"/>
+            <ellipse cx="0" cy="-11" rx="5.8" ry="11" fill="#D4AF37" transform="rotate(252)"/>
+            <ellipse cx="0" cy="-11" rx="5.8" ry="11" fill="#D4AF37" transform="rotate(288)"/>
+            <ellipse cx="0" cy="-11" rx="5.8" ry="11" fill="#D4AF37" transform="rotate(324)"/>
+            <circle cx="0" cy="0" r="5.2" fill="#c5a028"/>
+            <circle cx="0" cy="0" r="2.6" fill="#ffe08b"/>
+          </g>
+          <line x1="280" y1="24" x2="340" y2="24" stroke="#c5a028" stroke-width="0.65" stroke-opacity="0.24"/>
+          <g transform="translate(348,24)" opacity="0.70">
+            <ellipse cx="0" cy="-5" rx="3" ry="5" fill="#D4AF37" transform="rotate(0)"/>
+            <ellipse cx="0" cy="-5" rx="3" ry="5" fill="#D4AF37" transform="rotate(72)"/>
+            <ellipse cx="0" cy="-5" rx="3" ry="5" fill="#D4AF37" transform="rotate(144)"/>
+            <ellipse cx="0" cy="-5" rx="3" ry="5" fill="#D4AF37" transform="rotate(216)"/>
+            <ellipse cx="0" cy="-5" rx="3" ry="5" fill="#D4AF37" transform="rotate(288)"/>
+            <circle cx="0" cy="0" r="2" fill="#c5a028"/>
+          </g>
+          <path d="M358 24 Q378 17 402 23" fill="none" stroke="#c5a028" stroke-width="0.8" stroke-opacity="0.28"/>
+          <path d="M358 24 Q376 31 400 25" fill="none" stroke="#c5a028" stroke-width="0.8" stroke-opacity="0.28"/>
+          <ellipse cx="374" cy="18" rx="9"   ry="3.4" fill="#8A9A86" opacity="0.38" transform="rotate(22 374 18)"/>
+          <ellipse cx="390" cy="29" rx="8"   ry="3"   fill="#8A9A86" opacity="0.33" transform="rotate(-17 390 29)"/>
+        </svg>
+      </div>
+
+      <!-- ──────────────────────────────────────────────────────────────
+           SEKSI 8: RSVP & UCAPAN DOA
+      ────────────────────────────────────────────────────────────── -->
+      <section id="rsvp" class="relative z-10 w-full py-space-xxl px-margin-mobile lg:px-margin">
+        <div class="max-w-[1240px] mx-auto flex flex-col items-center">
+          <div class="text-center mb-space-xl">
+            <span class="font-label-md text-label-md uppercase tracking-[0.3em] text-primary font-semibold">Konfirmasi Kehadiran</span>
+            <h2 class="font-display-md text-display-md text-primary font-normal mt-space-xs">RSVP &amp; Doa Restu</h2>
+            <p class="font-body-md text-body-md text-on-surface-variant max-w-md mx-auto mt-space-xs">
+              Kehadiran dan doa restu Anda merupakan kado terindah bagi kebahagiaan kami.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg w-full max-w-5xl mx-auto">
+            <!-- Form RSVP -->
+            <div class="lg:col-span-7 bg-surface-container-lowest/90 backdrop-blur-md rounded-3xl p-space-md sm:p-space-lg shadow-[0_10px_35px_rgba(116,91,0,0.06)]">
+              <form id="rsvp-form" class="flex flex-col gap-space-sm" onsubmit="handleRsvpSubmit(event)">
+                <div>
+                  <label for="rsvp-name" class="block font-label-lg text-label-lg text-on-surface font-medium uppercase tracking-wider mb-1">Nama Lengkap</label>
+                  <input id="rsvp-name" type="text" required placeholder="Contoh: Rahmat Hidayat"
+                         class="w-full px-4 py-3 rounded-full bg-surface-container/60 text-on-surface placeholder:text-on-surface-variant/50 focus:outline-none focus:ring-2 focus:ring-primary-container font-body-md text-body-md transition-all">
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-space-sm">
+                  <div>
+                    <label for="rsvp-attendance" class="block font-label-lg text-label-lg text-on-surface font-medium uppercase tracking-wider mb-1">Konfirmasi Kehadiran</label>
+                    <div class="relative">
+                      <select id="rsvp-attendance" class="w-full appearance-none px-4 py-3 rounded-full bg-surface-container/60 text-on-surface focus:outline-none focus:ring-2 focus:ring-primary-container font-body-md text-body-md transition-all cursor-pointer">
+                        <option value="Hadir">Insya Allah Hadir</option>
+                        <option value="Tidak Hadir">Mohon Maaf, Berhalangan</option>
+                        <option value="Masih Ragu">Masih Ragu-ragu</option>
+                      </select>
+                      <span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none">expand_more</span>
+                    </div>
+                  </div>
+                  <div>
+                    <label for="rsvp-guests" class="block font-label-lg text-label-lg text-on-surface font-medium uppercase tracking-wider mb-1">Jumlah Tamu</label>
+                    <div class="relative">
+                      <select id="rsvp-guests" class="w-full appearance-none px-4 py-3 rounded-full bg-surface-container/60 text-on-surface focus:outline-none focus:ring-2 focus:ring-primary-container font-body-md text-body-md transition-all cursor-pointer">
+                        <option value="1">1 Orang</option>
+                        <option value="2">2 Orang</option>
+                      </select>
+                      <span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none">expand_more</span>
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <label for="rsvp-message" class="block font-label-lg text-label-lg text-on-surface font-medium uppercase tracking-wider mb-1">Ucapan &amp; Doa Restu</label>
+                  <textarea id="rsvp-message" rows="3" required placeholder="Tuliskan ucapan dan doa hangat untuk kedua mempelai..."
+                            class="w-full px-4 py-3 rounded-2xl bg-surface-container/60 text-on-surface placeholder:text-on-surface-variant/50 focus:outline-none focus:ring-2 focus:ring-primary-container font-body-md text-body-md transition-all resize-none"></textarea>
+                </div>
+                <button id="rsvp-btn" type="submit"
+                        class="w-full mt-2 inline-flex items-center justify-center gap-2 py-3.5 rounded-full bg-primary text-on-primary font-label-lg text-label-lg uppercase tracking-[0.15em] hover:bg-primary-container transition-all shadow-md">
+                  <span class="material-symbols-outlined text-lg">send</span>
+                  <span>Kirim Konfirmasi</span>
+                </button>
+                <div id="rsvp-alert" class="hidden mt-2 p-3 rounded-xl bg-surface-container-high text-primary font-body-md text-body-md text-center items-center justify-center gap-2">
+                  <span class="material-symbols-outlined text-xl">check_circle</span>
+                  <span>Jazakumullah Khairan, konfirmasi doa restu Anda telah kami terima.</span>
+                </div>
+              </form>
+            </div>
+            <!-- Feed Ucapan -->
+            <div id="wishes-container" class="lg:col-span-5 flex flex-col gap-space-sm h-[400px] overflow-y-auto pr-1"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ✦ Floral Divider 7 ✦ -->
+      <div class="floral-divider relative z-10 w-full py-2 px-4 overflow-visible" aria-hidden="true">
+        <svg viewBox="0 0 500 44" xmlns="http://www.w3.org/2000/svg" class="w-full max-w-2xl mx-auto overflow-visible" style="height:44px">
+          <line x1="0"   y1="22" x2="104" y2="22" stroke="#c5a028" stroke-width="0.6" stroke-opacity="0.26"/>
+          <line x1="396" y1="22" x2="500" y2="22" stroke="#c5a028" stroke-width="0.6" stroke-opacity="0.26"/>
+          <path d="M104 22 Q124 15 144 21" fill="none" stroke="#c5a028" stroke-width="0.75" stroke-opacity="0.26"/>
+          <path d="M104 22 Q122 29 142 23" fill="none" stroke="#c5a028" stroke-width="0.75" stroke-opacity="0.26"/>
+          <ellipse cx="120" cy="16" rx="8.5" ry="3.2" fill="#8A9A86" opacity="0.36" transform="rotate(-20 120 16)"/>
+          <ellipse cx="136" cy="28" rx="7.5" ry="2.9" fill="#8A9A86" opacity="0.33" transform="rotate(16 136 28)"/>
+          <g transform="translate(152,22)" class="floral-pulse" opacity="0.66">
+            <ellipse cx="0" cy="-6" rx="3.2" ry="6" fill="#D4AF37" transform="rotate(0)"/>
+            <ellipse cx="0" cy="-6" rx="3.2" ry="6" fill="#D4AF37" transform="rotate(60)"/>
+            <ellipse cx="0" cy="-6" rx="3.2" ry="6" fill="#D4AF37" transform="rotate(120)"/>
+            <ellipse cx="0" cy="-6" rx="3.2" ry="6" fill="#D4AF37" transform="rotate(180)"/>
+            <ellipse cx="0" cy="-6" rx="3.2" ry="6" fill="#D4AF37" transform="rotate(240)"/>
+            <ellipse cx="0" cy="-6" rx="3.2" ry="6" fill="#D4AF37" transform="rotate(300)"/>
+            <circle cx="0" cy="0" r="2.4" fill="#c5a028"/>
+          </g>
+          <line x1="160" y1="22" x2="218" y2="22" stroke="#c5a028" stroke-width="0.6" stroke-opacity="0.22"/>
+          <g transform="translate(250,22)" class="floral-float" opacity="0.88">
+            <ellipse cx="0" cy="-10" rx="5.5" ry="10" fill="#D4AF37" transform="rotate(0)"/>
+            <ellipse cx="0" cy="-10" rx="5.5" ry="10" fill="#D4AF37" transform="rotate(51.4)"/>
+            <ellipse cx="0" cy="-10" rx="5.5" ry="10" fill="#D4AF37" transform="rotate(102.8)"/>
+            <ellipse cx="0" cy="-10" rx="5.5" ry="10" fill="#D4AF37" transform="rotate(154.2)"/>
+            <ellipse cx="0" cy="-10" rx="5.5" ry="10" fill="#D4AF37" transform="rotate(205.6)"/>
+            <ellipse cx="0" cy="-10" rx="5.5" ry="10" fill="#D4AF37" transform="rotate(257)"/>
+            <ellipse cx="0" cy="-10" rx="5.5" ry="10" fill="#D4AF37" transform="rotate(308.4)"/>
+            <circle cx="0" cy="0" r="4.8" fill="#c5a028"/>
+            <circle cx="0" cy="0" r="2.4" fill="#ffe08b"/>
+          </g>
+          <line x1="282" y1="22" x2="340" y2="22" stroke="#c5a028" stroke-width="0.6" stroke-opacity="0.22"/>
+          <g transform="translate(348,22)" class="floral-pulse" opacity="0.66">
+            <ellipse cx="0" cy="-6" rx="3.2" ry="6" fill="#D4AF37" transform="rotate(0)"/>
+            <ellipse cx="0" cy="-6" rx="3.2" ry="6" fill="#D4AF37" transform="rotate(60)"/>
+            <ellipse cx="0" cy="-6" rx="3.2" ry="6" fill="#D4AF37" transform="rotate(120)"/>
+            <ellipse cx="0" cy="-6" rx="3.2" ry="6" fill="#D4AF37" transform="rotate(180)"/>
+            <ellipse cx="0" cy="-6" rx="3.2" ry="6" fill="#D4AF37" transform="rotate(240)"/>
+            <ellipse cx="0" cy="-6" rx="3.2" ry="6" fill="#D4AF37" transform="rotate(300)"/>
+            <circle cx="0" cy="0" r="2.4" fill="#c5a028"/>
+          </g>
+          <path d="M356 22 Q374 15 396 21" fill="none" stroke="#c5a028" stroke-width="0.75" stroke-opacity="0.26"/>
+          <path d="M356 22 Q372 29 394 23" fill="none" stroke="#c5a028" stroke-width="0.75" stroke-opacity="0.26"/>
+          <ellipse cx="370" cy="16" rx="8.5" ry="3.2" fill="#8A9A86" opacity="0.36" transform="rotate(20 370 16)"/>
+          <ellipse cx="386" cy="28" rx="7.5" ry="2.9" fill="#8A9A86" opacity="0.33" transform="rotate(-16 386 28)"/>
+        </svg>
+      </div>
+
+      <!-- ──────────────────────────────────────────────────────────────
+           SEKSI 9: CHECK-IN / QR CODE
+      ────────────────────────────────────────────────────────────── -->
+      <section id="checkin" class="relative z-10 w-full py-space-xxl px-margin-mobile lg:px-margin bg-surface-container-low/40">
+        <div class="max-w-[1240px] mx-auto flex flex-col items-center">
+          <div class="text-center mb-space-xl max-w-2xl">
+            <div class="inline-flex items-center justify-center gap-2 mb-space-xs">
+              <span class="w-8 h-[1px] bg-primary-container"></span>
+              <span class="font-label-md text-label-md uppercase tracking-[0.3em] text-primary font-semibold">E-TIKET &amp; REGISTRASI TAMU</span>
+              <span class="w-8 h-[1px] bg-primary-container"></span>
+            </div>
+            <h2 class="font-display-md text-display-md text-primary font-normal mt-space-xs">QR Code Kehadiran</h2>
+            <p class="font-body-md text-body-md text-on-surface-variant max-w-lg mx-auto mt-space-xs leading-relaxed">
+              Silakan tunjukkan QR Code ini kepada penerima tamu di meja registrasi untuk proses check-in cepat dan pencatatan buku tamu digital.
+            </p>
+          </div>
+
+          <!-- E-Ticket Card -->
+          <div class="w-full max-w-2xl bg-surface-container-lowest/95 backdrop-blur-md rounded-3xl border border-outline-variant/40 shadow-[0_15px_35px_rgba(116,91,0,0.08)] overflow-hidden relative">
+            <div class="relative bg-gradient-to-r from-surface-container-high via-surface-container to-surface-container-high px-6 py-4 border-b border-outline-variant/30 flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center border border-primary-container/40">
+                  <span class="font-headline-sm text-sm text-primary font-semibold">A &amp; F</span>
+                </div>
+                <div>
+                  <span class="font-label-md text-label-md uppercase tracking-[0.2em] text-primary font-semibold block">VIP GUEST PASS</span>
+                  <span class="font-headline-sm text-xs sm:text-sm text-on-surface font-medium">Walimatul 'Urs Aditya &amp; Fatimah</span>
+                </div>
+              </div>
+              <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container-lowest border border-outline-variant/40 text-primary font-label-md text-label-md tracking-wider uppercase shadow-sm">
+                <span class="material-symbols-outlined text-sm text-primary">verified</span>
+                <span class="font-semibold">Terverifikasi</span>
+              </div>
+            </div>
+
+            <div class="p-6 sm:p-space-lg flex flex-col md:flex-row items-center gap-space-lg">
+              <div class="flex flex-col items-center flex-shrink-0">
+                <div class="relative w-52 h-52 p-2 rounded-2xl bg-[#FDFBF7] border border-outline-variant/60 shadow-inner flex items-center justify-center">
+                  <img src="https://lh3.googleusercontent.com/aida/AEtjO1XBctNv1fbRHgG6WCC0QaxT2ox1Rc4zZaIBvVbDzldDW1UsQauPaItc1anuHf3zrqOmylYFlqZ4JA7mUdwn9Eaoid9Vt5MVlSfsPdqFp3wU-gKtI4-_JkUbFNytWGP7v4MMIUN7KAVCmXDCS5IlpoXm8Ie0Mg4Mk9n9Ba9S9EhvowI5vvNyD0Cdr_Q978GERFMiYPf5eBBemJYKYiLUty3jrgEZD_5Mq1Uiz0QExLmVrQ_RA80AIRRGDiM"
+                       alt="QR Code Check-in Tamu Undangan" class="w-full h-full object-contain rounded-xl">
+                </div>
+                <div class="mt-3 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/10 text-primary font-label-md text-label-md tracking-wider">
+                  <span class="w-2 h-2 rounded-full bg-primary-container animate-pulse"></span>
+                  <span>Kode Valid &amp; Siap Dipindai</span>
+                </div>
+              </div>
+
+              <div class="flex-1 flex flex-col justify-between w-full text-center md:text-left">
+                <div>
+                  <span class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant block mb-1">Nama Tamu Undangan</span>
+                  <h3 id="ticket-guest-name" class="font-headline-sm text-headline-sm text-on-surface font-semibold mb-space-sm">Bapak / Ibu / Saudara(i)</h3>
+                  <div class="grid grid-cols-2 gap-3 p-3 rounded-2xl bg-surface-container/50 border border-outline-variant/20 mb-space-sm">
+                    <div>
+                      <span class="font-label-md text-[10px] uppercase tracking-wider text-on-surface-variant/70 block">Kode Tiket</span>
+                      <span class="font-title-md text-title-md text-primary font-semibold tracking-wider">AF-2810-VIP88</span>
+                    </div>
+                    <div>
+                      <span class="font-label-md text-[10px] uppercase tracking-wider text-on-surface-variant/70 block">Kategori Undangan</span>
+                      <span class="font-title-md text-title-md text-on-surface font-medium">Tamu VIP</span>
+                    </div>
+                  </div>
+                  <div class="space-y-1.5 font-body-md text-xs sm:text-sm text-on-surface-variant mb-space-md">
+                    <div class="flex items-center justify-center md:justify-start gap-2">
+                      <span class="material-symbols-outlined text-primary text-base">event_available</span>
+                      <span>Akad Nikah &amp; Resepsi Pernikahan</span>
+                    </div>
+                    <div class="flex items-center justify-center md:justify-start gap-2">
+                      <span class="material-symbols-outlined text-primary text-base">calendar_month</span>
+                      <span>Sabtu, 28 Oktober 2025</span>
+                    </div>
+                    <div class="flex items-center justify-center md:justify-start gap-2">
+                      <span class="material-symbols-outlined text-primary text-base">location_on</span>
+                      <span class="text-on-surface font-medium">The Glasshouse Grand Ballroom</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="flex flex-wrap items-center justify-center md:justify-start gap-2 w-full pt-space-xs border-t border-outline-variant/20">
+                  <a href="https://lh3.googleusercontent.com/aida/AEtjO1XBctNv1fbRHgG6WCC0QaxT2ox1Rc4zZaIBvVbDzldDW1UsQauPaItc1anuHf3zrqOmylYFlqZ4JA7mUdwn9Eaoid9Vt5MVlSfsPdqFp3wU-gKtI4-_JkUbFNytWGP7v4MMIUN7KAVCmXDCS5IlpoXm8Ie0Mg4Mk9n9Ba9S9EhvowI5vvNyD0Cdr_Q978GERFMiYPf5eBBemJYKYiLUty3jrgEZD_5Mq1Uiz0QExLmVrQ_RA80AIRRGDiM"
+                     download="QR-Pass-Aditya-Fatimah.svg"
+                     class="flex-1 inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-full bg-primary text-on-primary font-label-lg text-label-lg uppercase tracking-wider hover:bg-primary-container transition-colors shadow-sm">
+                    <span class="material-symbols-outlined text-base">download</span>
+                    <span>Unduh QR</span>
+                  </a>
+                  <button type="button" onclick="window.print()"
+                          class="flex-1 inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-full bg-surface-container hover:bg-surface-container-high text-on-surface font-label-lg text-label-lg uppercase tracking-wider transition-colors border border-outline-variant/40">
+                    <span class="material-symbols-outlined text-base text-primary">photo_camera</span>
+                    <span>Simpan Pass</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-surface-container/60 px-6 py-3 text-center border-t border-outline-variant/20">
+              <p class="font-body-md text-xs text-on-surface-variant flex items-center justify-center gap-1.5">
+                <span class="material-symbols-outlined text-sm text-primary">info</span>
+                <span>Simpan tangkapan layar (screenshot) kode QR ini di ponsel Anda untuk kemudahan akses saat tiba di lokasi acara.</span>
+              </p>
+            </div>
+          </div>
+
+          <!-- Demo simulasi tamu -->
+          <div class="mt-6 flex flex-col items-center gap-2">
+            <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container/70 border border-outline-variant/30 text-xs text-on-surface-variant font-medium">
+              <span class="material-symbols-outlined text-sm text-primary">link</span>
+              <span>Simulasi Parameter URL (?to=...):</span>
+            </div>
+            <div class="flex flex-wrap items-center justify-center gap-2">
+              <button type="button" onclick="applyGuestName('Bapak Faisal')"
+                      class="px-3.5 py-1 rounded-full bg-surface-container-lowest hover:bg-primary hover:text-on-primary border border-outline-variant/40 text-xs font-medium text-on-surface transition-all duration-200 shadow-sm">Bapak Faisal</button>
+              <button type="button" onclick="applyGuestName('Ibu Annisa, S.Kom.')"
+                      class="px-3.5 py-1 rounded-full bg-surface-container-lowest hover:bg-primary hover:text-on-primary border border-outline-variant/40 text-xs font-medium text-on-surface transition-all duration-200 shadow-sm">Ibu Annisa, S.Kom.</button>
+              <button type="button" onclick="applyGuestName('Keluarga Besar Bpk. Hendra')"
+                      class="px-3.5 py-1 rounded-full bg-surface-container-lowest hover:bg-primary hover:text-on-primary border border-outline-variant/40 text-xs font-medium text-on-surface transition-all duration-200 shadow-sm">Keluarga Bpk. Hendra</button>
+              <button type="button" onclick="applyGuestName('')"
+                      class="px-3 py-1 rounded-full bg-surface-container-high hover:bg-surface-dim text-xs font-medium text-on-surface-variant transition-colors">Reset</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ✦ Floral Divider 8 ✦ -->
+      <div class="floral-divider relative z-10 w-full py-2 px-4 overflow-visible" aria-hidden="true">
+        <svg viewBox="0 0 500 46" xmlns="http://www.w3.org/2000/svg" class="w-full max-w-2xl mx-auto overflow-visible" style="height:46px">
+          <line x1="0"   y1="23" x2="100" y2="23" stroke="#c5a028" stroke-width="0.6" stroke-opacity="0.28"/>
+          <line x1="400" y1="23" x2="500" y2="23" stroke="#c5a028" stroke-width="0.6" stroke-opacity="0.28"/>
+          <path d="M100 23 Q122 16 144 22" fill="none" stroke="#c5a028" stroke-width="0.75" stroke-opacity="0.26"/>
+          <path d="M100 23 Q120 30 142 24" fill="none" stroke="#c5a028" stroke-width="0.75" stroke-opacity="0.26"/>
+          <ellipse cx="118" cy="17" rx="9" ry="3.3" fill="#8A9A86" opacity="0.37" transform="rotate(-19 118 17)"/>
+          <ellipse cx="134" cy="28" rx="8" ry="3"   fill="#8A9A86" opacity="0.33" transform="rotate(15 134 28)"/>
+          <g transform="translate(152,23)" opacity="0.67">
+            <ellipse cx="0" cy="-5.5" rx="3.2" ry="5.5" fill="#D4AF37" transform="rotate(0)"/>
+            <ellipse cx="0" cy="-5.5" rx="3.2" ry="5.5" fill="#D4AF37" transform="rotate(72)"/>
+            <ellipse cx="0" cy="-5.5" rx="3.2" ry="5.5" fill="#D4AF37" transform="rotate(144)"/>
+            <ellipse cx="0" cy="-5.5" rx="3.2" ry="5.5" fill="#D4AF37" transform="rotate(216)"/>
+            <ellipse cx="0" cy="-5.5" rx="3.2" ry="5.5" fill="#D4AF37" transform="rotate(288)"/>
+            <circle cx="0" cy="0" r="2.2" fill="#c5a028"/>
+          </g>
+          <line x1="160" y1="23" x2="220" y2="23" stroke="#c5a028" stroke-width="0.6" stroke-opacity="0.22"/>
+          <g transform="translate(250,23)" class="floral-pulse" opacity="0.90">
+            <ellipse cx="0" cy="-12" rx="6.5" ry="12" fill="#D4AF37" transform="rotate(0)"/>
+            <ellipse cx="0" cy="-12" rx="6.5" ry="12" fill="#D4AF37" transform="rotate(60)"/>
+            <ellipse cx="0" cy="-12" rx="6.5" ry="12" fill="#D4AF37" transform="rotate(120)"/>
+            <ellipse cx="0" cy="-12" rx="6.5" ry="12" fill="#D4AF37" transform="rotate(180)"/>
+            <ellipse cx="0" cy="-12" rx="6.5" ry="12" fill="#D4AF37" transform="rotate(240)"/>
+            <ellipse cx="0" cy="-12" rx="6.5" ry="12" fill="#D4AF37" transform="rotate(300)"/>
+            <circle cx="0" cy="0" r="5.8" fill="#c5a028"/>
+            <circle cx="0" cy="0" r="2.9" fill="#ffe08b"/>
+          </g>
+          <line x1="280" y1="23" x2="340" y2="23" stroke="#c5a028" stroke-width="0.6" stroke-opacity="0.22"/>
+          <g transform="translate(348,23)" opacity="0.67">
+            <ellipse cx="0" cy="-5.5" rx="3.2" ry="5.5" fill="#D4AF37" transform="rotate(0)"/>
+            <ellipse cx="0" cy="-5.5" rx="3.2" ry="5.5" fill="#D4AF37" transform="rotate(72)"/>
+            <ellipse cx="0" cy="-5.5" rx="3.2" ry="5.5" fill="#D4AF37" transform="rotate(144)"/>
+            <ellipse cx="0" cy="-5.5" rx="3.2" ry="5.5" fill="#D4AF37" transform="rotate(216)"/>
+            <ellipse cx="0" cy="-5.5" rx="3.2" ry="5.5" fill="#D4AF37" transform="rotate(288)"/>
+            <circle cx="0" cy="0" r="2.2" fill="#c5a028"/>
+          </g>
+          <path d="M356 23 Q376 16 400 22" fill="none" stroke="#c5a028" stroke-width="0.75" stroke-opacity="0.26"/>
+          <path d="M356 23 Q374 30 398 24" fill="none" stroke="#c5a028" stroke-width="0.75" stroke-opacity="0.26"/>
+          <ellipse cx="372" cy="17" rx="9"   ry="3.3" fill="#8A9A86" opacity="0.37" transform="rotate(19 372 17)"/>
+          <ellipse cx="388" cy="28" rx="8"   ry="3"   fill="#8A9A86" opacity="0.33" transform="rotate(-15 388 28)"/>
+        </svg>
+      </div>
+
+      <!-- ──────────────────────────────────────────────────────────────
+           SEKSI 10: HADIAH / AMPLOP DIGITAL
+      ────────────────────────────────────────────────────────────── -->
+      <section id="hadiah" class="relative z-10 w-full py-space-xxl px-margin-mobile lg:px-margin bg-surface-container-low/50">
+        <div class="max-w-4xl mx-auto flex flex-col items-center">
+          <div class="text-center mb-space-xl">
+            <span class="font-label-md text-label-md uppercase tracking-[0.3em] text-primary font-semibold">Tanda Kasih</span>
+            <h2 class="font-display-md text-display-md text-primary font-normal mt-space-xs">Amplop Digital</h2>
+            <p class="font-body-md text-body-md text-on-surface-variant max-w-lg mx-auto mt-space-xs">
+              Doa restu Anda merupakan karunia terindah bagi kami. Namun jika berkenan memberikan tanda kasih secara digital, Anda dapat melalui rekening berikut:
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-space-md w-full max-w-3xl mb-space-lg">
+            <!-- BCA -->
+            <div class="relative bg-surface-container-lowest/90 backdrop-blur-md rounded-3xl p-space-md shadow-sm flex flex-col justify-between overflow-hidden">
+              <div class="flex items-center justify-between mb-4">
+                <span class="font-title-lg text-title-lg text-primary font-bold tracking-wider">BCA</span>
+                <span class="material-symbols-outlined text-primary-container text-2xl">account_balance_wallet</span>
+              </div>
+              <div class="my-2">
+                <span class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant">Nomor Rekening</span>
+                <p id="rekening-bca" class="font-headline-md text-headline-md text-on-surface tracking-wider font-medium my-1">8735 0192 44</p>
+                <p class="font-body-md text-body-md text-on-surface-variant">a.n. Aditya Pratama</p>
+              </div>
+              <button type="button" onclick="copyToClipboard('8735019244', this)"
+                      class="mt-4 w-full inline-flex items-center justify-center gap-2 py-2.5 rounded-full bg-surface-container hover:bg-surface-container-high text-on-surface font-label-lg text-label-lg uppercase tracking-wider transition-colors">
+                <span class="material-symbols-outlined text-base text-primary">content_copy</span>
+                <span>Salin No. Rekening</span>
+              </button>
+            </div>
+
+            <!-- Mandiri -->
+            <div class="relative bg-surface-container-lowest/90 backdrop-blur-md rounded-3xl p-space-md shadow-sm flex flex-col justify-between overflow-hidden">
+              <div class="flex items-center justify-between mb-4">
+                <span class="font-title-lg text-title-lg text-primary font-bold tracking-wider">MANDIRI</span>
+                <span class="material-symbols-outlined text-primary-container text-2xl">account_balance_wallet</span>
+              </div>
+              <div class="my-2">
+                <span class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant">Nomor Rekening</span>
+                <p id="rekening-mandiri" class="font-headline-md text-headline-md text-on-surface tracking-wider font-medium my-1">137 00 2489 1029</p>
+                <p class="font-body-md text-body-md text-on-surface-variant">a.n. Fatimah Azzahra</p>
+              </div>
+              <button type="button" onclick="copyToClipboard('1370024891029', this)"
+                      class="mt-4 w-full inline-flex items-center justify-center gap-2 py-2.5 rounded-full bg-surface-container hover:bg-surface-container-high text-on-surface font-label-lg text-label-lg uppercase tracking-wider transition-colors">
+                <span class="material-symbols-outlined text-base text-primary">content_copy</span>
+                <span>Salin No. Rekening</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Kado Fisik -->
+          <div class="w-full max-w-3xl bg-surface-container-lowest/90 backdrop-blur-md rounded-3xl p-space-md sm:p-space-lg shadow-sm flex flex-col sm:flex-row items-center justify-between gap-space-md">
+            <div class="flex items-start gap-space-sm text-left">
+              <div class="w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center flex-shrink-0 mt-1">
+                <span class="material-symbols-outlined text-2xl">featured_seasonal_and_gifts</span>
+              </div>
+              <div>
+                <h4 class="font-title-md text-title-md text-on-surface font-semibold">Kirim Kado Fisik</h4>
+                <p id="alamat-kado" class="font-body-md text-body-md text-on-surface-variant mt-0.5">
+                  Kediaman Mempelai: Jl. Wijaya Kusuma No. 28, Pondok Indah, Jakarta Selatan, DKI Jakarta 12310
+                </p>
+              </div>
+            </div>
+            <button type="button" onclick="copyToClipboard('Jl. Wijaya Kusuma No. 28, Pondok Indah, Jakarta Selatan, DKI Jakarta 12310', this)"
+                    class="whitespace-nowrap inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-surface-container hover:bg-surface-container-high text-on-surface font-label-lg text-label-lg uppercase tracking-wider transition-colors flex-shrink-0">
+              <span class="material-symbols-outlined text-base text-primary">content_copy</span>
+              <span>Salin Alamat</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ✦ Floral Divider 9 ✦ -->
+      <div class="floral-divider relative z-10 w-full py-2 px-4 overflow-visible" aria-hidden="true">
+        <svg viewBox="0 0 500 54" xmlns="http://www.w3.org/2000/svg" class="w-full max-w-2xl mx-auto overflow-visible" style="height:54px">
+          <line x1="0"   y1="27" x2="88"  y2="27" stroke="#c5a028" stroke-width="0.7" stroke-opacity="0.30"/>
+          <line x1="412" y1="27" x2="500" y2="27" stroke="#c5a028" stroke-width="0.7" stroke-opacity="0.30"/>
+          <path d="M88 27 Q112 19 138 26" fill="none" stroke="#c5a028" stroke-width="0.8" stroke-opacity="0.28"/>
+          <path d="M88 27 Q110 35 136 28" fill="none" stroke="#c5a028" stroke-width="0.8" stroke-opacity="0.28"/>
+          <ellipse cx="108" cy="21" rx="10" ry="3.8" fill="#8A9A86" opacity="0.40" transform="rotate(-21 108 21)"/>
+          <ellipse cx="126" cy="32" rx="9"  ry="3.4" fill="#8A9A86" opacity="0.36" transform="rotate(17 126 32)"/>
+          <g transform="translate(146,27)" class="floral-float" opacity="0.70">
+            <ellipse cx="0" cy="-7" rx="4" ry="7" fill="#D4AF37" transform="rotate(0)"/>
+            <ellipse cx="0" cy="-7" rx="4" ry="7" fill="#D4AF37" transform="rotate(60)"/>
+            <ellipse cx="0" cy="-7" rx="4" ry="7" fill="#D4AF37" transform="rotate(120)"/>
+            <ellipse cx="0" cy="-7" rx="4" ry="7" fill="#D4AF37" transform="rotate(180)"/>
+            <ellipse cx="0" cy="-7" rx="4" ry="7" fill="#D4AF37" transform="rotate(240)"/>
+            <ellipse cx="0" cy="-7" rx="4" ry="7" fill="#D4AF37" transform="rotate(300)"/>
+            <circle cx="0" cy="0" r="3" fill="#c5a028"/>
+          </g>
+          <line x1="154" y1="27" x2="216" y2="27" stroke="#c5a028" stroke-width="0.7" stroke-opacity="0.24"/>
+          <g transform="translate(250,27)" class="floral-sway" opacity="0.92">
+            <ellipse cx="0" cy="-13" rx="7"   ry="13" fill="#D4AF37" transform="rotate(0)"/>
+            <ellipse cx="0" cy="-13" rx="7"   ry="13" fill="#D4AF37" transform="rotate(40)"/>
+            <ellipse cx="0" cy="-13" rx="7"   ry="13" fill="#D4AF37" transform="rotate(80)"/>
+            <ellipse cx="0" cy="-13" rx="7"   ry="13" fill="#D4AF37" transform="rotate(120)"/>
+            <ellipse cx="0" cy="-13" rx="7"   ry="13" fill="#D4AF37" transform="rotate(160)"/>
+            <ellipse cx="0" cy="-13" rx="7"   ry="13" fill="#D4AF37" transform="rotate(200)"/>
+            <ellipse cx="0" cy="-13" rx="7"   ry="13" fill="#D4AF37" transform="rotate(240)"/>
+            <ellipse cx="0" cy="-13" rx="7"   ry="13" fill="#D4AF37" transform="rotate(280)"/>
+            <ellipse cx="0" cy="-13" rx="7"   ry="13" fill="#D4AF37" transform="rotate(320)"/>
+            <circle cx="0" cy="0" r="6.5" fill="#c5a028"/>
+            <circle cx="0" cy="0" r="3.2" fill="#ffe08b"/>
+            <circle cx="0" cy="0" r="1.4" fill="#fff5d6"/>
+          </g>
+          <line x1="284" y1="27" x2="346" y2="27" stroke="#c5a028" stroke-width="0.7" stroke-opacity="0.24"/>
+          <g transform="translate(354,27)" class="floral-float" opacity="0.70">
+            <ellipse cx="0" cy="-7" rx="4" ry="7" fill="#D4AF37" transform="rotate(0)"/>
+            <ellipse cx="0" cy="-7" rx="4" ry="7" fill="#D4AF37" transform="rotate(60)"/>
+            <ellipse cx="0" cy="-7" rx="4" ry="7" fill="#D4AF37" transform="rotate(120)"/>
+            <ellipse cx="0" cy="-7" rx="4" ry="7" fill="#D4AF37" transform="rotate(180)"/>
+            <ellipse cx="0" cy="-7" rx="4" ry="7" fill="#D4AF37" transform="rotate(240)"/>
+            <ellipse cx="0" cy="-7" rx="4" ry="7" fill="#D4AF37" transform="rotate(300)"/>
+            <circle cx="0" cy="0" r="3" fill="#c5a028"/>
+          </g>
+          <path d="M362 27 Q386 19 412 26" fill="none" stroke="#c5a028" stroke-width="0.8" stroke-opacity="0.28"/>
+          <path d="M362 27 Q384 35 410 28" fill="none" stroke="#c5a028" stroke-width="0.8" stroke-opacity="0.28"/>
+          <ellipse cx="382" cy="21" rx="10" ry="3.8" fill="#8A9A86" opacity="0.40" transform="rotate(21 382 21)"/>
+          <ellipse cx="398" cy="32" rx="9"  ry="3.4" fill="#8A9A86" opacity="0.36" transform="rotate(-17 398 32)"/>
+        </svg>
+      </div>
+
+      <!-- ──────────────────────────────────────────────────────────────
+           SEKSI 11: PENUTUP
+      ────────────────────────────────────────────────────────────── -->
+      <section class="relative z-10 w-full py-space-xxl px-margin-mobile lg:px-margin text-center flex flex-col items-center">
+        <div class="max-w-2xl mx-auto flex flex-col items-center">
+          <div class="w-16 h-16 rounded-full bg-primary-container/20 text-primary flex items-center justify-center mb-space-md shadow-inner">
+            <span class="material-symbols-outlined text-3xl">sentiment_satisfied</span>
+          </div>
+          <p class="font-headline-md text-headline-md text-primary font-normal mb-space-xs">Ungkapan Terima Kasih</p>
+          <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed max-w-lg mb-space-md">
+            Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir dan memberikan doa restu bagi langkah awal kehidupan rumah tangga kami.
+          </p>
+          <p class="font-label-lg text-label-lg uppercase tracking-[0.25em] text-primary font-semibold mb-space-md">Wassalamu'alaikum Warahmatullahi Wabarakatuh</p>
+          <div class="flex items-center justify-center gap-space-sm mb-space-md text-primary">
+            <span class="w-12 h-[1px] bg-outline-variant"></span>
+            <span class="font-headline-sm text-headline-sm">Aditya &amp; Fatimah</span>
+            <span class="w-12 h-[1px] bg-outline-variant"></span>
+          </div>
+          <p class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest">
+            Keluarga Besar Bpk. Ir. Hendra Gunawan &amp; Bpk. Dr. Ahmad Fauzi
+          </p>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ══════════════════════════════════════════════════════════════════
+       FAB: MUSIK
+  ══════════════════════════════════════════════════════════════════ -->
+  <aside class="fixed bottom-6 right-6 z-50 pointer-events-none">
+    <div class="pointer-events-auto flex items-center gap-space-xs p-2 rounded-full bg-surface/90 backdrop-blur-xl shadow-[0_10px_30px_rgba(116,91,0,0.18)]">
+      <button type="button" aria-label="Toggle Wedding Music"
+              class="w-12 h-12 rounded-full bg-primary text-on-primary flex items-center justify-center hover:bg-primary-container hover:text-on-primary-container transition-transform transform active:scale-95 shadow-md">
+        <span class="material-symbols-outlined text-xl animate-spin" style="animation-duration:8s">music_note</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- ══════════════════════════════════════════════════════════════════
+       FOOTER
+  ══════════════════════════════════════════════════════════════════ -->
+  <footer class="w-full bg-surface-container-low py-space-xl relative overflow-hidden">
+    <div class="max-w-[1240px] mx-auto px-margin-mobile lg:px-margin text-center flex flex-col items-center">
+      <div class="flex items-center justify-center gap-space-sm mb-space-md">
+        <span class="w-12 h-[1px] bg-outline-variant"></span>
+        <span class="material-symbols-outlined text-primary text-lg">star</span>
+        <span class="w-12 h-[1px] bg-outline-variant"></span>
+      </div>
+      <p class="font-headline-md text-headline-md text-primary mb-space-xs">Walimatul 'Urs</p>
+      <p class="font-body-md text-body-md text-on-surface-variant max-w-md mx-auto mb-space-md">
+        Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir untuk memberikan doa restu.
+      </p>
+      <div class="flex flex-wrap items-center justify-center gap-space-md font-label-md text-label-md text-on-surface-variant uppercase tracking-widest">
+        <span>Barakallahu Lakuma</span><span>•</span>
+        <span>Wa Baraka 'Alaikuma</span><span>•</span>
+        <span>Wa Jama'a Bainakuma Fii Khair</span>
+      </div>
+      <p class="font-label-md text-label-md text-on-surface-variant/70 mt-space-lg">© 2025 Islamic Wedding Celebration. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <!-- ══════════════════════════════════════════════════════════════════
+       SCRIPTS — urutan penting: config → modul → main
+  ══════════════════════════════════════════════════════════════════ -->
+  <script src="js/countdown.js"></script>
+  <script src="js/petals.js"></script>
+  <script src="js/gallery.js"></script>
+  <script src="js/rsvp.js"></script>
+  <script src="js/main.js"></script>
+
+</body>
+</html>
