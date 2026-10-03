@@ -146,6 +146,7 @@ function resultPageWithQr_(payload) {
     .mark{width:52px;height:52px;margin:0 auto 16px;border-radius:50%;display:grid;place-items:center;background:#d3e7e1;color:#244348;font-size:26px}
     h1{margin:0 0 10px;color:#456369;font-size:24px}p{line-height:1.5;color:#56615e}
     .qr{display:block;width:240px;height:240px;margin:18px auto;image-rendering:pixelated}
+    .qr[hidden]{display:none!important}
     a{display:inline-block;margin-top:10px;padding:13px 20px;border-radius:999px;background:#456369;color:white;text-decoration:none;font-weight:700}
     .error .mark{background:#ffdad6;color:#93000a}
   </style>
@@ -187,6 +188,7 @@ function resultPageWithQr_(payload) {
         qr.src = 'https://quickchart.io/qr?size=240&margin=1&text=' + encodeURIComponent(ticketUrl);
         qr.hidden = false;
         qr.addEventListener('error', () => {
+          qr.hidden = true;
           message.textContent = 'QR tidak dapat dimuat. Gunakan tautan verifikasi di bawah.';
         });
         verify.href = ticketUrl;
