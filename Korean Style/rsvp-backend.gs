@@ -60,9 +60,7 @@ function doPost(event) {
       body: emailBody
     });
 
-    return postMessagePage_({
-      type: 'wedding-rsvp-result',
-      requestId: requestId,
+    return resultPageWithQr_({
       ok: true,
       attendance: attendance,
       name: name,
@@ -70,9 +68,7 @@ function doPost(event) {
       token: attendance === 'Hadir' ? token : ''
     });
   } catch (error) {
-    return postMessagePage_({
-      type: 'wedding-rsvp-result',
-      requestId: requestId,
+    return resultPageWithQr_({
       ok: false,
       error: error.message || 'RSVP gagal disimpan.'
     });
@@ -129,9 +125,82 @@ function verificationPage_(token) {
   return HtmlService.createHtmlOutput(html).setTitle('Verifikasi Tiket - Ji-hoon & Ha-eun');
 }
 
-function postMessagePage_(payload) {
+function resultPageLegacy_(payload) {
   const serialized = JSON.stringify(payload).replace(/</g, '\\u003c');
-  return HtmlService.createHtmlOutput('<!doctype html><html><body><script>parent.postMessage(' + serialized + ', "*");</script></body></html>');
+  const html = `<!doctype html><html><head><meta name="viewport" content="width=device-width,initial-scale=1"><title>Konfirmasi RSVP</title><style>body{margin:0;min-height:100vh;display:grid;place-items:center;background:#f5f3f0;color:#1b1c1a;font:16px Arial,sans-serif}.card{box-sizing:border-box;width:min(440px,calc(100% - 32px));padding:28px;border:1px solid #d3e7e1;border-radius:24px;background:#fff;text-align:center}.mark{width:52px;height:52px;margin:0 auto 16px;border-radius:50%;display:grid;place-items:center;background:#d3e7e1;color:#244348;font-size:26px}h1{margin:0 0 10px;color:#456369;font-size:24px}p{line-height:1.5;color:#56615e}.qr{width:240px;height:240px;margin:20px auto}.qr canvas{width:100%;height:100%}a,button{display:inline-block;box-sizing:border-box;margin-top:12px;padding:13px 20px;border:0;border-radius:999px;background:#456369;color:white;text-decoration:none;font-weight:700;cursor:pointer}.error .mark{background:#ffdad6;color:#93000a}</style></head><body><main class="card" id="card"><div class="mark" id="mark"></div><h1 id="title"></h1><p id="message"></p><p id="guest"></p><div class="qr" id="qr"></div><a id="verify" hidden>Uji tautan verifikasi</a><p id="hint"></p></main><script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.4/build/qrcode.min.js"></script><script>const result=${serialized};const card=document.getElementById('card');const mark=document.getElementById('mark');const title=document.getElementById('title');const message=document.getElementById('message');const guest=document.getElementById('guest');const qr=document.getElementById('qr');const verify=document.getElementById('verify');const hint=document.getElementById('hint');if(!result.ok){card.classList.add('error');mark.textContent='!';title.textContent='RSVP belum berhasil';message.textContent=result.error||'Terjadi kesalahan saat menyimpan konfirmasi.';hint.textContent='Kembali ke undangan, periksa data, lalu coba lagi.';}else{mark.textContent='✓';title.textContent='Konfirmasi terkirim';guest.textContent=result.name+' · '+result.pax+' tamu';if(result.attendance==='Hadir'&&result.token){message.textContent='Data tersimpan. Tunjukkan QR ini kepada petugas saat tiba.';const ticketUrl=${JSON.stringify(ScriptApp.getService().getUrl() + '?verify=') }+encodeURIComponent(result.token);const canvas=document.createElement('canvas');QRCode.toCanvas(canvas,ticketUrl,{width:240,margin:1,errorCorrectionLevel:'M'},error=>{if(error){message.textContent='RSVP berhasil disimpan, tetapi QR gagal dibuat. Hubungi penyelenggara untuk tiket.';return;}qr.appendChild(canvas);verify.href=ticketUrl;verify.hidden=false;});hint.textContent='Simpan tab ini atau ambil tangkapan layar QR untuk check-in.';}else{qr.hidden=true;message.textContent='Terima kasih sudah mengonfirmasi. RSVP Anda sudah tersimpan.';}}</script></body></html>`;
+  return HtmlService.createHtmlOutput(html).setTitle('Konfirmasi RSVP - Ji-hoon & Ha-eun');
+}
+
+function resultPageWithQr_(payload) {
+  const safePayload = JSON.stringify(payload).replace(/</g, '\\u003c');
+  const verificationBase = ScriptApp.getService().getUrl() + '?verify=';
+  const safeVerificationBase = JSON.stringify(verificationBase).replace(/</g, '\\u003c');
+  const html = `<!doctype html>
+<html lang="id">
+<head>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Konfirmasi RSVP - Ji-hoon &amp; Ha-eun</title>
+  <style>
+    body{margin:0;min-height:100vh;display:grid;place-items:center;background:#f5f3f0;color:#1b1c1a;font:16px Arial,sans-serif}
+    .card{box-sizing:border-box;width:min(440px,calc(100% - 32px));padding:28px;border:1px solid #d3e7e1;border-radius:24px;background:#fff;text-align:center}
+    .mark{width:52px;height:52px;margin:0 auto 16px;border-radius:50%;display:grid;place-items:center;background:#d3e7e1;color:#244348;font-size:26px}
+    h1{margin:0 0 10px;color:#456369;font-size:24px}p{line-height:1.5;color:#56615e}
+    .qr{display:block;width:240px;height:240px;margin:18px auto;image-rendering:pixelated}
+    a{display:inline-block;margin-top:10px;padding:13px 20px;border-radius:999px;background:#456369;color:white;text-decoration:none;font-weight:700}
+    .error .mark{background:#ffdad6;color:#93000a}
+  </style>
+</head>
+<body>
+  <main class="card" id="card">
+    <div class="mark" id="mark"></div>
+    <h1 id="title"></h1>
+    <p id="message"></p>
+    <p id="guest"></p>
+    <img class="qr" id="qr" alt="QR tiket verifikasi kehadiran" hidden>
+    <a id="verify" hidden>Buka tautan verifikasi</a>
+    <p id="hint"></p>
+  </main>
+  <script>
+    const result = ${safePayload};
+    const card = document.getElementById('card');
+    const mark = document.getElementById('mark');
+    const title = document.getElementById('title');
+    const message = document.getElementById('message');
+    const guest = document.getElementById('guest');
+    const qr = document.getElementById('qr');
+    const verify = document.getElementById('verify');
+    const hint = document.getElementById('hint');
+
+    if (!result.ok) {
+      card.classList.add('error');
+      mark.textContent = '!';
+      title.textContent = 'RSVP belum berhasil';
+      message.textContent = result.error || 'Terjadi kesalahan saat menyimpan konfirmasi.';
+      hint.textContent = 'Kembali ke undangan, periksa data, lalu coba lagi.';
+    } else {
+      mark.textContent = '✓';
+      title.textContent = 'Konfirmasi terkirim';
+      guest.textContent = result.name + ' · ' + result.pax + ' tamu';
+      if (result.attendance === 'Hadir' && result.token) {
+        const ticketUrl = ${safeVerificationBase} + encodeURIComponent(result.token);
+        message.textContent = 'Data tersimpan. Tunjukkan QR ini kepada petugas saat tiba.';
+        qr.src = 'https://quickchart.io/qr?size=240&margin=1&text=' + encodeURIComponent(ticketUrl);
+        qr.hidden = false;
+        qr.addEventListener('error', () => {
+          message.textContent = 'QR tidak dapat dimuat. Gunakan tautan verifikasi di bawah.';
+        });
+        verify.href = ticketUrl;
+        verify.hidden = false;
+        hint.textContent = 'Simpan halaman ini atau ambil tangkapan layar QR untuk check-in.';
+      } else {
+        message.textContent = 'Terima kasih sudah mengonfirmasi. RSVP Anda sudah tersimpan.';
+      }
+    }
+  </script>
+</body>
+</html>`;
+
+  return HtmlService.createHtmlOutput(html).setTitle('Konfirmasi RSVP - Ji-hoon & Ha-eun');
 }
 
 function getRsvpSheet_() {
