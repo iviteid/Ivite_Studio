@@ -60,7 +60,9 @@ function doPost(event) {
       body: emailBody
     });
 
-    return resultPageWithQr_({
+    return postMessageResult_({
+      type: 'wedding-rsvp-result',
+      requestId: requestId,
       ok: true,
       attendance: attendance,
       name: name,
@@ -68,7 +70,9 @@ function doPost(event) {
       token: attendance === 'Hadir' ? token : ''
     });
   } catch (error) {
-    return resultPageWithQr_({
+    return postMessageResult_({
+      type: 'wedding-rsvp-result',
+      requestId: requestId,
       ok: false,
       error: error.message || 'RSVP gagal disimpan.'
     });
@@ -205,6 +209,12 @@ function resultPageWithQr_(payload) {
   return HtmlService.createHtmlOutput(html).setTitle('Konfirmasi RSVP - Ji-hoon & Ha-eun');
 }
 
+function postMessageResult_(payload) {
+  const serialized = JSON.stringify(payload).replace(/</g, '\\u003c');
+  const html = '<!doctype html><html><body><script>window.top.postMessage(' + serialized + ', "*");</script></body></html>';
+  return HtmlService.createHtmlOutput(html).setTitle('RSVP');
+}
+
 function getRsvpSheet_() {
   const spreadsheetId = PropertiesService.getScriptProperties().getProperty(RSVP_SHEET_PROPERTY);
   if (!spreadsheetId) throw new Error('Jalankan fungsi setup() terlebih dahulu.');
@@ -214,5 +224,5 @@ function getRsvpSheet_() {
 }
 
 function cleanText(value, maxLength) {
-  return String(value || '').replace(/[\\u0000-\\u001f\\u007f]/g, ' ').trim().slice(0, maxLength);
+  return String(value || '').replace(/[\x00-\x1F\x7F]/g, ' ').trim().slice(0, maxLength);
 }
