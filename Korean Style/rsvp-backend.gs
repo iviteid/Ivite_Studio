@@ -27,7 +27,6 @@ function setup() {
 
 function doPost(event) {
   const parameters = event && event.parameter ? event.parameter : {};
-  const requestId = String(parameters.requestId || '');
 
   try {
     const name = cleanText(parameters.name, 120);
@@ -60,30 +59,77 @@ function doPost(event) {
       body: emailBody
     });
 
-    return postMessageResult_({
-      type: 'wedding-rsvp-result',
-      requestId: requestId,
-      ok: true,
-      attendance: attendance,
-      name: name,
-      pax: pax,
-      token: attendance === 'Hadir' ? token : ''
-    });
+    return ContentService
+      .createTextOutput(JSON.stringify({
+        ok: true,
+        attendance: attendance,
+        name: name,
+        pax: pax,
+        token: attendance === 'Hadir' ? token : ''
+      }))
+      .setMimeType(ContentService.MimeType.JSON);
+
   } catch (error) {
-    return postMessageResult_({
-      type: 'wedding-rsvp-result',
-      requestId: requestId,
-      ok: false,
-      error: error.message || 'RSVP gagal disimpan.'
-    });
+    return ContentService
+      .createTextOutput(JSON.stringify({
+        ok: false,
+        error: error.message || 'RSVP gagal disimpan.'
+      }))
+      .setMimeType(ContentService.MimeType.JSON);
   }
 }
 
 function doGet(event) {
-  const token = event && event.parameter ? String(event.parameter.verify || '') : '';
-  if (token) return verificationPage_(token);
-
+  const params = event && event.parameter ? event.parameter : {};
+  if (params.verify) return verificationPage_(String(params.verify));
+  if (params.action === 'rsvp') return handleRsvpGet_(params);
   return HtmlService.createHtmlOutput('Wedding RSVP endpoint is ready.');
+}
+
+function handleRsvpGet_(params) {
+  const callback = /^[a-zA-Z_$][\w$]*$/.test(params.callback || '') ? params.callback : '';
+
+  function respond(data) {
+    const json = JSON.stringify(data);
+    return ContentService
+      .createTextOutput(callback ? callback + '(' + json + ')' : json)
+      .setMimeType(callback ? ContentService.MimeType.JAVASCRIPT : ContentService.MimeType.JSON);
+  }
+
+  try {
+    const name = cleanText(params.name, 120);
+    const message = cleanText(params.message, 1000);
+    const attendance = params.attendance === 'tidak' ? 'Tidak hadir' : 'Hadir';
+    const pax = Math.max(1, Math.min(3, Number(params.pax) || 1));
+    if (!name || !message) throw new Error('Nama dan doa wajib diisi.');
+
+    const sheet = getRsvpSheet_();
+    const token = Utilities.getUuid().replace(/-/g, '');
+    const status = attendance === 'Hadir' ? 'Valid' : 'Tidak hadir';
+    sheet.appendRow([new Date(), name, pax, attendance, message, token, status, '']);
+
+    const ticketUrl = ScriptApp.getService().getUrl() + '?verify=' + encodeURIComponent(token);
+    const emailBody = [
+      'RSVP baru untuk pernikahan Ji-hoon & Ha-eun',
+      '',
+      'Nama: ' + name,
+      'Jumlah tamu: ' + pax,
+      'Kehadiran: ' + attendance,
+      'Doa: ' + message,
+      attendance === 'Hadir' ? 'Link verifikasi tiket: ' + ticketUrl : ''
+    ].filter(Boolean).join('\n');
+
+    MailApp.sendEmail({
+      to: RSVP_EMAIL,
+      subject: 'RSVP ' + attendance + ' - ' + name,
+      body: emailBody
+    });
+
+    return respond({ ok: true, attendance: attendance, name: name, pax: pax, token: attendance === 'Hadir' ? token : '' });
+
+  } catch (error) {
+    return respond({ ok: false, error: error.message || 'RSVP gagal disimpan.' });
+  }
 }
 
 function checkIn(token) {
