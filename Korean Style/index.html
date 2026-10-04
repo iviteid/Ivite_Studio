@@ -424,7 +424,7 @@
 <div class="lg:col-span-6 flex flex-col md:flex-row-reverse items-center md:items-end gap-6 lg:mt-16">
 <!-- Architectural Portrait Frame (Reverse Curved Arch) -->
 <div class="relative w-64 sm:w-72 aspect-[3/4] clip-oval-reverse overflow-hidden bg-surface-container-low shadow-[0_20px_45px_rgba(69,99,105,0.14)] border border-secondary-fixed-dim/40 group shrink-0">
-<img alt="Kim Ha-eun Bride Portrait" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 translate-y-1" src="Image/woman_three.png"/>
+<img alt="Kim Ha-eun Bride Portrait" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 -translate-y-4" src="Image/woman_three.png"/>
 <div class="absolute top-4 right-4 px-3 py-1 rounded-full bg-surface-container-lowest/80 backdrop-blur-md text-[10px] tracking-widest uppercase text-primary font-semibold">
                 The Bride
               </div>
@@ -934,6 +934,7 @@
         document.body.classList.remove('overflow-hidden');
         window.scrollTo({ top: 0, behavior: 'instant' });
         setTimeout(() => { welcomeCurtain.style.display = 'none'; }, 1050);
+        loadWishes();
         const weddingAudio = document.getElementById('wedding-audio');
         if (weddingAudio) {
           weddingAudio.play().then(() => {
@@ -1147,7 +1148,20 @@ if (rsvpForm) {
     }
   });
 }
-    function addWishNote(guestName, guestMessage) {
+    function formatWishTime(isoTime) {
+      if (!isoTime) return 'Baru saja';
+      const diff = Date.now() - new Date(isoTime).getTime();
+      const mins = Math.floor(diff / 60000);
+      if (mins < 2) return 'Baru saja';
+      if (mins < 60) return mins + ' menit lalu';
+      const hours = Math.floor(mins / 60);
+      if (hours < 24) return hours + ' jam lalu';
+      const days = Math.floor(hours / 24);
+      if (days === 1) return 'Kemarin';
+      return days + ' hari lalu';
+    }
+
+    function addWishNote(guestName, guestMessage, isoTime, prepend = true) {
       const wall = document.getElementById('wishes-wall');
       if (!wall) return;
       const rotations = ['-rotate-1', 'rotate-1', 'rotate-0', '-rotate-2'];
@@ -1157,26 +1171,21 @@ if (rsvpForm) {
       const initial = guestName.trim().charAt(0).toUpperCase();
 
       const note = document.createElement('div');
-      note.className = `wish-animate p-5 rounded-3xl bg-surface-container-lowest border border-secondary-fixed-dim/30 shadow-[0_8px_20px_rgba(69,99,105,0.06)] transform hover:scale-[1.01] ${rot} transition-all`;
+      note.className = `${prepend ? 'wish-animate ' : ''}p-5 rounded-3xl bg-surface-container-lowest border border-secondary-fixed-dim/30 shadow-[0_8px_20px_rgba(69,99,105,0.06)] transform hover:scale-[1.01] ${rot} transition-all`;
 
       const header = document.createElement('div');
       header.className = 'flex items-center justify-between mb-2';
-
       const left = document.createElement('div');
       left.className = 'flex items-center gap-2';
-
       const avatar = document.createElement('span');
       avatar.className = `w-7 h-7 rounded-full ${bg} flex items-center justify-center text-primary text-xs font-semibold`;
       avatar.textContent = initial;
-
       const nameEl = document.createElement('span');
       nameEl.className = 'text-xs font-semibold text-on-surface';
       nameEl.textContent = guestName;
-
-      const time = document.createElement('span');
-      time.className = 'text-[10px] text-tertiary';
-      time.textContent = 'Baru saja';
-
+      const timeEl = document.createElement('span');
+      timeEl.className = 'text-[10px] text-tertiary';
+      timeEl.textContent = formatWishTime(isoTime);
       const msg = document.createElement('p');
       msg.className = 'text-xs text-on-surface-variant font-light leading-relaxed';
       msg.textContent = guestMessage;
@@ -1184,11 +1193,12 @@ if (rsvpForm) {
       left.appendChild(avatar);
       left.appendChild(nameEl);
       header.appendChild(left);
-      header.appendChild(time);
+      header.appendChild(timeEl);
       note.appendChild(header);
       note.appendChild(msg);
 
-      wall.prepend(note);
+      if (prepend) wall.prepend(note);
+      else wall.appendChild(note);
 
       const counter = document.getElementById('wishes-counter');
       if (counter) {
@@ -1197,7 +1207,23 @@ if (rsvpForm) {
       }
     }
 
-    // Audio playback controls
+    async function loadWishes() {
+      try {
+        const url = new URL(RSVP_ENDPOINT_URL);
+        url.searchParams.set('action', 'wishes');
+        const response = await fetch(url.toString(), { credentials: 'omit' });
+        if (!response.ok) return;
+        const data = await response.json();
+        if (!data.ok || !data.wishes || !data.wishes.length) return;
+        const wall = document.getElementById('wishes-wall');
+        if (!wall) return;
+        wall.innerHTML = '';
+        data.wishes.forEach(w => addWishNote(w.name, w.message, w.time, false));
+        const counter = document.getElementById('wishes-counter');
+        if (counter) counter.textContent = data.wishes.length + ' Pesan Terbaru';
+      } catch (_) {}
+    }
+
     const audioBtn = document.getElementById('audio-toggle-btn');
     const weddingAudio = document.getElementById('wedding-audio');
 

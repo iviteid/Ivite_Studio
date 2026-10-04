@@ -83,6 +83,7 @@ function doGet(event) {
   const params = event && event.parameter ? event.parameter : {};
   if (params.verify) return verificationPage_(String(params.verify));
   if (params.action === 'rsvp') return handleRsvpGet_(params);
+  if (params.action === 'wishes') return handleWishesGet_(params);
   return HtmlService.createHtmlOutput('Wedding RSVP endpoint is ready.');
 }
 
@@ -129,6 +130,38 @@ function handleRsvpGet_(params) {
 
   } catch (error) {
     return respond({ ok: false, error: error.message || 'RSVP gagal disimpan.' });
+  }
+}
+
+function handleWishesGet_(params) {
+  const callback = /^[a-zA-Z_$][\w$]*$/.test(params.callback || '') ? params.callback : '';
+
+  function respond(data) {
+    const json = JSON.stringify(data);
+    return ContentService
+      .createTextOutput(callback ? callback + '(' + json + ')' : json)
+      .setMimeType(callback ? ContentService.MimeType.JAVASCRIPT : ContentService.MimeType.JSON);
+  }
+
+  try {
+    const sheet = getRsvpSheet_();
+    const rows = sheet.getDataRange().getValues();
+    const wishes = [];
+    for (let i = Math.max(1, rows.length - 30); i < rows.length; i++) {
+      const name = String(rows[i][1] || '').trim();
+      const message = String(rows[i][4] || '').trim();
+      if (name && message) {
+        wishes.push({
+          name: name,
+          message: message,
+          time: rows[i][0] ? new Date(rows[i][0]).toISOString() : ''
+        });
+      }
+    }
+    wishes.reverse();
+    return respond({ ok: true, wishes: wishes });
+  } catch (e) {
+    return respond({ ok: false, wishes: [] });
   }
 }
 
