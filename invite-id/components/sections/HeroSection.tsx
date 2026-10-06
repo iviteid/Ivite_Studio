@@ -2,11 +2,11 @@ import { SITE } from '@/constants/site'
 
 export default function HeroSection() {
   return (
-    <main className="relative w-full max-w-7xl mx-auto px-4 pt-6 pb-24 min-h-[calc(100vh-80px)] flex flex-col items-center justify-center">
+    <main className="relative w-full max-w-7xl mx-auto px-4 pt-4 sm:pt-6 pb-16 sm:pb-24 min-h-[calc(100svh-72px)] flex flex-col items-center justify-center">
 
       {/* 1. Top-Left: Sticky Note + Checkmark Tile */}
       <div
-        className="absolute -left-2 lg:left-6 top-4 lg:top-8 z-10 select-none transition-transform hover:scale-105 duration-300 pointer-events-auto animate-float"
+        className="hidden md:block absolute -left-2 lg:left-6 top-4 lg:top-8 z-10 select-none transition-transform hover:scale-105 duration-300 pointer-events-auto animate-float"
         data-purpose="sticky-note-component"
       >
         {/* Underlayer moodboard card */}
@@ -19,7 +19,7 @@ export default function HeroSection() {
               ✦
             </div>
           </div>
-          <p className="font-handwriting text-xl leading-snug font-bold mt-1.5 text-stone-900 tracking-wide">
+          <p className="font-handwriting text-xl leading-snug mt-1.5 text-stone-900 tracking-wide">
             Simpan tanggal &amp; bagikan kebahagiaan dengan undangan penuh kesan ✨
           </p>
           <div className="mt-2.5 flex items-center justify-between text-[10px]">
@@ -41,7 +41,7 @@ export default function HeroSection() {
 
       {/* 2. Top-Right: Reminders / RSVP Widget */}
       <div
-        className="absolute -right-2 lg:right-8 top-3 lg:top-6 z-10 select-none pointer-events-auto transition-transform hover:scale-105 duration-300 animate-float-alt"
+        className="hidden md:block absolute -right-2 lg:right-8 top-3 lg:top-6 z-10 select-none pointer-events-auto transition-transform hover:scale-105 duration-300 animate-float-alt"
         data-purpose="reminders-component"
       >
         {/* Angled Underlay Card */}
@@ -189,7 +189,7 @@ export default function HeroSection() {
 
       {/* CENTER HERO CONTENT */}
       <div
-        className="relative z-10 flex flex-col items-center text-center max-w-3xl mx-auto my-auto px-4 py-8"
+        className="relative z-10 flex flex-col items-center text-center max-w-3xl mx-auto my-auto px-2 sm:px-4 py-6 sm:py-8"
         data-purpose="hero-main-content"
       >
         {/* Central Brand Wax-Sealed Invitation Card Tile */}

@@ -12,7 +12,7 @@ const delays = [0, 150, 300]
 export default function LayananSection() {
   return (
     <section
-      className="relative w-full max-w-7xl mx-auto px-6 py-20 lg:py-28 border-t border-stone-200/60"
+      className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 py-14 sm:py-20 lg:py-28 border-t border-stone-200/60"
       id="layanan"
     >
       {/* Section Header */}

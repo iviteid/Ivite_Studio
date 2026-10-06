@@ -12,14 +12,14 @@ export default function FeaturesSection() {
   const rightFeatures = FEATURES.slice(8, 16)
 
   return (
-    <section className="relative w-full max-w-7xl mx-auto px-6 py-20 lg:py-28" id="fitur">
+    <section className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 py-14 sm:py-20 lg:py-28" id="fitur">
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 items-center">
 
           {/* Left: Woman Photo Orbit */}
           <Reveal direction="left" className="lg:col-span-6">
-            <div className="relative flex items-center justify-center min-h-[480px] select-none py-6">
-              <div className="relative w-full max-w-[460px] aspect-square flex items-center justify-center">
+            <div className="relative flex items-center justify-center min-h-[360px] sm:min-h-[480px] select-none py-8 sm:py-6">
+              <div className="relative w-full max-w-[320px] sm:max-w-[460px] aspect-square flex items-center justify-center">
                 {/* Spinning dashed orbit ring */}
                 <div className="absolute inset-4 rounded-full border-2 border-dashed border-amber-200/70 animate-spin-slow pointer-events-none" />
                 {/* Warm glow blob */}
@@ -37,30 +37,30 @@ export default function FeaturesSection() {
                 </div>
 
                 {/* Stat: 180 Siap Hadir */}
-                <div className="absolute top-2 right-4 sm:right-10 bg-gradient-to-br from-[#fcf7ee] to-[#f4ede0] text-stone-900 px-4 py-2.5 rounded-2xl shadow-xl border border-amber-200/80 flex flex-col items-center justify-center min-w-[90px] animate-bounce-subtle z-20">
-                  <span className="text-2xl sm:text-3xl font-serif font-bold leading-none tracking-tight text-amber-950">180</span>
-                  <span className="text-[10px] font-semibold tracking-wider mt-1 text-[#A8823B] uppercase">Siap Hadir</span>
+                <div className="absolute top-2 right-0 sm:right-10 bg-gradient-to-br from-[#fcf7ee] to-[#f4ede0] text-stone-900 px-3 sm:px-4 py-2 sm:py-2.5 rounded-2xl shadow-xl border border-amber-200/80 flex flex-col items-center justify-center min-w-[76px] sm:min-w-[90px] animate-bounce-subtle z-20">
+                  <span className="text-xl sm:text-3xl font-serif font-bold leading-none tracking-tight text-amber-950">180</span>
+                  <span className="text-[9px] sm:text-[10px] font-semibold tracking-wider mt-1 text-[#A8823B] uppercase">Siap Hadir</span>
                 </div>
 
                 {/* Stat: 26 Tidak Hadir */}
-                <div className="absolute top-24 right-0 sm:right-4 bg-gradient-to-br from-[#faf4f2] to-[#f5e9e5] text-stone-900 px-4 py-2.5 rounded-2xl shadow-xl border border-rose-200/80 flex flex-col items-center justify-center min-w-[90px] z-20">
-                  <span className="text-2xl sm:text-3xl font-serif font-bold leading-none tracking-tight text-stone-800">26</span>
-                  <span className="text-[10px] font-semibold tracking-wider mt-1 text-rose-800/80 uppercase">Tidak Hadir</span>
+                <div className="absolute top-20 sm:top-24 right-0 sm:right-4 bg-gradient-to-br from-[#faf4f2] to-[#f5e9e5] text-stone-900 px-3 sm:px-4 py-2 sm:py-2.5 rounded-2xl shadow-xl border border-rose-200/80 flex flex-col items-center justify-center min-w-[76px] sm:min-w-[90px] z-20">
+                  <span className="text-xl sm:text-3xl font-serif font-bold leading-none tracking-tight text-stone-800">26</span>
+                  <span className="text-[9px] sm:text-[10px] font-semibold tracking-wider mt-1 text-rose-800/80 uppercase">Tidak Hadir</span>
                 </div>
 
                 {/* Wish card: Doni Irza */}
-                <div className="absolute -bottom-2 left-1 sm:left-4 bg-white/95 backdrop-blur-md p-3 rounded-2xl shadow-lg border border-amber-200/70 max-w-[210px] z-20 rotate-[-2deg]">
+                <div className="absolute -bottom-2 left-0 sm:left-4 bg-white/95 backdrop-blur-md p-2.5 sm:p-3 rounded-2xl shadow-lg border border-amber-200/70 max-w-[160px] sm:max-w-[210px] z-20 rotate-[-2deg]">
                   <div className="flex items-center gap-1.5 mb-1">
                     <span className="w-2 h-2 rounded-full bg-[#A8823B]" />
                     <p className="text-xs font-serif font-bold text-stone-900 leading-tight">Doni Irza</p>
                   </div>
                   <p className="text-[10px] text-stone-600 leading-snug">
-                    Semoga menjadi keluarga yang Sakinah Mawaddah wa Rahmah, Aamiin ✨
+                    Semoga Sakinah Mawaddah wa Rahmah ✨
                   </p>
                 </div>
 
-                {/* Wish card: Evita */}
-                <div className="absolute -bottom-3 right-1 sm:right-6 bg-white/95 backdrop-blur-md p-3 rounded-2xl shadow-lg border border-amber-200/70 max-w-[210px] z-20 rotate-[1deg]">
+                {/* Wish card: Evita — hidden on xs, show sm+ */}
+                <div className="hidden sm:block absolute -bottom-3 right-6 bg-white/95 backdrop-blur-md p-3 rounded-2xl shadow-lg border border-amber-200/70 max-w-[210px] z-20 rotate-[1deg]">
                   <div className="flex items-center gap-1.5 mb-1">
                     <span className="w-2 h-2 rounded-full bg-[#C5A059]" />
                     <p className="text-xs font-serif font-bold text-stone-900 leading-tight">Evita</p>
@@ -70,8 +70,8 @@ export default function FeaturesSection() {
                   </p>
                 </div>
 
-                {/* Wish card: Chelvin */}
-                <div className="absolute bottom-20 right-1 sm:right-6 bg-white/95 backdrop-blur-md p-3 rounded-2xl shadow-lg border border-rose-200/70 max-w-[210px] z-20 rotate-[-1.5deg]">
+                {/* Wish card: Chelvin — hidden on xs, show sm+ */}
+                <div className="hidden sm:block absolute bottom-20 right-6 bg-white/95 backdrop-blur-md p-3 rounded-2xl shadow-lg border border-rose-200/70 max-w-[210px] z-20 rotate-[-1.5deg]">
                   <div className="flex items-center gap-1.5 mb-1">
                     <span className="w-2 h-2 rounded-full bg-rose-400" />
                     <p className="text-xs font-serif font-bold text-stone-900 leading-tight">Chelvin</p>

@@ -3,7 +3,7 @@ import { SITE } from '@/constants/site'
 export default function Footer() {
   return (
     <footer className="w-full bg-[#f6f4ee] text-stone-600 pt-16 pb-12 border-t border-amber-200/70 relative z-20">
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 pb-16 border-b border-stone-200/80">
           {/* Brand Column */}
           <div className="lg:col-span-5 space-y-5">

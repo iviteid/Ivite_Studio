@@ -2,7 +2,7 @@ import Reveal from '@/components/ui/Reveal'
 
 export default function IntroSection() {
   return (
-    <section className="relative w-full max-w-7xl mx-auto px-6 py-20 lg:py-28" id="kata-pengantar">
+    <section className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 py-14 sm:py-20 lg:py-28" id="kata-pengantar">
       <div className="max-w-4xl mx-auto text-center mb-16">
         <Reveal direction="up">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-stone-200/80 shadow-xs mb-6">

@@ -9,9 +9,9 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Inter', 'sans-serif'],
-        serif: ['Cormorant Garamond', 'serif'],
-        handwriting: ['Caveat', 'cursive'],
+        sans: ['var(--font-sans)', 'Plus Jakarta Sans', 'sans-serif'],
+        serif: ['var(--font-fraunces)', 'Fraunces', 'Georgia', 'serif'],
+        handwriting: ['var(--font-pacifico)', 'Pacifico', 'cursive'],
       },
       colors: {
         brand: {

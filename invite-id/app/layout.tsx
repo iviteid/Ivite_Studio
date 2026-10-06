@@ -1,25 +1,25 @@
 import type { Metadata } from 'next'
-import { Inter, Cormorant_Garamond, Caveat } from 'next/font/google'
+import { Plus_Jakarta_Sans, Fraunces, Pacifico } from 'next/font/google'
 import './globals.css'
 
-const inter = Inter({
+const plusJakarta = Plus_Jakarta_Sans({
   subsets: ['latin'],
-  variable: '--font-inter',
+  variable: '--font-sans',
   display: 'swap',
 })
 
-const cormorant = Cormorant_Garamond({
+const fraunces = Fraunces({
   subsets: ['latin'],
-  weight: ['500', '600', '700'],
+  weight: 'variable',
   style: ['normal', 'italic'],
-  variable: '--font-cormorant',
+  variable: '--font-fraunces',
   display: 'swap',
 })
 
-const caveat = Caveat({
+const pacifico = Pacifico({
   subsets: ['latin'],
-  weight: ['500', '600', '700'],
-  variable: '--font-caveat',
+  weight: ['400'],
+  variable: '--font-pacifico',
   display: 'swap',
 })
 
@@ -37,7 +37,7 @@ export default function RootLayout({
   return (
     <html lang="id">
       <body
-        className={`${inter.variable} ${cormorant.variable} ${caveat.variable} font-sans min-h-screen text-stone-800 antialiased overflow-x-hidden selection:bg-amber-100 selection:text-amber-900`}
+        className={`${plusJakarta.variable} ${fraunces.variable} ${pacifico.variable} font-sans min-h-screen text-stone-800 antialiased overflow-x-hidden selection:bg-amber-100 selection:text-amber-900`}
       >
         {children}
       </body>
