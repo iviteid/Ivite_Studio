@@ -1,0 +1,193 @@
+---
+import Botanical from '../components/Botanical.astro';
+import Gunungan from '../components/Gunungan.astro';
+import Janur from '../components/Janur.astro';
+import Decoration from '../components/Decoration.astro';
+import AmbientPetals from '../components/AmbientPetals.astro';
+const photos = [
+ {src: '/images/rings.jpg', alt: 'Cincin pernikahan dan rangkaian bunga di atas meja', caption: 'A little promise', credit: 'Kari Bjorn Photography', url: 'https://unsplash.com/photos/9x86c15dlCY'},
+ {src: '/images/bouquet.jpg', alt: 'Buket bunga dengan detail cincin pernikahan', caption: 'Love in the little things', credit: 'Ashley Smith', url: 'https://unsplash.com/photos/txBkYdx6p3Q'},
+ {src: '/images/reception.jpg', alt: 'Dekorasi meja pernikahan dengan bunga dan lilin', caption: 'A place for our people', credit: 'Jen Vazquez', url: 'https://unsplash.com/photos/IAXH4tMEx_s'},
+];
+const wedding = { names: "[COUPLE'S NAMES]", date: '[WEDDING DATE]', ceremony: '[CEREMONY DETAILS]', venue: '[VENUE]' };
+---
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="A modern Javanese wedding invitation. Rooted in tradition, written in love." />
+<title>Janji — A celebration of love</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@400;500;600&family=Italianno&display=swap" rel="stylesheet"/>
+</head>
+<body>
+<aside class="rail"><a class="wordmark" href="#home">janji<span>THE WEDDING EDITION</span></a><nav aria-label="Main navigation"><a class="active" href="#home"><span>01</span> The invitation</a><a href="#celebration"><span>02</span> The celebration</a><a href="#venue"><span>03</span> The venue</a><a href="#memories"><span>04</span> Our moments</a></nav><div class="rail-bottom"><Gunungan class="rail-gunungan" /><p>Rooted in tradition.<br/>Written in love.</p><span class="edition">JAVA · A LOVE STORY</span></div></aside>
+<div class="reading-progress" aria-hidden="true"></div>
+<main id="home">
+<header class="topbar"><span>A CELEBRATION OF TWO SOULS</span><div class="topbar-actions"><button id="motion-toggle" class="motion-toggle" aria-label="Jeda animasi" aria-pressed="false"><span aria-hidden="true">Ⅱ</span><span class="motion-label">Jeda animasi</span></button><button class="print-button" id="print"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M7 8V3h10v5M7 17H4V9h16v8h-3M7 14h10v7H7z"/></svg> Print invitation <span>↗</span></button></div></header>
+<div class="invitation-wrap">
+<article class="invitation" aria-label="Wedding invitation">
+<AmbientPetals />
+<Decoration file="ivory-flowers.webp" class="invitation-floral" eager />
+<Decoration file="gold-bouquet.webp" class="invitation-bouquet" eager />
+<div class="card-top"><span>THE WEDDING OF</span><Gunungan class="gunungan-header" /><span>WITH LOVE & BLESSINGS</span></div>
+<div class="janur-corner janur-left"><Janur /></div>
+<div class="janur-corner janur-right"><Janur /></div>
+<div class="gunungan-watermark"><Gunungan /></div>
+<div class="heritage-frame" aria-hidden="true"></div>
+<div class="vertical-note">A NEW CHAPTER, TOGETHER</div>
+<div class="botanical"><Botanical /></div>
+<div class="intro"><span class="overline">TWO HEARTS. ONE BEAUTIFUL PROMISE.</span><p>Some things are simply<br/><em>meant to be.</em></p></div>
+<div class="names"><h1>{wedding.names}</h1><span class="handwritten">a lifetime of us</span></div>
+<div class="invitation-message"><span class="small-line"></span><p>With the blessings of our families,<br/>we invite you to share in the joy of our union.</p></div>
+<div class="date-block"><span class="overline">SAVE THE DATE</span><p>{wedding.date}</p><span class="date-note">A day to remember. A love to celebrate.</span></div>
+<div class="card-footer"><span>✳</span><span>TOGETHER IS A BEAUTIFUL PLACE TO BE</span><span>01 / 03</span></div>
+<div class="pattern" aria-hidden="true"><svg width="100%" height="24"><defs><pattern id="kawung" width="38" height="24" patternUnits="userSpaceOnUse"><g stroke="currentColor" stroke-width=".65" fill="none"><ellipse cx="9.5" cy="6" rx="9" ry="5.5" transform="rotate(32 9.5 6)"/><ellipse cx="28.5" cy="6" rx="9" ry="5.5" transform="rotate(-32 28.5 6)"/><ellipse cx="9.5" cy="18" rx="9" ry="5.5" transform="rotate(-32 9.5 18)"/><ellipse cx="28.5" cy="18" rx="9" ry="5.5" transform="rotate(32 28.5 18)"/></g></pattern></defs><rect width="100%" height="24" fill="url(#kawung)"/></svg></div>
+</article>
+<div class="under-card"><span>AN INVITATION, A KEEPSAKE, A LITTLE PIECE OF OUR STORY.</span><a href="#celebration">Discover the celebration <span>↓</span></a></div>
+</div>
+<section class="couple-section" aria-label="Foto pasangan pengantin">
+ <Decoration file="wedding-rings.webp" class="couple-rings" />
+ <figure class="couple-photo"><button class="photo-open" data-photo="/images/couple-editorial.png" data-alt="Potret contoh AI pasangan pengantin dalam busana Jawa ivory" aria-label="Lihat foto pengantin ukuran penuh"><img src="/images/couple-editorial.png" alt="Potret contoh AI pasangan pengantin dalam busana Jawa ivory" width="1086" height="1448" loading="lazy"/><span class="photo-expand" aria-hidden="true">↗</span></button><figcaption>FOTO CONTOH AI · JAVANESE WEDDING EDITORIAL</figcaption></figure>
+ <div class="couple-copy"><span class="overline">THE TWO OF US</span><h2>Two stories.<br/><em>One forever.</em></h2><span class="handwritten">you, me & every tomorrow</span><p>A love that feels like coming home.<br/>A promise to walk through life, together.</p><Gunungan class="couple-emblem" /></div>
+</section>
+<section id="celebration" class="details-section"><div class="section-label">02 / THE CELEBRATION</div><div class="section-heading"><h2>A promise.<br/><em>A beginning.</em></h2><p>In the warmth of our heritage and the company of our favourite people, we begin our forever.</p></div><div class="detail-grid"><div><span class="overline">THE DAY</span><h3>{wedding.date}</h3><p>Come for the promise.<br/>Stay for the celebration.</p></div><div><span class="overline">THE CEREMONY</span><h3>{wedding.ceremony}</h3><p>A meaningful moment,<br/>surrounded by love.</p></div></div></section>
+<section id="venue" class="venue-section"><Decoration file="gold-butterflies.webp" class="venue-butterflies" /><span class="section-label">03 / THE VENUE</span><div class="venue-content"><div><span class="overline">WHERE WE BEGIN</span><h2>{wedding.venue}</h2><p>The place where our two stories become one.</p></div><div class="venue-art" aria-hidden="true"><svg viewBox="0 0 300 150" fill="none" stroke="currentColor"><path d="M20 130h260M40 130V80h220v50M25 80h250L150 20 25 80ZM70 80v50m40-50v50m80-50v50m40-50v50M125 130V98h50v32M100 43h100M137 26V10h26v16M130 10h40M150 0v10M10 140h280"/><path d="M40 74h220M65 62h170M92 49h116" opacity=".5"/></svg></div></div></section>
+<section id="memories" class="gallery-section"><Decoration file="paper-flowers.webp" class="gallery-floral" /><span class="section-label">04 / OUR MOMENTS</span><div class="gallery-heading"><h2>Little moments.<br/><em>Lasting memories.</em></h2><p>A few beautiful details of a day filled with love.</p></div><div class="photo-gallery">{photos.map((photo, i) => <figure><button class="photo-open" data-photo={photo.src} data-alt={photo.alt} aria-label={`Lihat foto: ${photo.caption}`}><img src={photo.src} alt={photo.alt} loading="lazy" width="1200" height="1500"/><span class="photo-expand" aria-hidden="true">↗</span></button><figcaption><span>0{i + 1}</span> {photo.caption}</figcaption><a class="photo-credit" href={photo.url} target="_blank" rel="noreferrer">Foto contoh · {photo.credit} / Unsplash</a></figure>)}</div></section>
+<dialog class="photo-dialog" aria-label="Foto pernikahan ukuran penuh"><button class="close-photo" aria-label="Tutup foto">×</button><img alt=""/><p></p></dialog>
+<footer class="site-footer"><a class="wordmark" href="#home">janji</a><p>With full hearts, we look forward to seeing you.</p><span>MADE OF LOVE & A LITTLE TRADITION</span></footer>
+</main>
+<script>
+ const dialog = document.querySelector<HTMLDialogElement>('.photo-dialog');
+ const fullPhoto = dialog?.querySelector('img');
+ document.querySelectorAll<HTMLButtonElement>('.photo-open').forEach(button => button.addEventListener('click', () => {
+   if (!dialog || !fullPhoto) return;
+   fullPhoto.src = button.dataset.photo || ''; fullPhoto.alt = button.dataset.alt || '';
+   const caption = dialog.querySelector('p'); if (caption) caption.textContent = fullPhoto.alt;
+   dialog.showModal();
+ }));
+ dialog?.querySelector('.close-photo')?.addEventListener('click', () => dialog.close());
+ dialog?.addEventListener('click', event => {if (event.target === dialog) dialog.close();});
+ document.querySelector('#print')?.addEventListener('click', () => window.print());
+ const links = document.querySelectorAll('nav a');
+ const observer = new IntersectionObserver(entries => {for (const entry of entries) {if (entry.isIntersecting) {links.forEach(link => link.classList.toggle('active', link.getAttribute('href') === '#' + entry.target.id));}}}, {rootMargin: '-15% 0px -45% 0px'});
+ document.querySelectorAll('main[id], section[id]').forEach(section => observer.observe(section));
+
+ // Animate only visible content; everything stays readable without JavaScript.
+ const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+ const animations = new Set<Animation>();
+ const revealObserver = new IntersectionObserver(entries => {
+   entries.forEach(entry => {
+     if (!entry.isIntersecting) return;
+     revealObserver.unobserve(entry.target);
+     if (reducedMotion.matches || document.body.classList.contains('motion-stopped')) return;
+     const animation = entry.target.animate(
+       [{opacity: 0, transform: 'translateY(24px)'}, {opacity: 1, transform: 'translateY(0)'}],
+       {duration: 900, easing: 'cubic-bezier(.22,1,.36,1)', fill: 'none'}
+     );
+     animations.add(animation);
+     animation.finished.then(() => animations.delete(animation)).catch(() => animations.delete(animation));
+   });
+ }, {threshold: .08});
+ document.querySelectorAll('.intro, .names, .invitation-message, .date-block, .couple-photo, .couple-copy, .section-heading, .detail-grid > div, .venue-content, .gallery-heading, .photo-gallery figure').forEach(element => revealObserver.observe(element));
+ const stopAnimations = () => {animations.forEach(animation => animation.cancel()); animations.clear();};
+ reducedMotion.addEventListener('change', () => {if (reducedMotion.matches) stopAnimations();});
+ window.addEventListener('beforeprint', stopAnimations);
+
+ const motionToggle = document.querySelector<HTMLButtonElement>('#motion-toggle');
+ let userPaused = false;
+ const card = document.querySelector<HTMLElement>('.invitation');
+ const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)');
+ let pointerFrame = 0;
+ const resetDepth = () => {
+   cancelAnimationFrame(pointerFrame);
+   card?.style.removeProperty('--depth-x'); card?.style.removeProperty('--depth-y');
+ };
+ const syncMotion = () => {
+   const stopped = userPaused || reducedMotion.matches;
+   document.body.classList.toggle('motion-stopped', stopped);
+   motionToggle?.setAttribute('aria-pressed', String(stopped));
+   motionToggle?.setAttribute('aria-label', stopped ? 'Putar animasi' : 'Jeda animasi');
+   if (motionToggle) {
+     motionToggle.disabled = reducedMotion.matches;
+     const label = motionToggle.querySelector('.motion-label');
+     if (label) label.textContent = stopped ? 'Putar animasi' : 'Jeda animasi';
+     const icon = motionToggle.querySelector('[aria-hidden]'); if (icon) icon.textContent = stopped ? '▷' : 'Ⅱ';
+   }
+   if (stopped) {stopAnimations(); resetDepth();}
+ };
+ motionToggle?.addEventListener('click', () => {userPaused = !userPaused; syncMotion();});
+ reducedMotion.addEventListener('change', syncMotion);
+ syncMotion();
+ card?.addEventListener('pointermove', event => {
+   if (reducedMotion.matches || userPaused || !finePointer.matches) return;
+   cancelAnimationFrame(pointerFrame);
+   pointerFrame = requestAnimationFrame(() => {
+     const box = card.getBoundingClientRect();
+     card.style.setProperty('--depth-x', `${((event.clientX - box.left) / box.width - .5) * 12}px`);
+     card.style.setProperty('--depth-y', `${((event.clientY - box.top) / box.height - .5) * 8}px`);
+   });
+ });
+ card?.addEventListener('pointerleave', resetDepth);
+ window.addEventListener('beforeprint', resetDepth);
+ // Pause looping effects offscreen and when the browser tab is hidden.
+ const sceneObserver = new IntersectionObserver(entries => {
+   entries.forEach(entry => entry.target.classList.toggle('scene-paused', !entry.isIntersecting));
+ });
+ document.querySelectorAll('.invitation, .couple-section, .venue-section, .gallery-section').forEach(scene => sceneObserver.observe(scene));
+ document.addEventListener('visibilitychange', () => document.body.classList.toggle('page-idle', document.hidden));
+ const progress = document.querySelector<HTMLElement>('.reading-progress');
+ let scrollFrame = 0;
+ const updateProgress = () => {
+   const distance = document.documentElement.scrollHeight - window.innerHeight;
+   progress?.style.setProperty('--progress', String(distance > 0 ? Math.min(1, Math.max(0, window.scrollY / distance)) : 0));
+ };
+ window.addEventListener('scroll', () => {cancelAnimationFrame(scrollFrame); scrollFrame = requestAnimationFrame(updateProgress);}, {passive: true});
+ window.addEventListener('resize', updateProgress);
+ updateProgress();
+</script>
+<style is:global>
+.couple-section,.gallery-section{max-width:740px;margin:0 auto;padding:65px 0;border-top:1px solid #d9d1c3}.couple-section{display:grid;grid-template-columns:1.1fr 1fr;gap:60px;align-items:center}figure{margin:0}.couple-photo{padding:10px;border:1px solid #bbaa7755;background:var(--paper)}.photo-open{display:block;width:100%;padding:0;border:0;background:var(--paper);position:relative;cursor:zoom-in;overflow:hidden}.photo-open img{width:100%;height:100%;display:block;object-fit:cover;transition:transform .5s ease;filter:saturate(.75)}.couple-photo .photo-open{aspect-ratio:3/4}.photo-open:hover img{transform:scale(1.035)}.photo-expand{position:absolute;bottom:12px;right:12px;background:#fcf9f2de;color:var(--brown);width:28px;height:28px;display:grid;place-items:center}.couple-photo figcaption{font-size:6px;letter-spacing:.9px;color:var(--muted);padding:13px 2px 3px;line-height:1.8}.couple-copy h2{margin-top:24px;font-size:47px}.couple-copy .handwritten{font-size:30px;margin:22px 0}.couple-copy p,.gallery-heading p{font-size:11px;color:var(--muted);line-height:1.9}.couple-emblem{width:36px;height:54px;color:var(--gold);margin-top:20px}.gallery-heading{display:flex;align-items:center;justify-content:space-between;gap:40px;margin:32px 0 40px}.gallery-heading p{max-width:190px}.photo-gallery{display:grid;grid-template-columns:1fr 1fr;gap:32px}.photo-gallery figure:nth-child(2){padding-top:65px}.photo-gallery figure:last-child{grid-column:1/-1}.photo-gallery .photo-open{aspect-ratio:4/5}.photo-gallery figure:last-child .photo-open{aspect-ratio:16/9}.photo-gallery figcaption{font-family:'Cormorant Garamond',serif;font-size:22px;margin:15px 0 8px}.photo-gallery figcaption span{font-family:'DM Sans',sans-serif;font-size:8px;letter-spacing:1px;color:var(--gold);margin-right:12px}.photo-credit{font-size:7px;color:var(--muted)}.photo-credit:hover,.couple-photo a:hover{text-decoration:underline}.photo-dialog{padding:42px 18px 16px;border:1px solid #a18c5d66;background:var(--paper);max-width:90vw;max-height:94dvh;color:var(--brown)}.photo-dialog::backdrop{background:#291e19dc}.photo-dialog img{display:block;max-width:80vw;max-height:75dvh;object-fit:contain;margin:auto}.photo-dialog p{font-size:11px;text-align:center;line-height:1.6}.close-photo{position:absolute;right:10px;top:5px;width:32px;height:32px;font-size:26px;border:0;background:none;color:var(--brown);cursor:pointer}
+@media(max-width:1100px){.couple-section,.gallery-section{margin:0 30px}.couple-section{gap:30px}}
+@media(max-width:760px){.couple-section,.gallery-section{margin:0 25px;padding:45px 0}.couple-section{grid-template-columns:1fr;gap:28px}.couple-photo{max-width:400px;width:100%;margin:auto}.couple-copy h2{font-size:40px}.couple-copy{padding:8px 10px}.gallery-heading{display:block}.gallery-heading p{max-width:none;margin-top:22px}.photo-gallery{gap:20px}.photo-gallery figure:nth-child(2){padding-top:35px}.photo-gallery figcaption{font-size:18px}.photo-credit{font-size:6px;line-height:1.8;display:block}.rail nav{gap:12px}.rail nav a{font-size:9px}}
+@media(max-width:390px){.rail nav{gap:8px}.rail nav a{font-size:8px}}
+@media print{.couple-section,.gallery-section,.photo-dialog{display:none!important}}
+@media(prefers-reduced-motion:reduce){.photo-open img{transition:none}}
+
+.gunungan-header{width:34px;height:51px;color:var(--gold);margin-top:-9px}.rail-gunungan{width:36px;height:54px;color:var(--gold)}.janur-corner{position:absolute;top:8px;width:80px;color:var(--gold);opacity:.48;pointer-events:none;z-index:-1}.janur-left{left:-19px;transform:rotate(27deg)}.janur-right{right:-19px;transform:scaleX(-1) rotate(27deg)}.gunungan-watermark{position:absolute;width:130px;right:48px;bottom:99px;color:var(--gold);opacity:.12;z-index:-1;pointer-events:none}.heritage-frame{position:absolute;inset:17px 16px 34px;border:1px solid #a18c5d26;pointer-events:none;z-index:-1}.heritage-frame:before,.heritage-frame:after{content:'';position:absolute;bottom:-4px;width:7px;height:7px;border:1px solid #a18c5d70;background:var(--paper);transform:rotate(45deg)}.heritage-frame:before{left:-4px}.heritage-frame:after{right:-4px}
+@media(max-width:760px){.gunungan-header{width:27px;height:40px}.janur-corner{width:61px;opacity:.4}.gunungan-watermark{width:95px;right:26px;bottom:82px}.heritage-frame{inset:12px 10px 34px}}
+@media print{.gunungan-header{width:9mm;height:14mm}.janur-corner{width:18mm}.gunungan-watermark{width:29mm;right:10mm;bottom:23mm}.heritage-frame{inset:4mm 4mm 9mm}}
+
+:root{--ivory:#f6f3ec;--paper:#fcf9f2;--brown:#49372c;--gold:#a18c5d;--terra:#ad715b;--muted:#8b8172}*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:40px}body{margin:0;background:var(--ivory);color:var(--brown);font-family:'DM Sans',sans-serif;font-size:13px}a{color:inherit;text-decoration:none}button{font:inherit}.rail{position:fixed;inset:0 auto 0 0;width:244px;padding:48px 36px;border-right:1px solid #ddd7cc;display:flex;flex-direction:column;background:#f8f5ee}.wordmark{font-family:'Cormorant Garamond',serif;font-size:48px;letter-spacing:-3px;line-height:1}.wordmark span{display:block;font-family:'DM Sans',sans-serif;font-size:8px;letter-spacing:2px;margin-top:15px}.rail nav{display:flex;flex-direction:column;gap:28px;margin-top:110px}.rail nav a{color:#918678;font-size:12px}.rail nav a span{font-size:9px;margin-right:16px;color:var(--gold)}.rail nav a.active{color:var(--brown)}.rail nav a.active:after{content:'·';float:right;color:var(--terra);font-size:22px;line-height:12px}.rail-bottom{margin-top:auto}.tiny-flower{font-size:32px;color:var(--gold);font-weight:400}.rail-bottom p{font-family:'Cormorant Garamond',serif;font-size:20px;line-height:1.5;font-style:italic}.edition{font-size:8px;letter-spacing:2px;color:var(--muted)}main{margin-left:244px}.topbar{height:106px;padding:0 56px;display:flex;align-items:center;justify-content:space-between}.topbar>span{font-size:9px;letter-spacing:2px;color:var(--muted)}.print-button{display:flex;align-items:center;gap:10px;border:0;background:none;font-size:11px;cursor:pointer;padding:10px 0;border-bottom:1px solid #c7bba7}.print-button:hover{color:var(--terra)}.print-button>span{margin-left:13px}.invitation-wrap{max-width:800px;margin:9px auto 70px;padding:0 30px}.invitation{position:relative;isolation:isolate;overflow:hidden;width:100%;aspect-ratio:148/210;background:var(--paper);box-shadow:0 9px 35px #49372c0a,0 1px 3px #49372c08;padding:39px 52px 0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' opacity='.045' filter='url(%23n)'/%3E%3C/svg%3E")}.card-top{display:flex;justify-content:space-between;align-items:center;color:var(--gold);font-size:7px;letter-spacing:1.8px}.palace{margin-top:-5px}.intro{margin-top:65px;position:relative;z-index:1}.overline{font-size:8px;letter-spacing:2px;color:var(--gold)}.intro p{font-family:'Cormorant Garamond',serif;font-size:35px;font-weight:400;line-height:1.18;margin:18px 0}.intro em{color:var(--terra);font-weight:400}.names{position:relative;z-index:1;margin-top:49px;max-width:88%}h1{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(35px,4.5vw,65px);line-height:1.1;letter-spacing:-1.8px;margin:0;overflow-wrap:anywhere}.handwritten{display:block;font-family:'Italianno',cursive;font-size:39px;color:var(--terra);margin-top:12px;margin-left:31%}.invitation-message{margin-top:45px;position:relative;z-index:1}.small-line{display:block;height:1px;width:35px;background:var(--gold);margin-bottom:24px}.invitation-message p{font-size:11px;line-height:1.9;color:#867868}.date-block{margin-top:49px}.date-block p{font-family:'Cormorant Garamond',serif;font-size:27px;letter-spacing:.5px;margin:13px 0}.date-note{font-size:9px;color:var(--muted)}.botanical{position:absolute;right:-34px;top:175px;width:255px;color:#a18c5d;opacity:.7;transform:rotate(-8deg);z-index:-1}.vertical-note{position:absolute;right:24px;top:128px;writing-mode:vertical-rl;font-size:7px;letter-spacing:2px;color:var(--gold)}.card-footer{position:absolute;bottom:42px;left:52px;right:52px;display:flex;justify-content:space-between;align-items:center;font-size:6px;letter-spacing:1.5px;color:var(--gold)}.card-footer>span:first-child{font-size:15px;letter-spacing:0}.pattern{position:absolute;bottom:0;left:0;right:0;height:24px;opacity:.4;color:var(--gold);border-top:1px solid #bbaa7733}.under-card{display:flex;justify-content:space-between;align-items:center;margin-top:24px}.under-card>span{font-size:7px;letter-spacing:1.3px;color:var(--muted)}.under-card a{font-size:10px}.under-card a span{margin-left:13px;color:var(--terra)}.details-section,.venue-section{max-width:740px;margin:0 auto;padding:65px 0;border-top:1px solid #d9d1c3}.section-label{font-size:8px;letter-spacing:2px;color:var(--muted)}.section-heading{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:50px;margin:35px 0 48px}h2{font-family:'Cormorant Garamond',serif;font-size:48px;font-weight:400;line-height:1.1;letter-spacing:-1px;margin:0}h2 em{color:var(--terra)}.section-heading p,.detail-grid p,.venue-content p{color:var(--muted);font-size:12px;line-height:1.9}.detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px}.detail-grid>div{border-left:1px solid #c7b898;padding-left:24px}h3{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:400}.venue-content{display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:center;margin-top:42px}.venue-content h2{margin-top:20px;font-size:40px}.venue-art{color:var(--gold);padding:25px}.site-footer{max-width:740px;margin:0 auto;padding:35px 0 45px;display:flex;align-items:center;justify-content:space-between;border-top:1px solid #d9d1c3}.site-footer .wordmark{font-size:32px}.site-footer p{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px}.site-footer>span{font-size:7px;letter-spacing:1px;color:var(--muted)}:focus-visible{outline:2px solid var(--terra);outline-offset:6px}
+@media(min-width:1400px){.invitation-wrap{max-width:800px}.invitation{padding-top:45px}.intro{margin-top:90px}.names{margin-top:70px}.invitation-message{margin-top:60px}.date-block{margin-top:60px}}@media(max-width:1100px){.rail{width:200px;padding:40px 26px}main{margin-left:200px}.topbar{padding:0 35px}.details-section,.venue-section,.site-footer{margin-left:30px;margin-right:30px}.intro{margin-top:40px}.names{margin-top:32px}.invitation-message{margin-top:30px}.date-block{margin-top:30px}.botanical{width:220px}.invitation{padding-left:40px;padding-right:40px}.card-footer{left:40px;right:40px}}
+@media(max-width:760px){.rail{position:relative;width:100%;height:85px;padding:20px 22px;flex-direction:row;align-items:center;justify-content:space-between;border-right:0;border-bottom:1px solid #ddd7cc}.wordmark{font-size:36px}.wordmark span{font-size:6px;margin-top:8px}.rail nav{flex-direction:row;gap:16px;margin:0}.rail nav a{font-size:10px}.rail nav a span,.rail nav a.active:after,.rail-bottom{display:none}main{margin-left:0}.topbar{height:75px;padding:0 22px}.topbar>span{font-size:7px;letter-spacing:1px}.print-button{font-size:10px}.invitation-wrap{padding:0 18px;margin-top:0;margin-bottom:50px;max-width:580px}.invitation{padding:26px 30px 0;min-height:650px}.card-top{font-size:5px;letter-spacing:1px}.palace{width:48px}.intro{margin-top:42px}.intro p{font-size:29px}.overline{font-size:7px;letter-spacing:1.4px}.names{margin-top:42px}h1{font-size:42px;letter-spacing:-1px}.handwritten{font-size:34px;margin-left:16%}.invitation-message{margin-top:30px}.invitation-message p{font-size:10px}.date-block{margin-top:34px}.date-block p{font-size:24px}.botanical{top:160px;right:-58px;width:220px;opacity:.5}.vertical-note{right:15px;font-size:6px}.card-footer{left:30px;right:30px;font-size:5px;letter-spacing:.7px}.under-card>span{max-width:45%;font-size:6px;line-height:1.8}.under-card a{font-size:9px}.details-section,.venue-section{padding:45px 0;margin-left:25px;margin-right:25px}.section-heading{gap:24px;grid-template-columns:1fr;margin:28px 0}h2{font-size:42px}.section-heading p{max-width:280px}.detail-grid{gap:22px}.detail-grid>div{padding-left:16px}h3{font-size:23px;overflow-wrap:anywhere}.venue-content{gap:15px}.venue-content h2{font-size:32px}.venue-art{padding:0}.site-footer{margin:0 25px;flex-wrap:wrap;gap:20px}.site-footer p{font-size:14px}.site-footer>span{width:100%;text-align:center}}
+@media print{@page{size:A5 portrait;margin:0}html,body{width:148mm;height:210mm;margin:0;background:var(--paper);print-color-adjust:exact;-webkit-print-color-adjust:exact}.rail,.topbar,.under-card,.details-section,.venue-section,.site-footer{display:none!important}main{margin:0}.invitation-wrap{padding:0;margin:0;max-width:none}.invitation{width:148mm;height:210mm;min-height:0;aspect-ratio:auto;box-shadow:none;padding:10mm 11mm 0}.card-top{font-size:5pt}.intro{margin-top:15mm}.intro p{font-size:25pt}.names{margin-top:13mm}h1{font-size:37pt}.handwritten{font-size:29pt}.invitation-message{margin-top:10mm}.invitation-message p{font-size:8pt}.date-block{margin-top:12mm}.date-block p{font-size:21pt}.botanical{width:56mm;top:44mm;right:-8mm}.card-footer{left:11mm;right:11mm;bottom:10mm}.vertical-note{right:5mm}.overline{font-size:6pt}.date-note{font-size:7pt}.pattern{height:6mm}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+/* Local decorative assets, kept clear of text and interaction targets. */
+.decoration{position:absolute;pointer-events:none;user-select:none;z-index:-1}.decoration img{display:block;width:100%;height:auto;filter:saturate(.65);transform-origin:bottom center;animation:ornament-sway 10s ease-in-out infinite alternate}.invitation-floral{width:215px;top:83px;right:-48px;opacity:.65;transform:rotate(-25deg)}.invitation-bouquet{width:175px;bottom:75px;right:-40px;opacity:.76;transform:rotate(-12deg)}.invitation-bouquet img{animation-delay:-4s}.couple-section,.venue-section,.gallery-section{position:relative;isolation:isolate}.couple-rings{width:85px;left:calc(52% - 42px);top:48px;z-index:1;transform:rotate(-15deg)}.couple-rings img{animation:none}.venue-butterflies{width:65px;right:8px;top:32px;opacity:.6}.venue-butterflies img{animation-delay:-6s}.gallery-floral{width:130px;right:0;top:0;opacity:.6;transform:rotate(15deg)}.gallery-floral img{animation-delay:-2s}.photo-dialog[open]{animation:dialog-arrive .25s ease-out}.print-button,nav a{transition:color .2s ease}.under-card a span{display:inline-block;animation:scroll-hint 2.8s ease-in-out infinite}.botanical svg{transform-origin:bottom center;animation:ornament-sway 12s ease-in-out infinite alternate}
+@keyframes ornament-sway{from{transform:rotate(-1.5deg)}to{transform:rotate(1.5deg)}}
+@keyframes scroll-hint{0%,100%{transform:translateY(0)}50%{transform:translateY(4px)}}
+@keyframes dialog-arrive{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:760px){.invitation-floral{width:140px;top:79px;right:-44px;opacity:.55}.invitation-bouquet{width:115px;bottom:83px;right:-34px;opacity:.6}.couple-rings{left:auto;right:-8px;top:33px;width:68px}.gallery-floral{width:90px;right:-8px;top:5px;opacity:.4}.venue-butterflies{width:45px;right:0;top:32px}}
+@media print{.invitation-floral{width:44mm;top:22mm;right:-10mm}.invitation-bouquet{width:34mm;bottom:20mm;right:-8mm}*,*::before,*::after{animation:none!important;transition:none!important}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+
+
+/* A quiet layer of movement around the invitation, clear of the names. */
+.topbar-actions{display:flex;align-items:center;gap:22px}.motion-toggle{display:flex;align-items:center;gap:7px;border:0;background:none;color:var(--muted);font-size:9px;cursor:pointer;padding:10px 0}.motion-toggle:disabled{opacity:.45;cursor:default}.motion-toggle:hover{color:var(--terra)}.reading-progress{position:fixed;top:0;left:244px;right:0;height:2px;background:var(--gold);z-index:10;transform:scaleX(var(--progress,0));transform-origin:left;pointer-events:none}.ambient-petals{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0}.petal-track{position:absolute;top:-24px;left:var(--left);animation:petal-fall var(--duration) var(--delay) linear infinite;opacity:0}.petal{display:block;width:7px;height:12px;border-radius:80% 20% 65% 35%;background:linear-gradient(135deg,#fffdf1,#d8ba9d);box-shadow:inset 1px 0 2px #fff7e1;animation:petal-turn 5s ease-in-out infinite alternate}.petal-track:nth-child(3n) .petal{width:5px;height:9px;background:linear-gradient(135deg,#f2ddd1,#c49379)}.gold-spark{position:absolute;width:5px;height:5px;background:#bca168;clip-path:polygon(50% 0,60% 40%,100% 50%,60% 60%,50% 100%,40% 60%,0 50%,40% 40%);animation:gold-twinkle 6s ease-in-out infinite}.spark-one{top:19%;right:8%}.spark-two{top:57%;right:15%;animation-delay:-2s}.spark-three{bottom:14%;left:5%;animation-delay:-4s}.invitation .decoration{translate:var(--depth-x,0px) var(--depth-y,0px);transition:translate .7s ease-out}.heritage-frame:after{animation:frame-glow 6s ease-in-out infinite}.couple-photo .photo-open img{animation:portrait-drift 18s ease-in-out infinite alternate}.venue-butterflies{animation:butterfly-float 9s ease-in-out infinite alternate}.rail-gunungan{animation:emblem-breathe 7s ease-in-out infinite}.photo-expand{transition:background .3s,rotate .3s}.photo-open:hover .photo-expand{background:var(--paper);rotate:6deg}.motion-stopped *, .scene-paused *, .page-idle *{animation-play-state:paused!important}
+@keyframes petal-fall{0%{translate:0 -20px;opacity:0}10%{opacity:.45}85%{opacity:.4}100%{translate:var(--drift) 1100px;opacity:0}}
+@keyframes petal-turn{from{transform:rotate(0deg) rotateY(0deg)}to{transform:rotate(160deg) rotateY(55deg)}}
+@keyframes gold-twinkle{0%,100%{opacity:.12;scale:.6}50%{opacity:.6;scale:1.3}}
+@keyframes portrait-drift{from{scale:1}to{scale:1.045}}
+@keyframes butterfly-float{from{translate:0 0;rotate:-3deg}to{translate:5px -12px;rotate:3deg}}
+@keyframes emblem-breathe{0%,100%{opacity:.6;translate:0 0}50%{opacity:1;translate:0 -3px}}
+@keyframes frame-glow{0%,100%{box-shadow:0 0 0 #bca16800}50%{box-shadow:0 0 9px #bca16860}}
+@media(max-width:1100px){.reading-progress{left:200px}}
+@media(max-width:760px){.reading-progress{left:0}.topbar-actions{gap:15px}.motion-label{display:none}.motion-toggle{font-size:13px}.petal-track:nth-child(n+6){display:none}.petal{width:5px;height:8px}}
+@media print{.ambient-petals,.reading-progress{display:none!important}.invitation .decoration{translate:none!important}.couple-photo .photo-open img{scale:1!important}}
+@media(prefers-reduced-motion:reduce){.ambient-petals{display:none}.invitation .decoration{translate:none!important}.couple-photo .photo-open img{scale:1!important}}
+
+</style>
+</body>
+</html>

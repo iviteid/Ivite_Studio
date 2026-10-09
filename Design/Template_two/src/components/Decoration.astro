@@ -1,0 +1,5 @@
+---
+interface Props { file: string; class?: string; eager?: boolean; }
+const { file, class: className = '', eager = false } = Astro.props;
+---
+<div class={`decoration ${className}`} aria-hidden="true"><img src={`/decorations/${encodeURIComponent(file)}`} alt="" loading={eager ? 'eager' : 'lazy'} decoding="async" /></div>

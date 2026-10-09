@@ -1,0 +1,26 @@
+---
+import { Image } from 'astro:assets';
+import bouquet from '../../public/images/flower2.png';
+import rings from '../../public/images/flower1.png';
+interface Props {
+  class?: string;
+  variant?: 'bouquet' | 'rings';
+  eager?: boolean;
+}
+const { class: className = '', variant = 'bouquet', eager = false } = Astro.props;
+---
+<Image
+  src={variant === 'rings' ? rings : bouquet}
+  alt=""
+  aria-hidden="true"
+  class:list={['floral-spray', className]}
+  width={640}
+  height={640}
+  widths={[320, 640]}
+  sizes="(max-width: 760px) 150px, 320px"
+  format="webp"
+  quality={80}
+  loading={eager ? 'eager' : 'lazy'}
+  decoding="async"
+  draggable="false"
+/>
