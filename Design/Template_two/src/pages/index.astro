@@ -4,10 +4,11 @@ import Gunungan from '../components/Gunungan.astro';
 import Janur from '../components/Janur.astro';
 import Decoration from '../components/Decoration.astro';
 import AmbientPetals from '../components/AmbientPetals.astro';
+import GuestSections from '../components/GuestSections.astro';
 const photos = [
- {src: '/images/rings.jpg', alt: 'Cincin pernikahan dan rangkaian bunga di atas meja', caption: 'A little promise', credit: 'Kari Bjorn Photography', url: 'https://unsplash.com/photos/9x86c15dlCY'},
- {src: '/images/bouquet.jpg', alt: 'Buket bunga dengan detail cincin pernikahan', caption: 'Love in the little things', credit: 'Ashley Smith', url: 'https://unsplash.com/photos/txBkYdx6p3Q'},
- {src: '/images/reception.jpg', alt: 'Dekorasi meja pernikahan dengan bunga dan lilin', caption: 'A place for our people', credit: 'Jen Vazquez', url: 'https://unsplash.com/photos/IAXH4tMEx_s'},
+ {src: '/images/couple-garden.webp', alt: 'Potret contoh AI pengantin bergandengan di taman berbunga putih', caption: 'Hand in hand', location: 'THE GARDEN', width: 1122, height: 1402},
+ {src: '/images/couple-pendopo.webp', alt: 'Potret contoh AI pengantin duduk bersama di pendopo kayu Jawa', caption: 'By your side', location: 'THE PENDOPO', width: 1122, height: 1402},
+ {src: '/images/couple-courtyard.webp', alt: 'Potret contoh AI pengantin saling berhadapan di halaman bergaya keraton', caption: 'Our forever begins', location: 'THE COURTYARD', width: 1672, height: 941}
 ];
 const wedding = { names: "[COUPLE'S NAMES]", date: '[WEDDING DATE]', ceremony: '[CEREMONY DETAILS]', venue: '[VENUE]' };
 ---
@@ -21,7 +22,7 @@ const wedding = { names: "[COUPLE'S NAMES]", date: '[WEDDING DATE]', ceremony: '
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@400;500;600&family=Italianno&display=swap" rel="stylesheet"/>
 </head>
 <body>
-<aside class="rail"><a class="wordmark" href="#home">janji<span>THE WEDDING EDITION</span></a><nav aria-label="Main navigation"><a class="active" href="#home"><span>01</span> The invitation</a><a href="#celebration"><span>02</span> The celebration</a><a href="#venue"><span>03</span> The venue</a><a href="#memories"><span>04</span> Our moments</a></nav><div class="rail-bottom"><Gunungan class="rail-gunungan" /><p>Rooted in tradition.<br/>Written in love.</p><span class="edition">JAVA · A LOVE STORY</span></div></aside>
+<aside class="rail"><a class="wordmark" href="#home">janji<span>THE WEDDING EDITION</span></a><nav aria-label="Main navigation"><a class="active" href="#home"><span>01</span> The invitation</a><a href="#celebration"><span>02</span> The celebration</a><a href="#venue"><span>03</span> The venue</a><a href="#memories"><span>04</span> Our moments</a><a href="#wishes"><span>05</span> Wishes & RSVP</a><a href="#gifts"><span>06</span> Wedding gifts</a></nav><div class="rail-bottom"><Gunungan class="rail-gunungan" /><p>Rooted in tradition.<br/>Written in love.</p><span class="edition">JAVA · A LOVE STORY</span></div></aside>
 <div class="reading-progress" aria-hidden="true"></div>
 <main id="home">
 <header class="topbar"><span>A CELEBRATION OF TWO SOULS</span><div class="topbar-actions"><button id="motion-toggle" class="motion-toggle" aria-label="Jeda animasi" aria-pressed="false"><span aria-hidden="true">Ⅱ</span><span class="motion-label">Jeda animasi</span></button><button class="print-button" id="print"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M7 8V3h10v5M7 17H4V9h16v8h-3M7 14h10v7H7z"/></svg> Print invitation <span>↗</span></button></div></header>
@@ -53,8 +54,9 @@ const wedding = { names: "[COUPLE'S NAMES]", date: '[WEDDING DATE]', ceremony: '
 </section>
 <section id="celebration" class="details-section"><div class="section-label">02 / THE CELEBRATION</div><div class="section-heading"><h2>A promise.<br/><em>A beginning.</em></h2><p>In the warmth of our heritage and the company of our favourite people, we begin our forever.</p></div><div class="detail-grid"><div><span class="overline">THE DAY</span><h3>{wedding.date}</h3><p>Come for the promise.<br/>Stay for the celebration.</p></div><div><span class="overline">THE CEREMONY</span><h3>{wedding.ceremony}</h3><p>A meaningful moment,<br/>surrounded by love.</p></div></div></section>
 <section id="venue" class="venue-section"><Decoration file="gold-butterflies.webp" class="venue-butterflies" /><span class="section-label">03 / THE VENUE</span><div class="venue-content"><div><span class="overline">WHERE WE BEGIN</span><h2>{wedding.venue}</h2><p>The place where our two stories become one.</p></div><div class="venue-art" aria-hidden="true"><svg viewBox="0 0 300 150" fill="none" stroke="currentColor"><path d="M20 130h260M40 130V80h220v50M25 80h250L150 20 25 80ZM70 80v50m40-50v50m80-50v50m40-50v50M125 130V98h50v32M100 43h100M137 26V10h26v16M130 10h40M150 0v10M10 140h280"/><path d="M40 74h220M65 62h170M92 49h116" opacity=".5"/></svg></div></div></section>
-<section id="memories" class="gallery-section"><Decoration file="paper-flowers.webp" class="gallery-floral" /><span class="section-label">04 / OUR MOMENTS</span><div class="gallery-heading"><h2>Little moments.<br/><em>Lasting memories.</em></h2><p>A few beautiful details of a day filled with love.</p></div><div class="photo-gallery">{photos.map((photo, i) => <figure><button class="photo-open" data-photo={photo.src} data-alt={photo.alt} aria-label={`Lihat foto: ${photo.caption}`}><img src={photo.src} alt={photo.alt} loading="lazy" width="1200" height="1500"/><span class="photo-expand" aria-hidden="true">↗</span></button><figcaption><span>0{i + 1}</span> {photo.caption}</figcaption><a class="photo-credit" href={photo.url} target="_blank" rel="noreferrer">Foto contoh · {photo.credit} / Unsplash</a></figure>)}</div></section>
+<section id="memories" class="gallery-section"><Decoration file="paper-flowers.webp" class="gallery-floral" /><span class="section-label">04 / OUR MOMENTS</span><div class="gallery-heading"><h2>Little moments.<br/><em>Lasting memories.</em></h2><p>Different places, little moments, and always you.</p></div><div class="photo-gallery">{photos.map((photo, i) => <figure><button class="photo-open" data-photo={photo.src} data-alt={photo.alt} aria-label={`Lihat foto: ${photo.caption}`}><img src={photo.src} alt={photo.alt} loading="lazy" width={photo.width} height={photo.height}/><span class="photo-expand" aria-hidden="true">↗</span></button><figcaption><span>0{i + 1}</span> {photo.caption}</figcaption><span class="photo-credit">{photo.location} · FOTO CONTOH AI</span></figure>)}</div></section>
 <dialog class="photo-dialog" aria-label="Foto pernikahan ukuran penuh"><button class="close-photo" aria-label="Tutup foto">×</button><img alt=""/><p></p></dialog>
+<GuestSections />
 <footer class="site-footer"><a class="wordmark" href="#home">janji</a><p>With full hearts, we look forward to seeing you.</p><span>MADE OF LOVE & A LITTLE TRADITION</span></footer>
 </main>
 <script>
@@ -89,7 +91,7 @@ const wedding = { names: "[COUPLE'S NAMES]", date: '[WEDDING DATE]', ceremony: '
      animation.finished.then(() => animations.delete(animation)).catch(() => animations.delete(animation));
    });
  }, {threshold: .08});
- document.querySelectorAll('.intro, .names, .invitation-message, .date-block, .couple-photo, .couple-copy, .section-heading, .detail-grid > div, .venue-content, .gallery-heading, .photo-gallery figure').forEach(element => revealObserver.observe(element));
+ document.querySelectorAll('.intro, .names, .invitation-message, .date-block, .couple-photo, .couple-copy, .section-heading, .detail-grid > div, .venue-content, .gallery-heading, .photo-gallery figure, .guest-heading, .guest-form, .guest-book, .gift-card').forEach(element => revealObserver.observe(element));
  const stopAnimations = () => {animations.forEach(animation => animation.cancel()); animations.clear();};
  reducedMotion.addEventListener('change', () => {if (reducedMotion.matches) stopAnimations();});
  window.addEventListener('beforeprint', stopAnimations);
@@ -134,7 +136,7 @@ const wedding = { names: "[COUPLE'S NAMES]", date: '[WEDDING DATE]', ceremony: '
  const sceneObserver = new IntersectionObserver(entries => {
    entries.forEach(entry => entry.target.classList.toggle('scene-paused', !entry.isIntersecting));
  });
- document.querySelectorAll('.invitation, .couple-section, .venue-section, .gallery-section').forEach(scene => sceneObserver.observe(scene));
+ document.querySelectorAll('.invitation, .couple-section, .venue-section, .gallery-section, .guest-section').forEach(scene => sceneObserver.observe(scene));
  document.addEventListener('visibilitychange', () => document.body.classList.toggle('page-idle', document.hidden));
  const progress = document.querySelector<HTMLElement>('.reading-progress');
  let scrollFrame = 0;

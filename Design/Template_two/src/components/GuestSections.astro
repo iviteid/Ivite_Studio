@@ -1,0 +1,107 @@
+---
+import Decoration from './Decoration.astro';
+const gift = {
+ bank: '[NAMA BANK]', account: '[NOMOR REKENING]', holder: '[NAMA PEMILIK REKENING]',
+ recipient: '[NAMA PENERIMA]', address: '[ALAMAT LENGKAP PENGIRIMAN HADIAH]',
+};
+---
+<section id="wishes" class="guest-section">
+ <span class="section-label">05 / YOUR PRESENCE & KIND WORDS</span>
+ <div class="guest-heading"><h2>Datang dengan cinta.<br/><em>Tinggalkan doa.</em></h2><p>Kehadiran dan doa baik Anda adalah bagian terindah dari hari bahagia kami.</p></div>
+ <div class="guest-columns">
+  <form id="guest-form" class="guest-form" aria-describedby="guest-demo">
+   <span class="overline">UCAPAN & RSVP</span>
+   <label for="guest-name">Nama Anda <span aria-hidden="true">*</span></label><input id="guest-name" name="name" autocomplete="name" required maxlength="80" placeholder="Nama lengkap" />
+   <label for="guest-attendance">Konfirmasi kehadiran</label><select id="guest-attendance" name="attendance"><option value="wish">Hanya mengirim ucapan</option><option value="yes">Dengan senang hati, hadir</option><option value="no">Maaf, belum bisa hadir</option><option value="maybe">Masih menunggu kepastian</option></select>
+   <div id="guest-count-field" hidden><label for="guest-count">Jumlah tamu (termasuk Anda)</label><input id="guest-count" name="count" type="number" min="1" max="10" step="1" value="1" disabled /></div>
+   <label for="guest-message">Ucapan & doa <span id="message-required" aria-hidden="true">*</span></label><textarea id="guest-message" name="message" rows="4" maxlength="1000" required placeholder="Tuliskan doa dan harapan terbaik Anda…"></textarea>
+   <p class="form-note" id="guest-demo">Mode demo: data disimpan hanya di browser ini dan belum dikirim kepada pengantin.</p>
+   <button class="solid-button" type="submit">Simpan ucapan & RSVP <span aria-hidden="true">↗</span></button>
+   <p class="form-status" id="guest-status" role="status" aria-live="polite"></p>
+   <noscript><p class="form-note">Aktifkan JavaScript untuk menyimpan formulir demo ini.</p></noscript>
+  </form>
+  <div class="guest-book"><span class="overline">CATATAN DI BROWSER INI</span><div id="guest-list"><div class="guest-empty"><span class="handwritten">a little note, a lot of love</span><p>Belum ada ucapan tersimpan.<br/>Tuliskan doa pertama Anda untuk kami.</p></div></div></div>
+ </div>
+</section>
+<section id="gifts" class="guest-section gift-section">
+ <Decoration file="gold-bouquet.webp" class="gift-floral" />
+ <span class="section-label">06 / A LITTLE TOKEN OF LOVE</span>
+ <div class="guest-heading"><h2>Tanda kasih.<br/><em>Sepenuh hati.</em></h2><p>Doa dan kehadiran Anda sudah berarti bagi kami. Jika ingin berbagi hadiah, berikut tempat menitipkan tanda kasih Anda.</p></div>
+ <p class="gift-placeholder-note">Detail hadiah masih berupa placeholder. Rekening dan alamat akan diperbarui oleh pengantin.</p>
+ <div class="gift-grid">
+  <article class="gift-card"><span class="gift-icon" aria-hidden="true">✧</span><span class="overline">HADIAH DIGITAL</span><h3>{gift.bank}</h3><p class="account-number" id="gift-account">{gift.account}</p><p class="gift-detail">Atas nama<br/><strong>{gift.holder}</strong></p><button class="outline-button" type="button" data-copy={gift.account} data-copy-label="Nomor rekening">Salin nomor rekening <span aria-hidden="true">⧉</span></button></article>
+  <article class="gift-card"><span class="gift-icon" aria-hidden="true">⌂</span><span class="overline">KIRIM TANDA KASIH</span><h3>{gift.recipient}</h3><address>{gift.address}</address><button class="outline-button" type="button" data-copy={`${gift.recipient}\n${gift.address}`} data-copy-label="Alamat pengiriman">Salin alamat <span aria-hidden="true">⧉</span></button></article>
+ </div>
+ <p id="copy-status" class="form-status" role="status" aria-live="polite"></p>
+ <span class="gift-thanks handwritten">your love is the greatest gift</span>
+</section>
+<script>
+ const form = document.querySelector<HTMLFormElement>('#guest-form');
+ const attendance = document.querySelector<HTMLSelectElement>('#guest-attendance');
+ const countField = document.querySelector<HTMLElement>('#guest-count-field');
+ const count = document.querySelector<HTMLInputElement>('#guest-count');
+ const message = document.querySelector<HTMLTextAreaElement>('#guest-message');
+ const status = document.querySelector<HTMLElement>('#guest-status');
+ const list = document.querySelector<HTMLElement>('#guest-list');
+ const key = 'janji-guestbook-v1';
+ type GuestEntry = {name:string; attendance:string; count:number; message:string; date:string};
+ const labels:Record<string,string> = {wish:'Ucapan & doa',yes:'Hadir',no:'Belum bisa hadir',maybe:'Menunggu kepastian'};
+ let entries:GuestEntry[] = [];
+ try {
+   const stored:unknown = JSON.parse(localStorage.getItem(key) || '[]');
+   if (Array.isArray(stored)) entries = stored.filter((item):item is GuestEntry => !!item && typeof item.name === 'string' && item.name.length <= 80 && typeof item.message === 'string' && item.message.length <= 1000 && Object.hasOwn(labels,item.attendance) && Number.isInteger(item.count) && item.count >= 0 && item.count <= 10 && typeof item.date === 'string' && Number.isFinite(Date.parse(item.date))).slice(0,50);
+ } catch { /* The form remains usable when storage is unavailable. */ }
+ const renderEntries = () => {
+   if (!list || !entries.length) return;
+   list.replaceChildren();
+   entries.forEach(entry => {
+     const card = document.createElement('article'); card.className = 'guest-entry';
+     const name = document.createElement('h3'); name.textContent = entry.name;
+     const badge = document.createElement('span'); badge.className = 'guest-badge'; badge.textContent = labels[entry.attendance] + (entry.attendance === 'yes' ? ` · ${entry.count} tamu` : '');
+     const text = document.createElement('p'); text.textContent = entry.message;
+     const date = document.createElement('time'); date.dateTime = entry.date; date.textContent = new Date(entry.date).toLocaleDateString('id-ID',{day:'numeric',month:'long',year:'numeric'});
+     card.append(name,badge); if (entry.message) card.append(text); card.append(date); list.append(card);
+   });
+ };
+ const syncFields = () => {
+   const attending = attendance?.value === 'yes';
+   if (countField) countField.hidden = !attending;
+   if (count) {count.disabled = !attending; count.required = attending;}
+   const wishOnly = attendance?.value === 'wish';
+   if (message) message.required = wishOnly;
+   const mark = document.querySelector<HTMLElement>('#message-required'); if (mark) mark.hidden = !wishOnly;
+ };
+ attendance?.addEventListener('change',syncFields); syncFields(); renderEntries();
+ form?.addEventListener('submit',event => {
+   event.preventDefault();
+   const nameInput = form.querySelector<HTMLInputElement>('#guest-name');
+   if (!nameInput || !attendance || !message || !count || !status) return;
+   nameInput.setCustomValidity(nameInput.value.trim() ? '' : 'Masukkan nama Anda.');
+   message.setCustomValidity(attendance.value === 'wish' && !message.value.trim() ? 'Tuliskan ucapan atau doa Anda.' : '');
+   if (!form.reportValidity()) return;
+   const entry:GuestEntry = {name:nameInput.value.trim(),attendance:attendance.value,count:attendance.value === 'yes' ? Number(count.value) : 0,message:message.value.trim(),date:new Date().toISOString()};
+   const updated = [entry,...entries].slice(0,50);
+   try {localStorage.setItem(key,JSON.stringify(updated));}
+   catch {status.textContent = 'Data belum tersimpan karena penyimpanan browser tidak tersedia. Silakan coba kembali; isian Anda tetap ada.';return;}
+   entries = updated; renderEntries(); form.reset(); syncFields();
+   status.textContent = 'Terima kasih! Ucapan/RSVP tersimpan di browser ini sebagai demo, belum dikirim kepada pengantin.';
+ });
+ form?.querySelector<HTMLInputElement>('#guest-name')?.addEventListener('input',event => (event.target as HTMLInputElement).setCustomValidity(''));
+ message?.addEventListener('input',() => message.setCustomValidity(''));
+ attendance?.addEventListener('change',() => message?.setCustomValidity(''));
+ document.querySelectorAll<HTMLButtonElement>('[data-copy]').forEach(button => button.addEventListener('click',async () => {
+   const copyStatus = document.querySelector<HTMLElement>('#copy-status');
+   if (!copyStatus) return;
+   const value = button.dataset.copy || '';
+   try {
+     await navigator.clipboard.writeText(value);
+     copyStatus.textContent = `${button.dataset.copyLabel} disalin. Detail ini masih placeholder.`;
+   } catch {copyStatus.textContent = 'Penyalinan otomatis tidak tersedia. Silakan pilih dan salin detail hadiah secara manual.';}
+ }));
+</script>
+<style is:global>
+.guest-section{max-width:740px;margin:0 auto;padding:65px 0;border-top:1px solid #d9d1c3;position:relative;isolation:isolate}.guest-heading{display:grid;grid-template-columns:1.3fr 1fr;gap:40px;align-items:center;margin:32px 0 40px}.guest-heading h2{font-size:44px}.guest-heading>p{font-size:12px;line-height:1.9;color:var(--muted)}.guest-columns{display:grid;grid-template-columns:1.1fr 1fr;gap:45px}.guest-form{background:var(--paper);padding:28px;border:1px solid #c7b89855}.guest-form label{display:block;font-size:11px;margin:23px 0 9px}.guest-form label>span{color:var(--terra)}.guest-form input,.guest-form select,.guest-form textarea{width:100%;padding:12px;border:1px solid #d8cebf;background:#fffcf7;color:var(--brown);font:inherit;font-size:12px;border-radius:0}.guest-form textarea{resize:vertical;min-height:105px}.guest-form input::placeholder,.guest-form textarea::placeholder{color:#a29686}.form-note,.gift-placeholder-note{font-size:10px;line-height:1.8;color:var(--muted)}.solid-button,.outline-button{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 17px;font:inherit;font-size:11px;cursor:pointer;transition:background .2s,color .2s;min-height:44px}.solid-button{width:100%;border:1px solid var(--brown);background:var(--brown);color:var(--paper);margin-top:18px}.solid-button:hover{background:#68513f}.outline-button{border:1px solid #baa987;background:transparent;color:var(--brown);width:100%;margin-top:auto}.outline-button:hover{background:#eae2d4}.form-status{font-size:11px;line-height:1.8;margin:14px 0 0;color:var(--terra)}.form-status:empty{display:none}.guest-book{padding-top:5px}.guest-empty{padding:35px 0;border-bottom:1px solid #d9d1c3;margin-top:20px}.guest-empty .handwritten{font-size:31px;margin:0}.guest-empty p{font-size:11px;color:var(--muted);line-height:1.9}.guest-entry{padding:22px 0;border-bottom:1px solid #d9d1c3;overflow-wrap:anywhere}.guest-entry h3{font-size:24px;margin:0 0 10px}.guest-badge{font-size:8px;letter-spacing:.5px;color:var(--gold)}.guest-entry p{white-space:pre-wrap;font-size:12px;line-height:1.9;margin:14px 0;color:var(--muted)}.guest-entry time{display:block;font-size:8px;color:var(--muted);margin-top:14px}#guest-list{max-height:560px;overflow:auto;padding-right:10px}.gift-grid{display:grid;grid-template-columns:1fr 1fr;gap:25px;margin-top:25px}.gift-card{display:flex;flex-direction:column;padding:30px;border:1px solid #c7b89870;background:#fcf9f2c9;min-height:325px}.gift-icon{font-family:serif;font-size:30px;color:var(--gold);margin-bottom:20px}.gift-card h3{font-size:24px;margin:18px 0}.account-number{font-size:15px;letter-spacing:1px;margin:0 0 16px;overflow-wrap:anywhere}.gift-detail,.gift-card address{font-size:11px;line-height:1.9;color:var(--muted);margin:0 0 24px;font-style:normal;overflow-wrap:anywhere}.gift-detail strong{font-weight:500;color:var(--brown)}.gift-thanks{margin:35px 0 0;text-align:center;font-size:34px}.gift-floral{width:140px;right:-35px;top:15px;opacity:.28}.gift-placeholder-note{padding-left:14px;border-left:1px solid var(--gold)}
+@media(max-width:1100px){.guest-section{margin:0 30px}}
+@media(max-width:760px){.guest-section{margin:0 25px;padding:45px 0}.guest-heading,.guest-columns{grid-template-columns:1fr;gap:22px}.guest-heading h2{font-size:38px}.guest-form{padding:23px}.gift-grid{grid-template-columns:1fr;gap:18px}.gift-card{min-height:300px;padding:26px}.gift-floral{width:95px;right:-15px}body .rail{height:auto;min-height:85px;flex-wrap:wrap;gap:20px}body .rail nav{max-width:100%;overflow-x:auto;white-space:nowrap;padding:4px 0 8px;gap:18px}body .rail nav a{flex-shrink:0;font-size:10px}}
+@media print{.guest-section{display:none!important}}
+</style>
