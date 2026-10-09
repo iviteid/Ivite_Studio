@@ -1,0 +1,9 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CategoryCard from '../../components/CategoryCard.astro';
+import { categories, getBooksByCategory } from '../../data/library';
+---
+<BaseLayout title="Kategori Buku — Bana" description="Jelajahi kategori buku teknologi, sains, sejarah, filsafat, dan bidang lainnya di Bana.">
+  <header class="container-shell py-20 text-center"><p class="eyebrow">12 bidang pengetahuan</p><h1 class="display mx-auto mt-5 max-w-3xl text-6xl font-semibold leading-none text-ink sm:text-7xl">Ikuti arah rasa ingin tahumu.</h1><p class="mx-auto mt-6 max-w-xl leading-8 text-ink/60">Mulai dari bidang yang sudah akrab atau temukan sesuatu yang sama sekali baru.</p></header>
+  <section class="container-shell pb-24"><div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">{categories.map((category) => <CategoryCard category={category} count={getBooksByCategory(category.slug).length}/>)}</div></section>
+</BaseLayout>

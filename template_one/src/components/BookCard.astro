@@ -1,0 +1,13 @@
+---
+import BookCover from './BookCover.astro';
+import type { Book } from '../data/library';
+import { getCategoryName } from '../data/library';
+interface Props { book: Book; compact?: boolean; }
+const { book, compact = false } = Astro.props;
+---
+<article class="group min-w-0">
+  <a href={`/buku/${book.slug}`} class="block">
+    <div class="transition duration-300 group-hover:-translate-y-2 group-hover:rotate-[.5deg]"><BookCover book={book} compact={compact}/></div>
+    <div class="pt-5"><p class="eyebrow">{getCategoryName(book.category)}</p><h3 class="mt-2 line-clamp-2 text-lg font-bold text-ink transition group-hover:text-forest">{book.title}</h3><p class="mt-1 text-sm text-ink/55">{book.author} · {book.publishedYear}</p></div>
+  </a>
+</article>

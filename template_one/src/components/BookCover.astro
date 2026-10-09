@@ -1,0 +1,27 @@
+---
+import { getCategoryName, type Book } from '../data/library';
+interface Props { book: Book; compact?: boolean; hero?: boolean; }
+const { book, compact = false, hero = false } = Astro.props;
+const variant = [...book.category].reduce((sum, letter) => sum + letter.charCodeAt(0), 0) % 3;
+---
+<div class:list={['book-cover editorial-cover', `cover-art-${variant}`, { 'cover-compact': compact, 'cover-hero': hero }]} style={`--cover-color:${book.color}`}>
+  <div class="cover-grain" aria-hidden="true"></div>
+  <div class="cover-content">
+    <div class="cover-imprint"><span>BANA<span class="cover-imprint-dot">●</span></span><span>LIBRARY / {String(book.publishedYear).slice(-2)}</span></div>
+    <div class="cover-heading"><p class="cover-category">{getCategoryName(book.category)}</p><p class="cover-title">{book.title}</p></div>
+    <svg class="cover-art" viewBox="0 0 240 160" fill="none" aria-hidden="true">
+      {variant === 0 ? <>
+        <circle cx="120" cy="80" r="58" class="cover-disc"/>
+        {[0, 1, 2, 3, 4, 5].map(i => <ellipse cx="120" cy="80" rx={30 + i * 12} ry={12 + i * 8} transform={`rotate(-32 120 80)`} stroke="currentColor" stroke-opacity={.85 - i * .1}/>)}
+        <circle cx="184" cy="39" r="5" fill="currentColor"/>
+      </> : variant === 1 ? <>
+        {[0, 1, 2, 3, 4].map(i => <path d={`M${32 + i * 13} 145 V${65 - i * 9} A${88 - i * 13} ${65 - i * 9} 0 0 1 ${208 - i * 13} ${65 - i * 9} V145`} stroke="currentColor" stroke-width={i === 0 ? 2 : 1} stroke-opacity={.35 + i * .13}/>)}
+        <circle cx="120" cy="94" r="27" class="cover-disc"/><path d="M18 145h204" stroke="currentColor" stroke-opacity=".4"/>
+      </> : <>
+        {[0, 1, 2, 3, 4, 5, 6].map(i => <path d={`M-10 ${42 + i * 15} Q55 ${-12 + i * 15} 120 ${42 + i * 15} T250 ${42 + i * 15}`} stroke="currentColor" stroke-opacity={.3 + i * .08}/>)}
+        <circle cx="165" cy="49" r="31" class="cover-disc"/><circle cx="165" cy="49" r="43" stroke="currentColor" stroke-opacity=".4"/>
+      </>}
+    </svg>
+    <div class="cover-footer"><p>{book.author}</p><span>{book.format} ↗</span></div>
+  </div>
+</div>

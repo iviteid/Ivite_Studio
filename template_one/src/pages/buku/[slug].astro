@@ -1,0 +1,15 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import BookCover from '../../components/BookCover.astro';
+import BookGrid from '../../components/BookGrid.astro';
+import { books, getCategoryName, type Book } from '../../data/library';
+export function getStaticPaths() { return books.map((book) => ({ params: { slug: book.slug }, props: { book } })); }
+interface Props { book: Book; }
+const { book } = Astro.props;
+const related = books.filter((item) => item.category === book.category && item.slug !== book.slug).slice(0, 4);
+---
+<BaseLayout title={`${book.title} — Bana`} description={book.description}>
+  <section class="container-shell py-14 sm:py-20"><a href="/perpustakaan" class="text-sm font-bold text-forest">← Kembali ke perpustakaan</a><div class="mt-10 grid gap-12 lg:grid-cols-[380px_1fr] lg:gap-20"><div><div class="mx-auto max-w-[360px]"><BookCover book={book}/></div><p class="mt-5 text-center text-xs text-ink/40">Sampul ilustratif · Data demonstrasi</p></div>
+    <div class="lg:pt-5"><a href={`/kategori/${book.category}`} class="eyebrow">{getCategoryName(book.category)}</a><h1 class="display mt-4 text-6xl font-semibold leading-none text-ink sm:text-7xl">{book.title}</h1><p class="mt-5 text-xl text-ink/60">oleh <strong class="font-semibold text-ink">{book.author}</strong></p><p class="mt-8 max-w-2xl text-lg leading-8 text-ink/65">{book.longDescription}</p><dl class="mt-10 grid grid-cols-2 gap-y-6 border-y border-forest/10 py-7 sm:grid-cols-4"><div><dt class="eyebrow">Terbit</dt><dd class="mt-2 font-bold">{book.publishedYear}</dd></div><div><dt class="eyebrow">Penerbit</dt><dd class="mt-2 font-bold">{book.publisher}</dd></div><div><dt class="eyebrow">Format</dt><dd class="mt-2 font-bold">{book.format}</dd></div><div><dt class="eyebrow">Akses</dt><dd class="mt-2 font-bold">{book.available ? 'Tersedia' : 'Belum tersedia'}</dd></div></dl>{book.available ? <a href={`/baca/${book.slug}`} class="mt-9 inline-flex rounded-full bg-forest px-8 py-4 text-sm font-bold text-white">Baca buku →</a> : <div class="mt-9 rounded-xl surface-section p-5 text-sm leading-6 text-ink/65"><strong class="text-ink">Konten belum tersedia.</strong> Detail katalog tetap dapat dilihat, tetapi belum ada file yang dapat dibaca.</div>}</div></div></section>
+  {related.length > 0 && <section class="container-shell border-t border-forest/10 py-20"><h2 class="display mb-10 text-4xl font-semibold text-ink">Bacaan terkait</h2><BookGrid books={related}/></section>}
+</BaseLayout>
