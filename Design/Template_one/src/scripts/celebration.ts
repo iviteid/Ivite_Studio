@@ -5,19 +5,41 @@ const openButton = get<HTMLButtonElement>('#open-invitation');
 page.inert = true;
 document.body.classList.add('invitation-locked');
 openButton.addEventListener('click', () => {
+  if (openButton.disabled) return;
   openButton.disabled = true;
-  welcome.classList.add('opening');
+  const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let finished = false;
+  let revealTimer: number;
+  let fallbackTimer: number;
+  const revealPage = () => page.classList.add('invitation-opened');
   const finish = () => {
+    if (finished) return;
+    finished = true;
+    window.clearTimeout(revealTimer);
+    window.clearTimeout(fallbackTimer);
+    welcome.removeEventListener('animationend', onAnimationEnd);
     welcome.hidden = true;
     page.inert = false;
     document.body.classList.remove('invitation-locked');
-    page.classList.add('invitation-opened');
+    revealPage();
     startScrollAnimations();
     get<HTMLElement>('#page-title').focus({preventScroll:true});
-    window.scrollTo({top:0,behavior:'instant'});
   };
-  window.setTimeout(finish, matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 1500);
+  const onAnimationEnd = (event: AnimationEvent) => {
+    if (event.target === welcome && event.animationName === 'cover-fade') finish();
+  };
+  window.scrollTo({top:0,behavior:'instant'});
+  if (reducedMotion) {
+    finish();
+    return;
+  }
+  welcome.addEventListener('animationend', onAnimationEnd);
+  welcome.classList.add('opening');
+  // Start the content entrance while the cover fades, avoiding a second hard cut.
+  revealTimer = window.setTimeout(revealPage, 1050);
+  fallbackTimer = window.setTimeout(finish, 2500);
 });
+
 function startScrollAnimations() {
   if (!('IntersectionObserver' in window) || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   const observer = new IntersectionObserver(entries => entries.forEach(entry => {
@@ -48,8 +70,8 @@ type Wish = { name:string; message:string; date:string };
 function readRecords<T>(key:string, valid:(x:any)=>boolean):T[] {
   try { const data = JSON.parse(localStorage.getItem(key) || '[]'); return Array.isArray(data) ? data.filter(valid).slice(0,500) : []; } catch { return []; }
 }
-let responses = readRecords<Rsvp>('little-forever-rsvps', x => x && typeof x.name==='string' && ['yes','no'].includes(x.attendance) && Number.isInteger(x.party) && x.party >= 0 && x.party <= 5 && typeof x.date === 'string');
-let wishes = readRecords<Wish>('little-forever-wishes', x => x && typeof x.name==='string' && typeof x.message==='string' && typeof x.date==='string');
+let responses = readRecords<Rsvp>('little-forever-rsvps', x => x && typeof x.name==='string' && x.name.trim().length > 0 && x.name.length <= 80 && ['yes','no'].includes(x.attendance) && Number.isInteger(x.party) && x.party >= 0 && x.party <= 5 && typeof x.date === 'string');
+let wishes = readRecords<Wish>('little-forever-wishes', x => x && typeof x.name==='string' && x.name.trim().length > 0 && x.name.length <= 80 && typeof x.message==='string' && x.message.length >= 3 && x.message.length <= 600 && typeof x.date==='string');
 function save(key:string,data:unknown,status:HTMLElement) {
   try {localStorage.setItem(key,JSON.stringify(data));return true;} catch {status.textContent='Penyimpanan browser tidak tersedia atau penuh. Data belum disimpan.';return false;}
 }
@@ -65,11 +87,12 @@ function renderResponses() {
 }
 rsvpForm.addEventListener('submit', e => {
   e.preventDefault(); const data = new FormData(rsvpForm); const name=String(data.get('guest')||'').trim();
-  if(!name) {rsvpStatus.textContent='Silakan isi nama lengkap.';return;}
+  if(!name || name.length > 80) {rsvpStatus.textContent='Silakan isi nama lengkap.';return;}
   const attendance = data.get('attendance') === 'yes' ? 'yes' : 'no';
+  if (attendance === 'yes' && (!Number.isInteger(Number(data.get('party'))) || Number(data.get('party')) < 1 || Number(data.get('party')) > 5)) { rsvpStatus.textContent='Pilih jumlah tamu antara 1 dan 5.'; return; }
   const record:Rsvp = {name,attendance,party:attendance==='yes'?Number(data.get('party')):0,date:new Date().toISOString()};
   const next=[...responses]; const existing=next.findIndex(r=>r.name.toLocaleLowerCase()===name.toLocaleLowerCase());
-  if(existing>=0) next[existing]=record; else next.push(record);
+  if(existing>=0) next[existing]=record; else { if(next.length >= 500) { rsvpStatus.textContent='Daftar lokal penuh. Unduh daftar CSV sebelum menambah tamu.'; return; } next.push(record); }
   if(save('little-forever-rsvps',next,rsvpStatus)) {responses=next;renderResponses();rsvpStatus.textContent='Konfirmasi tersimpan di browser ini. Terima kasih ♡';}
 });
 const csvCell = (value:string) => '"'+(/^[\s]*[=+@\-]/.test(value)?"'":"")+value.replace(/"/g,'""')+'"';
@@ -84,7 +107,7 @@ function renderWishes() {
   const list=get('#wish-list');list.replaceChildren();
   wishes.slice().reverse().forEach(w=>{const article=document.createElement('article');article.className='wish-note';const message=document.createElement('p');message.textContent=w.message;const name=document.createElement('span');name.textContent=`♡ ${w.name}`;article.append(message,name);list.append(article);});
 }
-wishForm.addEventListener('submit',e=>{e.preventDefault();const data=new FormData(wishForm);const name=String(data.get('author')||'').trim();const message=String(data.get('wish')||'').trim();if(!name||message.length<3){wishStatus.textContent='Isi nama dan ucapan minimal 3 karakter.';return;}const next=[...wishes,{name,message,date:new Date().toISOString()}];if(save('little-forever-wishes',next,wishStatus)){wishes=next;renderWishes();wishForm.reset();wishStatus.textContent='Ucapan tersimpan di browser ini. Terima kasih atas doanya ♡';}});
+wishForm.addEventListener('submit',e=>{e.preventDefault();const data=new FormData(wishForm);const name=String(data.get('author')||'').trim();const message=String(data.get('wish')||'').trim();if(!name||name.length>80||message.length<3||message.length>600){wishStatus.textContent='Isi nama dan ucapan minimal 3 karakter.';return;}if(wishes.length>=500){wishStatus.textContent='Daftar ucapan lokal penuh.';return;}const next=[...wishes,{name,message,date:new Date().toISOString()}];if(save('little-forever-wishes',next,wishStatus)){wishes=next;renderWishes();wishForm.reset();wishStatus.textContent='Ucapan tersimpan di browser ini. Terima kasih atas doanya ♡';}});
 get('#copy-account').addEventListener('click',async()=>{
   const account=get('[data-output="account"]').textContent?.trim()||''; const status=get('#bank-status');
   if(!/^[\d\s-]{5,40}$/.test(account)){status.textContent='Nomor rekening belum diisi dengan benar.';return;}

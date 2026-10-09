@@ -1,8 +1,10 @@
 ---
+import { Image } from 'astro:assets';
+import couple from '../assets/seoul-couple.png';
 import Florals from './Florals.astro';
 ---
 <section id="welcome" class="welcome" aria-labelledby="welcome-title">
-  <div class="window-scene" aria-hidden="true"><img src="/images/seoul-couple.png" alt="" /></div>
+  <div class="window-scene" aria-hidden="true"><Image src={couple} alt="" widths={[640, 1024, 1440]} sizes="100vw" format="webp" quality={75} loading="eager" fetchpriority="high" decoding="async" /></div>
   <div class="window-doors" aria-hidden="true"><div class="door door-left"><div class="door-moulding"></div><Florals class="door-flower" eager /></div><div class="door door-right"><div class="door-moulding"></div><Florals class="door-flower" eager /></div></div>
   <div class="welcome-copy"><span class="eyebrow">A LITTLE FOREVER · THE WEDDING</span><span class="welcome-script"><span class="ink-text">a love story awaits</span></span><h1 id="welcome-title" data-output="names">[COUPLE'S NAMES]</h1><div class="welcome-rule">♡</div><p data-output="date">[WEDDING DATE]</p><p class="guest-greeting">Untuk keluarga & sahabat tersayang</p><button id="open-invitation" class="print-button">Buka undangan <span>↗</span></button><span class="welcome-footnote">BUKA JENDELA MENUJU CERITA KAMI</span><noscript><p><a href="#home">Lihat undangan ↓</a></p></noscript></div>
 </section>
