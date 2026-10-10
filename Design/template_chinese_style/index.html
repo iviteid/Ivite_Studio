@@ -3,15 +3,21 @@
 <html class="scroll-smooth" lang="id" style=""><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta name="description" content="Undangan Pernikahan Julian Wong & Clarissa Tan — The Haute Imperial Wedding, 18 Oktober 2026, The Mulia Resort Bali."/>
+<meta name="theme-color" content="#D4AF37"/>
+<meta http-equiv="x-dns-prefetch-control" content="on"/>
+<link rel="dns-prefetch" href="https://fonts.googleapis.com"/>
+<link rel="dns-prefetch" href="https://cdnjs.cloudflare.com"/>
 <title>Julian &amp; Clarissa — 喜结良缘 — The Haute Imperial Wedding</title>
 <!-- Tailwind CSS CDN -->
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<!-- Google Fonts: Cinzel Decorative, Cormorant Garamond, Noto Serif SC, Plus Jakarta Sans -->
+<!-- Google Fonts: preconnect + preload display font first -->
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;600;700;900&amp;family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&amp;family=Noto+Serif+SC:wght@200;300;400;600;700;900&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
-<!-- FontAwesome 6 -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&amp;family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400;1,600&amp;family=Noto+Serif+SC:wght@300;400;600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<!-- FontAwesome 6: load non-blocking -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" media="print" onload="this.media='all'"/>
+<noscript><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/></noscript>
 <script>
     tailwind.config = {
       theme: {
@@ -144,6 +150,9 @@
       border-radius: 9999px;
     }
 
+    /* picture element: transparent to layout so img classes control sizing */
+    picture { display: contents; }
+
     /* Golden Dust Canvas Overlay */
     #goldParticlesCanvas {
       position: fixed;
@@ -153,6 +162,8 @@
       height: 100vh;
       pointer-events: none;
       z-index: 25;
+      will-change: contents;
+      contain: strict;
     }
 
     /* Organic Arch Mask & Smooth Curves */
@@ -171,6 +182,151 @@
       #goldParticlesCanvas {
         display: none !important;
       }
+    }
+
+    /* ── Entrance Animations ── */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeInScale {
+      from { opacity: 0; transform: scale(0.96); }
+      to   { opacity: 1; transform: scale(1); }
+    }
+    @keyframes shimmerSlide {
+      0%   { background-position: -200% center; }
+      100% { background-position:  200% center; }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.75s cubic-bezier(.22,.68,0,1.2), transform 0.75s cubic-bezier(.22,.68,0,1.2);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-scale {
+      opacity: 0;
+      transform: scale(0.96);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal-scale.visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    /* ── Delay helpers ── */
+    .delay-100 { transition-delay: 100ms; }
+    .delay-200 { transition-delay: 200ms; }
+    .delay-300 { transition-delay: 300ms; }
+    .delay-400 { transition-delay: 400ms; }
+    .delay-500 { transition-delay: 500ms; }
+
+    /* ── Shimmer text effect on headings ── */
+    .shimmer-gold {
+      background: linear-gradient(90deg,
+        #8C6713 0%,
+        #D4AF37 30%,
+        #FFF2B2 50%,
+        #D4AF37 70%,
+        #8C6713 100%);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: shimmerSlide 5s linear infinite;
+    }
+
+    /* ── Enhanced card hover ── */
+    .card-luxury {
+      will-change: transform;
+      transition: transform 0.4s cubic-bezier(.22,.68,0,1.2),
+                  box-shadow 0.4s ease;
+    }
+    .card-luxury:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 28px 56px rgba(184,142,35,0.22), 0 8px 16px rgba(0,0,0,0.06);
+    }
+
+    /* Gate doors: GPU-composited slide */
+    #gateLeft, #gateRight {
+      will-change: transform;
+    }
+
+    /* ── Floating glow on section headers ── */
+    .section-ornament {
+      position: relative;
+      display: inline-block;
+    }
+    .section-ornament::before,
+    .section-ornament::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      width: 48px;
+      height: 1px;
+      background: linear-gradient(to right, transparent, #D4AF37);
+      transform: translateY(-50%);
+    }
+    .section-ornament::before {
+      right: calc(100% + 12px);
+      background: linear-gradient(to left, transparent, #D4AF37);
+    }
+    .section-ornament::after {
+      left: calc(100% + 12px);
+    }
+
+    /* ── Refined grain texture overlay for depth ── */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+      background-size: 128px 128px;
+      opacity: 0.4;
+    }
+
+    /* ── Elegant input focus ring ── */
+    input:focus, select:focus, textarea:focus {
+      box-shadow: 0 0 0 3px rgba(212,175,55,0.18);
+    }
+
+
+    /* ── Custom RSVP success modal ── */
+    #rsvpSuccessOverlay {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: rgba(35,29,25,0.55);
+      backdrop-filter: blur(6px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.35s ease;
+    }
+    #rsvpSuccessOverlay.show {
+      opacity: 1;
+      pointer-events: all;
+    }
+    #rsvpSuccessModal {
+      background: #FDFBF7;
+      border: 2px solid #D4AF37;
+      border-radius: 56px;
+      padding: 2.5rem 3rem;
+      max-width: 440px;
+      width: 90%;
+      text-align: center;
+      transform: scale(0.92) translateY(16px);
+      transition: transform 0.4s cubic-bezier(.22,.68,0,1.2);
+      box-shadow: 0 32px 64px rgba(184,142,35,0.3);
+    }
+    #rsvpSuccessOverlay.show #rsvpSuccessModal {
+      transform: scale(1) translateY(0);
     }
   </style>
 </head>
@@ -221,8 +377,8 @@
       Haute Couture Ceremony
     </div>
 </div>
-<!-- Center Floating Silk Portal Modal (Precisely Centered Vertically & Horizontally, z-[110]) -->
-<div class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[110] max-w-[440px] w-[90%] m-0 py-8 md:py-10 px-6 md:px-10 bg-white/95 backdrop-blur-2xl border-2 border-puregold-500 rounded-t-[140px] md:rounded-t-[180px] rounded-b-[44px] shadow-[0_25px_60px_rgba(184,142,35,0.28),0_0_50px_rgba(255,255,255,0.95)] text-center flex flex-col items-center justify-center transition-all duration-700 relative overflow-hidden" id="gateCenterModal">
+<!-- Center Floating Silk Portal Modal -->
+<div class="relative z-[110] mx-auto max-w-[440px] w-[90%] py-8 md:py-10 px-6 md:px-10 bg-white/95 backdrop-blur-2xl border-2 border-puregold-500 rounded-t-[140px] md:rounded-t-[180px] rounded-b-[44px] shadow-[0_25px_60px_rgba(184,142,35,0.28),0_0_50px_rgba(255,255,255,0.95)] text-center flex flex-col items-center justify-center transition-all duration-700 overflow-hidden" id="gateCenterModal">
 <!-- Decorative Moon Rings Background -->
 <div class="absolute -top-16 w-64 h-64 rounded-full border border-puregold-500/20 pointer-events-none"></div>
 <div class="absolute -top-24 w-80 h-80 rounded-full border border-puregold-500/10 pointer-events-none"></div>
@@ -237,10 +393,10 @@
 <span class="seal-stamp text-[9px] px-2 py-0.5 font-chinese font-bold">佳约</span>
 </div>
 <!-- Typographic Haute Headline -->
-<h1 class="font-display text-3xl md:text-5xl text-espresso tracking-wide font-medium mb-1">
+<h1 class="font-display text-3xl md:text-5xl text-espresso tracking-wide font-medium mb-1 text-center w-full">
       Julian <span class="font-serif italic text-puregold-600">&amp;</span> Clarissa
     </h1>
-<p class="font-chinese text-sm md:text-base text-puregold-700 tracking-[0.4em] my-1 font-semibold">
+<p class="font-chinese text-sm md:text-base text-puregold-700 tracking-[0.4em] my-1 font-semibold text-center w-full">
       叶 俊 杰  ·  陈 雅 婷
     </p>
 <!-- Soft Organic Divider -->
@@ -321,32 +477,11 @@
 <span class="text-[11px] text-espresso font-chinese font-medium">高山流水 • Guzheng Elegance</span>
 </div>
 </div>
-<audio id="weddingAudio" loop="" preload="auto">
+<audio id="weddingAudio" loop="" preload="none">
 <source src="https://cdn.freesound.org/previews/612/612085_5674468-lq.mp3" type="audio/mp3"/>
 </audio>
 <!-- =============================================================== -->
 <!-- MAIN BESPOKE EDITORIAL SITE -->
-<!-- =============================================================== -->
-<!-- TOP MINIMAL HAUTE HEADER (CURVED PILL ACCENTS) -->
-<header class="w-full bg-white/90 backdrop-blur-md border-b border-puregold-500/30 py-4 px-6 md:px-12 flex justify-between items-center sticky top-0 z-30 shadow-sm">
-<div class="flex items-center gap-3">
-<span class="seal-stamp text-xs px-2.5 py-0.5 font-chinese">葉陳</span>
-<span class="font-display tracking-[0.2em] text-espresso font-medium text-sm md:text-base">JULIAN <span class="text-puregold-600 font-serif italic font-normal">&amp;</span> CLARISSA</span>
-</div>
-<div class="hidden md:flex items-center space-x-8 text-[11px] tracking-[0.25em] uppercase text-pearl-800 font-serif font-semibold">
-<a class="hover:text-puregold-600 transition" href="#editorial-hero">Exhibition</a>
-<a class="hover:text-puregold-600 transition" href="#mempelai">The Couple</a>
-<a class="hover:text-puregold-600 transition" href="#story">Chronicle</a>
-<a class="hover:text-puregold-600 transition" href="#events">Pavilion</a>
-<a class="hover:text-puregold-600 transition" href="#gallery">Archives</a>
-<a class="hover:text-puregold-600 transition" href="#rsvp">Guestbook</a>
-</div>
-<div>
-<a class="text-[10px] tracking-[0.2em] uppercase font-semibold px-5 py-2 border-2 border-puregold-500 text-espresso bg-puregold-100 rounded-full hover:bg-puregold-500 hover:text-white transition duration-300 shadow-sm" href="#rsvp">
-        RSVP Now
-      </a>
-</div>
-</header>
 <main>
 <!-- =============================================================== -->
 <!-- 2. HAUTE EDITORIAL HERO COVER (CURVED MOON GATE AESTHETIC) -->
@@ -367,9 +502,9 @@
 <span class="w-2 h-2 rounded-full bg-puregold-600"></span>
 <span class="text-xs uppercase tracking-[0.35em] text-puregold-700 font-serif font-bold">Volume I • Celestial Matrimony</span>
 </div>
-<h1 class="text-4xl md:text-7xl lg:text-8xl font-display text-espresso tracking-tight leading-[0.95]">
-            Julian <br/>
-<span class="font-serif italic font-light text-puregold-600">&amp;</span> Clarissa
+<h1 class="text-4xl md:text-7xl lg:text-8xl font-display tracking-tight leading-[0.95] reveal">
+            <span class="shimmer-gold">Julian</span> <br/>
+<span class="font-serif italic font-light text-puregold-600">&amp;</span> <span class="shimmer-gold">Clarissa</span>
           </h1>
 <div class="flex items-center gap-4 text-puregold-700 font-chinese text-xl tracking-[0.4em] font-semibold">
 <span class="">叶俊杰</span>
@@ -425,7 +560,7 @@
               福星高照
             </div>
 <div class="w-full h-full rounded-t-full rounded-b-[40px] relative overflow-hidden">
-<img alt="Julian &amp; Clarissa Editorial Portrait" class="w-full h-full object-cover object-center filter contrast-105 hover:scale-105 transition-transform duration-1000" src="Image/couple.png"/>
+<picture><source srcset="Image/couple.webp" type="image/webp"/><img alt="Julian &amp; Clarissa Editorial Portrait" class="w-full h-full object-cover object-center filter contrast-105 hover:scale-105 transition-transform duration-1000" src="Image/couple.jpg" fetchpriority="high" decoding="sync" loading="eager"/></picture>
 <!-- Haute Text Inset Overlay with Curved Pill Badge -->
 <div class="absolute inset-0 bg-gradient-to-t from-espresso/85 via-transparent to-transparent flex flex-col justify-end p-6">
 <div class="seal-stamp text-[10px] w-fit px-3 py-0.5 font-chinese mb-1.5 bg-white text-sealRed">永结</div>
@@ -435,7 +570,7 @@
 </div>
 <!-- Overlapping Floating Bride Circular Moon Gate Vignette (NO SQUARE INSET) -->
 <div class="absolute -bottom-4 -left-4 sm:-left-8 w-32 sm:w-36 h-32 sm:h-36 rounded-full border-2 border-puregold-500 overflow-hidden shadow-2xl bg-white p-1 ring-4 ring-white/60">
-<img alt="Clarissa Portrait Inset" class="w-full h-full object-cover rounded-full hover:scale-110 transition duration-700" src="Image/woman.png"/>
+<picture><source srcset="Image/woman.webp" type="image/webp" loading="lazy"/><img alt="Clarissa Portrait Inset" class="w-full h-full object-cover rounded-full hover:scale-110 transition duration-700" src="Image/woman.jpg" loading="lazy" decoding="async"/></picture>
 </div>
 <!-- Floating Red Wax Seal Stamp (Circular) -->
 <div class="absolute -top-3 -right-3 w-14 h-14 bg-sealRed rounded-full border-2 border-puregold-300 flex items-center justify-center text-puregold-100 font-chinese text-xl font-bold shadow-xl rotate-12">
@@ -463,7 +598,7 @@
 <span class="seal-stamp text-[10px] px-3 py-0.5 font-chinese">佳偶天成</span>
 <span class="text-xs uppercase tracking-[0.3em] text-puregold-700 font-serif font-bold">The Bride &amp; The Groom</span>
 </div>
-<h2 class="font-display text-4xl md:text-5xl text-espresso">Profil Mempelai</h2>
+<h2 class="font-display text-4xl md:text-5xl text-espresso reveal">Profil Mempelai</h2>
 </div>
 <p class="font-serif italic text-pearl-800 text-sm md:text-base max-w-md mt-4 md:mt-0 text-left md:text-right">
             Dengan penuh rasa bakti kepada orang tua dan rasa syukur kepada Tuhan Yang Maha Esa, kami menyatukan dua silsilah keluarga.
@@ -472,15 +607,15 @@
 <!-- Curved Archway Editorial Presentation: Groom and Bride -->
 <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
 <!-- Groom's Arched Panel (Col 1-6) -->
-<div class="lg:col-span-6 relative">
-<div class="bg-pearl-50 p-6 md:p-10 border-2 border-puregold-500/50 rounded-t-[140px] rounded-b-[48px] shadow-xl relative text-center">
+<div class="lg:col-span-6 relative reveal">
+<div class="bg-pearl-50 p-6 md:p-10 border-2 border-puregold-500/50 rounded-t-[140px] rounded-b-[48px] shadow-xl relative text-center card-luxury">
 <div class="inline-block bg-puregold-500 text-espresso px-5 py-1 text-[10px] uppercase tracking-[0.3em] font-serif font-bold rounded-full mb-6 shadow-sm">
                 Sang Mempelai Pria • 新郎
               </div>
 <!-- Arched Moon Gate Portrait Frame (NO BOX) -->
 <div class="relative w-64 md:w-72 h-80 md:h-96 mx-auto rounded-t-full rounded-b-[40px] overflow-hidden mb-6 border-2 border-puregold-500/60 p-1.5 bg-white shadow-md">
 <div class="w-full h-full rounded-t-full rounded-b-[36px] overflow-hidden relative">
-<img alt="Julian Wong Portrait" class="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-700" src="Image/man.png"/>
+<picture><source srcset="Image/man.webp" type="image/webp" loading="lazy"/><img alt="Julian Wong Portrait" class="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-700" src="Image/man.jpg" loading="lazy" decoding="async"/></picture>
 <div class="absolute bottom-3 inset-x-3 bg-white/95 text-espresso py-2 px-4 rounded-full border border-puregold-500/60 shadow-md">
 <span class="block font-chinese text-base font-bold text-puregold-800">葉俊杰</span>
 <span class="text-[9px] uppercase tracking-widest text-pearl-700 font-semibold">Yè Jùnjié</span>
@@ -503,15 +638,15 @@
 </div>
 </div>
 <!-- Bride's Arched Panel (Col 7-12) -->
-<div class="lg:col-span-6 relative lg:translate-y-8">
-<div class="bg-pearl-50 p-6 md:p-10 border-2 border-puregold-500/50 rounded-t-[140px] rounded-b-[48px] shadow-xl relative text-center">
+<div class="lg:col-span-6 relative lg:translate-y-8 reveal delay-200">
+<div class="bg-pearl-50 p-6 md:p-10 border-2 border-puregold-500/50 rounded-t-[140px] rounded-b-[48px] shadow-xl relative text-center card-luxury">
 <div class="inline-block bg-puregold-500 text-espresso px-5 py-1 text-[10px] uppercase tracking-[0.3em] font-serif font-bold rounded-full mb-6 shadow-sm">
                 Sang Mempelai Wanita • 新娘
               </div>
 <!-- Arched Moon Gate Portrait Frame (NO BOX) -->
 <div class="relative w-64 md:w-72 h-80 md:h-96 mx-auto rounded-t-full rounded-b-[40px] overflow-hidden mb-6 border-2 border-puregold-500/60 p-1.5 bg-white shadow-md">
 <div class="w-full h-full rounded-t-full rounded-b-[36px] overflow-hidden relative">
-<img alt="Clarissa Tan Portrait" class="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-700" src="Image/woman.png"/>
+<picture><source srcset="Image/woman.webp" type="image/webp" loading="lazy"/><img alt="Clarissa Tan Portrait" class="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-700" src="Image/woman.jpg" loading="lazy" decoding="async"/></picture>
 <div class="absolute bottom-3 inset-x-3 bg-white/95 text-espresso py-2 px-4 rounded-full border border-puregold-500/60 shadow-md">
 <span class="block font-chinese text-base font-bold text-puregold-800">陳雅婷</span>
 <span class="text-[9px] uppercase tracking-widest text-pearl-700 font-semibold">Chén Yǎtíng</span>
@@ -544,7 +679,7 @@
 <div class="max-w-6xl mx-auto relative z-10">
 <div class="text-center max-w-xl mx-auto mb-20">
 <span class="seal-stamp-gold text-[10px] px-4 py-1 font-chinese">缘定三生</span>
-<h2 class="font-display text-3xl md:text-5xl text-espresso mt-3 mb-2">Kisah Perjalanan Kasih</h2>
+<h2 class="font-display text-3xl md:text-5xl text-espresso mt-3 mb-2 reveal">Kisah Perjalanan Kasih</h2>
 <p class="text-xs uppercase tracking-[0.3em] text-puregold-700 font-serif font-bold">The Chronicle of Julian &amp; Clarissa</p>
 <div class="w-16 h-[1.5px] bg-puregold-500 mx-auto mt-4 rounded-full"></div>
 </div>
@@ -557,7 +692,7 @@
 </svg>
 </div>
 <!-- Chapter 1 -->
-<div class="relative bg-white/70 backdrop-blur-sm p-6 rounded-3xl border border-puregold-500/40 shadow-sm group hover:-translate-y-1 transition duration-300">
+<div class="relative bg-white/70 backdrop-blur-sm p-6 rounded-3xl border border-puregold-500/40 shadow-sm card-luxury reveal">
 <div class="w-9 h-9 rounded-full bg-puregold-500 text-espresso font-chinese flex items-center justify-center font-bold text-xs mb-3 shadow-sm mx-auto md:mx-0">
               壹
             </div>
@@ -571,7 +706,7 @@
             </p>
 </div>
 <!-- Chapter 2 -->
-<div class="relative bg-white/70 backdrop-blur-sm p-6 rounded-3xl border border-puregold-500/40 shadow-sm group hover:-translate-y-1 transition duration-300 md:translate-y-4">
+<div class="relative bg-white/70 backdrop-blur-sm p-6 rounded-3xl border border-puregold-500/40 shadow-sm card-luxury reveal delay-100 md:translate-y-4">
 <div class="w-9 h-9 rounded-full bg-puregold-500 text-espresso font-chinese flex items-center justify-center font-bold text-xs mb-3 shadow-sm mx-auto md:mx-0">
               贰
             </div>
@@ -585,7 +720,7 @@
             </p>
 </div>
 <!-- Chapter 3 -->
-<div class="relative bg-white/70 backdrop-blur-sm p-6 rounded-3xl border border-puregold-500/40 shadow-sm group hover:-translate-y-1 transition duration-300">
+<div class="relative bg-white/70 backdrop-blur-sm p-6 rounded-3xl border border-puregold-500/40 shadow-sm card-luxury reveal delay-200">
 <div class="w-9 h-9 rounded-full bg-puregold-500 text-espresso font-chinese flex items-center justify-center font-bold text-xs mb-3 shadow-sm mx-auto md:mx-0">
               叁
             </div>
@@ -599,7 +734,7 @@
             </p>
 </div>
 <!-- Chapter 4 -->
-<div class="relative bg-white/70 backdrop-blur-sm p-6 rounded-3xl border border-puregold-600/60 shadow-sm group hover:-translate-y-1 transition duration-300 md:translate-y-4">
+<div class="relative bg-white/70 backdrop-blur-sm p-6 rounded-3xl border border-puregold-600/60 shadow-sm card-luxury reveal delay-300 md:translate-y-4">
 <div class="w-9 h-9 rounded-full bg-puregold-600 text-espresso font-chinese flex items-center justify-center font-bold text-xs mb-3 shadow-sm mx-auto md:mx-0 ring-4 ring-puregold-200">
               肆
             </div>
@@ -622,14 +757,14 @@
 <div class="max-w-7xl mx-auto">
 <div class="text-center max-w-xl mx-auto mb-20">
 <span class="seal-stamp text-[10px] px-4 py-1 font-chinese">吉日吉时</span>
-<h2 class="font-display text-3xl md:text-5xl text-espresso mt-3 mb-2">Rangkaian Acara Sakral</h2>
+<h2 class="font-display text-3xl md:text-5xl text-espresso mt-3 mb-2 reveal">Rangkaian Acara Sakral</h2>
 <p class="text-xs uppercase tracking-[0.3em] text-puregold-700 font-serif font-bold">Sacred Itinerary &amp; Ceremonies</p>
 <div class="w-16 h-[1.5px] bg-puregold-500 mx-auto mt-4 rounded-full"></div>
 </div>
 <!-- 3 Graceful Arched Pavilions (NO RIGID SQUARES) -->
 <div class="grid md:grid-cols-3 gap-8">
 <!-- Event 1: Pemberkatan Nikah (Arched Dome Silhouette) -->
-<div class="bg-white border-2 border-puregold-500/40 rounded-t-[100px] rounded-b-[40px] p-8 flex flex-col justify-between shadow-xl relative group hover:-translate-y-1 transition duration-300">
+<div class="bg-white border-2 border-puregold-500/40 rounded-t-[100px] rounded-b-[40px] p-8 flex flex-col justify-between shadow-xl relative card-luxury reveal">
 <div class="w-12 h-12 rounded-full bg-pearl-100 border border-puregold-500/40 flex items-center justify-center text-puregold-700 font-chinese text-lg font-bold mx-auto mb-4">壹</div>
 <div class="text-center">
 <div class="text-[10px] uppercase tracking-[0.3em] text-puregold-700 font-serif font-bold mb-1">
@@ -657,7 +792,7 @@
             </a>
 </div>
 <!-- Event 2: Upacara Tea Pai (Featured Center Arched Dome with 24K Gold Trim) -->
-<div class="bg-gradient-to-b from-white via-pearl-50 to-[#FAF4DC] text-espresso border-2 border-puregold-500 rounded-t-[110px] rounded-b-[44px] p-8 flex flex-col justify-between shadow-[0_20px_45px_rgba(212,175,55,0.25)] relative group hover:-translate-y-1 transition duration-300">
+<div class="bg-gradient-to-b from-white via-pearl-50 to-[#FAF4DC] text-espresso border-2 border-puregold-500 rounded-t-[110px] rounded-b-[44px] p-8 flex flex-col justify-between shadow-[0_20px_45px_rgba(212,175,55,0.25)] relative card-luxury reveal delay-200">
 <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 gold-gradient-btn text-espresso text-[9px] uppercase tracking-[0.25em] font-bold px-4 py-1 font-serif shadow-sm border border-puregold-300 rounded-full whitespace-nowrap">
               Tradisi Leluhur
             </div>
@@ -691,7 +826,7 @@
             </a>
 </div>
 <!-- Event 3: Resepsi Pernikahan (Arched Dome Silhouette) -->
-<div class="bg-white border-2 border-puregold-500/40 rounded-t-[100px] rounded-b-[40px] p-8 flex flex-col justify-between shadow-xl relative group hover:-translate-y-1 transition duration-300">
+<div class="bg-white border-2 border-puregold-500/40 rounded-t-[100px] rounded-b-[40px] p-8 flex flex-col justify-between shadow-xl relative card-luxury reveal delay-400">
 <div class="w-12 h-12 rounded-full bg-pearl-100 border border-puregold-500/40 flex items-center justify-center text-puregold-700 font-chinese text-lg font-bold mx-auto mb-4">叁</div>
 <div class="text-center">
 <div class="text-[10px] uppercase tracking-[0.3em] text-puregold-700 font-serif font-bold mb-1">
@@ -754,7 +889,7 @@
 <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-stretch">
 <!-- Large Highlight Photo (Arched Dome Top Window) -->
 <div class="md:col-span-7 h-[480px] md:h-[560px] relative overflow-hidden rounded-t-[140px] rounded-b-[44px] border-2 border-puregold-500/60 shadow-lg group">
-<img alt="Julian &amp; Clarissa Moment 1" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" src="Image/couple_dua.png"/>
+<picture><source srcset="Image/couple_dua.webp" type="image/webp" loading="lazy"/><img alt="Julian &amp; Clarissa Moment 1" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" src="Image/couple_dua.jpg" loading="lazy" decoding="async"/></picture>
 <div class="absolute inset-0 bg-gradient-to-t from-espresso/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-8">
 <div>
 <span class="font-chinese text-puregold-300 text-sm font-semibold">良缘永结</span>
@@ -765,26 +900,15 @@
 <!-- Right Side Curved Windows (Oval & Inverted Arch) -->
 <div class="md:col-span-5 grid grid-rows-2 gap-8 h-[480px] md:h-[560px]">
 <div class="relative overflow-hidden rounded-[50px] border-2 border-puregold-500/60 shadow-lg group">
-<img alt="Julian &amp; Clarissa Moment 2" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" src="Image/couple.png"/>
+<picture><source srcset="Image/couple.webp" type="image/webp" loading="lazy"/><img alt="Julian &amp; Clarissa Moment 2" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" src="Image/couple.jpg" loading="lazy" decoding="async"/></picture>
 <div class="absolute inset-0 bg-gradient-to-t from-espresso/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
 <span class="font-serif italic text-puregold-100 text-xs">Serenity in Pure Gold</span>
 </div>
 </div>
 <div class="relative overflow-hidden rounded-t-[40px] rounded-b-[100px] border-2 border-puregold-500/60 shadow-lg group">
-<img alt="Julian &amp; Clarissa Moment 3" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" src="Image/man.png"/>
+<picture><source srcset="Image/man.webp" type="image/webp" loading="lazy"/><img alt="Julian &amp; Clarissa Moment 3" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" src="Image/man.jpg" loading="lazy" decoding="async"/></picture>
 <div class="absolute inset-0 bg-gradient-to-t from-espresso/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
 <span class="font-serif italic text-puregold-100 text-xs">A Covenant Sealed in Eternity</span>
-</div>
-</div>
-</div>
-<!-- Bottom Curved Panoramic Pod (Curved Pill/Oval Silhouette) -->
-<div class="md:col-span-12 h-72 md:h-96 relative overflow-hidden rounded-[50px] md:rounded-full border-2 border-puregold-500/60 shadow-lg group mt-4">
-<img alt="Julian &amp; Clarissa Moment 4" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-1000" src="Image/woman.png"/>
-<div class="absolute inset-0 bg-gradient-to-r from-espresso/85 via-transparent to-transparent flex items-center p-8 md:p-16">
-<div class="max-w-md">
-<span class="seal-stamp text-[10px] px-3 py-0.5 font-chinese mb-2 inline-block bg-white text-sealRed font-bold">同心</span>
-<p class="font-display text-xl md:text-2xl text-puregold-100">“Bound by Destiny, Crowned by Love.”</p>
-<p class="text-[10px] tracking-[0.3em] uppercase text-puregold-200 mt-1 font-serif">Julian &amp; Clarissa MMXXVI</p>
 </div>
 </div>
 </div>
@@ -798,13 +922,13 @@
 <div class="max-w-7xl mx-auto">
 <div class="text-center max-w-xl mx-auto mb-20">
 <span class="seal-stamp text-[10px] px-4 py-1 font-chinese">贵宾芳名</span>
-<h2 class="font-display text-3xl md:text-5xl text-espresso mt-3 mb-2">Buku Tamu &amp; Konfirmasi RSVP</h2>
+<h2 class="font-display text-3xl md:text-5xl text-espresso mt-3 mb-2 reveal">Buku Tamu &amp; Konfirmasi RSVP</h2>
 <p class="text-xs uppercase tracking-[0.3em] text-puregold-700 font-serif font-bold">Imperial Guest Registry &amp; Prayers</p>
 <div class="w-16 h-[1.5px] bg-puregold-500 mx-auto mt-4 rounded-full"></div>
 </div>
 <div class="grid lg:grid-cols-12 gap-12 items-start">
 <!-- Left: Calligraphy Style RSVP Form (Rounded 40px Panel) -->
-<div class="lg:col-span-5 bg-pearl-50 border-2 border-puregold-500/50 p-8 md:p-10 rounded-[44px] shadow-xl relative">
+<div class="lg:col-span-5 bg-pearl-50 border-2 border-puregold-500/50 p-8 md:p-10 rounded-[44px] shadow-xl relative reveal">
 <div class="flex items-center justify-between border-b border-puregold-500/30 pb-4 mb-6">
 <div>
 <h3 class="font-display text-xl text-espresso font-semibold">Konfirmasi Hadir</h3>
@@ -845,7 +969,7 @@
 </form>
 </div>
 <!-- Right: Digital Wishes Archive (Rounded 44px Panel) -->
-<div class="lg:col-span-7 bg-pearl-50 border-2 border-puregold-500/50 p-8 md:p-10 rounded-[44px] shadow-xl">
+<div class="lg:col-span-7 bg-pearl-50 border-2 border-puregold-500/50 p-8 md:p-10 rounded-[44px] shadow-xl reveal delay-200">
 <div class="flex items-center justify-between border-b border-puregold-500/30 pb-4 mb-6">
 <div>
 <h3 class="font-display text-xl text-espresso font-semibold">Untaian Doa &amp; Ucapan Tamu</h3>
@@ -981,10 +1105,10 @@
 <!-- =============================================================== -->
 <section class="py-24 px-6 md:px-12 bg-white text-center relative border-t border-puregold-500/30">
 <div class="max-w-3xl mx-auto">
-<div class="w-20 h-20 mx-auto mb-6 bg-sealRed text-white border-2 border-puregold-400 rounded-full flex items-center justify-center font-chinese text-3xl font-black shadow-lg">
+<div class="w-20 h-20 mx-auto mb-6 bg-sealRed text-white border-2 border-puregold-400 rounded-full flex items-center justify-center font-chinese text-3xl font-black shadow-lg reveal-scale">
           囍
         </div>
-<h2 class="font-display text-3xl md:text-4xl text-espresso mb-3">Terima Kasih Atas Doa &amp; Restu Anda</h2>
+<h2 class="font-display text-3xl md:text-4xl text-espresso mb-3 reveal">Terima Kasih Atas Doa &amp; Restu Anda</h2>
 <p class="font-serif italic text-sm text-pearl-800 leading-relaxed max-w-xl mx-auto mb-8">
           Merupakan suatu kehormatan dan kebahagiaan yang tak terhingga bagi kami sekeluarga atas kehadiran serta untaian doa tulus yang Anda persembahkan.
         </p>
@@ -1007,6 +1131,27 @@
       </p>
 </div>
 </footer>
+<!-- ================================================================= -->
+<!-- RSVP SUCCESS MODAL (ELEGANT, REPLACES alert()) -->
+<!-- ================================================================= -->
+<div id="rsvpSuccessOverlay">
+  <div id="rsvpSuccessModal">
+    <div class="w-16 h-16 mx-auto mb-4 bg-sealRed rounded-full border-2 border-puregold-400 flex items-center justify-center font-chinese text-2xl text-white font-black shadow-lg">囍</div>
+    <div class="inline-flex items-center gap-2 mb-3 bg-pearl-100 px-4 py-1 rounded-full border border-puregold-500/30">
+      <span class="w-1.5 h-1.5 rounded-full bg-puregold-500"></span>
+      <span class="text-[10px] tracking-[0.3em] uppercase text-puregold-800 font-serif font-bold">Konfirmasi Diterima</span>
+      <span class="w-1.5 h-1.5 rounded-full bg-puregold-500"></span>
+    </div>
+    <h3 class="font-display text-xl text-espresso mb-2">Terima Kasih</h3>
+    <p class="font-serif italic text-sm text-pearl-800 leading-relaxed mb-6">Konfirmasi kehadiran dan untaian doa restu Anda telah kami terima dengan penuh rasa syukur dan kehangatan.</p>
+    <div class="flex items-center justify-center gap-3 my-3">
+      <div class="w-10 h-[1px] bg-gradient-to-r from-transparent to-puregold-500"></div>
+      <span class="font-chinese text-puregold-600 text-sm">百年好合</span>
+      <div class="w-10 h-[1px] bg-gradient-to-l from-transparent to-puregold-500"></div>
+    </div>
+    <button id="rsvpSuccessClose" class="mt-2 px-8 py-3 gold-gradient-btn text-espresso text-xs uppercase tracking-[0.25em] font-semibold rounded-full border border-puregold-300 hover:shadow-lg hover:shadow-puregold-500/30 transition">Tutup</button>
+  </div>
+</div>
 <!-- Toast Notification for Copying Account (Rounded Capsule) -->
 <div class="fixed bottom-10 left-1/2 -translate-x-1/2 z-50 bg-white text-espresso border-2 border-puregold-500 px-6 py-3 rounded-full shadow-2xl opacity-0 pointer-events-none transition-all duration-300 text-xs font-serif flex items-center gap-2" id="copyToast">
 <i class="fa-solid fa-circle-check text-puregold-600"></i>
@@ -1016,6 +1161,35 @@
 <!-- JAVASCRIPT LOGIC & INTERACTIONS -->
 <!-- ================================================================= -->
 <script>
+    // Reset scroll & state on every page load/refresh
+    (function resetOnLoad() {
+      // Prevent browser from restoring previous scroll position
+      if ('scrollRestoration' in history) {
+        history.scrollRestoration = 'manual';
+      }
+
+      // Clear hash so browser doesn't jump to an anchor section
+      if (window.location.hash) {
+        history.replaceState(null, '', window.location.pathname + window.location.search);
+      }
+
+      // Force scroll to top immediately
+      window.scrollTo(0, 0);
+
+      // Ensure the gate overlay is visible and body is locked
+      window.addEventListener('DOMContentLoaded', () => {
+        const overlay = document.getElementById('envelopeOverlay');
+        const body    = document.body;
+        if (overlay) {
+          overlay.style.display = '';
+          overlay.classList.remove('pointer-events-none', 'opacity-0');
+        }
+        body.classList.add('overflow-hidden');
+        body.classList.remove('overflow-y-auto');
+        window.scrollTo(0, 0);
+      });
+    })();
+
     // 0. High-Performance Organic Gold Dust Particles Engine
     (function initGoldParticles() {
       const canvas = document.getElementById('goldParticlesCanvas');
@@ -1024,28 +1198,39 @@
       const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       if (prefersReducedMotion) return;
 
-      const ctx = canvas.getContext('2d');
+      const ctx = canvas.getContext('2d', { alpha: true, desynchronized: true });
+      if (!ctx) return;
+
       let width = window.innerWidth;
       let height = window.innerHeight;
       let animationFrameId = null;
+      const isMobile = width < 768;
 
+      // Debounced resize — avoid thrashing on every pixel
+      let resizeTimer;
       function resize() {
-        width = canvas.width = window.innerWidth;
-        height = canvas.height = window.innerHeight;
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => {
+          width = canvas.width = window.innerWidth;
+          height = canvas.height = window.innerHeight;
+        }, 150);
       }
-      window.addEventListener('resize', resize);
-      resize();
+      window.addEventListener('resize', resize, { passive: true });
+      canvas.width = width;
+      canvas.height = height;
 
-      // Gleaming 24K pure gold & champagne shimmer palette tuned for luminous pearl backdrops
       const goldPalette = [
-        'rgba(212, 175, 55, ',    // Imperial Pure Gold #D4AF37
-        'rgba(184, 142, 35, ',    // Deep Burnished Gold #B88E23
-        'rgba(230, 180, 50, ',    // Vibrant 24K Gold
-        'rgba(243, 200, 80, ',    // Champagne Shimmer
-        'rgba(195, 145, 30, '     // Warm Antique Gold
+        'rgba(212,175,55,',
+        'rgba(184,142,35,',
+        'rgba(230,180,50,',
+        'rgba(243,200,80,',
+        'rgba(195,145,30,'
       ];
 
-      const count = Math.min(Math.floor((width * height) / 18000), 75);
+      // Fewer particles on mobile to preserve battery/frame rate
+      const densityDiv = isMobile ? 32000 : 18000;
+      const maxCount   = isMobile ? 35 : 75;
+      const count = Math.min(Math.floor((width * height) / densityDiv), maxCount);
       const particles = [];
 
       class GoldParticle {
@@ -1089,7 +1274,7 @@
           }
         }
 
-        draw(ctx) {
+        draw(ctx, skipGlow) {
           ctx.save();
           ctx.translate(this.x, this.y);
           if (this.isFlake) {
@@ -1097,20 +1282,22 @@
             ctx.scale(1, this.aspect);
           }
 
-          const currentAlpha = Math.max(0, Math.min(1, this.opacity));
+          const a = Math.max(0, Math.min(1, this.opacity));
 
-          ctx.shadowBlur = this.size * 3;
-          ctx.shadowColor = 'rgba(212, 175, 55, 0.85)';
+          if (!skipGlow) {
+            ctx.shadowBlur = this.size * 3;
+            ctx.shadowColor = 'rgba(212,175,55,0.85)';
+          }
 
           ctx.beginPath();
-          ctx.arc(0, 0, this.size, 0, Math.PI * 2);
-          ctx.fillStyle = this.colorPrefix + currentAlpha + ')';
+          ctx.arc(0, 0, this.size, 0, 6.2832);
+          ctx.fillStyle = this.colorPrefix + a + ')';
           ctx.fill();
 
-          if (this.size > 1.8 && currentAlpha > 0.45) {
+          if (!skipGlow && this.size > 1.8 && a > 0.45) {
             ctx.beginPath();
-            ctx.arc(0, 0, this.size * 0.35, 0, Math.PI * 2);
-            ctx.fillStyle = `rgba(255, 255, 255, ${currentAlpha * 0.95})`;
+            ctx.arc(0, 0, this.size * 0.35, 0, 6.2832);
+            ctx.fillStyle = 'rgba(255,255,255,' + (a * 0.95) + ')';
             ctx.fill();
           }
 
@@ -1122,11 +1309,14 @@
         particles.push(new GoldParticle());
       }
 
+      // Skip glow (shadowBlur) on mobile — expensive GPU operation
+      const skipGlow = isMobile;
+
       function loop() {
         ctx.clearRect(0, 0, width, height);
         for (let i = 0; i < particles.length; i++) {
           particles[i].update();
-          particles[i].draw(ctx);
+          particles[i].draw(ctx, skipGlow);
         }
         animationFrameId = requestAnimationFrame(loop);
       }
@@ -1141,6 +1331,7 @@
 
       animationFrameId = requestAnimationFrame(loop);
     })();
+
 
     // 1. Guest Name URL parameter (?to=Nama+Tamu or ?guest=...)
     document.addEventListener("DOMContentLoaded", () => {
@@ -1279,7 +1470,17 @@
       wishCountBadge.textContent = `${totalWishes} Gulungan Doa`;
 
       document.getElementById('rsvpMessage').value = '';
-      alert('Terima kasih banyak atas konfirmasi dan doa restu Anda yang sangat berharga bagi kami.');
+
+      // Show elegant success modal
+      const overlay = document.getElementById('rsvpSuccessOverlay');
+      overlay.classList.add('show');
+    });
+
+    document.getElementById('rsvpSuccessClose').addEventListener('click', () => {
+      document.getElementById('rsvpSuccessOverlay').classList.remove('show');
+    });
+    document.getElementById('rsvpSuccessOverlay').addEventListener('click', (e) => {
+      if (e.target === e.currentTarget) e.currentTarget.classList.remove('show');
     });
 
     function escapeHtml(text) {
@@ -1291,7 +1492,35 @@
         .replace(/'/g, "&#039;");
     }
 
-    // 6. Copy Account to Clipboard
+    // 6. Scroll Reveal (IntersectionObserver) — graceful entrance animations
+    (function initScrollReveal() {
+      const els = document.querySelectorAll('.reveal, .reveal-scale');
+      if (!('IntersectionObserver' in window)) {
+        els.forEach(el => el.classList.add('visible'));
+        return;
+      }
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+      els.forEach(el => observer.observe(el));
+    })();
+
+    // 7. Backdrop-filter reduction on low-end devices (saves GPU memory)
+    (function reduceBlurOnLowEnd() {
+      const nav = document.querySelector('header');
+      if (!nav) return;
+      if (navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 2) {
+        nav.style.backdropFilter = 'none';
+        nav.style.backgroundColor = 'rgba(253,251,247,0.97)';
+      }
+    })();
+
+    // 7. Copy Account to Clipboard
     function copyToClipboard(text, btn) {
       navigator.clipboard.writeText(text).then(() => {
         const toast = document.getElementById('copyToast');
