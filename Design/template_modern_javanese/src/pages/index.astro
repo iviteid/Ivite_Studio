@@ -13,13 +13,36 @@ const photos = [
 const wedding = { names: "[COUPLE'S NAMES]", date: '[WEDDING DATE]', ceremony: '[CEREMONY DETAILS]', venue: '[VENUE]' };
 ---
 <!doctype html>
-<html lang="en">
+<html lang="id">
 <head>
 <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="description" content="A modern Javanese wedding invitation. Rooted in tradition, written in love." />
 <title>Janji — A celebration of love</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@400;500;600&family=Italianno&display=swap" rel="stylesheet"/>
+<meta name="description" content="Undangan pernikahan modern bergaya Jawa. Berakar pada tradisi, ditulis dengan cinta." />
+<meta name="robots" content="index, follow" />
+<meta name="theme-color" content="#f6f3ec" />
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Janji — A celebration of love" />
+<meta property="og:description" content="Undangan pernikahan modern bergaya Jawa. Berakar pada tradisi, ditulis dengan cinta." />
+<meta property="og:image" content="/images/couple-editorial.webp" />
+<meta property="og:image:width" content="1086" />
+<meta property="og:image:height" content="1448" />
+<meta property="og:locale" content="id_ID" />
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Janji — A celebration of love" />
+<meta name="twitter:description" content="Undangan pernikahan modern bergaya Jawa. Berakar pada tradisi, ditulis dengan cinta." />
+<meta name="twitter:image" content="/images/couple-editorial.webp" />
+<!-- Structured data -->
+<script type="application/ld+json" is:inline>{"@context":"https://schema.org","@type":"Event","name":"Janji — A celebration of love","description":"Undangan pernikahan modern bergaya Jawa.","eventStatus":"https://schema.org/EventScheduled","organizer":{"@type":"Organization","name":"Janji Wedding"}}</script>
+<!-- Fonts: preconnect first, then non-blocking load -->
+<link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@400;500;600&family=Italianno&display=swap" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@400;500;600&family=Italianno&display=swap" media="print" onload="this.media='all'" />
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@400;500;600&family=Italianno&display=swap" /></noscript>
+<!-- Preload critical above-fold images -->
+<link rel="preload" as="image" href="/decorations/ivory-flowers.webp" />
+<link rel="preload" as="image" href="/decorations/gold-bouquet.webp" />
 </head>
 <body>
 <aside class="rail"><a class="wordmark" href="#home">janji<span>THE WEDDING EDITION</span></a><nav aria-label="Main navigation"><a class="active" href="#home"><span>01</span> The invitation</a><a href="#celebration"><span>02</span> The celebration</a><a href="#venue"><span>03</span> The venue</a><a href="#memories"><span>04</span> Our moments</a><a href="#wishes"><span>05</span> Wishes & RSVP</a><a href="#gifts"><span>06</span> Wedding gifts</a></nav><div class="rail-bottom"><Gunungan class="rail-gunungan" /><p>Rooted in tradition.<br/>Written in love.</p><span class="edition">JAVA · A LOVE STORY</span></div></aside>
@@ -49,7 +72,7 @@ const wedding = { names: "[COUPLE'S NAMES]", date: '[WEDDING DATE]', ceremony: '
 </div>
 <section class="couple-section" aria-label="Foto pasangan pengantin">
  <Decoration file="wedding-rings.webp" class="couple-rings" />
- <figure class="couple-photo"><button class="photo-open" data-photo="/images/couple-editorial.png" data-alt="Potret contoh AI pasangan pengantin dalam busana Jawa ivory" aria-label="Lihat foto pengantin ukuran penuh"><img src="/images/couple-editorial.png" alt="Potret contoh AI pasangan pengantin dalam busana Jawa ivory" width="1086" height="1448" loading="lazy"/><span class="photo-expand" aria-hidden="true">↗</span></button><figcaption>FOTO CONTOH AI · JAVANESE WEDDING EDITORIAL</figcaption></figure>
+ <figure class="couple-photo"><button class="photo-open" data-photo="/images/couple-editorial.webp" data-alt="Potret contoh AI pasangan pengantin dalam busana Jawa ivory" aria-label="Lihat foto pengantin ukuran penuh"><img src="/images/couple-editorial.webp" alt="Potret contoh AI pasangan pengantin dalam busana Jawa ivory" width="1086" height="1448" loading="lazy" decoding="async"/><span class="photo-expand" aria-hidden="true">↗</span></button><figcaption>FOTO CONTOH AI · JAVANESE WEDDING EDITORIAL</figcaption></figure>
  <div class="couple-copy"><span class="overline">THE TWO OF US</span><h2>Two stories.<br/><em>One forever.</em></h2><span class="handwritten">you, me & every tomorrow</span><p>A love that feels like coming home.<br/>A promise to walk through life, together.</p><Gunungan class="couple-emblem" /></div>
 </section>
 <section id="celebration" class="details-section"><div class="section-label">02 / THE CELEBRATION</div><div class="section-heading"><h2>A promise.<br/><em>A beginning.</em></h2><p>In the warmth of our heritage and the company of our favourite people, we begin our forever.</p></div><div class="detail-grid"><div><span class="overline">THE DAY</span><h3>{wedding.date}</h3><p>Come for the promise.<br/>Stay for the celebration.</p></div><div><span class="overline">THE CEREMONY</span><h3>{wedding.ceremony}</h3><p>A meaningful moment,<br/>surrounded by love.</p></div></div></section>
