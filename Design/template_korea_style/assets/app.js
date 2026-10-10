@@ -91,10 +91,11 @@ function getGuestName() {
       const links = [...navLinks.querySelectorAll('a[href^="#"]')];
 
       function moveIndicator(link, shine = false) {
-        indicator.style.width = `${link.offsetWidth}px`;
-        indicator.style.height = `${link.offsetHeight}px`;
-        indicator.style.transform = `translate(${link.offsetLeft}px, ${link.offsetTop}px)`;
-
+        // batch all layout reads before any writes to avoid forced reflow
+        const w = link.offsetWidth, h = link.offsetHeight, l = link.offsetLeft, t = link.offsetTop;
+        indicator.style.width = `${w}px`;
+        indicator.style.height = `${h}px`;
+        indicator.style.transform = `translate(${l}px,${t}px)`;
         if (shine) {
           indicator.classList.remove('shine');
           void indicator.offsetWidth;
@@ -116,14 +117,20 @@ function getGuestName() {
       const initialLink = links.find(link => link.getAttribute('href') === window.location.hash) || links[0];
       if (initialLink) requestAnimationFrame(() => selectLink(initialLink));
       links.forEach(link => link.addEventListener('click', () => selectLink(link, true)));
-      links.forEach(link => link.addEventListener('pointerenter', () => moveIndicator(link, true)));
+      links.forEach(link => link.addEventListener('pointerenter', () => {
+        requestAnimationFrame(() => moveIndicator(link, true));
+      }));
       navLinks.addEventListener('pointerleave', () => {
         const selectedLink = links.find(link => link.hasAttribute('aria-current'));
-        if (selectedLink) moveIndicator(selectedLink);
+        if (selectedLink) requestAnimationFrame(() => moveIndicator(selectedLink));
       });
+      let _resizeRaf;
       window.addEventListener('resize', () => {
-        const currentLink = links.find(link => link.hasAttribute('aria-current'));
-        if (currentLink) selectLink(currentLink);
+        cancelAnimationFrame(_resizeRaf);
+        _resizeRaf = requestAnimationFrame(() => {
+          const currentLink = links.find(link => link.hasAttribute('aria-current'));
+          if (currentLink) selectLink(currentLink);
+        });
       });
 
       const sections = links.map(link => document.querySelector(link.hash)).filter(Boolean);
