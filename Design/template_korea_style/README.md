@@ -1,6 +1,12 @@
 # Undangan pernikahan Korea
 
-Website statis: unggah `index.html`, folder `assets`, `Image`, dan `Songs` ke hosting. CSS hasil build sudah disertakan; Node.js tidak diperlukan di hosting.
+Website statis: `npm run build` menghasilkan folder `public/` berisi HTML, CSS, JavaScript, gambar, dan musik. Unggah isi folder tersebut ke hosting statis. Node.js hanya diperlukan untuk build.
+
+## Deploy ke Vercel
+
+`vercel.json` menetapkan build command `npm run build`, preset framework **Other** (`null`), dan output directory `public`. Root Directory proyek Vercel harus menunjuk ke folder yang berisi `package.json` dan `vercel.json` ini.
+
+Folder `public/` dibuat ulang setiap build dan tidak perlu di-commit. Setelah perubahan kode didorong ke repository, lakukan deployment ulang. Untuk memeriksa hasil build secara lokal, jalankan `python3 -m http.server 8765 --bind 127.0.0.1 --directory public`.
 
 ## Pengembangan
 

@@ -7,7 +7,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "build": "node scripts/build-icons.mjs && tailwindcss -i ./assets/input.css -o ./assets/styles.css --minify",
+    "build": "node scripts/build-icons.mjs && tailwindcss -i ./assets/input.css -o ./assets/styles.css --minify && node scripts/build-public.mjs",
     "dev": "tailwindcss -i ./assets/input.css -o ./assets/styles.css --watch"
   }
 }
