@@ -1,0 +1,394 @@
+@font-face {
+  font-family: "Autumn in November";
+  src: local("Autumn in November");
+  font-display: swap;
+}
+
+html.invitation-pending {
+  overflow: hidden;
+}
+
+html.invitation-pending header,
+html.invitation-pending footer,
+html.invitation-pending main > div > :not(#invitation-gate) {
+  visibility: hidden;
+}
+
+main section h2[tabindex="-1"]:focus { outline: none; }
+
+.invitation-gate,
+.invitation-gate * {
+  box-sizing: border-box;
+}
+
+.invitation-gate {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  overflow: auto;
+  min-height: 100dvh;
+  padding: clamp(20px, 4vh, 52px) 18px;
+  color: #4e3c24;
+  background:
+    radial-gradient(ellipse 48% 40% at 50% 43%, #fffdf8 0%, transparent 100%),
+    linear-gradient(135deg, #eee5d8 0%, #fffaf2 46%, #ebddcb 100%);
+  isolation: isolate;
+  transition: opacity 800ms ease, visibility 800ms ease;
+}
+
+.invitation-gate::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: .22;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Cpath fill='%23806b49' filter='url(%23n)' opacity='.18' d='M0 0h180v180H0z'/%3E%3C/svg%3E");
+}
+
+.invitation-gate.is-exiting {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.invitation-gate[hidden] { display: none; }
+
+.welcome-light {
+  position: absolute;
+  width: min(78vw, 850px);
+  height: min(72vh, 670px);
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(228,195,125,.21), transparent 70%);
+  filter: blur(24px);
+  pointer-events: none;
+}
+
+.welcome-content {
+  position: relative;
+  display: flex;
+  width: min(100%, 760px);
+  min-height: min(780px, calc(100dvh - 40px));
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.welcome-topline {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 11px;
+  color: #9a783c;
+  font: 600 11px/1.3 "EB Garamond", Georgia, serif;
+  letter-spacing: .29em;
+}
+
+.welcome-topline span {
+  width: 42px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #c7aa6c);
+}
+
+.welcome-topline span:last-child {
+  transform: rotate(180deg);
+}
+
+.welcome-title {
+  margin: 0;
+  color: #49371f;
+  font: 400 clamp(34px, 5vw, 58px)/1.16 "Playfair Display", Georgia, serif;
+  letter-spacing: -.025em;
+}
+
+.welcome-title em {
+  color: #a67a30;
+  font-weight: 400;
+}
+
+.welcome-description {
+  margin: 13px 0 0;
+  color: #79674c;
+  font: italic 18px/1.4 "EB Garamond", Georgia, serif;
+}
+
+.envelope-trigger {
+  display: block;
+  width: min(100%, 610px);
+  margin: 32px 0 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.envelope-trigger:focus-visible,
+.open-invitation-button:focus-visible {
+  outline: 2px solid #a87e36;
+  outline-offset: 6px;
+}
+
+.envelope-float {
+  display: block;
+  animation: envelope-float 5s ease-in-out infinite;
+}
+
+.envelope-scene {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 1.58;
+  perspective: 1200px;
+  filter: drop-shadow(0 23px 18px rgba(89,59,37,.2));
+}
+
+.envelope-back,
+.envelope-front,
+.envelope-left-fold,
+.envelope-right-fold,
+.envelope-flap {
+  position: absolute;
+  display: block;
+  left: 6%;
+  width: 88%;
+}
+
+.envelope-back {
+  top: 29%;
+  height: 61%;
+  z-index: 1;
+  border: 1px solid #d6c1a2;
+  border-radius: 13px 13px 17px 17px;
+  background: linear-gradient(160deg, #f1e5d2, #fffdf6 48%, #ebddc7);
+  box-shadow: inset 0 2px 9px rgba(255,255,255,.95), 0 12px 35px rgba(86,62,30,.2);
+}
+
+.invitation-card {
+  position: absolute;
+  display: flex;
+  top: 29%;
+  left: 15%;
+  z-index: 2;
+  width: 70%;
+  height: 60%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #ddc892;
+  border-radius: 7px;
+  background:
+    linear-gradient(135deg, rgba(255,255,255,.7), transparent 45%),
+    #fffaf0;
+  box-shadow: 0 7px 18px rgba(67,46,20,.13), inset 0 0 0 8px #fffaf0, inset 0 0 0 9px rgba(194,155,83,.46);
+  opacity: 0;
+  transform: translateY(0) scale(.96);
+  transition: transform 1050ms cubic-bezier(.2,.72,.15,1), opacity 700ms ease;
+  transition-delay: 0ms;
+}
+
+.card-ornament {
+  color: #b99556;
+  font-size: 16px;
+  line-height: 1;
+}
+
+.card-intro,
+.card-date,
+.card-place {
+  color: #927543;
+  font: 600 clamp(7px, 1.2vw, 10px)/1.4 "EB Garamond", Georgia, serif;
+  letter-spacing: .2em;
+}
+
+.card-intro { margin-top: 7px; }
+.card-names {
+  margin: 10px 0 8px;
+  color: #614522;
+  font: 400 clamp(15px, 3vw, 31px)/1.15 "Playfair Display", Georgia, serif;
+}
+.card-names i { color: #ad803a; font-weight: 400; }
+.card-rule { width: 28%; height: 1px; margin-bottom: 9px; background: #cfaf6e; }
+.card-place { margin-top: 3px; font-size: clamp(6px, 1vw, 9px); }
+
+.envelope-front {
+  top: 39%;
+  height: 51%;
+  z-index: 4;
+  border: 1px solid rgba(185,151,108,.34);
+  border-top: 0;
+  border-radius: 0 0 16px 16px;
+  background:
+    radial-gradient(ellipse at 50% 82%, rgba(220,183,129,.11), transparent 72%),
+    linear-gradient(160deg, #fffdf7, #f9f1e5 72%, #efe2cf);
+  box-shadow: inset 0 -1px rgba(168,126,77,.45), inset 0 1px rgba(255,255,255,.8);
+}
+
+.envelope-left-fold,
+.envelope-right-fold {
+  display: none;
+}
+
+.envelope-foil-arch {
+  position: absolute;
+  top: 45%;
+  left: 27%;
+  z-index: 5;
+  width: 46%;
+  height: 35%;
+  border: 2px solid rgba(192,151,92,.62);
+  border-bottom-color: transparent;
+  border-radius: 50% 50% 0 0;
+  pointer-events: none;
+}
+
+.envelope-botanical {
+  position: absolute;
+  top: 47%;
+  left: 10%;
+  z-index: 6;
+  display: block;
+  width: 80%;
+  pointer-events: none;
+  filter: saturate(.83) contrast(.95);
+}
+
+.envelope-botanical img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.envelope-flap {
+  top: 29%;
+  height: 25%;
+  z-index: 7;
+  transform-origin: 50% 0;
+  backface-visibility: visible;
+  transition: transform 780ms cubic-bezier(.37,.05,.22,.98);
+  filter: drop-shadow(0 3px 2px rgba(99,56,39,.18));
+}
+
+.envelope-flap svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.envelope-monogram {
+  position: absolute;
+  top: 54%;
+  left: 50%;
+  z-index: 8;
+  display: flex;
+  width: clamp(55px, 10vw, 77px);
+  aspect-ratio: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 4px solid #f1d5aa;
+  border-radius: 50%;
+  color: #80633e;
+  background: radial-gradient(circle at 38% 30%, #fff0d6, #ddb78d 72%, #b98b5e);
+  box-shadow: 0 4px 9px rgba(95,60,30,.22), inset 0 0 0 3px rgba(255,249,232,.55), inset 0 -3px 5px rgba(129,83,46,.13);
+  transform: translate(-50%, -50%);
+  transition: opacity 350ms ease, transform 350ms ease;
+}
+
+.envelope-monogram svg {
+  width: 52%;
+  height: 52%;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.envelope-monogram small {
+  margin-top: -2px;
+  font: 600 7px/1 "EB Garamond", Georgia, serif;
+  letter-spacing: .1em;
+}
+
+.invitation-gate.is-opening .envelope-float { animation-play-state: paused; }
+.invitation-gate.is-opening .envelope-flap { transform: rotateX(180deg); z-index: 1; }
+.invitation-gate.is-opening .invitation-card {
+  opacity: 1;
+  transform: translateY(-45%) scale(1.02);
+  transition-delay: 560ms;
+}
+.invitation-gate.is-opening .envelope-monogram {
+  opacity: 0;
+  transform: translate(-50%, -40%) scale(.7);
+}
+
+.welcome-script {
+  margin: -8px 0 9px;
+  color: #a97051;
+  font: 400 clamp(27px, 4vw, 40px)/1.2 "Autumn in November", "Great Vibes", cursive;
+}
+
+.open-invitation-button {
+  display: inline-flex;
+  min-height: 49px;
+  align-items: center;
+  justify-content: center;
+  gap: 25px;
+  padding: 9px 27px;
+  border: 1px solid #ad7656;
+  border-radius: 999px;
+  color: #fffaf0;
+  background: linear-gradient(110deg, #9f5f49, #c17f61 48%, #9f5f49);
+  box-shadow: 0 8px 20px rgba(104,77,32,.15), inset 0 1px rgba(255,255,255,.25);
+  cursor: pointer;
+  font: 600 12px/1 "EB Garamond", Georgia, serif;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  transition: transform 250ms ease, box-shadow 250ms ease;
+}
+.open-invitation-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 25px rgba(104,77,32,.22);
+}
+.open-invitation-button:disabled { cursor: default; }
+.open-invitation-button span:last-child { font-size: 19px; font-weight: 400; line-height: 0; }
+
+.welcome-hint {
+  margin: 15px 0 0;
+  color: #9b896d;
+  font: italic 14px/1.3 "EB Garamond", Georgia, serif;
+}
+
+@keyframes envelope-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-9px); }
+}
+
+@media (max-width: 600px) {
+  .welcome-content { min-height: min(670px, calc(100dvh - 30px)); }
+  .welcome-title { max-width: 350px; }
+  .welcome-description { font-size: 16px; }
+  .envelope-trigger { margin-top: 30px; }
+  .welcome-script { margin-top: -2px; }
+  .envelope-monogram { border-width: 3px; }
+}
+
+@media (max-height: 650px) {
+  .welcome-content { min-height: 0; }
+  .envelope-trigger { width: min(100%, 450px); margin-top: 0; }
+  .welcome-script { margin-top: -16px; }
+  .welcome-description { margin-top: 6px; }
+  .welcome-hint { margin-top: 8px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .envelope-float { animation: none; }
+  .envelope-flap,
+  .invitation-card,
+  .envelope-monogram,
+  .invitation-gate,
+  .open-invitation-button { transition-duration: 1ms !important; transition-delay: 0ms !important; }
+}

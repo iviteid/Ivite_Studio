@@ -19,15 +19,15 @@
         extend: {
           colors: {
             brand: {
-              ivory: '#FAF8F5',
-              cream: '#F4EFEA',
-              sand: '#E8DFD8',
-              beige: '#D8CBC0',
-              gold: '#C5A880',
-              'gold-light': '#E2D1BA',
-              charcoal: '#22201E',
-              muted: '#736E67',
-              border: '#E8E2D9'
+              ivory: '#FFFFFF',
+              cream: '#F3FBFA',
+              sand: '#E2F5F3',
+              beige: '#BFE6E2',
+              gold: '#2ABBB4',
+              'gold-light': '#9ADFD9',
+              charcoal: '#173B3A',
+              muted: '#5E7372',
+              border: '#D7ECEA'
             }
           },
           fontFamily: {
@@ -59,38 +59,35 @@
     }
   </script>
 <style>
-    /* Custom refined styling */
+    /* Modern turquoise design system */
     body {
-      background-color: #FAF8F5;
-      color: #22201E;
+      background-color: #FFFFFF;
+      color: #173B3A;
       overflow-x: hidden;
       font-family: 'Manrope', sans-serif;
-      selection-background-color: #C5A880;
+      selection-background-color: #9ADFD9;
     }
+    html { overflow-x: hidden; }
     ::selection {
-      background: #E2D1BA;
-      color: #22201E;
+      background: #9ADFD9;
+      color: #173B3A;
     }
-    
-    /* Subtle Glassmorphism */
+
     .glass-card {
-      background: rgba(255, 255, 255, 0.75);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(226, 209, 186, 0.45);
+      background: #FFFFFF;
+      border: 1px solid #D7ECEA;
+      box-shadow: 0 18px 50px rgba(23, 59, 58, 0.08);
     }
     .glass-dark {
-      background: rgba(34, 32, 30, 0.85);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border: 1px solid rgba(197, 168, 128, 0.3);
+      background: #173B3A;
+      border: 1px solid rgba(42, 187, 180, 0.35);
     }
     
     /* Scroll reveal transitions */
     .reveal {
       opacity: 0;
       transform: translateY(28px);
-      transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: opacity 0.6s ease, transform 0.6s ease;
     }
     .reveal.active {
       opacity: 1;
@@ -101,7 +98,7 @@
     .glow-sphere {
       position: absolute;
       border-radius: 9999px;
-      filter: blur(80px);
+      filter: blur(60px);
       pointer-events: none;
       z-index: 0;
     }
@@ -111,14 +108,163 @@
       width: 7px;
     }
     ::-webkit-scrollbar-track {
-      background: #FAF8F5;
+      background: #FFFFFF;
     }
     ::-webkit-scrollbar-thumb {
-      background: #D8CBC0;
+      background: #BFE6E2;
       border-radius: 4px;
     }
     ::-webkit-scrollbar-thumb:hover {
-      background: #C5A880;
+      background: #2ABBB4;
+    }
+
+    /* Surface, spacing, interaction and responsive refinements */
+    :root { --turquoise:#2ABBB4; --turquoise-dark:#168E89; --ink:#173B3A; --muted:#5E7372; --line:#D7ECEA; }
+    section { scroll-margin-top: 92px; }
+    #mainHeader { padding-block: 12px; }
+    #mainHeader nav { border-color: var(--line); background: rgba(255,255,255,.94); box-shadow: 0 10px 28px rgba(23,59,58,.08); }
+    #mainHeader > a:last-child, #openInvitationBtn, #rsvpSubmitBtn { background: var(--turquoise); color: #fff; box-shadow: 0 10px 24px rgba(42,187,180,.22); }
+    #mainHeader > a:last-child:hover, #openInvitationBtn:hover, #rsvpSubmitBtn:hover { background: var(--turquoise-dark); transform: translateY(-2px); }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 3px solid rgba(42,187,180,.35); outline-offset: 3px; }
+    .glow-sphere { opacity: .45; }
+    #hero { min-height: auto; padding-top: 148px; background: linear-gradient(135deg, #fff 0%, #F3FBFA 58%, #E2F5F3 100%); }
+    #hero > div { max-width: 1100px; }
+    #hero h1 { letter-spacing: -.045em; }
+    #hero .reveal.relative { max-width: 720px; }
+    #hero .reveal.relative > div:first-child { border-color: var(--line); box-shadow: 0 30px 80px rgba(23,59,58,.12); }
+    section:nth-of-type(even) { background: #F3FBFA; }
+    section:nth-of-type(odd) { background: #FFFFFF; }
+    section[id="couple"] .glass-card, section[id="details"] .glass-card, #rsvp .glass-card, #wishes .glass-card { border-radius: 24px; }
+    section[id="couple"] .glass-card:hover, section[id="details"] .glass-card:hover { transform: translateY(-4px); box-shadow: 0 24px 60px rgba(23,59,58,.12); }
+    section[id="couple"] .glass-card, section[id="details"] .glass-card { transition: transform .35s ease, box-shadow .35s ease; }
+    #gallery img { background: #E2F5F3; }
+    #gallery > div > div { gap: 18px; }
+    #rsvp input, #rsvp select, #rsvp textarea, #wishForm input, #wishForm textarea { border-color: var(--line); border-radius: 14px; }
+    #rsvp input:focus, #rsvp select:focus, #rsvp textarea:focus, #wishForm input:focus, #wishForm textarea:focus { border-color: var(--turquoise); box-shadow: 0 0 0 4px rgba(42,187,180,.12); }
+    #wishesFeed > div { border-color: var(--line); border-radius: 18px; }
+    footer { background: #173B3A; }
+    @media (max-width: 767px) {
+      #mainHeader { padding-inline: 18px; }
+      #mainHeader nav { position: absolute; top: 66px; left: 18px; right: 18px; display: none; flex-direction: column; gap: 4px; padding: 12px; border-radius: 18px; }
+      #mainHeader nav.is-open { display: flex; }
+      #mainHeader nav a { width: 100%; padding: 11px 14px; border-radius: 10px; }
+      #mainHeader > a:last-child { padding: 10px 14px; font-size: 10px; }
+      #hero { padding-top: 118px; }
+      #hero h1 { font-size: clamp(3rem, 15vw, 5rem); }
+      #hero .reveal.relative > div:first-child { aspect-ratio: 4 / 3; }
+      #audioNavWidget { right: 16px; bottom: 16px; }
+      section { padding-top: 76px !important; padding-bottom: 76px !important; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+
+    /* Preset-inspired editorial composition: dark photograph, ivory panel, floating navigation. */
+    @media (min-width: 1024px) {
+      body { background: #101411; }
+      #hero {
+        min-height: 100vh;
+        padding: 0;
+        display: grid;
+        grid-template-columns: minmax(0, 1.12fr) minmax(390px, .88fr);
+        align-items: stretch;
+        background: #FBF8F3 url('https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1800&q=82') left center / 58% 100% no-repeat;
+      }
+      #hero::before { content: ''; position: absolute; inset: 0 42% 0 0; background: linear-gradient(90deg, rgba(7,13,11,.18), rgba(7,13,11,.42)); pointer-events: none; }
+      #hero::after { content: ''; position: absolute; width: 280px; height: 280px; right: 10%; top: 8%; border: 1px solid rgba(177,128,42,.25); border-radius: 48% 52% 60% 40%; transform: rotate(28deg); pointer-events: none; }
+      #hero > div { grid-column: 2; width: 100%; max-width: none; min-height: 100vh; margin: 0; padding: 150px clamp(40px, 5vw, 100px) 110px; background: #FBF8F3; text-align: center; display: flex; flex-direction: column; justify-content: center; position: relative; overflow: hidden; }
+      #hero > div::before { content: ''; position: absolute; inset: 0; opacity: .6; pointer-events: none; background: radial-gradient(circle at 18% 27%, rgba(190,145,61,.22) 0 2px, transparent 3px), radial-gradient(circle at 78% 72%, rgba(190,145,61,.16) 0 1px, transparent 2px); background-size: 18px 18px, 23px 23px; mask-image: linear-gradient(135deg, #000 5%, transparent 50%); }
+      #hero > div > * { position: relative; z-index: 1; }
+      #hero .reveal.relative { display: none; }
+      #hero .reveal.inline-flex { border-color: rgba(177,128,42,.35); color: #98702C; background: rgba(255,255,255,.6); }
+      #hero h1 { color: #6F5122; font-size: clamp(3.4rem, 5vw, 5.7rem); line-height: .94; letter-spacing: -.06em; }
+      #hero h1 span { color: #A97A2A; }
+      #hero p { color: #806D52; }
+      #hero .reveal.mt-12 { margin-top: 28px; }
+      #hero .reveal.mt-12 a { color: #A97A2A; }
+      #mainHeader { left: 22px; right: auto; top: 50%; transform: translateY(-50%); padding: 0; width: 62px; flex-direction: column; gap: 10px; align-items: center; }
+      #mainHeader > a:first-child { display: none; }
+      #mainHeader > a:last-child { display: none; }
+      #mainHeader nav { display: flex; flex-direction: column; gap: 4px; width: 62px; padding: 10px 6px; border-radius: 28px; background: rgba(255,255,255,.95); border-color: rgba(177,128,42,.16); box-shadow: 0 14px 30px rgba(0,0,0,.12); }
+      #mainHeader nav a { display: flex; align-items: center; justify-content: center; width: 50px; height: 38px; padding: 0; border-radius: 18px; font-size: 0; letter-spacing: 0; color: #907245; }
+      #mainHeader nav a::before { font-size: 14px; line-height: 1; }
+      #mainHeader nav a:nth-child(1)::before { content: '♥'; }
+      #mainHeader nav a:nth-child(2)::before { content: '◉'; }
+      #mainHeader nav a:nth-child(3)::before { content: '◌'; }
+      #mainHeader nav a:nth-child(4)::before { content: '▣'; }
+      #mainHeader nav a:nth-child(5)::before { content: '▤'; }
+      #mainHeader nav a:nth-child(6)::before { content: '✓'; }
+      #mainHeader nav a:nth-child(7)::before { content: '✎'; }
+      #mainHeader nav a:first-child { background: #986A13; color: white; box-shadow: 0 8px 16px rgba(152,106,19,.2); }
+      #audioNavWidget { top: 12px; right: 12px; bottom: auto; }
+      #audioNavWidget #musicStatusCard { display: none; }
+      #audioToggleBtn { width: 42px; height: 42px; background: white; border-color: rgba(177,128,42,.28); }
+    }
+
+    /* Keep the established IVITE.ID palette across the preset composition. */
+    body { background: #FFFFFF; }
+    #hero { background-color: #FFFFFF; }
+    #hero > div { background: #FFFFFF; }
+    #hero::after { border-color: rgba(42,187,180,.28); }
+    #hero > div::before { background: radial-gradient(circle at 18% 27%, rgba(42,187,180,.18) 0 2px, transparent 3px), radial-gradient(circle at 78% 72%, rgba(42,187,180,.12) 0 1px, transparent 2px); }
+    #hero .reveal.inline-flex { border-color: rgba(42,187,180,.35); color: #168E89; }
+    #hero h1 { color: #173B3A; }
+    #hero h1 span { color: #2ABBB4; }
+    #hero p { color: #5E7372; }
+    #hero .reveal.mt-12 a { color: #168E89; }
+    #mainHeader nav { border-color: rgba(42,187,180,.2); }
+    #mainHeader nav a { color: #168E89; }
+    #mainHeader nav a:first-child { background: #2ABBB4; color: #FFFFFF; box-shadow: 0 8px 16px rgba(42,187,180,.22); }
+    #audioToggleBtn { border-color: rgba(42,187,180,.28); }
+    @media (max-width: 767px) {
+      #hero::after { border-color: rgba(42,187,180,.32); }
+      #mainHeader { background: rgba(255,255,255,.97); }
+      #mainHeader nav a { color: #168E89; }
+      #mainHeader nav a:first-child { background: #2ABBB4; color: #FFFFFF; }
+    }
+    @media (max-width: 767px) {
+      body { background: #FBF8F3; }
+      #hero { min-height: auto; display: block; padding: 0; background: #FBF8F3; }
+      #hero::before { content: ''; display: block; height: 54vh; min-height: 390px; background: linear-gradient(180deg, rgba(6,12,10,.05), rgba(6,12,10,.2)), url('https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1000&q=80') center / cover; }
+      #hero::after { content: ''; position: absolute; width: 190px; height: 190px; right: -55px; top: 25%; border: 1px solid rgba(177,128,42,.32); border-radius: 48% 52% 60% 40%; transform: rotate(28deg); }
+      #hero > div { min-height: 0; padding: 55px 28px 105px; background: #FBF8F3; text-align: center; }
+      #hero > div::before { opacity: .75; }
+      #hero .reveal.relative { display: block; max-width: none; margin-top: 24px; }
+      #hero .reveal.relative > div:first-child { border-color: rgba(177,128,42,.28); box-shadow: 0 20px 45px rgba(80,56,18,.12); }
+      #hero h1 { color: #6F5122; font-size: clamp(3.2rem, 16vw, 5rem); }
+      #hero h1 span { color: #A97A2A; }
+      #hero .reveal.mt-12 { display: none; }
+      #mainHeader { top: auto; bottom: 18px; left: 50%; right: auto; transform: translateX(-50%); width: auto; padding: 8px; flex-direction: row; gap: 5px; border-radius: 26px; background: rgba(255,255,255,.96); box-shadow: 0 12px 30px rgba(61,45,19,.15); }
+      #mainHeader > a:first-child, #mainHeader > a:last-child { display: none; }
+      #mainHeader nav { display: flex; width: auto; flex-direction: row; gap: 2px; padding: 0; border: 0; box-shadow: none; background: transparent; }
+      #mainHeader nav a { width: 36px; height: 36px; padding: 0; font-size: 0; letter-spacing: 0; border-radius: 18px; display: flex; align-items: center; justify-content: center; color: #907245; }
+      #mainHeader nav a::before { font-size: 13px; }
+      #mainHeader nav a:nth-child(1)::before { content: '♥'; }
+      #mainHeader nav a:nth-child(2)::before { content: '◉'; }
+      #mainHeader nav a:nth-child(3)::before { content: '◌'; }
+      #mainHeader nav a:nth-child(4)::before { content: '▣'; }
+      #mainHeader nav a:nth-child(5)::before { content: '▤'; }
+      #mainHeader nav a:nth-child(6)::before { content: '✓'; }
+      #mainHeader nav a:nth-child(7)::before { content: '✎'; }
+      #mainHeader nav a:first-child { background: #986A13; color: white; }
+      #menuToggle { display: none; }
+      #audioNavWidget { top: 14px; right: 14px; bottom: auto; }
+      #audioNavWidget #musicStatusCard { display: none; }
+      #audioToggleBtn { width: 42px; height: 42px; background: white; border-color: rgba(177,128,42,.28); }
+    }
+    @media (max-width: 767px) {
+      body, #hero, #hero > div { background: #FFFFFF; }
+      #hero::after { border-color: rgba(42,187,180,.32); }
+      #hero > div::before { background: radial-gradient(circle at 18% 27%, rgba(42,187,180,.18) 0 2px, transparent 3px), radial-gradient(circle at 78% 72%, rgba(42,187,180,.12) 0 1px, transparent 2px); }
+      #hero .reveal.relative > div:first-child { border-color: rgba(42,187,180,.28); box-shadow: 0 20px 45px rgba(23,59,58,.12); }
+      #hero h1 { color: #173B3A; }
+      #hero h1 span { color: #2ABBB4; }
+      #mainHeader { background: rgba(255,255,255,.97); }
+      #mainHeader nav a { color: #168E89; }
+      #mainHeader nav a:first-child { background: #2ABBB4; color: #FFFFFF; }
+      #audioToggleBtn { border-color: rgba(42,187,180,.28); }
     }
   </style>
 </head>
@@ -202,7 +348,7 @@
 <a class="font-serif text-lg md:text-xl font-normal tracking-wide text-brand-charcoal" href="#hero">
       J <span class="font-serif italic text-brand-gold">&amp;</span> A
     </a>
-<nav class="hidden md:flex items-center gap-8 text-[11px] uppercase tracking-[0.2em] font-medium text-brand-charcoal/80 glass-card px-8 py-2.5 rounded-full border border-brand-gold-light/40 shadow-sm">
+<nav class="hidden md:flex items-center gap-8 text-[11px] uppercase tracking-[0.2em] font-medium text-brand-charcoal/80 glass-card px-8 py-2.5 rounded-full border border-brand-gold-light/40 shadow-sm" id="mainMenu">
 <a class="hover:text-brand-gold transition-colors" href="#hero">Home</a>
 <a class="hover:text-brand-gold transition-colors" href="#couple">Pengantin</a>
 <a class="hover:text-brand-gold transition-colors" href="#story">Love Story</a>
@@ -211,6 +357,9 @@
 <a class="hover:text-brand-gold transition-colors" href="#rsvp">RSVP</a>
 <a class="hover:text-brand-gold transition-colors" href="#wishes">Ucapan</a>
 </nav>
+<button aria-controls="mainMenu" aria-expanded="false" aria-label="Buka menu navigasi" class="md:hidden inline-flex h-10 w-10 items-center justify-center rounded-full border border-brand-border bg-white text-brand-charcoal shadow-sm" id="menuToggle" type="button">
+<i class="w-5 h-5" data-lucide="menu"></i>
+</button>
 <a class="px-5 py-2 rounded-full text-[11px] uppercase tracking-wider font-semibold bg-brand-gold text-white hover:bg-brand-charcoal transition-colors shadow-sm" href="#rsvp">
       Konfirmasi Hadir
     </a>
@@ -239,7 +388,7 @@
 <!-- Main Editorial Photo Showcase -->
 <div class="reveal relative max-w-2xl mx-auto mt-4 group">
 <div class="relative overflow-hidden rounded-3xl border border-brand-gold-light/70 shadow-[0_25px_60px_-15px_rgba(197,168,128,0.25)] aspect-[16/10] bg-brand-sand/30">
-<img alt="Julian and Aurelia Editorial Pre-wedding" class="w-full h-full object-cover object-center transform group-hover:scale-105 transition-transform duration-1000 ease-out" src="https://www.gstatic.com/labs-code/stitch/stitch-placeholder-300x300.svg"/>
+<img alt="Julian and Aurelia Editorial Pre-wedding" class="w-full h-full object-cover object-center transform group-hover:scale-105 transition-transform duration-1000 ease-out" width="1400" height="875" fetchpriority="high" decoding="async" src="https://images.unsplash.com/photo-1532712938310-34cb3982ef74?auto=format&amp;fit=crop&amp;w=1400&amp;q=78"/>
 <!-- Soft Gradient Editorial Overlay -->
 <div class="absolute inset-0 bg-gradient-to-t from-brand-charcoal/60 via-transparent to-transparent"></div>
 <div class="absolute bottom-6 inset-x-6 flex items-end justify-between text-white">
@@ -287,7 +436,7 @@
 <!-- Groom Card -->
 <div class="reveal flex flex-col glass-card rounded-3xl p-8 lg:p-10 border border-brand-gold-light/50 shadow-sm relative overflow-hidden group">
 <div class="relative w-full aspect-[4/5] rounded-2xl overflow-hidden mb-8 bg-brand-sand/40">
-<img alt="Julian Alistair Mahendra" class="w-full h-full object-cover object-top filter grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" src="https://www.gstatic.com/labs-code/stitch/stitch-placeholder-300x300.svg"/>
+<img alt="Julian Alistair Mahendra" class="w-full h-full object-cover object-top filter grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" width="900" height="1125" loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&amp;fit=crop&amp;w=900&amp;q=76"/>
 <div class="absolute top-4 left-4 bg-brand-charcoal/80 backdrop-blur-md px-3.5 py-1 rounded-full text-[10px] tracking-[0.2em] uppercase text-white font-medium">
               The Groom
             </div>
@@ -316,7 +465,7 @@
 <!-- Bride Card -->
 <div class="reveal flex flex-col glass-card rounded-3xl p-8 lg:p-10 border border-brand-gold-light/50 shadow-sm relative overflow-hidden group">
 <div class="relative w-full aspect-[4/5] rounded-2xl overflow-hidden mb-8 bg-brand-sand/40">
-<img alt="Aurelia Celine Tanuwidjaja" class="w-full h-full object-cover object-top filter grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" src="https://www.gstatic.com/labs-code/stitch/stitch-placeholder-300x300.svg"/>
+<img alt="Aurelia Celine Tanuwidjaja" class="w-full h-full object-cover object-top filter grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" width="900" height="1125" loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&amp;fit=crop&amp;w=900&amp;q=76"/>
 <div class="absolute top-4 left-4 bg-brand-gold/90 backdrop-blur-md px-3.5 py-1 rounded-full text-[10px] tracking-[0.2em] uppercase text-white font-medium">
               The Bride
             </div>
@@ -381,7 +530,7 @@
             Takdir mempertemukan kami di sebuah pameran arsitektur kontemporer. Sebuah obrolan santai tentang estetika kesederhanaan berkembang menjadi percakapan hangat yang tak pernah ingin kami akhiri.
           </p>
 <div class="overflow-hidden rounded-2xl max-w-md aspect-video border border-brand-border">
-<img alt="First Meeting Moment" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://www.gstatic.com/labs-code/stitch/stitch-placeholder-300x300.svg"/>
+<img alt="First Meeting Moment" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" width="1200" height="800" loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&amp;fit=crop&amp;w=1200&amp;q=76"/>
 </div>
 </div>
 <!-- Story 2 -->
@@ -400,7 +549,7 @@
             Di antara gemerisik angin persawahan Ubud, kami sepakat untuk saling mendukung impian, bertumbuh dalam pengertian, dan menjadikan satu sama lain rumah teraman bagi jiwa kami.
           </p>
 <div class="overflow-hidden rounded-2xl max-w-md aspect-video border border-brand-border">
-<img alt="Committing together" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://www.gstatic.com/labs-code/stitch/stitch-placeholder-300x300.svg"/>
+<img alt="Committing together" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" width="1200" height="800" loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&amp;fit=crop&amp;w=1200&amp;q=76"/>
 </div>
 </div>
 <!-- Story 3 -->
@@ -419,7 +568,7 @@
             Di bawah temaram matahari senja di tepi danau, Julian berlutut dengan cincin sederhana bertatahkan berlian. Air mata bahagia dan jawaban "I do" mengawali langkah kami menuju janji suci pernikahan.
           </p>
 <div class="overflow-hidden rounded-2xl max-w-md aspect-video border border-brand-border">
-<img alt="Engagement Proposal Day" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://www.gstatic.com/labs-code/stitch/stitch-placeholder-300x300.svg"/>
+<img alt="Engagement Proposal Day" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" width="1200" height="800" loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1532712938310-34cb3982ef74?auto=format&amp;fit=crop&amp;w=1200&amp;q=76"/>
 </div>
 </div>
 </div>
@@ -574,7 +723,7 @@
 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 auto-rows-[220px]">
 <!-- Photo 1 (Tall) -->
 <div class="reveal sm:row-span-2 relative overflow-hidden rounded-3xl border border-brand-border/80 group cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&amp;fit=crop&amp;w=1400&amp;q=80', 'Potret Berdua di Golden Hour')">
-<img alt="Prewedding Golden Hour" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://www.gstatic.com/labs-code/stitch/stitch-placeholder-300x300.svg"/>
+<img alt="Prewedding Golden Hour" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" width="900" height="1200" loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&amp;fit=crop&amp;w=900&amp;q=76"/>
 <div class="absolute inset-0 bg-brand-charcoal/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
 <span class="p-3 rounded-full bg-white/90 text-brand-charcoal shadow-md">
 <i class="w-4 h-4" data-lucide="maximize-2"></i>
@@ -583,7 +732,7 @@
 </div>
 <!-- Photo 2 (Standard) -->
 <div class="reveal relative overflow-hidden rounded-3xl border border-brand-border/80 group cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&amp;fit=crop&amp;w=1400&amp;q=80', 'Detail Bunga &amp; Dekorasi Pernikahan')">
-<img alt="Floral Details" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://www.gstatic.com/labs-code/stitch/stitch-placeholder-300x300.svg"/>
+<img alt="Floral Details" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" width="900" height="700" loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&amp;fit=crop&amp;w=900&amp;q=76"/>
 <div class="absolute inset-0 bg-brand-charcoal/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
 <span class="p-3 rounded-full bg-white/90 text-brand-charcoal shadow-md">
 <i class="w-4 h-4" data-lucide="maximize-2"></i>
@@ -592,7 +741,7 @@
 </div>
 <!-- Photo 3 (Wide span) -->
 <div class="reveal sm:col-span-2 relative overflow-hidden rounded-3xl border border-brand-border/80 group cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?auto=format&amp;fit=crop&amp;w=1600&amp;q=80', 'Janji Setia di Alam Terbuka')">
-<img alt="Outdoor Silhouette" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://www.gstatic.com/labs-code/stitch/stitch-placeholder-300x300.svg"/>
+<img alt="Outdoor Silhouette" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" width="1400" height="700" loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?auto=format&amp;fit=crop&amp;w=1400&amp;q=76"/>
 <div class="absolute inset-0 bg-brand-charcoal/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
 <span class="p-3 rounded-full bg-white/90 text-brand-charcoal shadow-md">
 <i class="w-4 h-4" data-lucide="maximize-2"></i>
@@ -601,7 +750,7 @@
 </div>
 <!-- Photo 4 (Standard) -->
 <div class="reveal relative overflow-hidden rounded-3xl border border-brand-border/80 group cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&amp;fit=crop&amp;w=1400&amp;q=80', 'Cincin Pertunangan Emas Murni')">
-<img alt="Wedding Rings" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://www.gstatic.com/labs-code/stitch/stitch-placeholder-300x300.svg"/>
+<img alt="Wedding Rings" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" width="900" height="700" loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&amp;fit=crop&amp;w=900&amp;q=76"/>
 <div class="absolute inset-0 bg-brand-charcoal/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
 <span class="p-3 rounded-full bg-white/90 text-brand-charcoal shadow-md">
 <i class="w-4 h-4" data-lucide="maximize-2"></i>
@@ -610,7 +759,7 @@
 </div>
 <!-- Photo 5 (Tall) -->
 <div class="reveal sm:row-span-2 relative overflow-hidden rounded-3xl border border-brand-border/80 group cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&amp;fit=crop&amp;w=1400&amp;q=80', 'Pelukan Hangat Senja Hari')">
-<img alt="Romantic Embrace" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://www.gstatic.com/labs-code/stitch/stitch-placeholder-300x300.svg"/>
+<img alt="Romantic Embrace" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" width="900" height="1200" loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&amp;fit=crop&amp;w=900&amp;q=76"/>
 <div class="absolute inset-0 bg-brand-charcoal/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
 <span class="p-3 rounded-full bg-white/90 text-brand-charcoal shadow-md">
 <i class="w-4 h-4" data-lucide="maximize-2"></i>
@@ -619,7 +768,7 @@
 </div>
 <!-- Photo 6 (Standard) -->
 <div class="reveal sm:col-span-2 relative overflow-hidden rounded-3xl border border-brand-border/80 group cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1532712938310-34cb3982ef74?auto=format&amp;fit=crop&amp;w=1600&amp;q=80', 'Momen Intimate Editorial Wedding')">
-<img alt="Editorial Candid" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://www.gstatic.com/labs-code/stitch/stitch-placeholder-300x300.svg"/>
+<img alt="Editorial Candid" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" width="1400" height="700" loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1532712938310-34cb3982ef74?auto=format&amp;fit=crop&amp;w=1400&amp;q=76"/>
 <div class="absolute inset-0 bg-brand-charcoal/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
 <span class="p-3 rounded-full bg-white/90 text-brand-charcoal shadow-md">
 <i class="w-4 h-4" data-lucide="maximize-2"></i>
@@ -994,13 +1143,31 @@
 
     // Navbar blur effect on scroll
     const header = document.getElementById('mainHeader');
+    let scrollTick = false;
     window.addEventListener('scroll', () => {
-      if (window.scrollY > 100) {
-        header.classList.add('bg-white/80', 'backdrop-blur-md', 'shadow-sm');
-      } else {
-        header.classList.remove('bg-white/80', 'backdrop-blur-md', 'shadow-sm');
-      }
+      if (scrollTick) return;
+      scrollTick = true;
+      requestAnimationFrame(() => {
+        header.classList.toggle('bg-white/90', window.scrollY > 100);
+        header.classList.toggle('shadow-sm', window.scrollY > 100);
+        scrollTick = false;
+      });
+    }, { passive: true });
+
+    // Small-screen navigation stays lightweight and keyboard friendly.
+    const menuToggle = document.getElementById('menuToggle');
+    const mainMenu = document.getElementById('mainMenu');
+    menuToggle?.addEventListener('click', () => {
+      const open = mainMenu.classList.toggle('is-open');
+      menuToggle.setAttribute('aria-expanded', String(open));
+      menuToggle.setAttribute('aria-label', open ? 'Tutup menu navigasi' : 'Buka menu navigasi');
+      menuToggle.querySelector('[data-lucide]')?.setAttribute('data-lucide', open ? 'x' : 'menu');
+      lucide.createIcons();
     });
+    mainMenu?.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+      mainMenu.classList.remove('is-open');
+      menuToggle?.setAttribute('aria-expanded', 'false');
+    }));
 
     // 4. LIGHTBOX MODAL FUNCTIONALITY
     const lightboxModal = document.getElementById('lightboxModal');
@@ -1023,6 +1190,9 @@
 
     lightboxModal.addEventListener('click', (e) => {
       if (e.target === lightboxModal) closeLightbox();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !lightboxModal.classList.contains('hidden')) closeLightbox();
     });
 
     // 5. RSVP FORM SUBMISSION & LOCALSTORAGE PERSISTENCE
