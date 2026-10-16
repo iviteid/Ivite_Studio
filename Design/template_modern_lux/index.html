@@ -110,6 +110,11 @@
     transform: scale(0.95);
   }
 
+  /* Keep the bride and groom medallion borders stationary on hover. */
+  #couple .group > .absolute[style*="medallion"] {
+    transform: none !important;
+  }
+
   img[src$="hero-couple-lake-como.png"] ~ div:last-child {
     display: none;
   }
