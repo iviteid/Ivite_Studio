@@ -344,6 +344,12 @@
     box-shadow: 0 5px 16px rgba(116, 91, 33, 0.14);
   }
 
+  header nav button[aria-pressed="true"] {
+    color: #745b21;
+    background: rgba(255, 239, 190, .78);
+    box-shadow: 0 5px 16px rgba(116, 91, 33, .18);
+  }
+
   @keyframes section-arrival {
     0% { opacity: 0.78; filter: saturate(0.82); }
     55% { opacity: 1; filter: saturate(1.06); }
@@ -985,6 +991,7 @@
 <!-- ========================================================================= -->
 <!-- JAVASCRIPT LOGIC -->
 <!-- ========================================================================= -->
+<audio id="ambient-music" src="./songs/lucky_me.mp3" preload="none" loop playsinline></audio>
 <script>
     // Bespoke navigation icon set with one consistent, fine-line visual language.
     const navIcons = {
@@ -994,7 +1001,8 @@
       'gallery': '<svg class="lux-nav-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.5 6.5 10 4.8h4l1.5 1.7H19a2 2 0 0 1 2 2v8.7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8.5a2 2 0 0 1 2-2h3.5Z"/><circle cx="12" cy="12.7" r="3.4"/></svg>',
       'gifting': '<svg class="lux-nav-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10h16v10H4zM3 7h18v3H3zM12 7v13"/><path d="M12 7H8.8a2.1 2.1 0 1 1 0-4.2C11.2 2.8 12 7 12 7ZM12 7h3.2a2.1 2.1 0 1 0 0-4.2C12.8 2.8 12 7 12 7Z"/></svg>',
       'rsvp': '<svg class="lux-nav-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5.5" width="18" height="13" rx="2"/><path d="m4 7 8 6 8-6"/></svg>',
-      'music-toggle': '<svg class="lux-nav-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5v8.2"/><path d="M7.2 6.2a7.5 7.5 0 1 0 9.6 0"/></svg>'
+      'music-toggle': '<svg class="lux-nav-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18V6.5l10-2v11"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="16.5" cy="15.5" r="2.5"/></svg>',
+      'music-playing': '<svg class="lux-nav-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 9v6M12 6v12M17 8v8"/></svg>'
     };
 
     document.querySelectorAll('header nav [data-path]').forEach((item) => {
@@ -1002,7 +1010,34 @@
       if (icon) item.innerHTML = icon;
     });
     const musicToggle = document.querySelector('header nav button');
-    if (musicToggle) musicToggle.innerHTML = navIcons['music-toggle'];
+    const ambientMusic = document.getElementById('ambient-music');
+
+    function syncMusicButton(isPlaying) {
+      if (!musicToggle) return;
+      musicToggle.innerHTML = navIcons[isPlaying ? 'music-playing' : 'music-toggle'];
+      musicToggle.setAttribute('aria-pressed', String(isPlaying));
+      musicToggle.setAttribute('aria-label', isPlaying ? 'Pause background music' : 'Play background music');
+      musicToggle.title = isPlaying ? 'Pause Music' : 'Play Music';
+    }
+
+    async function playAmbientMusic() {
+      if (!ambientMusic) return;
+      ambientMusic.volume = 0.42;
+      try {
+        await ambientMusic.play();
+      } catch (error) {
+        syncMusicButton(false);
+      }
+    }
+
+    syncMusicButton(false);
+    musicToggle?.addEventListener('click', () => {
+      if (!ambientMusic) return;
+      if (ambientMusic.paused) playAmbientMusic();
+      else ambientMusic.pause();
+    });
+    ambientMusic?.addEventListener('play', () => syncMusicButton(true));
+    ambientMusic?.addEventListener('pause', () => syncMusicButton(false));
 
     // Smooth, distance-aware section navigation for the floating nav and footer links.
     const navTargetIds = {
@@ -1105,6 +1140,7 @@
     function openInvitation() {
       if (!gate || envelopeOpening) return;
       envelopeOpening = true;
+      playAmbientMusic();
       openBtn.disabled = true;
       envelopeTrigger.disabled = true;
       gate.classList.add('is-opening');
