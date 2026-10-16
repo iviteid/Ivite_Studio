@@ -116,7 +116,7 @@ main section h2[tabindex="-1"]:focus { outline: none; }
 
 .envelope-trigger {
   display: block;
-  width: min(100%, 610px);
+  width: min(100%, 420px);
   margin: 32px 0 0;
   padding: 0;
   border: 0;
@@ -140,7 +140,7 @@ main section h2[tabindex="-1"]:focus { outline: none; }
   position: relative;
   display: block;
   width: 100%;
-  aspect-ratio: 1.58;
+  aspect-ratio: 1.3;
   perspective: 1200px;
   filter: drop-shadow(0 23px 18px rgba(89,59,37,.2));
 }
@@ -315,6 +315,35 @@ main section h2[tabindex="-1"]:focus { outline: none; }
 
 .invitation-gate.is-opening .envelope-float { animation-play-state: paused; }
 .invitation-gate.is-opening .envelope-flap { transform: rotateX(180deg); z-index: 1; }
+
+.envelope-scene::after {
+  content: "";
+  position: absolute;
+  top: 10%;
+  left: 15%;
+  width: 70%;
+  height: 60%;
+  z-index: 3;
+  border-radius: 12px;
+  background: radial-gradient(ellipse at 50% 70%, rgba(228,195,125,.7), rgba(255,223,140,.4) 40%, transparent 72%);
+  opacity: 0;
+  filter: blur(18px);
+  pointer-events: none;
+  transition: opacity 600ms ease 300ms;
+}
+
+.invitation-gate.is-opening .envelope-scene::after {
+  opacity: 1;
+  animation: golden-pulse 2s ease-in-out 400ms;
+}
+
+@keyframes golden-pulse {
+  0% { opacity: 0; filter: blur(18px); }
+  30% { opacity: 1; filter: blur(14px); }
+  60% { opacity: .85; filter: blur(20px); }
+  100% { opacity: .5; filter: blur(24px); }
+}
+
 .invitation-gate.is-opening .invitation-card {
   opacity: 1;
   transform: translateY(-45%) scale(1.02);
@@ -378,7 +407,7 @@ main section h2[tabindex="-1"]:focus { outline: none; }
 
 @media (max-height: 650px) {
   .welcome-content { min-height: 0; }
-  .envelope-trigger { width: min(100%, 450px); margin-top: 0; }
+  .envelope-trigger { width: min(100%, 340px); margin-top: 0; }
   .welcome-script { margin-top: -16px; }
   .welcome-description { margin-top: 6px; }
   .welcome-hint { margin-top: 8px; }
@@ -389,6 +418,8 @@ main section h2[tabindex="-1"]:focus { outline: none; }
   .envelope-flap,
   .invitation-card,
   .envelope-monogram,
+  .envelope-scene::after,
   .invitation-gate,
   .open-invitation-button { transition-duration: 1ms !important; transition-delay: 0ms !important; }
+  .invitation-gate.is-opening .envelope-scene::after { animation: none; opacity: .5; }
 }
