@@ -13,7 +13,7 @@
   <div class="welcome-content">
     <div class="welcome-topline" aria-hidden="true"><span></span><b>THE WEDDING OF</b><span></span></div>
     <h1 class="welcome-title" id="welcome-title">You Are <em>Cordially</em> Invited</h1>
-    <p class="welcome-description" id="welcome-description">A private celebration of Arthur &amp; Victoria</p>
+    <p class="welcome-description" id="welcome-description">A private celebration of Andini Hangura &amp; Rangga Raja</p>
 
     <button class="envelope-trigger" id="envelope-trigger" type="button" aria-label="Open the wedding invitation envelope" aria-controls="invitation-gate">
       <span class="envelope-float">
@@ -22,7 +22,7 @@
           <span class="invitation-card" aria-hidden="true">
             <span class="card-ornament">✦</span>
             <span class="card-intro">WITH JOYFUL HEARTS</span>
-            <span class="card-names">Arthur <i>&amp;</i> Victoria</span>
+            <span class="card-names">Andini Hangura <i>&amp;</i> Rangga Raja</span>
             <span class="card-rule"></span>
             <span class="card-date">28 JUNE 2025</span>
             <span class="card-place">VILLA D’ESTE · LAKE COMO</span>
@@ -48,7 +48,7 @@
 <!-- Toast Notification Container -->
 <div class="fixed bottom-6 right-6 z-50 bg-primary text-on-primary px-6 py-3.5 rounded-lg shadow-xl font-body-md text-body-sm transition-all duration-300 flex items-center gap-2 opacity-0 pointer-events-none" id="toast">
 <span class="material-symbols-outlined text-[18px]">verified</span>
-<span id="toast-message" class="">Welcome to Arthur &amp; Victoria’s Celebration Suite</span>
+<span id="toast-message" class="">Welcome to Andini Hangura &amp; Rangga Raja’s Celebration Suite</span>
 </div>
 <!-- ========================================================================= -->
 <!-- 2. BREATHTAKING HERO SECTION -->
@@ -374,6 +374,308 @@
       transform: scale(0.88);
     }
   }
+
+  .hero-double-frames {
+    position: relative;
+    width: min(100%, 820px);
+    height: clamp(430px, 65vw, 590px);
+    margin: 0 auto 48px;
+    isolation: isolate;
+    perspective: 1100px;
+  }
+
+  .hero-double-frames::before {
+    content: "";
+    position: absolute;
+    inset: -4% -8%;
+    z-index: -2;
+    border-radius: 46% 54% 44% 56%;
+    background:
+      radial-gradient(ellipse at 20% 22%, rgba(255,255,255,.92), transparent 31%),
+      linear-gradient(132deg, transparent 24%, rgba(190,147,84,.12) 25%, transparent 35%),
+      linear-gradient(42deg, transparent 54%, rgba(255,255,255,.85) 55%, rgba(186,142,77,.12) 68%, transparent 75%);
+    filter: blur(2px);
+  }
+
+  /* The keepsake composition replaces the former pointed cartouche. */
+  .hero-double-frames + div {
+    display: none !important;
+  }
+
+  .keepsake-box {
+    position: absolute;
+    border: 2px solid #80531f;
+    border-radius: 3px;
+    background:
+      radial-gradient(circle at 18% 16%, rgba(255,222,145,.34), transparent 27%),
+      repeating-linear-gradient(25deg, rgba(255,255,255,.035) 0 1px, transparent 1px 4px),
+      linear-gradient(145deg, #b67d35, #9a6428 58%, #7d4d1d);
+    box-shadow:
+      inset 0 0 0 3px rgba(239,196,111,.38),
+      inset 0 -14px 24px rgba(66,36,8,.16),
+      0 25px 42px rgba(68,39,8,.27);
+  }
+
+  .keepsake-box-back {
+    z-index: 1;
+    top: 2%;
+    right: 2%;
+    width: 62%;
+    height: 64%;
+    transform: rotate(2.2deg);
+  }
+
+  .keepsake-box-back::after {
+    content: "";
+    position: absolute;
+    inset: 9px;
+    border: 1px solid rgba(255,217,137,.28);
+  }
+
+  .keepsake-ribbon {
+    position: absolute;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    color: #c99b41;
+    background: linear-gradient(90deg, #090909, #24211d 48%, #050505);
+    box-shadow: 0 3px 8px rgba(28,18,5,.26), inset 0 1px 0 rgba(255,255,255,.12);
+    font: 600 8px/1 "EB Garamond", Georgia, serif;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .ribbon-top {
+    left: -6%;
+    top: 17%;
+    width: 62%;
+    height: 34px;
+    transform: rotate(-11deg);
+  }
+
+  .ribbon-tail {
+    left: 15%;
+    top: -4%;
+    width: 36px;
+    height: 64%;
+    writing-mode: vertical-rl;
+    transform: rotate(-5deg);
+  }
+
+  .ribbon-corner {
+    right: -13%;
+    bottom: 8%;
+    width: 72%;
+    height: 34px;
+    transform: rotate(-37deg);
+  }
+
+  .ribbon-knot {
+    position: absolute;
+    z-index: 5;
+    left: 13%;
+    top: 10%;
+    width: 54px;
+    height: 54px;
+    border-radius: 50% 8% 50% 8%;
+    background: radial-gradient(circle at 55% 45%, #292622 0 20%, #080808 55%, #332c22 100%);
+    box-shadow: 0 5px 10px rgba(0,0,0,.3);
+    transform: rotate(34deg);
+  }
+
+  .keepsake-box-front {
+    z-index: 3;
+    left: 1%;
+    bottom: 1%;
+    width: 63%;
+    height: 56%;
+    padding: 17px;
+    transform: rotate(-8deg) rotateX(4deg);
+    transform-origin: bottom left;
+  }
+
+  .keepsake-satin {
+    position: absolute;
+    inset: 17px;
+    overflow: hidden;
+    border: 1px solid #382b1c;
+    background:
+      radial-gradient(ellipse at 18% 38%, rgba(130,117,91,.28), transparent 24%),
+      radial-gradient(ellipse at 76% 67%, rgba(117,105,82,.22), transparent 26%),
+      repeating-linear-gradient(148deg, #080808 0 20px, #211f1b 27px, #050505 45px);
+    box-shadow: inset 0 0 22px #000;
+  }
+
+  .ornate-photo-frame {
+    position: absolute;
+    z-index: 6;
+    padding: 13px;
+    border: 3px ridge #f2cd6d;
+    clip-path: polygon(8% 0, 18% 3%, 50% 0, 82% 3%, 92% 0, 100% 8%, 97% 18%, 100% 50%, 97% 82%, 100% 92%, 92% 100%, 82% 97%, 50% 100%, 18% 97%, 8% 100%, 0 92%, 3% 82%, 0 50%, 3% 18%, 0 8%);
+    background:
+      radial-gradient(circle at 8% 8%, #fff0a0 0 2%, transparent 3%),
+      repeating-conic-gradient(from 8deg, #83500e 0 3deg, #e4b74e 3deg 7deg, #fff0a0 7deg 9deg, #a46612 9deg 13deg);
+    box-shadow:
+      inset 0 0 0 4px #8b570f,
+      inset 0 0 0 8px #f4d87c,
+      0 11px 18px rgba(23,13,3,.34);
+  }
+
+  .ornate-photo-frame::before {
+    content: "✦";
+    position: absolute;
+    z-index: 8;
+    left: 50%;
+    top: -2px;
+    color: #fff1a2;
+    font-size: 23px;
+    text-shadow: 0 1px 2px #6d4309;
+    transform: translateX(-50%);
+  }
+
+  .ornate-photo-frame img {
+    display: block;
+    width: 100% !important;
+    height: 100% !important;
+    padding: 0 !important;
+    border: 3px solid #8a560f;
+    object-fit: cover !important;
+    object-position: center !important;
+    filter: sepia(.08) saturate(.9) contrast(1.02);
+    transform: none !important;
+  }
+
+  .ornate-frame-small {
+    right: 18%;
+    top: 27%;
+    width: 38%;
+    height: 42%;
+    transform: rotate(-1deg);
+  }
+
+  .ornate-frame-large {
+    left: 11%;
+    top: 8%;
+    width: 78%;
+    height: 82%;
+    transform: rotate(2deg);
+  }
+
+  .frame-inscription {
+    position: absolute;
+    z-index: 9;
+    left: 50%;
+    bottom: 20px;
+    width: max-content;
+    max-width: calc(100% - 46px);
+    padding: 6px 11px;
+    color: #9a651c;
+    background: rgba(255,250,230,.9);
+    border: 1px solid rgba(151,95,17,.5);
+    font: 600 8px/1.2 "EB Garamond", Georgia, serif;
+    letter-spacing: .16em;
+    text-align: center;
+    text-transform: uppercase;
+    transform: translateX(-50%);
+  }
+
+  @media (max-width: 639px) {
+    .hero-double-frames { height: 430px; margin-bottom: 34px; }
+    .keepsake-box-back { right: -4%; width: 74%; height: 59%; }
+    .keepsake-box-front { left: 2%; bottom: 3%; width: 72%; height: 52%; padding: 11px; }
+    .keepsake-satin { inset: 11px; }
+    .ornate-photo-frame { padding: 8px; }
+    .ornate-frame-small { right: 13%; width: 43%; height: 40%; }
+    .ornate-frame-large { left: 9%; width: 82%; }
+    .keepsake-ribbon { font-size: 6px; }
+    .ribbon-top, .ribbon-corner { height: 25px; }
+    .ribbon-tail { width: 27px; }
+    .ribbon-knot { width: 39px; height: 39px; }
+    .frame-inscription { bottom: 13px; padding: 4px 7px; font-size: 6px; }
+  }
+
+  .hero-double-frames.hero-keepsake-cutout {
+    width: min(100%, 780px);
+    height: auto;
+    margin-bottom: 40px;
+    perspective: none;
+  }
+
+  .hero-double-frames.hero-keepsake-cutout::before {
+    display: none;
+  }
+
+  .hero-keepsake-cutout img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 24px 24px rgba(73, 43, 8, .22));
+    transform: none !important;
+  }
+
+  @media (max-width: 639px) {
+    .hero-double-frames.hero-keepsake-cutout {
+      width: min(108%, 470px);
+      margin-bottom: 32px;
+    }
+  }
+
+  .portrait-frame-one {
+    position: relative;
+    width: min(100%, 390px);
+    aspect-ratio: 1;
+    margin-bottom: 24px;
+    isolation: isolate;
+    filter: drop-shadow(0 18px 20px rgba(91, 57, 12, .22));
+  }
+
+  /* Hide the former geometric medallion immediately following each new frame. */
+  .portrait-frame-one + div {
+    display: none !important;
+  }
+
+  .portrait-frame-one__photo {
+    position: absolute;
+    z-index: 1;
+    left: 25.8%;
+    top: 24.2%;
+    width: 53.7%;
+    height: 52.8%;
+    overflow: hidden;
+    background: #eadcc5;
+    box-shadow: inset 0 0 18px rgba(56, 32, 5, .22);
+  }
+
+  .portrait-frame-one__photo img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    transform: none !important;
+  }
+
+  .portrait-frame-one__photo::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(58, 32, 9, .16), transparent 40%);
+    pointer-events: none;
+  }
+
+  .portrait-frame-one__ornament {
+    position: absolute;
+    z-index: 2;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    pointer-events: none;
+  }
 </style>
 <section class="relative w-full pt-12 pb-20 px-gutter bg-surface overflow-hidden">
 <!-- Ambient Golden Glow -->
@@ -386,7 +688,7 @@
       </span>
 <!-- Main Script Typography Names -->
 <h2 class="font-display-hero text-headline-lg lg:text-display-hero text-on-surface mb-2 tracking-tight">
-        Arthur <span class="italic text-primary">&amp;</span> Victoria
+        Andini Hangura <span class="italic text-primary">&amp;</span> Rangga Raja
       </h2>
 <!-- Date & Venue -->
 <p class="font-body-lg text-body-lg italic text-on-surface-variant mb-4">
@@ -397,8 +699,11 @@
 <span class="font-label-sm text-label-sm tracking-widest uppercase text-primary">Villa d'Este • Lake Como, Italy</span>
 <span class="h-px w-10 bg-outline-variant"></span>
 </div>
-<!-- Ornamental pointed cartouche frame -->
-<div class="relative w-full max-w-4xl mx-auto mb-12 group flex flex-col items-center"><svg class="absolute w-0 h-0 overflow-hidden" aria-hidden="true" focusable="false"><defs><clipPath id="cartouche-clip" clipPathUnits="objectBoundingBox"><path d="M .5 .054 C .5 .104 .476 .130 .437 .139 C .397 .149 .352 .143 .318 .168 C .295 .186 .288 .214 .287 .240 C .270 .234 .253 .216 .232 .219 C .192 .223 .176 .262 .171 .323 C .160 .317 .141 .312 .125 .321 C .089 .338 .073 .392 .073 .5 C .073 .608 .089 .662 .125 .679 C .141 .688 .160 .683 .171 .677 C .176 .738 .192 .777 .232 .781 C .253 .784 .270 .766 .287 .760 C .288 .786 .295 .814 .318 .832 C .352 .857 .397 .851 .437 .861 C .476 .870 .5 .896 .5 .946 C .5 .896 .524 .870 .563 .861 C .603 .851 .648 .857 .682 .832 C .705 .814 .712 .786 .713 .760 C .730 .766 .747 .784 .768 .781 C .808 .777 .824 .738 .829 .677 C .840 .683 .859 .688 .875 .679 C .911 .662 .927 .608 .927 .5 C .927 .392 .911 .338 .875 .321 C .859 .312 .840 .317 .829 .323 C .824 .262 .808 .223 .768 .219 C .747 .216 .730 .234 .713 .240 C .712 .214 .705 .186 .682 .168 C .648 .143 .603 .149 .563 .139 C .524 .130 .5 .104 .5 .054 Z"></path></clipPath></defs></svg><div class="relative w-full max-w-[760px] aspect-[350/315] flex items-center justify-center p-2 sm:p-4 select-none"><div class="relative w-full h-full max-w-[920px] flex items-center justify-center"><div class="absolute inset-0 w-full h-full"><svg class="w-full h-full drop-shadow-2xl" viewBox="0 0 920 826" fill="none"><defs><linearGradient id="gold-bevel-grad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#e8cb82"></stop><stop offset="30%" stop-color="#caa050"></stop><stop offset="50%" stop-color="#ffdf9e"></stop><stop offset="75%" stop-color="#9b762b"></stop><stop offset="100%" stop-color="#caa050"></stop></linearGradient><linearGradient id="gold-inner-grad" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#dec48a"></stop><stop offset="50%" stop-color="#fff2c8"></stop><stop offset="100%" stop-color="#b89a5a"></stop></linearGradient></defs><path d="M460 45 C460 86 438 107 402 115 C365 123 324 118 293 139 C271 154 265 177 264 198 C248 193 233 178 213 181 C177 184 162 216 157 267 C147 262 130 258 115 265 C82 279 67 324 67 413 C67 502 82 547 115 561 C130 568 147 564 157 559 C162 610 177 642 213 645 C233 648 248 633 264 628 C265 649 271 672 293 687 C324 708 365 703 402 711 C438 719 460 740 460 781 C460 740 482 719 518 711 C555 703 596 708 627 687 C649 672 655 649 656 628 C672 633 687 648 707 645 C743 642 758 610 763 559 C773 564 790 568 805 561 C838 547 853 502 853 413 C853 324 838 279 805 265 C790 258 773 262 763 267 C758 216 743 184 707 181 C687 178 672 193 656 198 C655 177 649 154 627 139 C596 118 555 123 518 115 C482 107 460 86 460 45 Z" fill="url(#gold-bevel-grad)"></path><path transform="translate(27.6 24.78) scale(.94)" d="M460 45 C460 86 438 107 402 115 C365 123 324 118 293 139 C271 154 265 177 264 198 C248 193 233 178 213 181 C177 184 162 216 157 267 C147 262 130 258 115 265 C82 279 67 324 67 413 C67 502 82 547 115 561 C130 568 147 564 157 559 C162 610 177 642 213 645 C233 648 248 633 264 628 C265 649 271 672 293 687 C324 708 365 703 402 711 C438 719 460 740 460 781 C460 740 482 719 518 711 C555 703 596 708 627 687 C649 672 655 649 656 628 C672 633 687 648 707 645 C743 642 758 610 763 559 C773 564 790 568 805 561 C838 547 853 502 853 413 C853 324 838 279 805 265 C790 258 773 262 763 267 C758 216 743 184 707 181 C687 178 672 193 656 198 C655 177 649 154 627 139 C596 118 555 123 518 115 C482 107 460 86 460 45 Z" fill="#f5d98d"></path></svg></div><div class="absolute inset-[3%] w-[94%] h-[94%] pointer-events-none" style="clip-path: url(#cartouche-clip);"><img alt="Arthur and Victoria at Villa d'Este Lake Como" class="w-[112%] h-[112%] object-cover object-center translate-y-[12%] scale-105 transition-transform duration-1000 group-hover:scale-[1.12]" src="./images/couple-set/hero-couple-lake-como.webp" width="1448" height="1086" decoding="async" fetchpriority="high"><div class="absolute inset-0 bg-[#6b1124] mix-blend-color opacity-35 pointer-events-none"></div><div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_40%,rgba(32,10,18,0.75)_100%)] pointer-events-none"></div><div class="absolute inset-0 pointer-events-none" style="background-image: radial-gradient(circle, rgba(255,255,255,0.06) 1px, transparent 1px); background-size: 16px 16px;"></div><div class="absolute bottom-8 left-12 right-12 text-center sm:text-left flex flex-col sm:flex-row justify-between items-end gap-3 text-on-primary z-10 pointer-events-none"><div><p class="font-headline-sm text-headline-sm text-surface drop-shadow">The Sovereign Union</p><p class="font-body-sm text-body-sm italic text-surface-container drop-shadow">Lake Como, Lombardy • Private Residence Grounds</p></div><span class="font-label-sm text-label-sm uppercase tracking-widest px-3 py-1 bg-surface/20 backdrop-blur-md rounded-full border border-surface/30">Official Portrait</span></div></div><div class="absolute inset-0 w-full h-full pointer-events-none z-20"><svg class="w-full h-full" viewBox="0 0 920 826" fill="none"><path transform="translate(13.8 12.39) scale(.97)" d="M460 45 C460 86 438 107 402 115 C365 123 324 118 293 139 C271 154 265 177 264 198 C248 193 233 178 213 181 C177 184 162 216 157 267 C147 262 130 258 115 265 C82 279 67 324 67 413 C67 502 82 547 115 561 C130 568 147 564 157 559 C162 610 177 642 213 645 C233 648 248 633 264 628 C265 649 271 672 293 687 C324 708 365 703 402 711 C438 719 460 740 460 781 C460 740 482 719 518 711 C555 703 596 708 627 687 C649 672 655 649 656 628 C672 633 687 648 707 645 C743 642 758 610 763 559 C773 564 790 568 805 561 C838 547 853 502 853 413 C853 324 838 279 805 265 C790 258 773 262 763 267 C758 216 743 184 707 181 C687 178 672 193 656 198 C655 177 649 154 627 139 C596 118 555 123 518 115 C482 107 460 86 460 45 Z" stroke="#fff2c8" stroke-opacity="0.9" stroke-width="3" stroke-linejoin="round"></path><path transform="translate(32.2 28.91) scale(.93)" d="M460 45 C460 86 438 107 402 115 C365 123 324 118 293 139 C271 154 265 177 264 198 C248 193 233 178 213 181 C177 184 162 216 157 267 C147 262 130 258 115 265 C82 279 67 324 67 413 C67 502 82 547 115 561 C130 568 147 564 157 559 C162 610 177 642 213 645 C233 648 248 633 264 628 C265 649 271 672 293 687 C324 708 365 703 402 711 C438 719 460 740 460 781 C460 740 482 719 518 711 C555 703 596 708 627 687 C649 672 655 649 656 628 C672 633 687 648 707 645 C743 642 758 610 763 559 C773 564 790 568 805 561 C838 547 853 502 853 413 C853 324 838 279 805 265 C790 258 773 262 763 267 C758 216 743 184 707 181 C687 178 672 193 656 198 C655 177 649 154 627 139 C596 118 555 123 518 115 C482 107 460 86 460 45 Z" stroke="url(#gold-inner-grad)" stroke-width="2" stroke-linejoin="round"></path></svg></div></div></div></div>
+<!-- Background-free keepsake and frame cutout from the supplied reference -->
+<div class="hero-double-frames hero-keepsake-cutout">
+<img alt="Gold wedding keepsake boxes with the couple's portrait and Andini Hangura and Rangga Raja nameplate" src="./images/decorations/keepsake-frame-full-names-v4.webp" width="1254" height="1254" decoding="async" fetchpriority="high">
+</div>
+<div class="relative w-full max-w-4xl mx-auto mb-12 group flex flex-col items-center"><svg class="absolute w-0 h-0 overflow-hidden" aria-hidden="true" focusable="false"><defs><clipPath id="cartouche-clip" clipPathUnits="objectBoundingBox"><path d="M .5 .054 C .5 .104 .476 .130 .437 .139 C .397 .149 .352 .143 .318 .168 C .295 .186 .288 .214 .287 .240 C .270 .234 .253 .216 .232 .219 C .192 .223 .176 .262 .171 .323 C .160 .317 .141 .312 .125 .321 C .089 .338 .073 .392 .073 .5 C .073 .608 .089 .662 .125 .679 C .141 .688 .160 .683 .171 .677 C .176 .738 .192 .777 .232 .781 C .253 .784 .270 .766 .287 .760 C .288 .786 .295 .814 .318 .832 C .352 .857 .397 .851 .437 .861 C .476 .870 .5 .896 .5 .946 C .5 .896 .524 .870 .563 .861 C .603 .851 .648 .857 .682 .832 C .705 .814 .712 .786 .713 .760 C .730 .766 .747 .784 .768 .781 C .808 .777 .824 .738 .829 .677 C .840 .683 .859 .688 .875 .679 C .911 .662 .927 .608 .927 .5 C .927 .392 .911 .338 .875 .321 C .859 .312 .840 .317 .829 .323 C .824 .262 .808 .223 .768 .219 C .747 .216 .730 .234 .713 .240 C .712 .214 .705 .186 .682 .168 C .648 .143 .603 .149 .563 .139 C .524 .130 .5 .104 .5 .054 Z"></path></clipPath></defs></svg><div class="relative w-full max-w-[760px] aspect-[350/315] flex items-center justify-center p-2 sm:p-4 select-none"><div class="relative w-full h-full max-w-[920px] flex items-center justify-center"><div class="absolute inset-0 w-full h-full"><svg class="w-full h-full drop-shadow-2xl" viewBox="0 0 920 826" fill="none"><defs><linearGradient id="gold-bevel-grad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#e8cb82"></stop><stop offset="30%" stop-color="#caa050"></stop><stop offset="50%" stop-color="#ffdf9e"></stop><stop offset="75%" stop-color="#9b762b"></stop><stop offset="100%" stop-color="#caa050"></stop></linearGradient><linearGradient id="gold-inner-grad" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#dec48a"></stop><stop offset="50%" stop-color="#fff2c8"></stop><stop offset="100%" stop-color="#b89a5a"></stop></linearGradient></defs><path d="M460 45 C460 86 438 107 402 115 C365 123 324 118 293 139 C271 154 265 177 264 198 C248 193 233 178 213 181 C177 184 162 216 157 267 C147 262 130 258 115 265 C82 279 67 324 67 413 C67 502 82 547 115 561 C130 568 147 564 157 559 C162 610 177 642 213 645 C233 648 248 633 264 628 C265 649 271 672 293 687 C324 708 365 703 402 711 C438 719 460 740 460 781 C460 740 482 719 518 711 C555 703 596 708 627 687 C649 672 655 649 656 628 C672 633 687 648 707 645 C743 642 758 610 763 559 C773 564 790 568 805 561 C838 547 853 502 853 413 C853 324 838 279 805 265 C790 258 773 262 763 267 C758 216 743 184 707 181 C687 178 672 193 656 198 C655 177 649 154 627 139 C596 118 555 123 518 115 C482 107 460 86 460 45 Z" fill="url(#gold-bevel-grad)"></path><path transform="translate(27.6 24.78) scale(.94)" d="M460 45 C460 86 438 107 402 115 C365 123 324 118 293 139 C271 154 265 177 264 198 C248 193 233 178 213 181 C177 184 162 216 157 267 C147 262 130 258 115 265 C82 279 67 324 67 413 C67 502 82 547 115 561 C130 568 147 564 157 559 C162 610 177 642 213 645 C233 648 248 633 264 628 C265 649 271 672 293 687 C324 708 365 703 402 711 C438 719 460 740 460 781 C460 740 482 719 518 711 C555 703 596 708 627 687 C649 672 655 649 656 628 C672 633 687 648 707 645 C743 642 758 610 763 559 C773 564 790 568 805 561 C838 547 853 502 853 413 C853 324 838 279 805 265 C790 258 773 262 763 267 C758 216 743 184 707 181 C687 178 672 193 656 198 C655 177 649 154 627 139 C596 118 555 123 518 115 C482 107 460 86 460 45 Z" fill="#f5d98d"></path></svg></div><div class="absolute inset-[3%] w-[94%] h-[94%] pointer-events-none" style="clip-path: url(#cartouche-clip);"><img alt="Andini Hangura and Rangga Raja at Villa d'Este Lake Como" class="w-[112%] h-[112%] object-cover object-center translate-y-[12%] scale-105 transition-transform duration-1000 group-hover:scale-[1.12]" src="./images/couple-set/hero-couple-lake-como.webp" width="1448" height="1086" decoding="async" fetchpriority="high"><div class="absolute inset-0 bg-[#6b1124] mix-blend-color opacity-35 pointer-events-none"></div><div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_40%,rgba(32,10,18,0.75)_100%)] pointer-events-none"></div><div class="absolute inset-0 pointer-events-none" style="background-image: radial-gradient(circle, rgba(255,255,255,0.06) 1px, transparent 1px); background-size: 16px 16px;"></div><div class="absolute bottom-8 left-12 right-12 text-center sm:text-left flex flex-col sm:flex-row justify-between items-end gap-3 text-on-primary z-10 pointer-events-none"><div><p class="font-headline-sm text-headline-sm text-surface drop-shadow">The Sovereign Union</p><p class="font-body-sm text-body-sm italic text-surface-container drop-shadow">Lake Como, Lombardy • Private Residence Grounds</p></div><span class="font-label-sm text-label-sm uppercase tracking-widest px-3 py-1 bg-surface/20 backdrop-blur-md rounded-full border border-surface/30">Official Portrait</span></div></div><div class="absolute inset-0 w-full h-full pointer-events-none z-20"><svg class="w-full h-full" viewBox="0 0 920 826" fill="none"><path transform="translate(13.8 12.39) scale(.97)" d="M460 45 C460 86 438 107 402 115 C365 123 324 118 293 139 C271 154 265 177 264 198 C248 193 233 178 213 181 C177 184 162 216 157 267 C147 262 130 258 115 265 C82 279 67 324 67 413 C67 502 82 547 115 561 C130 568 147 564 157 559 C162 610 177 642 213 645 C233 648 248 633 264 628 C265 649 271 672 293 687 C324 708 365 703 402 711 C438 719 460 740 460 781 C460 740 482 719 518 711 C555 703 596 708 627 687 C649 672 655 649 656 628 C672 633 687 648 707 645 C743 642 758 610 763 559 C773 564 790 568 805 561 C838 547 853 502 853 413 C853 324 838 279 805 265 C790 258 773 262 763 267 C758 216 743 184 707 181 C687 178 672 193 656 198 C655 177 649 154 627 139 C596 118 555 123 518 115 C482 107 460 86 460 45 Z" stroke="#fff2c8" stroke-opacity="0.9" stroke-width="3" stroke-linejoin="round"></path><path transform="translate(32.2 28.91) scale(.93)" d="M460 45 C460 86 438 107 402 115 C365 123 324 118 293 139 C271 154 265 177 264 198 C248 193 233 178 213 181 C177 184 162 216 157 267 C147 262 130 258 115 265 C82 279 67 324 67 413 C67 502 82 547 115 561 C130 568 147 564 157 559 C162 610 177 642 213 645 C233 648 248 633 264 628 C265 649 271 672 293 687 C324 708 365 703 402 711 C438 719 460 740 460 781 C460 740 482 719 518 711 C555 703 596 708 627 687 C649 672 655 649 656 628 C672 633 687 648 707 645 C743 642 758 610 763 559 C773 564 790 568 805 561 C838 547 853 502 853 413 C853 324 838 279 805 265 C790 258 773 262 763 267 C758 216 743 184 707 181 C687 178 672 193 656 198 C655 177 649 154 627 139 C596 118 555 123 518 115 C482 107 460 86 460 45 Z" stroke="url(#gold-inner-grad)" stroke-width="2" stroke-linejoin="round"></path></svg></div></div></div></div>
 <!-- Real-Time Countdown Timer -->
 <div class="w-full max-w-xl mb-8 flex flex-col items-center" id="wedding-countdown">
 <span class="font-label-caps text-label-caps uppercase tracking-widest text-primary mb-5">
@@ -434,7 +739,7 @@
 </div>
 <div class="absolute left-1/2 top-[29%] z-10 -translate-x-1/2 text-center text-[#2d261b]">
 <span class="block font-serif text-[18px] tracking-[0.12em]">LONDON</span>
-<span class="block mt-1 font-label-sm text-[7px] tracking-[0.2em] uppercase">Aurelia &amp; Julian</span>
+<span class="block mt-1 font-label-sm text-[7px] tracking-[0.2em] uppercase">Andini Hangura &amp; Rangga Raja</span>
 </div>
 <div aria-hidden="true" class="pocket-subdial left"></div>
 <div aria-hidden="true" class="pocket-subdial right"></div>
@@ -484,14 +789,18 @@
 <div class="grid grid-cols-1 lg:grid-cols-11 gap-8 items-center w-full">
 <!-- Bride Card -->
 <div class="lg:col-span-5 flex flex-col items-center text-center p-6 sm:p-8">
-<div class="relative w-full max-w-sm h-[420px] mb-6 flex items-center justify-center group"><div class="absolute inset-0 w-full h-full bg-gradient-to-br from-secondary-fixed via-primary-container to-tertiary-container shadow-2xl transition-transform duration-700 group-hover:scale-105" style="clip-path: url(#medallion-clip); filter: drop-shadow(0 12px 24px rgba(116,91,33,0.3));"></div><div class="absolute inset-1.5 w-[calc(100%-12px)] h-[calc(100%-12px)] bg-surface-container-lowest transition-transform duration-700 group-hover:scale-105" style="clip-path: url(#medallion-clip);"></div><div class="absolute inset-3 w-[calc(100%-24px)] h-[calc(100%-24px)] bg-gradient-to-tr from-primary via-tertiary to-primary-container transition-transform duration-700 group-hover:scale-105" style="clip-path: url(#medallion-inner-clip);"></div><div class="relative w-[calc(100%-36px)] h-[calc(100%-36px)] overflow-hidden shadow-inner" style="clip-path: url(#medallion-inner-clip);"><img alt="Victoria Alistair-Rothschild in bespoke bridal gown" class="w-full h-full object-cover object-top hover:scale-108 transition-transform duration-700" src="./images/couple-set/bride-villa-portrait.webp" width="1024" height="1536" loading="lazy" decoding="async"><div class="absolute inset-0 bg-gradient-to-t from-on-surface/40 via-transparent to-transparent pointer-events-none"></div></div></div>
+<div class="portrait-frame-one">
+<div class="portrait-frame-one__photo"><img alt="Andini Hangura in bespoke bridal gown" src="./images/couple-set/bride-villa-portrait.webp" width="1024" height="1536" loading="lazy" decoding="async"></div>
+<img alt="" aria-hidden="true" class="portrait-frame-one__ornament" src="./images/bingkai/bingkai_one.webp" width="1254" height="1254" loading="lazy" decoding="async">
+</div>
+<div class="relative w-full max-w-sm h-[420px] mb-6 flex items-center justify-center group"><div class="absolute inset-0 w-full h-full bg-gradient-to-br from-secondary-fixed via-primary-container to-tertiary-container shadow-2xl transition-transform duration-700 group-hover:scale-105" style="clip-path: url(#medallion-clip); filter: drop-shadow(0 12px 24px rgba(116,91,33,0.3));"></div><div class="absolute inset-1.5 w-[calc(100%-12px)] h-[calc(100%-12px)] bg-surface-container-lowest transition-transform duration-700 group-hover:scale-105" style="clip-path: url(#medallion-clip);"></div><div class="absolute inset-3 w-[calc(100%-24px)] h-[calc(100%-24px)] bg-gradient-to-tr from-primary via-tertiary to-primary-container transition-transform duration-700 group-hover:scale-105" style="clip-path: url(#medallion-inner-clip);"></div><div class="relative w-[calc(100%-36px)] h-[calc(100%-36px)] overflow-hidden shadow-inner" style="clip-path: url(#medallion-inner-clip);"><img alt="Andini Hangura in bespoke bridal gown" class="w-full h-full object-cover object-top hover:scale-108 transition-transform duration-700" src="./images/couple-set/bride-villa-portrait.webp" width="1024" height="1536" loading="lazy" decoding="async"><div class="absolute inset-0 bg-gradient-to-t from-on-surface/40 via-transparent to-transparent pointer-events-none"></div></div></div>
 <span class="font-label-caps text-label-caps text-primary tracking-widest uppercase mb-1">The Bride</span>
-<h4 class="font-headline-md text-headline-md text-on-surface mb-2">Victoria Alistair-Rothschild</h4>
+<h4 class="font-headline-md text-headline-md text-on-surface mb-2">Andini Hangura</h4>
 <p class="font-label-sm text-label-sm tracking-wider uppercase text-on-surface-variant mb-4">
-            Daughter of Lord &amp; Lady Alistair
+            Daughter of the Hangura Family
           </p>
 <p class="font-body-md text-body-md text-on-surface-variant italic max-w-md">
-            “In Arthur, I found my quiet sanctuary and my greatest companion. His steadfast grace illuminates every corner of our shared path.”
+            “In Rangga, I found my quiet sanctuary and my greatest companion. His steadfast grace illuminates every corner of our shared path.”
           </p>
 </div>
 <!-- Central Ampersand Medallion -->
@@ -502,14 +811,18 @@
 </div>
 <!-- Groom Card -->
 <div class="lg:col-span-5 flex flex-col items-center text-center p-6 sm:p-8">
-<div class="relative w-full max-w-sm h-[420px] mb-6 flex items-center justify-center group"><div class="absolute inset-0 w-full h-full bg-gradient-to-br from-secondary-fixed via-primary-container to-tertiary-container shadow-2xl transition-transform duration-700 group-hover:scale-105" style="clip-path: url(#medallion-clip); filter: drop-shadow(0 12px 24px rgba(116,91,33,0.3));"></div><div class="absolute inset-1.5 w-[calc(100%-12px)] h-[calc(100%-12px)] bg-surface-container-lowest transition-transform duration-700 group-hover:scale-105" style="clip-path: url(#medallion-clip);"></div><div class="absolute inset-3 w-[calc(100%-24px)] h-[calc(100%-24px)] bg-gradient-to-tr from-primary via-tertiary to-primary-container transition-transform duration-700 group-hover:scale-105" style="clip-path: url(#medallion-inner-clip);"></div><div class="relative w-[calc(100%-36px)] h-[calc(100%-36px)] overflow-hidden shadow-inner" style="clip-path: url(#medallion-inner-clip);"><img alt="Arthur Vance-Montgomery in bespoke tuxedo" class="w-full h-full object-cover object-top hover:scale-108 transition-transform duration-700" src="./images/couple-set/groom-villa-portrait.webp" width="1024" height="1536" loading="lazy" decoding="async"><div class="absolute inset-0 bg-gradient-to-t from-on-surface/40 via-transparent to-transparent pointer-events-none"></div></div></div>
+<div class="portrait-frame-one">
+<div class="portrait-frame-one__photo"><img alt="Rangga Raja in bespoke tuxedo" src="./images/couple-set/groom-villa-portrait.webp" width="1024" height="1536" loading="lazy" decoding="async"></div>
+<img alt="" aria-hidden="true" class="portrait-frame-one__ornament" src="./images/bingkai/bingkai_one.webp" width="1254" height="1254" loading="lazy" decoding="async">
+</div>
+<div class="relative w-full max-w-sm h-[420px] mb-6 flex items-center justify-center group"><div class="absolute inset-0 w-full h-full bg-gradient-to-br from-secondary-fixed via-primary-container to-tertiary-container shadow-2xl transition-transform duration-700 group-hover:scale-105" style="clip-path: url(#medallion-clip); filter: drop-shadow(0 12px 24px rgba(116,91,33,0.3));"></div><div class="absolute inset-1.5 w-[calc(100%-12px)] h-[calc(100%-12px)] bg-surface-container-lowest transition-transform duration-700 group-hover:scale-105" style="clip-path: url(#medallion-clip);"></div><div class="absolute inset-3 w-[calc(100%-24px)] h-[calc(100%-24px)] bg-gradient-to-tr from-primary via-tertiary to-primary-container transition-transform duration-700 group-hover:scale-105" style="clip-path: url(#medallion-inner-clip);"></div><div class="relative w-[calc(100%-36px)] h-[calc(100%-36px)] overflow-hidden shadow-inner" style="clip-path: url(#medallion-inner-clip);"><img alt="Rangga Raja in bespoke tuxedo" class="w-full h-full object-cover object-top hover:scale-108 transition-transform duration-700" src="./images/couple-set/groom-villa-portrait.webp" width="1024" height="1536" loading="lazy" decoding="async"><div class="absolute inset-0 bg-gradient-to-t from-on-surface/40 via-transparent to-transparent pointer-events-none"></div></div></div>
 <span class="font-label-caps text-label-caps text-primary tracking-widest uppercase mb-1">The Groom</span>
-<h4 class="font-headline-md text-headline-md text-on-surface mb-2">Arthur Vance-Montgomery</h4>
+<h4 class="font-headline-md text-headline-md text-on-surface mb-2">Rangga Raja</h4>
 <p class="font-label-sm text-label-sm tracking-wider uppercase text-on-surface-variant mb-4">
-            Son of Mr. &amp; Mrs. Vance
+            Son of the Raja Family
           </p>
 <p class="font-body-md text-body-md text-on-surface-variant italic max-w-md">
-            “Victoria breathes majesty into every quiet moment. Loving her is the easiest, most dignified devotion of my life.”
+            “Andini breathes majesty into every quiet moment. Loving her is the easiest, most dignified devotion of my life.”
           </p>
 </div>
 </div>
@@ -573,7 +886,7 @@
 <span class="font-label-caps text-label-caps text-primary uppercase tracking-widest">Winter 2024</span>
 <h4 class="font-headline-sm text-headline-sm text-on-surface mt-1 mb-2">The Proposal on the Swiss Alps</h4>
 <p class="font-body-md text-body-md text-on-surface-variant italic">
-              Amidst the snow-capped majesty of St. Moritz, Arthur presented an antique cushion-cut solitaire. Over tears and champagne, Victoria answered forever.
+              Amidst the snow-capped majesty of St. Moritz, Rangga presented an antique cushion-cut solitaire. Over tears and champagne, Andini answered forever.
             </p>
 </div>
 <!-- Node -->
@@ -756,33 +1069,33 @@
 <div aria-hidden="true" class="absolute inset-0 opacity-40" style="background-image:radial-gradient(circle at 20% 25%,rgba(255,255,255,.75) 0 1px,transparent 1.5px),radial-gradient(circle at 75% 68%,rgba(183,138,42,.12) 0 1px,transparent 1.5px);background-size:28px 28px,34px 34px"></div>
 
 <!-- Image 1: primary left print -->
-<button aria-label="Open golden-hour garden portrait" class="group absolute left-[5%] sm:left-[7%] top-[9%] sm:top-[10%] z-10 w-[68%] sm:w-[48%] rotate-[-6deg] bg-white p-2.5 sm:p-4 pb-11 sm:pb-16 text-left shadow-[0_16px_32px_rgba(74,52,36,0.18)] transition-all duration-500 hover:z-40 hover:rotate-[-2deg] hover:scale-[1.035] focus:z-40 focus:outline-none focus:ring-2 focus:ring-primary" onclick="openLightbox('./images/couple-set/couple-garden-walk.webp', 'Arthur &amp; Victoria — A Golden-Hour Walk Through the Lake Como Gardens')" type="button">
+<button aria-label="Open golden-hour garden portrait" class="group absolute left-[5%] sm:left-[7%] top-[9%] sm:top-[10%] z-10 w-[68%] sm:w-[48%] rotate-[-6deg] bg-white p-2.5 sm:p-4 pb-11 sm:pb-16 text-left shadow-[0_16px_32px_rgba(74,52,36,0.18)] transition-all duration-500 hover:z-40 hover:rotate-[-2deg] hover:scale-[1.035] focus:z-40 focus:outline-none focus:ring-2 focus:ring-primary" onclick="openLightbox('./images/couple-set/couple-garden-walk.webp', 'Andini Hangura &amp; Rangga Raja — A Golden-Hour Walk Through the Lake Como Gardens')" type="button">
 <span class="block aspect-[4/3] overflow-hidden bg-surface-container">
-<img alt="Arthur and Victoria walking through the Lake Como gardens" class="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105" src="./images/couple-set/couple-garden-walk.webp" width="1536" height="1024" loading="lazy" decoding="async">
+<img alt="Andini Hangura and Rangga Raja walking through the Lake Como gardens" class="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105" src="./images/couple-set/couple-garden-walk.webp" width="1536" height="1024" loading="lazy" decoding="async">
 </span>
 <span class="absolute inset-x-3 bottom-3 sm:bottom-5 text-center font-body-sm text-[12px] sm:text-sm italic text-on-surface-variant">Golden-hour garden walk</span>
 </button>
 
 <!-- Image 2: primary right print -->
-<button aria-label="Open bridal balcony portrait" class="group absolute right-[4%] sm:right-[7%] top-[25%] sm:top-[15%] z-20 w-[66%] sm:w-[46%] rotate-[7deg] bg-white p-2.5 sm:p-4 pb-11 sm:pb-16 text-left shadow-[0_18px_36px_rgba(74,52,36,0.20)] transition-all duration-500 hover:z-40 hover:rotate-[2deg] hover:scale-[1.035] focus:z-40 focus:outline-none focus:ring-2 focus:ring-primary" onclick="openLightbox('./images/couple-set/bride-balcony.webp', 'Victoria — Bridal Portrait on the Lake Como Balcony')" type="button">
+<button aria-label="Open bridal balcony portrait" class="group absolute right-[4%] sm:right-[7%] top-[25%] sm:top-[15%] z-20 w-[66%] sm:w-[46%] rotate-[7deg] bg-white p-2.5 sm:p-4 pb-11 sm:pb-16 text-left shadow-[0_18px_36px_rgba(74,52,36,0.20)] transition-all duration-500 hover:z-40 hover:rotate-[2deg] hover:scale-[1.035] focus:z-40 focus:outline-none focus:ring-2 focus:ring-primary" onclick="openLightbox('./images/couple-set/bride-balcony.webp', 'Andini Hangura — Bridal Portrait on the Lake Como Balcony')" type="button">
 <span class="block aspect-[4/3] overflow-hidden bg-surface-container">
-<img alt="Victoria in her bridal gown on a Lake Como balcony" class="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105" src="./images/couple-set/bride-balcony.webp" width="1024" height="1536" loading="lazy" decoding="async">
+<img alt="Andini Hangura in her bridal gown on a Lake Como balcony" class="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105" src="./images/couple-set/bride-balcony.webp" width="1024" height="1536" loading="lazy" decoding="async">
 </span>
 <span class="absolute inset-x-3 bottom-3 sm:bottom-5 text-center font-body-sm text-[12px] sm:text-sm italic text-on-surface-variant">The bride • lakeside balcony</span>
 </button>
 
 <!-- Image 3: small groom snapshot -->
-<button aria-label="Open groom library portrait" class="group absolute left-[8%] sm:left-[12%] bottom-[8%] sm:bottom-[7%] z-30 w-[35%] sm:w-[25%] rotate-[5deg] bg-white p-2 sm:p-3 pb-9 sm:pb-11 text-left shadow-[0_14px_28px_rgba(74,52,36,0.17)] transition-all duration-500 hover:z-40 hover:rotate-0 hover:scale-105 focus:z-40 focus:outline-none focus:ring-2 focus:ring-primary" onclick="openLightbox('./images/couple-set/groom-library.webp', 'Arthur — Evening Portrait in the Villa Library')" type="button">
+<button aria-label="Open groom library portrait" class="group absolute left-[8%] sm:left-[12%] bottom-[8%] sm:bottom-[7%] z-30 w-[35%] sm:w-[25%] rotate-[5deg] bg-white p-2 sm:p-3 pb-9 sm:pb-11 text-left shadow-[0_14px_28px_rgba(74,52,36,0.17)] transition-all duration-500 hover:z-40 hover:rotate-0 hover:scale-105 focus:z-40 focus:outline-none focus:ring-2 focus:ring-primary" onclick="openLightbox('./images/couple-set/groom-library.webp', 'Rangga Raja — Evening Portrait in the Villa Library')" type="button">
 <span class="block aspect-square overflow-hidden bg-surface-container">
-<img alt="Arthur in black tie inside the Villa library" class="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105" src="./images/couple-set/groom-library.webp" width="1024" height="1536" loading="lazy" decoding="async">
+<img alt="Rangga Raja in black tie inside the Villa library" class="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105" src="./images/couple-set/groom-library.webp" width="1024" height="1536" loading="lazy" decoding="async">
 </span>
 <span class="absolute inset-x-2 bottom-2 sm:bottom-3 text-center font-body-sm text-[10px] sm:text-xs italic text-on-surface-variant">The groom</span>
 </button>
 
 <!-- Image 4: small first-dance snapshot -->
-<button aria-label="Open first dance portrait" class="group absolute right-[7%] sm:right-[12%] bottom-[7%] sm:bottom-[6%] z-30 w-[36%] sm:w-[26%] rotate-[-7deg] bg-white p-2 sm:p-3 pb-9 sm:pb-11 text-left shadow-[0_14px_28px_rgba(74,52,36,0.17)] transition-all duration-500 hover:z-40 hover:rotate-0 hover:scale-105 focus:z-40 focus:outline-none focus:ring-2 focus:ring-primary" onclick="openLightbox('./images/couple-set/couple-ballroom-dance.webp', 'Arthur &amp; Victoria — First Dance in the Candlelit Ballroom')" type="button">
+<button aria-label="Open first dance portrait" class="group absolute right-[7%] sm:right-[12%] bottom-[7%] sm:bottom-[6%] z-30 w-[36%] sm:w-[26%] rotate-[-7deg] bg-white p-2 sm:p-3 pb-9 sm:pb-11 text-left shadow-[0_14px_28px_rgba(74,52,36,0.17)] transition-all duration-500 hover:z-40 hover:rotate-0 hover:scale-105 focus:z-40 focus:outline-none focus:ring-2 focus:ring-primary" onclick="openLightbox('./images/couple-set/couple-ballroom-dance.webp', 'Andini Hangura &amp; Rangga Raja — First Dance in the Candlelit Ballroom')" type="button">
 <span class="block aspect-square overflow-hidden bg-surface-container">
-<img alt="Arthur and Victoria sharing their first dance" class="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105" src="./images/couple-set/couple-ballroom-dance.webp" width="1024" height="1536" loading="lazy" decoding="async">
+<img alt="Andini Hangura and Rangga Raja sharing their first dance" class="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105" src="./images/couple-set/couple-ballroom-dance.webp" width="1024" height="1536" loading="lazy" decoding="async">
 </span>
 <span class="absolute inset-x-2 bottom-2 sm:bottom-3 text-center font-body-sm text-[10px] sm:text-xs italic text-on-surface-variant">Our first dance</span>
 </button>
@@ -821,7 +1134,7 @@
 <span class="font-label-caps text-label-caps text-primary tracking-widest uppercase mb-2">Bespoke Registry</span>
 <h3 class="font-headline-lg text-headline-lg text-on-surface mb-4">Gifting &amp; Well Wishes</h3>
 <p class="font-body-md text-body-md italic text-on-surface-variant max-w-xl mx-auto mb-10 leading-relaxed">
-        Your presence across ocean and land to celebrate our vows is the greatest treasure we could receive. For esteemed guests wishing to honor us with a gift towards the Vance-Montgomery Heritage Trust &amp; Children's Hospital of Lombardy:
+        Your presence across ocean and land to celebrate our vows is the greatest treasure we could receive. For esteemed guests wishing to honor us with a gift towards the Andini Hangura &amp; Rangga Raja Family Fund &amp; Children's Hospital of Lombardy:
       </p>
 <!-- Discreet Gift Card Details -->
 <div class="w-full bg-surface rounded-2xl p-8 sm:p-10 shadow-sm flex flex-col items-center relative overflow-hidden">
@@ -831,7 +1144,7 @@
 <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 w-full text-center sm:text-left mb-8">
 <div class="p-4 bg-surface-container-low rounded-lg">
 <span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Beneficiary</span>
-<p class="font-headline-sm text-[18px] text-primary mt-1">Arthur &amp; Victoria Trust</p>
+<p class="font-headline-sm text-[18px] text-primary mt-1">Andini Hangura &amp; Rangga Raja Trust</p>
 </div>
 <div class="p-4 bg-surface-container-low rounded-lg">
 <span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Bank • Swiss Private</span>
@@ -931,7 +1244,7 @@
 <!-- Blessing Note -->
 <div>
 <label class="block font-label-caps text-label-caps uppercase tracking-widest text-primary mb-2" for="guest-notes">
-              Heartfelt Blessing Note to Arthur &amp; Victoria
+              Heartfelt Blessing Note to Andini Hangura &amp; Rangga Raja
             </label>
 <textarea class="w-full px-4 py-3 bg-surface rounded-lg text-on-surface font-body-md text-body-md placeholder-on-surface-variant/40 focus:outline-none focus:ring-1 focus:ring-primary shadow-sm" id="guest-notes" placeholder="Your warm words for our heirloom album..." rows="3"></textarea>
 </div>
@@ -970,13 +1283,13 @@
 <img alt="" aria-hidden="true" class="absolute left-1/2 top-1/2 w-[360px] sm:w-[480px] -translate-x-1/2 -translate-y-1/2 opacity-[0.09] pointer-events-none select-none" src="./images/decorations/gold-rosette.webp" width="960" height="960" loading="lazy" decoding="async">
 <div class="relative z-10 flex flex-col items-center max-w-2xl mx-auto">
 <div class="w-20 h-20 mb-6 rounded-full p-2 bg-surface shadow-inner flex items-center justify-center">
-<img alt="Arthur &amp; Victoria Royal Monogram" class="w-16 h-16 object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1XCxGXK40MqRuLTQj1yDmhTYz9q8PRNBgfKpvngZeb5AOic2ZkqvudNQwTurxDcrU6ojyoQy6jJ9W_cdrgSoLAqj0Z0ogmZwKcqU33V_O1jIdgjAQZl2Y4rpnFh5cjhgkRUyQYrHTnDUVTuchgCzq21BFv4bv6sqMydU12ldqe5aV-AQB8qcB-lr2-vR9Yu0a9zIkIbvmG6NEgqMbDMfdbcQoOUWOnox0_Ju7IShzjici4fH2Z9SzPQMRO5" loading="lazy" decoding="async">
+<img alt="Andini Hangura &amp; Rangga Raja Royal Monogram" class="w-16 h-16 object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1XCxGXK40MqRuLTQj1yDmhTYz9q8PRNBgfKpvngZeb5AOic2ZkqvudNQwTurxDcrU6ojyoQy6jJ9W_cdrgSoLAqj0Z0ogmZwKcqU33V_O1jIdgjAQZl2Y4rpnFh5cjhgkRUyQYrHTnDUVTuchgCzq21BFv4bv6sqMydU12ldqe5aV-AQB8qcB-lr2-vR9Yu0a9zIkIbvmG6NEgqMbDMfdbcQoOUWOnox0_Ju7IShzjici4fH2Z9SzPQMRO5" loading="lazy" decoding="async">
 </div>
 <p class="font-label-caps text-label-caps tracking-widest text-primary uppercase mb-2">
         With All Our Love • Lake Como MMXXV
       </p>
 <h3 class="font-headline-lg text-headline-lg text-on-surface mb-4">
-        Arthur &amp; Victoria
+        Andini Hangura &amp; Rangga Raja
       </h3>
 <p class="font-body-lg text-body-lg italic text-on-surface-variant max-w-lg mb-8 leading-relaxed">
         “The true splendor of life begins where two hearts dare to dream together. We await your presence at the water’s edge.”
@@ -1299,6 +1612,6 @@
       }, 500);
     });
   </script>
-</div></main><footer class="w-full bg-surface-container-low"><div class="max-w-[1280px] mx-auto px-gutter py-space-xl flex flex-col items-center text-center"><div class="flex items-center justify-center gap-space-sm mb-space-md"><span class="w-12 h-px bg-outline-variant"></span><span class="rotate-45 w-1.5 h-1.5 bg-primary-container inline-block"></span><span class="w-12 h-px bg-outline-variant"></span></div><p class="font-headline-sm text-headline-sm text-primary mb-space-xs">AURELIA &amp; JULIAN</p><p class="font-body-sm text-body-sm italic text-on-surface-variant mb-space-lg">The Solemnization and Imperial Ball • September 18–21, 2025 • Lake Como, Italy</p><div class="flex flex-wrap justify-center gap-space-lg mb-space-lg"><a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary tracking-widest uppercase transition-colors" data-path="our-story" href="#">Our Story</a><a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary tracking-widest uppercase transition-colors" data-path="the-couple" href="#">The Couple</a><a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary tracking-widest uppercase transition-colors" data-path="schedule-and-venue" href="#">Schedule &amp; Venue</a><a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary tracking-widest uppercase transition-colors" data-path="gallery" href="#">Gallery</a><a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary tracking-widest uppercase transition-colors" data-path="gifting" href="#">Gifting</a><a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary tracking-widest uppercase transition-colors" data-path="rsvp" href="#">RSVP</a></div><p class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant">© 2025 Aurelia &amp; Julian. By Private Invitation Only.</p></div></footer>
+</div></main><footer class="w-full bg-surface-container-low"><div class="max-w-[1280px] mx-auto px-gutter py-space-xl flex flex-col items-center text-center"><div class="flex items-center justify-center gap-space-sm mb-space-md"><span class="w-12 h-px bg-outline-variant"></span><span class="rotate-45 w-1.5 h-1.5 bg-primary-container inline-block"></span><span class="w-12 h-px bg-outline-variant"></span></div><p class="font-headline-sm text-headline-sm text-primary mb-space-xs">ANDINI HANGURA &amp; RANGGA RAJA</p><p class="font-body-sm text-body-sm italic text-on-surface-variant mb-space-lg">The Solemnization and Imperial Ball • September 18–21, 2025 • Lake Como, Italy</p><div class="flex flex-wrap justify-center gap-space-lg mb-space-lg"><a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary tracking-widest uppercase transition-colors" data-path="our-story" href="#">Our Story</a><a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary tracking-widest uppercase transition-colors" data-path="the-couple" href="#">The Couple</a><a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary tracking-widest uppercase transition-colors" data-path="schedule-and-venue" href="#">Schedule &amp; Venue</a><a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary tracking-widest uppercase transition-colors" data-path="gallery" href="#">Gallery</a><a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary tracking-widest uppercase transition-colors" data-path="gifting" href="#">Gifting</a><a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary tracking-widest uppercase transition-colors" data-path="rsvp" href="#">RSVP</a></div><p class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant">© 2025 Andini Hangura &amp; Rangga Raja. By Private Invitation Only.</p></div></footer>
 
 </body></html>
