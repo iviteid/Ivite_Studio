@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#354a3d">
+  <meta name="description" content="Sekar Sage — undangan pernikahan dengan ilustrasi Jawa, bunga melati, dan animasi lembut. Tema demo ivite.">
+  <title>Sekar Sage · Undangan Pernikahan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="cinematic.css">
+  <script src="invitation.js" defer></script>
+</head>
+<body class="locked">
+  <div class="cover" id="cover" role="dialog" aria-modal="true" aria-labelledby="cover-title">
+    <div class="cover-frame"></div>
+    <img class="cover-mountain" src="assets/mountain.webp" alt="">
+    <img class="cover-flower left" src="assets/floral-left.webp" alt="">
+    <img class="cover-flower right" src="assets/floral-right.webp" alt="">
+    <div class="intro-ornaments" aria-hidden="true">
+      <img class="intro-mid intro-mid-left" src="assets/blossom.webp" alt="">
+      <img class="intro-mid intro-mid-right" src="assets/bouquet.webp" alt="">
+      <img class="intro-gunungan" src="assets/gunungan.webp" alt="">
+      <img class="intro-bottom intro-bottom-left" src="assets/blossom.webp" alt="">
+      <img class="intro-bottom intro-bottom-center" src="assets/bouquet.webp" alt="">
+      <span class="intro-jewel"></span>
+      <div class="intro-particles"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    </div>
+    <div class="cover-copy">
+      <p class="overline">THE WEDDING OF</p>
+      <h1 id="cover-title"><span data-bride>Sekar</span><i>&amp;</i><span data-groom>Bagas</span></h1>
+      <p class="cover-date" data-short-date>20 · 12 · 2026</p>
+      <span class="fine-rule"></span>
+      <p class="guest-label">Kepada Bapak/Ibu/Saudara/i</p>
+      <p class="guest" data-guest>Tamu Undangan</p>
+      <button class="button open-button" id="open-invitation" type="button"><span aria-hidden="true">✉</span> Buka Undangan</button>
+      <p class="demo-note">Contoh undangan · detail acara ilustratif</p>
+    </div>
+    <img class="cover-pavilion" src="assets/pavilion.webp" alt="">
+    <img class="cover-bouquet" src="assets/bouquet.webp" alt="">
+  </div>
+
+  <div id="invitation">
+    <aside class="desktop-scene" aria-label="Sekar Sage">
+      <div class="scene-rings"></div>
+      <img class="side-mountain" src="assets/mountain.webp" alt="">
+      <img class="side-floral left" src="assets/floral-left.webp" alt="">
+      <img class="side-floral right" src="assets/floral-right.webp" alt="">
+      <div class="side-copy"><p class="overline">A LOVE ROOTED IN TRADITION</p><p class="side-title"><span data-bride>Sekar</span> <i>&amp;</i> <span data-groom>Bagas</span></p><span class="fine-rule"></span><p>Sepenggal kisah, selamanya bersama.</p></div>
+      <img class="side-pavilion" src="assets/pavilion.webp" alt="Paviliun Jawa dengan taman melati">
+      <img class="side-bouquet" src="assets/blossom.webp" alt="">
+      <a class="catalog-link" href="#home">↑ Sekar Sage</a>
+    </aside>
+
+    <div class="invitation-stage" aria-hidden="true">
+      <img class="stage-clouds" src="assets/clouds.webp" alt="">
+      <svg class="stage-birds" viewBox="0 0 220 80"><g fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M8 28q9-11 18 0q9-11 18 0M60 49q8-9 16 0q8-9 16 0M101 15q9-11 18 0q9-11 18 0M139 43q7-9 14 0q7-9 14 0M181 29q7-9 14 0q7-9 14 0"/></g></svg>
+      <img class="stage-mountain" src="assets/mountain.webp" alt="">
+      <img class="stage-pavilion" src="assets/pavilion.webp" alt="">
+      <img class="stage-arch" src="assets/ceremonial-arch.svg" alt="">
+      <img class="stage-flower stage-flower-left" src="assets/floral-left.webp" alt="">
+      <img class="stage-flower stage-flower-right" src="assets/floral-right.webp" alt="">
+      <div class="stage-pendant"></div>
+      <div class="stage-garden"><img class="garden-left" src="assets/blossom.webp" alt=""><img class="garden-middle" src="assets/bouquet.webp" alt=""><img class="garden-right" src="assets/blossom.webp" alt=""></div>
+    </div>
+    <p class="arrival-caption" role="status" aria-live="polite" id="arrival-caption" tabindex="-1"></p>
+    <main id="main" tabindex="-1">
+      <section class="hero" id="home" aria-labelledby="hero-title">
+        <img class="hero-mountain" src="assets/mountain.webp" alt="">
+        <img class="hero-flower left" src="assets/floral-left.webp" alt="">
+        <img class="hero-flower right" src="assets/floral-right.webp" alt="">
+        <div class="intro-ornaments" aria-hidden="true">
+          <img class="intro-mid intro-mid-left" src="assets/blossom.webp" alt="">
+          <img class="intro-mid intro-mid-right" src="assets/bouquet.webp" alt="">
+          <img class="intro-gunungan" src="assets/gunungan.webp" alt="">
+          <img class="intro-bottom intro-bottom-left" src="assets/blossom.webp" alt="">
+          <img class="intro-bottom intro-bottom-center" src="assets/bouquet.webp" alt="">
+          <span class="intro-jewel"></span>
+          <div class="intro-particles"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        </div>
+        <div class="hero-copy"><p class="overline">THE WEDDING OF</p><h2 id="hero-title"><span data-bride>Sekar</span><i>&amp;</i><span data-groom>Bagas</span></h2><p class="date-line" data-long-date>Minggu, 20 Desember 2026</p><span class="fine-rule"></span><p class="hero-tagline">Dua hati. Satu perjalanan.</p></div>
+        <img class="hero-pavilion" src="assets/pavilion.webp" alt="Ilustrasi pendopo Jawa di antara bunga melati">
+        <a class="scroll-cue" href="#couple">GULIR UNTUK MENJELAJAH <span>↓</span></a>
+      </section>
+
+      <section class="blessing section" aria-labelledby="blessing-title">
+        <div class="reveal"><p class="overline">DENGAN RAHMAT &amp; RESTU</p><h2 id="blessing-title">Tentang dua hati<br><em>yang dipertemukan.</em></h2><p>Di antara banyaknya langkah, kami menemukan jalan untuk saling pulang. Dengan penuh syukur dan bahagia, kami mengundang Anda menjadi bagian dari hari istimewa kami.</p><img class="ornament" src="assets/ornament.webp" alt=""></div>
+      </section>
+
+      <section class="couple section" id="couple" aria-labelledby="couple-title">
+        <div class="reveal"><p class="overline">SANG MEMPELAI</p><h2 id="couple-title">Bersama,<br><em>menjadi selamanya.</em></h2></div>
+        <div class="couple-stage reveal"><img class="gunungan" src="assets/gunungan.webp" alt="Gunungan bermotif bunga berwarna sage dan emas"><img class="wayang" src="assets/wayang.webp" alt="Wayang Jawa berbusana sage dan emas"></div>
+        <div class="person reveal"><h3 data-bride-full>Sekar Ayuningtyas</h3><p data-bride-parents>Putri dari Bapak &amp; Ibu Keluarga Mempelai Wanita</p></div>
+        <p class="ampersand reveal">&amp;</p>
+        <div class="person reveal"><h3 data-groom-full>Bagas Pradipta</h3><p data-groom-parents>Putra dari Bapak &amp; Ibu Keluarga Mempelai Pria</p></div>
+      </section>
+
+      <section class="story section" id="story" aria-labelledby="story-title">
+        <img class="story-clouds" src="assets/clouds.webp" alt="">
+        <div class="reveal"><p class="overline">OUR LITTLE STORY</p><h2 id="story-title">Setiap langkah,<br><em>menuju kamu.</em></h2></div>
+        <div class="timeline"><article class="reveal"><span>01</span><h3>Pertemuan</h3><p>Sebuah sapa sederhana membuka cerita. Dari percakapan kecil, tumbuh rasa yang membawa kami lebih dekat.</p></article><article class="reveal"><span>02</span><h3>Memilih bersama</h3><p>Kami belajar mendengar, memahami, dan saling menguatkan. Bersama, hari biasa menjadi begitu berarti.</p></article><article class="reveal"><span>03</span><h3>Awal selamanya</h3><p>Dengan restu keluarga, kami melangkah menuju janji untuk terus memilih satu sama lain.</p></article></div><p class="small">Cerita ilustratif untuk pratinjau tema.</p>
+      </section>
+
+      <section class="day section" id="event" aria-labelledby="event-title">
+        <img class="event-flower" src="assets/bouquet.webp" alt="">
+        <div class="reveal"><p class="overline">HARI YANG DINANTI</p><h2 id="event-title">Janji suci,<br><em>kisah yang baru.</em></h2><p class="event-date" data-long-date>Minggu, 20 Desember 2026</p></div>
+        <div class="countdown reveal" aria-label="Hitung mundur acara"><div><strong id="days">00</strong><span>Hari</span></div><div><strong id="hours">00</strong><span>Jam</span></div><div><strong id="minutes">00</strong><span>Menit</span></div><div><strong id="seconds">00</strong><span>Detik</span></div></div>
+        <p id="countdown-message" class="small"></p>
+        <article class="event-block reveal"><p class="event-number">01 / THE PROMISE</p><h3>Akad Nikah</h3><p data-ceremony-time>08.00 – 09.00 WIB</p><span class="fine-rule"></span><p class="venue" data-venue>Pendopo Keluarga</p><p data-address>Yogyakarta, Daerah Istimewa Yogyakarta</p></article>
+        <article class="event-block reveal"><p class="event-number">02 / THE CELEBRATION</p><h3>Resepsi</h3><p data-reception-time>11.00 – 14.00 WIB</p><span class="fine-rule"></span><p class="venue" data-venue>Pendopo Keluarga</p><p data-address>Yogyakarta, Daerah Istimewa Yogyakarta</p></article>
+        <p class="small">Tanggal dan lokasi di atas adalah contoh.</p>
+        <div class="event-actions"><button class="button" id="calendar" type="button">Simpan Tanggal <span aria-hidden="true">↗</span></button><a class="text-link" id="map-link" href="https://www.google.com/maps/search/?api=1&amp;query=Yogyakarta" target="_blank" rel="noopener">Lihat area di peta ↗</a></div>
+      </section>
+
+      <section class="rsvp section" id="rsvp" aria-labelledby="rsvp-title">
+        <div class="reveal"><p class="overline">YOUR PRESENCE, OUR HAPPINESS</p><h2 id="rsvp-title">Hadir &amp;<br><em>titipkan doa.</em></h2><p>Kehadiran dan doa baik Anda adalah hadiah terindah bagi kami.</p></div>
+        <form id="rsvp-form" class="reveal">
+          <label for="guest-name">Nama Anda</label><input id="guest-name" name="name" maxlength="80" autocomplete="name" required placeholder="Tulis nama Anda">
+          <label for="attendance">Konfirmasi kehadiran</label><select id="attendance" name="attendance" required><option value="">Pilih kehadiran</option value="yes">Dengan senang hati, hadir</option><option value="no">Maaf, belum bisa hadir</option></select>
+          <label for="party">Jumlah tamu</label><select id="party" name="party"><option value="1">1 orang</option><option value="2">2 orang</option><option value="3">3 orang</option><option value="4">4 orang</option></select>
+          <label for="wish">Ucapan &amp; doa</label><textarea id="wish" name="wish" rows="4" maxlength="600" placeholder="Tuliskan doa baik Anda…"></textarea>
+          <p class="small form-note" id="rsvp-mode">Mode demo: tersimpan hanya di browser ini dan belum dikirim kepada mempelai.</p>
+          <button class="button" type="submit" id="rsvp-submit">Simpan Konfirmasi <span aria-hidden="true">↗</span></button>
+          <p role="status" id="form-status" aria-live="polite"></p>
+        </form>
+        <div id="saved-wish" class="saved-wish" hidden><p class="overline">DOA ANDA</p><p id="saved-message"></p><span id="saved-name"></span></div>
+      </section>
+
+      <footer class="closing section"><img class="closing-blossom" src="assets/blossom.webp" alt=""><div class="reveal"><p class="overline">TERIMA KASIH</p><h2>Sampai bertemu<br><em>di hari bahagia.</em></h2><p>Dengan cinta dan rasa syukur,</p><p class="closing-names"><span data-bride>Sekar</span> &amp; <span data-groom>Bagas</span></p><img class="ornament" src="assets/ornament.webp" alt=""><a href="#home" class="text-link">ivite · Sekar Sage</a></div></footer>
+    </main>
+
+    <nav class="bottom-nav" aria-label="Navigasi undangan"><a href="#home" aria-label="Pembuka"><span aria-hidden="true">⌂</span><small>Pembuka</small></a><a href="#couple"><span aria-hidden="true">♡</span><small>Mempelai</small></a><a href="#event"><span aria-hidden="true">◷</span><small>Acara</small></a><a href="#rsvp"><span aria-hidden="true">✉</span><small>RSVP</small></a></nav>
+    <button id="motion" class="motion" type="button" aria-pressed="false" aria-label="Jeda animasi">Ⅱ</button>
+  </div>
+  <noscript><style>.cover{display:none}#invitation{display:block}body{overflow:auto}.reveal{opacity:1;transform:none}</style><p>Aktifkan JavaScript untuk membuka undangan interaktif dan mengisi RSVP.</p></noscript>
+</body>
+</html>
