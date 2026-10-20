@@ -1,0 +1,46 @@
+/* Ribbon Letter — Quiet Luxury (plan2 P2-1). Krem + blush + silver, segel lilin,
+   pita halus. Animasi buka amplop CSS (≤1.5s). Pinyon Script (nama) + Lora. */
+@import url('https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Lora:ital,wght@0,400;0,500;1,400&display=swap');
+
+:root {
+  --bg: #ECE0D2;
+  --surface: #F6EFE6;
+  --fg: #3B2F2F;
+  --soft: #6A5753;       /* ≥4.5:1 */
+  --accent: #8E3B46;     /* segel lilin / aksen */
+  --line: #E2D3C6;
+  --blush: #E9CFC7;
+  --silver: #B9B6B0;
+  --display: 'Lora', Georgia, serif;
+  --body: 'Lora', Georgia, serif;
+  --script: 'Pinyon Script', 'Lora', cursive;
+}
+
+.title, .sess__name, .host__name { font-family: var(--display); font-weight: 500; }
+.cover__names, .opening__names { font-family: var(--script); font-weight: 400; line-height: 1.1; }
+.eyebrow { letter-spacing: .26em; }
+.cd-d { font-family: var(--script); font-size: 3.4rem; }
+
+/* pita kecil di header section */
+.sec__head .eyebrow::before, .sec__head .eyebrow::after { content: "⟡"; color: var(--silver); margin: 0 10px; font-size: .8em; }
+
+/* amplop pembuka */
+.opening { background: linear-gradient(180deg, var(--surface), #EFE1D6); }
+.envelope { position: relative; width: 280px; max-width: 80vw; aspect-ratio: 4/2.9; margin: 0 auto 26px; background: var(--blush); border: 1px solid var(--line); box-shadow: 0 14px 30px rgba(59,47,47,.14); }
+.env-body { position: absolute; inset: 0; overflow: hidden; }
+.env-body::before { content: ""; position: absolute; inset: 0; background: linear-gradient(135deg, transparent 48%, rgba(255,255,255,.35) 50%, transparent 52%); }
+.env-flap { position: absolute; top: 0; left: 0; right: 0; height: 52%; background: #E3C4BB; clip-path: polygon(0 0, 100% 0, 50% 100%); transform-origin: top center; transition: transform 1.1s ease; z-index: 3; }
+.env-seal { position: absolute; top: 44%; left: 50%; transform: translate(-50%,-50%); width: 56px; height: 56px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #a24a54, var(--accent)); color: #F6EFE6; display: flex; align-items: center; justify-content: center; font-family: var(--script); font-size: 1.4rem; z-index: 4; box-shadow: 0 3px 8px rgba(0,0,0,.25); transition: transform .5s ease, opacity .5s ease; }
+.opening.is-opening .env-flap { transform: rotateX(178deg); }
+.opening.is-opening .env-seal { transform: translate(-50%,-50%) scale(0); opacity: 0; }
+
+/* cover */
+.cover__names { font-size: clamp(3rem, 15vw, 4.6rem); color: var(--accent); }
+.cover--nophoto .cover__frame { border-color: var(--silver); }
+.hairline { background: var(--silver); }
+
+/* Kartu Restu — Pinyon diganti serif biasa, ≥7:1 */
+body.is-restu { --fg: #2A2120; --soft: #463636; --accent: #6E2B35; }
+body.is-restu .cover__names, body.is-restu .opening__names { font-family: var(--display); font-weight: 600; }
+body.is-restu .cd-d { font-family: var(--display); }
+body.is-restu .sec__head .eyebrow::before, body.is-restu .sec__head .eyebrow::after { content: ""; margin: 0; }

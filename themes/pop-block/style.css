@@ -1,0 +1,75 @@
+/* Pop Block — Gen Z Maximalist Pop (plan2 P2-3). Cool-blue + wasabi + persimmon,
+   color blocking, badge stiker, tepi scallop, angka raksasa, marquee.
+   Bricolage Grotesque + DM Sans. BUKAN untuk acara religius. */
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=DM+Sans:wght@400;500;700&display=swap');
+
+:root {
+  --bg: #D7EFFF;
+  --surface: #FFFFFF;
+  --fg: #351E28;         /* plum noir — teks */
+  --soft: #5A4450;       /* ≥4.5:1 */
+  --accent: #E8450F;     /* persimmon gelap (aman utk teks); blok pakai --persimmon */
+  --line: #351E28;
+  --wasabi: #E9F056;
+  --persimmon: #FF5C34;
+  --blue: #BFE6FF;
+  --display: 'Bricolage Grotesque', system-ui, sans-serif;
+  --body: 'DM Sans', system-ui, sans-serif;
+}
+
+.title, .host__name, .sess__name, .cover__names, .opening__names { font-family: var(--display); font-weight: 800; letter-spacing: -.02em; }
+.title { font-size: clamp(2rem, 8vw, 3rem); }
+.eyebrow { display: inline-block; font-family: var(--display); font-weight: 700; letter-spacing: .02em; text-transform: uppercase; color: #fff; background: var(--persimmon); border: 2px solid var(--fg); border-radius: 999px; padding: 6px 14px; box-shadow: 3px 3px 0 var(--fg); transform: rotate(-2deg); }
+
+/* tombol chunky */
+.btn { background: var(--fg); color: #fff; border: 2px solid var(--fg); border-radius: 999px; font-family: var(--display); font-weight: 700; letter-spacing: .02em; text-transform: none; box-shadow: 4px 4px 0 var(--fg); }
+.btn--ghost { background: var(--surface); color: var(--fg); }
+.btn:active { transform: translate(2px,2px); box-shadow: 2px 2px 0 var(--fg); }
+
+/* opening + cover */
+.opening { background: var(--wasabi); }
+.opening__names { font-size: clamp(2.6rem, 14vw, 4rem); }
+.cover { background: var(--persimmon); color: #fff; text-align: center; padding: 56px 24px; border-bottom: 3px solid var(--fg); }
+.cover .eyebrow { background: var(--wasabi); color: var(--fg); transform: rotate(2deg); }
+.cover__names { color: #fff; font-size: clamp(3rem, 16vw, 5rem); line-height: .95; margin: 14px 0; }
+.cover__date { color: #fff; font-weight: 700; letter-spacing: .04em; }
+
+/* scallop divider */
+.scallop { height: 22px; background: radial-gradient(circle at 11px 0, transparent 11px, var(--surface) 12px) repeat-x; background-size: 22px 22px; }
+.scallop--up { transform: rotate(180deg); }
+
+/* blok warna selang-seling */
+.sec--wasabi { background: var(--wasabi); }
+.sec--blue { background: var(--blue); }
+.sec--white { background: var(--surface); }
+
+/* kartu dengan outline + hard shadow */
+.sess, .gift, .wish, .cd__u { border: 2px solid var(--fg); border-radius: 16px; box-shadow: 4px 4px 0 var(--fg); background: var(--surface); }
+.sess:nth-child(odd) { transform: rotate(-1deg); } .sess:nth-child(even) { transform: rotate(1deg); }
+
+/* angka tanggal raksasa (countdown) */
+.cd-d { font-family: var(--display); font-weight: 800; color: var(--accent); font-size: clamp(3rem, 16vw, 4.4rem); }
+.cd__v { font-family: var(--display); font-weight: 800; color: var(--fg); }
+.cd__u:nth-child(1){ background: var(--wasabi);} .cd__u:nth-child(2){ background: var(--persimmon); color:#fff;} .cd__u:nth-child(3){ background: var(--blue);} .cd__u:nth-child(4){ background:#fff;}
+
+/* marquee */
+.marquee { overflow: hidden; white-space: nowrap; border-block: 3px solid var(--fg); background: var(--wasabi); padding: 8px 0; }
+.marquee__in { display: inline-block; font-family: var(--display); font-weight: 800; text-transform: uppercase; letter-spacing: .04em; animation: popslide 14s linear infinite; }
+.marquee__in span { padding: 0 16px; }
+@keyframes popslide { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* gallery chunky */
+.gallery img { border: 2px solid var(--fg); border-radius: 14px; }
+
+/* music + badges */
+.music { border: 2px solid var(--fg); background: var(--wasabi); color: var(--fg); box-shadow: 3px 3px 0 var(--fg); border-radius: 14px; }
+
+@media (prefers-reduced-motion: reduce) { .marquee__in { animation: none; } .sess { transform: none; } }
+
+/* Kartu Restu — tenang & kontras tinggi */
+body.is-restu { --bg: #F3F1EC; --surface: #FFFFFF; --accent: #B5340A; }
+body.is-restu .cover { background: var(--fg); }
+body.is-restu .opening { background: var(--surface); }
+body.is-restu .eyebrow { transform: none; }
+body.is-restu .sess, body.is-restu .gift { transform: none; }
+body.is-restu .marquee { display: none; }

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Arkan's 1st — Baby Doodle (Huruf Besar)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="../../shared/reset.css">
+<link rel="stylesheet" href="../../shared/base.css">
+<link rel="stylesheet" href="./style.css">
+</head>
+<body class="is-restu">
+
+<div class="opening" id="opening">
+  <div class="opening__inner">
+    <p class="eyebrow opening__k">Undangan Ulang Tahun</p>
+    <h1 class="opening__names">Arkan's 1st</h1>
+    <p class="opening__to">Kepada Yth.</p>
+    <p class="opening__guest">Bapak Dimas Anggara</p>
+    <button class="btn btn-xl" type="button" data-open>Buka Undangan</button>
+  </div>
+</div>
+
+<main class="page">
+  <section class="cover cover--nophoto">
+    <div class="cover__frame">
+      <p class="eyebrow">Ulang Tahun Pertama</p>
+      <h1 class="cover__names">Baby Arkan</h1>
+      <p class="cover__date">Sabtu, 12 Juni 2027</p>
+    </div>
+  </section>
+
+  <section class="sec sec--center">
+    <div class="sec__head"><h2 class="title">Waktu &amp; Tempat</h2></div>
+    <div class="sessions">
+      <article class="sess">
+        <h3 class="sess__name">Pesta Ulang Tahun</h3>
+        <p class="sess__dt">Sabtu, 12 Juni 2027<br>Pukul 10.00 – 13.00 WIB</p>
+        <p class="sess__venue">Kediaman Keluarga Pratama</p>
+        <p class="sess__addr">Jl. Melati No. 10, Jakarta Selatan</p>
+      </article>
+    </div>
+    <div style="margin-top:22px"><button class="btn btn-xl" type="button">Buka Google Maps</button></div>
+  </section>
+
+  <section class="sec sec--center">
+    <div class="sec__head"><h2 class="title">Narahubung</h2></div>
+    <div class="gifts__wrap">
+      <div class="gift"><span class="gift__bank">Keluarga Pratama</span><span class="gift__no">0812-0000-0001</span><button class="btn btn-xl" type="button">Telepon</button></div>
+    </div>
+  </section>
+
+  <section class="sec sec--center">
+    <div class="sec__head"><h2 class="title">Konfirmasi Kehadiran</h2></div>
+    <p class="rsvp__note">Mohon konfirmasi sebelum 5 Juni 2027.</p>
+    <form class="form" onsubmit="return false">
+      <label class="field"><span>Nama</span><input type="text" value="Bapak Dimas Anggara"></label>
+      <label class="field"><span>Kehadiran</span><select><option>Hadir</option><option>Tidak Hadir</option></select></label>
+      <button class="btn btn-xl" type="submit">Kirim Konfirmasi</button>
+    </form>
+  </section>
+
+  <section class="sec sec--center">
+    <div class="sec__head"><h2 class="title">Amplop Digital</h2></div>
+    <div class="gifts__wrap">
+      <div class="gift"><span class="gift__bank">BCA</span><span class="gift__no">1234567890</span><span class="gift__name">a.n. Ibu Pratama</span><button class="btn btn-xl" type="button">Salin Nomor Rekening</button></div>
+    </div>
+  </section>
+
+  <footer class="footer"><p class="footer__mark">Dibuat dengan ivite</p></footer>
+</main>
+
+<script>
+  document.body.style.overflow = 'hidden';
+  document.querySelector('[data-open]').addEventListener('click', function () {
+    document.getElementById('opening').classList.add('is-gone');
+    document.body.style.overflow = '';
+  });
+</script>
+</body>
+</html>

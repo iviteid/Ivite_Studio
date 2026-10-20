@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>ivite — Katalog Tema Undangan</title>
+<meta name="description" content="Katalog desain tema undangan digital ivite — 10 tema, mobile-first, aksesibel.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap">
+<style>
+  /* Identitas galeri sengaja NETRAL (bukan salah satu tema). */
+  :root {
+    --bg: #11100E; --surface: #1A1915; --fg: #F1ECE2; --soft: #A9A194;
+    --line: #2E2B24; --accent: #C7A869; --p1: #5E8C7B; --p2: #9A6E8E;
+    --display: 'Fraunces', Georgia, serif; --body: 'Inter', system-ui, sans-serif;
+    color-scheme: dark;
+  }
+  @media (prefers-color-scheme: light) {
+    :root { --bg: #F2EFE8; --surface: #FBF9F4; --fg: #211E18; --soft: #6B6456; --line: #E0D9CB; --accent: #8A6D2E; --p1: #3C7260; --p2: #7A4E6E; color-scheme: light; }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--fg); font-family: var(--body); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  .wrap { max-width: 1100px; margin: 0 auto; padding-inline: 22px; padding-block: 52px 80px; }
+  .eyebrow { font-size: .72rem; letter-spacing: .3em; text-transform: uppercase; color: var(--accent); margin: 0; }
+  h1 { font-family: var(--display); font-weight: 600; font-size: clamp(2rem, 6vw, 3.1rem); line-height: 1.05; margin: 12px 0 10px; letter-spacing: -.01em; }
+  .lede { color: var(--soft); max-width: 60ch; margin: 0; font-size: 1.02rem; }
+  .note { color: var(--soft); font-size: .82rem; margin-top: 10px; }
+  hr { border: 0; height: 1px; background: var(--line); margin: 34px 0; }
+
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px; }
+  .card { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; min-width: 0; }
+  .thumb { position: relative; aspect-ratio: 4/5; border-bottom: 1px solid var(--line); overflow: hidden; background: #fff; }
+  .thumb iframe { position: absolute; top: 0; left: 0; width: 200%; height: 200%; transform: scale(.5); transform-origin: top left; border: 0; pointer-events: none; }
+  .thumb a.cover-link { position: absolute; inset: 0; z-index: 2; }
+  .badge { position: absolute; top: 10px; left: 10px; z-index: 3; font-size: .62rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: #fff; padding: 3px 9px; border-radius: 999px; }
+  .badge.p1 { background: var(--p1); } .badge.p2 { background: var(--p2); }
+  .card__body { padding: 16px 18px 18px; display: flex; flex-direction: column; gap: 4px; }
+  .card__name { font-family: var(--display); font-weight: 600; font-size: 1.22rem; }
+  .card__origin { font-size: .72rem; letter-spacing: .06em; text-transform: uppercase; color: var(--accent); }
+  .card__events { font-size: .84rem; color: var(--soft); }
+  .links { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 12px; }
+  .links a { font-size: .74rem; text-decoration: none; color: var(--fg); border: 1px solid var(--line); border-radius: 999px; padding: 6px 12px; }
+  .links a:hover { border-color: var(--accent); color: var(--accent); }
+  .links a.primary { background: var(--fg); color: var(--bg); border-color: var(--fg); }
+  .foot { margin-top: 48px; color: var(--soft); font-size: .82rem; }
+  a:focus-visible, iframe:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <p class="eyebrow">ivite · Katalog</p>
+    <h1>Tema Undangan Digital</h1>
+    <p class="lede">Sepuluh arah desain — termasuk Sekar Sage dengan ilustrasi Jawa dan animasi berlapis — plus pilihan skin aksesibilitas <strong>Kartu Restu</strong> dan mode tanpa foto pada tema tertentu.</p>
+    <p class="note">Mobile-first (390px) · tanpa framework · konten contoh. Klik thumbnail untuk membuka tema.</p>
+  </header>
+
+  <hr>
+
+  <div class="grid">
+
+    <article class="card">
+      <div class="thumb"><span class="badge p1">BARU · ANIMASI</span><iframe src="themes/sekar-sage/index.html" title="Sekar Sage" loading="lazy" tabindex="-1" scrolling="no"></iframe><a class="cover-link" href="themes/sekar-sage/index.html" aria-label="Buka Sekar Sage"></a></div>
+      <div class="card__body">
+        <span class="card__name">Sekar Sage</span>
+        <span class="card__origin">Jawa · Sage &amp; Gold</span>
+        <span class="card__events">Pernikahan adat · Ilustrasi berlapis · Animasi</span>
+        <div class="links"><a class="primary" href="themes/sekar-sage/index.html">Buka Undangan</a><a href="themes/sekar-sage/index.html?to=Tamu%20Istimewa">Contoh Tamu</a></div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="thumb"><span class="badge p1">P1</span><iframe src="themes/seoul-cream/index.html" title="Seoul Cream" loading="lazy" tabindex="-1" scrolling="no"></iframe><a class="cover-link" href="themes/seoul-cream/index.html" aria-label="Buka Seoul Cream"></a></div>
+      <div class="card__body">
+        <span class="card__name">Seoul Cream</span>
+        <span class="card__origin">Korea · Minimal 감성</span>
+        <span class="card__events">Pernikahan · Wisuda · Ultah dewasa</span>
+        <div class="links"><a class="primary" href="themes/seoul-cream/index.html">Lihat</a><a href="themes/seoul-cream/restu.html">Kartu Restu</a><a href="themes/seoul-cream/no-photo.html">Tanpa Foto</a></div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="thumb"><span class="badge p1">P1</span><iframe src="themes/editorial-cover/index.html" title="Editorial Cover" loading="lazy" tabindex="-1" scrolling="no"></iframe><a class="cover-link" href="themes/editorial-cover/index.html" aria-label="Buka Editorial Cover"></a></div>
+      <div class="card__body">
+        <span class="card__name">Editorial Cover</span>
+        <span class="card__origin">Korea · China · Eropa</span>
+        <span class="card__events">Pernikahan · Ultah · Launching</span>
+        <div class="links"><a class="primary" href="themes/editorial-cover/index.html">Magazine</a><a href="themes/editorial-cover/movie.html">Movie</a><a href="themes/editorial-cover/restu.html">Kartu Restu</a><a href="themes/editorial-cover/no-photo.html">Tanpa Foto</a></div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="thumb"><span class="badge p1">P1</span><iframe src="themes/sekar-prada/index.html" title="Sekar Prada" loading="lazy" tabindex="-1" scrolling="no"></iframe><a class="cover-link" href="themes/sekar-prada/index.html" aria-label="Buka Sekar Prada"></a></div>
+      <div class="card__body">
+        <span class="card__name">Sekar Prada</span>
+        <span class="card__origin">China → Heritage Jawa</span>
+        <span class="card__events">Pernikahan adat · Tasyakuran</span>
+        <div class="links"><a class="primary" href="themes/sekar-prada/index.html">Lihat</a><a href="themes/sekar-prada/restu.html">Kartu Restu</a><a href="themes/sekar-prada/no-photo.html">Tanpa Foto</a></div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="thumb"><span class="badge p1">P1</span><iframe src="themes/walimah-sage/index.html" title="Walimah Sage" loading="lazy" tabindex="-1" scrolling="no"></iframe><a class="cover-link" href="themes/walimah-sage/index.html" aria-label="Buka Walimah Sage"></a></div>
+      <div class="card__body">
+        <span class="card__name">Walimah Sage</span>
+        <span class="card__origin">Eropa · China · Islami</span>
+        <span class="card__events">Walimah · Aqiqah · Khitanan</span>
+        <div class="links"><a class="primary" href="themes/walimah-sage/index.html">Lihat</a><a href="themes/walimah-sage/restu.html">Kartu Restu</a><a href="themes/walimah-sage/no-photo.html">Tanpa Foto</a></div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="thumb"><span class="badge p1">P1</span><iframe src="themes/roll-film/index.html" title="Roll Film" loading="lazy" tabindex="-1" scrolling="no"></iframe><a class="cover-link" href="themes/roll-film/index.html" aria-label="Buka Roll Film"></a></div>
+      <div class="card__body">
+        <span class="card__name">Roll Film</span>
+        <span class="card__origin">China · Korea · Analog</span>
+        <span class="card__events">Pernikahan · Reuni · Ultah</span>
+        <div class="links"><a class="primary" href="themes/roll-film/index.html">Lihat</a><a href="themes/roll-film/restu.html">Kartu Restu</a><a href="themes/roll-film/no-photo.html">Tanpa Foto</a></div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="thumb"><span class="badge p2">P2</span><iframe src="themes/ribbon-letter/index.html" title="Ribbon Letter" loading="lazy" tabindex="-1" scrolling="no"></iframe><a class="cover-link" href="themes/ribbon-letter/index.html" aria-label="Buka Ribbon Letter"></a></div>
+      <div class="card__body">
+        <span class="card__name">Ribbon Letter</span>
+        <span class="card__origin">Korea · Eropa</span>
+        <span class="card__events">Lamaran · Bridal shower</span>
+        <div class="links"><a class="primary" href="themes/ribbon-letter/index.html">Lihat</a><a href="themes/ribbon-letter/restu.html">Kartu Restu</a><a href="themes/ribbon-letter/no-photo.html">Tanpa Foto</a></div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="thumb"><span class="badge p2">P2</span><iframe src="themes/neo-deco-gala/index.html" title="Neo Deco Gala" loading="lazy" tabindex="-1" scrolling="no"></iframe><a class="cover-link" href="themes/neo-deco-gala/index.html" aria-label="Buka Neo Deco Gala"></a></div>
+      <div class="card__body">
+        <span class="card__name">Neo Deco Gala</span>
+        <span class="card__origin">Pinterest · Art Déco</span>
+        <span class="card__events">Gala korporat · Anniversary</span>
+        <div class="links"><a class="primary" href="themes/neo-deco-gala/index.html">Lihat</a><a href="themes/neo-deco-gala/restu.html">Kartu Restu</a><a href="themes/neo-deco-gala/no-photo.html">Tanpa Foto</a></div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="thumb"><span class="badge p2">P2</span><iframe src="themes/pop-block/index.html" title="Pop Block" loading="lazy" tabindex="-1" scrolling="no"></iframe><a class="cover-link" href="themes/pop-block/index.html" aria-label="Buka Pop Block"></a></div>
+      <div class="card__body">
+        <span class="card__name">Pop Block</span>
+        <span class="card__origin">Eropa · Korea · Pop</span>
+        <span class="card__events">Ultah · Wisuda · Komunitas</span>
+        <div class="links"><a class="primary" href="themes/pop-block/index.html">Lihat</a><a href="themes/pop-block/restu.html">Kartu Restu</a><a href="themes/pop-block/no-photo.html">Tanpa Foto</a></div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="thumb"><span class="badge p2">P2</span><iframe src="themes/baby-doodle/index.html" title="Baby Doodle" loading="lazy" tabindex="-1" scrolling="no"></iframe><a class="cover-link" href="themes/baby-doodle/index.html" aria-label="Buka Baby Doodle"></a></div>
+      <div class="card__body">
+        <span class="card__name">Baby Doodle</span>
+        <span class="card__origin">Korea · China</span>
+        <span class="card__events">Aqiqah · Ultah anak · Tedak siten</span>
+        <div class="links"><a class="primary" href="themes/baby-doodle/index.html">Lihat</a><a href="themes/baby-doodle/aqiqah.html">Aqiqah</a><a href="themes/baby-doodle/restu.html">Kartu Restu</a><a href="themes/baby-doodle/no-photo.html">Tanpa Foto</a></div>
+      </div>
+    </article>
+
+  </div>
+
+  <p class="foot">Dibuat dengan ivite · Desain contoh, konten dummy. Foto = placeholder buatan sendiri; font berlisensi OFL (Google Fonts).</p>
+</div>
+</body>
+</html>

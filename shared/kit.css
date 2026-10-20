@@ -1,0 +1,33 @@
+/* shared/kit.css — sistem panggung berlapis (layered compositing) + kit botani.
+   Dipakai bareng shared/kit/botani.svg (di-inject oleh invite.js) & invite.js.
+   Pola: .stage (relatif, clip) berisi .layer absolut; tiap .layer memuat
+   <svg class="kit"><use href="#kit-..."/></svg> yang bisa diwarnai via token. */
+
+/* panggung & lapis */
+.stage { position: relative; overflow: hidden; }
+.layer { position: absolute; pointer-events: none; will-change: transform; }
+.kit { display: block; width: 100%; height: 100%; }
+.kit-img { display: block; width: 100%; height: auto; }   /* aset watercolor (PNG transparan) */
+.layer.flip { transform: scaleX(-1); }
+.flipx { transform: scaleX(-1); }                          /* cermin di anak (saat induk di-parallax) */
+
+/* palet botani (override per tema / per lapis) */
+.botani-gold { --leaf: #C9A24B; --stem: #C9A24B; --bloom: #C9A24B; --bloom2: #E2C57F; }
+.botani-sage { --leaf: #8A9A5B; --stem: #5F7042; --bloom: #C98A86; --bloom2: #D9B45E; }
+.botani-rose { --leaf: #9AA86F; --stem: #6E7B45; --bloom: #C98A86; --bloom2: #E0B36A; }
+.botani-ivory{ --leaf: #D8C79C; --stem: #C9A24B; --bloom: #E6D2A6; --bloom2: #F0E3C2; }
+
+/* gerak: goyang halus (frond) */
+.sway { transform-origin: bottom center; animation: kit-sway 7.5s ease-in-out infinite; }
+.sway--rev { animation-duration: 8.6s; animation-direction: reverse; }
+@keyframes kit-sway { 0%,100% { transform: rotate(-1.4deg); } 50% { transform: rotate(1.4deg); } }
+
+/* gerak: burung melayang */
+.fly { animation: kit-fly 9s ease-in-out infinite; }
+.fly--2 { animation-duration: 11s; animation-delay: -3s; }
+.fly--3 { animation-duration: 13s; animation-delay: -6s; }
+@keyframes kit-fly { 0% { transform: translate(0,0); } 50% { transform: translate(12px,-10px); } 100% { transform: translate(0,0); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .sway, .fly { animation: none; }
+}

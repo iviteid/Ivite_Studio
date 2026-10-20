@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1300" width="900" height="1300" role="img" aria-label="Placeholder foto prewedding (interior ukir Jawa, moody)">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#160D07"/>
+      <stop offset="0.4" stop-color="#3A2415"/>
+      <stop offset="0.62" stop-color="#4E3018"/>
+      <stop offset="1" stop-color="#120A05"/>
+    </linearGradient>
+    <radialGradient id="spot" cx="50%" cy="33%" r="50%">
+      <stop offset="0" stop-color="#D8AC5C" stop-opacity="0.34"/>
+      <stop offset="1" stop-color="#D8AC5C" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="vig" cx="50%" cy="46%" r="72%">
+      <stop offset="0.52" stop-color="#000" stop-opacity="0"/>
+      <stop offset="1" stop-color="#0B0603" stop-opacity="0.85"/>
+    </radialGradient>
+    <!-- ukiran sulur emas (carved panel) -->
+    <pattern id="ukir" width="120" height="162" patternUnits="userSpaceOnUse">
+      <g fill="none" stroke="#C9A24B" stroke-opacity="0.16" stroke-width="2" stroke-linecap="round">
+        <path d="M60 12 C80 32 80 60 60 80 C40 60 40 32 60 12 Z"/>
+        <path d="M60 46 C60 46 60 46 60 46"/>
+        <path d="M60 80 C60 112 40 132 18 142"/>
+        <path d="M60 80 C60 112 80 132 102 142"/>
+        <path d="M18 142 C8 152 10 160 22 160"/>
+        <path d="M102 142 C112 152 110 160 98 160"/>
+        <circle cx="60" cy="46" r="5" stroke-opacity="0.22"/>
+      </g>
+      <g fill="#C9A24B" fill-opacity="0.10" stroke="none">
+        <path d="M34 96 c-8 -2 -14 3 -14 11 c8 2 15 -3 14 -11z"/>
+        <path d="M86 96 c8 -2 14 3 14 11 c-8 2 -15 -3 -14 -11z"/>
+      </g>
+    </pattern>
+  </defs>
+
+  <rect width="900" height="1300" fill="url(#bg)"/>
+  <!-- panel samping (ukiran lebih padat) -->
+  <rect x="0" y="0" width="236" height="1300" fill="url(#ukir)" opacity="0.95"/>
+  <rect x="664" y="0" width="236" height="1300" fill="url(#ukir)" opacity="0.95"/>
+  <!-- ukiran pusat samar -->
+  <rect width="900" height="1300" fill="url(#ukir)" opacity="0.28"/>
+  <!-- cahaya + vignette sinematik -->
+  <rect width="900" height="1300" fill="url(#spot)"/>
+  <rect width="900" height="1300" fill="url(#vig)"/>
+  <!-- penanda halus -->
+  <g transform="translate(450 1216)" fill="none" stroke="#C9A24B" stroke-opacity="0.5" stroke-width="1.4">
+    <path d="M-16 0 h12 M4 0 h12"/>
+    <path d="M0 -7 C4 -3 4 3 0 7 C-4 3 -4 -3 0 -7 Z" fill="#C9A24B" fill-opacity="0.4" stroke="none"/>
+  </g>
+  <text x="450" y="1256" text-anchor="middle" font-family="Georgia, serif" font-size="19" letter-spacing="7" fill="#C9A24B" fill-opacity="0.55">FOTO PREWEDDING</text>
+</svg>

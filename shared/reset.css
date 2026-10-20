@@ -1,0 +1,34 @@
+/* shared/reset.css — reset & layout dasar saja (tanpa gaya tema).
+   Dipakai semua tema plan2; warna/tipografi ada di themes/<tema>/style.css. */
+
+*, *::before, *::after { box-sizing: border-box; }
+* { margin: 0; }
+html { -webkit-text-size-adjust: 100%; }
+body { min-height: 100vh; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+img, svg, video { display: block; max-width: 100%; }
+button, input, select, textarea { font: inherit; color: inherit; }
+button { cursor: pointer; background: none; border: none; }
+a { color: inherit; }
+ul, ol { list-style: none; padding: 0; }
+h1, h2, h3, h4 { font-weight: inherit; line-height: 1.15; }
+
+/* Kolom undangan: mobile penuh, desktop maks 480px di tengah dengan latar tema. */
+.page {
+  width: 100%;
+  max-width: 480px;
+  margin-inline: auto;
+  position: relative;
+  overflow: hidden;
+}
+
+/* util aksesibilitas */
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+}
+
+:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; scroll-behavior: auto !important; }
+}

@@ -1,0 +1,51 @@
+/* Neo Deco Gala — Retro Art Deco / Neo Deco (plan2 P2-2). Hitam + emas (≤15%)
+   + emerald. Fan arch, bingkai bertingkat, chevron, sunburst. Poiret One + Josefin Sans. */
+@import url('https://fonts.googleapis.com/css2?family=Poiret+One&family=Josefin+Sans:wght@300;400;500;600&display=swap');
+
+:root {
+  --bg: #141414;
+  --surface: #1C1C1C;
+  --fg: #EADAB1;          /* champagne */
+  --soft: #B9AD8C;        /* ≥4.5:1 di hitam */
+  --accent: #D4AF37;      /* emas — aksen/teks besar saja */
+  --line: #3A382F;
+  --emerald: #0A6A54;
+  --ivory: #F5EFE0;
+  --display: 'Poiret One', 'Century Gothic', sans-serif;
+  --body: 'Josefin Sans', system-ui, sans-serif;
+}
+
+.title, .host__name, .sess__name, .cover__names, .opening__names { font-family: var(--display); font-weight: 400; letter-spacing: .06em; }
+.eyebrow { letter-spacing: .34em; color: var(--accent); }
+.cd-d { font-family: var(--display); color: var(--accent); }
+.hairline { background: var(--accent); }
+
+/* Cover deco: sunburst + fan arch + bingkai bertingkat */
+.cover--deco { position: relative; text-align: center; padding: 10px; background: var(--surface); overflow: hidden; }
+.cover--deco .sunburst { position: absolute; top: -30%; left: 50%; width: 150%; aspect-ratio: 1; transform: translateX(-50%);
+  background: repeating-conic-gradient(from 0deg at 50% 50%, rgba(212,175,55,.08) 0deg 4deg, transparent 4deg 10deg); pointer-events: none; }
+.cover--deco .frame { position: relative; border: 2px solid var(--accent); padding: 5px; }
+.cover--deco .frame-in { border: 1px solid rgba(212,175,55,.45); padding: 40px 22px 44px; }
+.fan { width: 92px; height: 46px; margin: 0 auto 14px; color: var(--accent); }
+.cover--deco .cover__names { color: var(--fg); font-size: clamp(2.4rem, 11vw, 3.4rem); margin: 10px 0 8px; }
+.cover--deco .cover__date { color: var(--accent); letter-spacing: .3em; }
+
+/* chevron divider */
+.chev { display: flex; justify-content: center; gap: 6px; color: var(--accent); margin: 0 auto; }
+.chev span { width: 8px; height: 8px; border-right: 1px solid; border-bottom: 1px solid; transform: rotate(45deg); }
+
+/* agenda */
+.agenda { max-width: 360px; margin-inline: auto; }
+.agenda__row { display: flex; gap: 16px; padding: 12px 0; border-bottom: 1px solid var(--line); text-align: left; }
+.agenda__time { color: var(--accent); min-width: 78px; font-variant-numeric: tabular-nums; }
+
+/* sponsors */
+.sponsors { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+.sponsor { width: 92px; height: 46px; border: 1px solid var(--line); display: flex; align-items: center; justify-content: center; color: var(--soft); font-size: .66rem; letter-spacing: .1em; }
+
+/* panel emerald untuk sesi */
+.sess { border-color: rgba(212,175,55,.3); background: linear-gradient(180deg, rgba(10,106,84,.12), transparent); }
+
+/* Kartu Restu — base terang untuk lansia */
+body.is-restu { --bg: #F3EEE2; --surface: #FBF8F0; --fg: #1E1B12; --soft: #403A2A; --accent: #8A6D12; --line: #E0D8C4; }
+body.is-restu .cover--deco .sunburst { display: none; }

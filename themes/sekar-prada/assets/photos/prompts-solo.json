@@ -1,0 +1,14 @@
+{
+  "tool": "Built-in image_gen",
+  "reference": "01-formal.png",
+  "prompts": [
+    {
+      "name": "09-pengantin-wanita",
+      "prompt": "Use case: photorealistic-natural. Create ONE standalone vertical 2:3 wedding editorial photograph for the same sage-and-gold Javanese wedding album. Reference image role: exact identity, wardrobe, color and photographic-style reference. Match the referenced person's facial identity and age, natural Indonesian complexion, exact clothing and accessories. Palette sage #73816b, forest #354a3d, ivory #f5f0e5 and antique gold #ae8951. Background: elegant carved teak Javanese pendopo, white jasmine arrangements and soft green garden bokeh. Soft warm natural daylight, realistic skin, fine fabric texture, graceful anatomy. No text, no collage, no border, no watermark. SOLO BRIDAL PORTRAIT: ONLY the bride from the reference, no groom or other people. Preserve her oval face, almond eyes, paes bridal makeup, black traditional bun, gold hair ornaments and ivory jasmine strands. She wears the exact same sage-green long-sleeve kebaya with delicate gold embroidery and cream-brown batik. Three-quarter length from head to below knees, body turned slightly, face looking into the camera, soft confident smile, hands gently clasped at waist level. All hair ornaments fully within frame, bride centered with breathing room."
+    },
+    {
+      "name": "10-pengantin-pria",
+      "prompt": "Use case: photorealistic-natural. Create ONE standalone vertical 2:3 wedding editorial photograph for the same sage-and-gold Javanese wedding album. Reference image role: exact identity, wardrobe, color and photographic-style reference. Match the referenced person's facial identity and age, natural Indonesian complexion, exact clothing and accessories. Palette sage #73816b, forest #354a3d, ivory #f5f0e5 and antique gold #ae8951. Background: elegant carved teak Javanese pendopo, white jasmine arrangements and soft green garden bokeh. Soft warm natural daylight, realistic skin, fine fabric texture, graceful anatomy. No text, no collage, no border, no watermark. SOLO GROOM PORTRAIT: ONLY the groom from the reference, no bride or other people. Preserve his face, neat clean-shaven appearance, matching gold-brown blangkon, exact sage beskap embroidered with antique gold, ivory jasmine garland, cream-brown batik. Three-quarter length from head to below knees, body turned slightly, face looking into camera, calm warm smile, one hand resting naturally over the other near his waist, ceremonial keris remains sheathed. Entire headwear inside frame, groom centered with breathing room. Match the framing and lens aesthetic of the solo bride portrait."
+    }
+  ]
+}

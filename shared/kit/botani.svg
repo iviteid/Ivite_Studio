@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true">
+<defs>
+  <!-- filter watercolor (blur lembut) -->
+  <filter id="kit-wc" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="2.6"/></filter>
+</defs>
+
+<!-- ============ JANUR / FROND (foreground) ============ -->
+<symbol id="kit-janur" viewBox="0 0 200 320">
+  <g filter="url(#kit-wc)" fill="var(--leaf,currentColor)" opacity=".16">
+    <ellipse cx="60" cy="210" rx="22" ry="40" transform="rotate(-35 60 210)"/>
+    <ellipse cx="100" cy="150" rx="20" ry="36" transform="rotate(-30 100 150)"/>
+    <ellipse cx="135" cy="100" rx="16" ry="28" transform="rotate(-28 135 100)"/>
+  </g>
+  <g fill="none" stroke="var(--stem,currentColor)" stroke-width="1.3" stroke-linecap="round">
+    <path d="M22 310 C36 232 72 150 158 64" opacity=".85"/>
+    <g opacity=".72">
+      <path d="M44 250 C30 250 22 256 18 266"/><path d="M44 250 C54 234 64 232 72 238"/>
+      <path d="M66 208 C52 208 44 214 40 224"/><path d="M66 208 C76 192 86 190 94 196"/>
+      <path d="M90 166 C76 166 68 172 64 182"/><path d="M90 166 C100 150 110 148 118 154"/>
+      <path d="M114 126 C100 126 92 132 88 142"/><path d="M114 126 C124 112 134 110 142 116"/>
+      <path d="M136 94 C124 96 118 102 116 112"/><path d="M136 94 C146 82 156 82 162 88"/>
+    </g>
+  </g>
+  <g fill="var(--stem,currentColor)" opacity=".55"><circle cx="158" cy="64" r="3"/><circle cx="18" cy="266" r="2.2"/></g>
+</symbol>
+
+<!-- ============ SPRAY (rumpun bunga sedang) ============ -->
+<symbol id="kit-spray" viewBox="0 0 200 220">
+  <g filter="url(#kit-wc)">
+    <g fill="var(--leaf,currentColor)" opacity=".5">
+      <ellipse cx="60" cy="40" rx="26" ry="12" transform="rotate(-35 60 40)"/>
+      <ellipse cx="95" cy="80" rx="30" ry="13" transform="rotate(-20 95 80)"/>
+      <ellipse cx="55" cy="95" rx="24" ry="11" transform="rotate(-55 55 95)"/>
+      <ellipse cx="110" cy="130" rx="28" ry="12" transform="rotate(-10 110 130)"/>
+      <ellipse cx="70" cy="155" rx="22" ry="10" transform="rotate(-50 70 155)"/>
+    </g>
+    <g fill="var(--bloom,currentColor)" opacity=".5"><circle cx="120" cy="95" r="15"/><circle cx="134" cy="112" r="10"/></g>
+    <g fill="var(--bloom2,currentColor)" opacity=".6"><circle cx="126" cy="103" r="6"/></g>
+  </g>
+  <g fill="none" stroke="var(--stem,currentColor)" stroke-width="1.4" stroke-linecap="round" opacity=".55">
+    <path d="M40 4 C70 50 95 95 120 150 C128 168 132 190 132 210"/>
+    <path d="M70 40 L60 34 M95 80 L84 74 M110 130 L100 124 M70 155 L60 150"/>
+  </g>
+</symbol>
+
+<!-- ============ SPRIG (dedaunan kecil) ============ -->
+<symbol id="kit-sprig" viewBox="0 0 120 140">
+  <g filter="url(#kit-wc)" fill="var(--leaf,currentColor)" opacity=".5">
+    <ellipse cx="50" cy="40" rx="16" ry="8" transform="rotate(-35 50 40)"/>
+    <ellipse cx="70" cy="70" rx="18" ry="9" transform="rotate(-20 70 70)"/>
+    <ellipse cx="48" cy="80" rx="14" ry="7" transform="rotate(-55 48 80)"/>
+  </g>
+  <g fill="none" stroke="var(--stem,currentColor)" stroke-width="1.2" stroke-linecap="round" opacity=".55">
+    <path d="M30 6 C50 40 66 80 72 134"/>
+    <path d="M50 40 L42 35 M70 70 L60 65 M48 80 L40 77"/>
+  </g>
+</symbol>
+
+<!-- ============ BLOOM (satu kuntum) ============ -->
+<symbol id="kit-bloom" viewBox="0 0 100 100">
+  <g filter="url(#kit-wc)">
+    <circle cx="50" cy="50" r="30" fill="var(--bloom,currentColor)" opacity=".38"/>
+    <circle cx="50" cy="50" r="18" fill="var(--bloom,currentColor)" opacity=".5"/>
+    <circle cx="50" cy="48" r="8" fill="var(--bloom2,currentColor)" opacity=".62"/>
+  </g>
+  <g fill="none" stroke="var(--stem,currentColor)" stroke-width="1" opacity=".4">
+    <circle cx="50" cy="50" r="22"/>
+    <path d="M50 34 C60 44 60 56 50 66 C40 56 40 44 50 34Z"/>
+  </g>
+</symbol>
+
+<!-- ============ CORNER (rumpun sudut seksi) ============ -->
+<symbol id="kit-corner" viewBox="0 0 160 160">
+  <g filter="url(#kit-wc)">
+    <g fill="var(--leaf,currentColor)" opacity=".45">
+      <ellipse cx="40" cy="36" rx="20" ry="10" transform="rotate(-30 40 36)"/>
+      <ellipse cx="70" cy="60" rx="22" ry="10" transform="rotate(-18 70 60)"/>
+      <ellipse cx="40" cy="70" rx="18" ry="9" transform="rotate(-55 40 70)"/>
+      <ellipse cx="95" cy="95" rx="20" ry="9" transform="rotate(-10 95 95)"/>
+    </g>
+    <g fill="var(--bloom,currentColor)" opacity=".5"><circle cx="30" cy="30" r="13"/></g>
+    <g fill="var(--bloom2,currentColor)" opacity=".58"><circle cx="30" cy="28" r="5"/></g>
+  </g>
+  <g fill="none" stroke="var(--stem,currentColor)" stroke-width="1.3" stroke-linecap="round" opacity=".5">
+    <path d="M6 6 C40 20 70 50 120 120"/>
+    <path d="M40 36 L32 30 M70 60 L60 54 M95 95 L86 89"/>
+  </g>
+</symbol>
+
+<!-- ============ BIRD (burung kecil terbang) ============ -->
+<symbol id="kit-bird" viewBox="0 0 60 40">
+  <g fill="none" stroke="var(--stem,currentColor)" stroke-width="1.6" stroke-linecap="round">
+    <path d="M5 25 C15 11 24 13 30 23"/>
+    <path d="M55 25 C45 11 36 13 30 23"/>
+  </g>
+  <circle cx="30" cy="23.5" r="1.8" fill="var(--stem,currentColor)"/>
+</symbol>
+
+<!-- ============ DIVIDER (pembatas floral) ============ -->
+<symbol id="kit-divider" viewBox="0 0 200 26">
+  <g fill="none" stroke="var(--stem,currentColor)" stroke-width="1.3" stroke-linecap="round">
+    <path d="M10 13 H78"/><path d="M190 13 H122"/>
+    <path d="M78 13 C70 6 62 6 60 13 C62 20 70 20 78 13" opacity=".8"/>
+    <path d="M122 13 C130 6 138 6 140 13 C138 20 130 20 122 13" opacity=".8"/>
+  </g>
+  <g fill="var(--bloom,currentColor)"><ellipse cx="100" cy="13" rx="5" ry="10"/><ellipse cx="100" cy="13" rx="10" ry="5"/></g>
+  <circle cx="100" cy="13" r="2.4" fill="var(--bloom2,currentColor)"/>
+</symbol>
+</svg>

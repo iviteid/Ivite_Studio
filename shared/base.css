@@ -1,0 +1,150 @@
+/* shared/base.css — struktur komponen undangan (token-driven), dipakai semua tema.
+   Warna/font/ornamen final ada di themes/<tema>/style.css (men-set --bg, --fg, dst.).
+   Urutan link di HTML: reset.css → base.css → style.css. */
+
+:root {
+  --bg: #efe9df; --surface: #fbfaf6; --fg: #23201a; --soft: #6b6456;
+  --accent: #9a7b4f; --line: #ddd4c4;
+  --display: Georgia, 'Times New Roman', serif;
+  --body: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --pad: 26px;
+}
+body { background: var(--bg); color: var(--fg); font-family: var(--body); font-size: 16px; }
+.page { background: var(--surface); min-height: 100vh; }
+
+/* tipografi umum */
+.eyebrow { font-size: .7rem; letter-spacing: .3em; text-transform: uppercase; color: var(--soft); }
+.sec { padding: clamp(50px, 12vw, 76px) var(--pad); }
+.sec--center { text-align: center; }
+.sec__head { margin-bottom: 30px; }
+.sec__head .eyebrow { display: block; margin-bottom: 12px; }
+.title { font-family: var(--display); font-weight: 500; font-size: clamp(1.7rem, 6vw, 2.2rem); line-height: 1.1; }
+.hairline { width: 46px; height: 1px; background: var(--accent); margin: 24px auto 0; }
+
+/* tombol */
+.btn { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 12px 26px; border: 1px solid var(--fg); background: var(--fg); color: var(--surface); font-size: .78rem; letter-spacing: .14em; text-transform: uppercase; border-radius: 2px; }
+.btn--ghost { background: transparent; color: var(--fg); border-color: var(--line); }
+.btn--sm { min-height: 40px; padding: 9px 16px; font-size: .68rem; }
+.btn-xl { min-height: 56px; font-size: 1rem; width: 100%; }
+.actions { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-top: 16px; }
+
+/* Opening */
+.opening { position: fixed; inset: 0; z-index: 50; background: var(--surface); display: flex; align-items: center; justify-content: center; text-align: center; padding: 30px; transition: opacity .7s ease, transform .7s ease; }
+.opening.is-gone { opacity: 0; transform: scale(1.03); pointer-events: none; }
+.opening__inner { max-width: 420px; }
+.opening__k { margin-bottom: 8px; }
+.opening__to { color: var(--soft); margin: 20px 0 2px; font-size: .9rem; }
+.opening__guest { font-family: var(--display); font-size: 1.5rem; margin-bottom: 28px; }
+.opening__names { font-family: var(--display); font-weight: 500; font-size: clamp(2rem, 9vw, 2.8rem); }
+
+/* Cover */
+.cover__photo { width: 100%; height: 68vh; object-fit: cover; }
+.cover__meta { text-align: center; padding: 32px var(--pad) 8px; }
+.cover__meta .eyebrow { display: block; margin-bottom: 14px; }
+.cover__names { font-family: var(--display); font-weight: 500; font-size: clamp(2.5rem, 12vw, 3.6rem); line-height: 1.02; letter-spacing: -.01em; }
+.cover__date { margin-top: 12px; letter-spacing: .18em; color: var(--soft); font-size: .92rem; }
+.cover--nophoto { padding: clamp(46px, 11vw, 76px) var(--pad); }
+.cover--nophoto .cover__frame { border: 1px solid var(--line); padding: 60px 26px; text-align: center; }
+
+/* Greeting */
+.greeting { text-align: center; }
+.greeting p { color: var(--soft); max-width: 40ch; margin-inline: auto; }
+
+/* Hosts */
+.hosts__grid { display: grid; gap: 30px; }
+.host { text-align: center; }
+.host__name { font-family: var(--display); font-weight: 500; font-size: 1.9rem; }
+.host__role { color: var(--soft); font-size: .88rem; margin-top: 6px; }
+
+/* Schedule */
+.sessions { display: flex; flex-direction: column; gap: 22px; }
+.sess { border: 1px solid var(--line); padding: 26px 20px; text-align: center; }
+.sess__name { font-family: var(--display); font-weight: 500; font-size: 1.5rem; }
+.sess__dt { margin-top: 8px; }
+.sess__venue { margin-top: 12px; font-weight: 600; }
+.sess__addr { color: var(--soft); font-size: .9rem; margin-top: 2px; }
+
+/* Countdown */
+.cd-d { font-family: var(--display); font-size: 2.6rem; color: var(--accent); letter-spacing: .04em; }
+.cd-note { color: var(--soft); font-size: .8rem; letter-spacing: .16em; text-transform: uppercase; margin-bottom: 10px; }
+.cd { display: flex; justify-content: center; gap: 10px; margin-top: 22px; flex-wrap: wrap; }
+.cd__u { min-width: 66px; padding: 16px 8px; border: 1px solid var(--line); }
+.cd__v { display: block; font-family: var(--display); font-size: 1.8rem; color: var(--fg); font-variant-numeric: tabular-nums; }
+.cd__l { font-size: .6rem; letter-spacing: .16em; text-transform: uppercase; color: var(--soft); }
+
+/* Calendar mini */
+.cal__month { font-family: var(--display); font-size: 1.3rem; margin-bottom: 14px; }
+.cal__grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; max-width: 300px; margin-inline: auto; }
+.cal__dow { font-size: .62rem; color: var(--soft); padding: 6px 0; }
+.cal__c { padding: 7px 0; font-size: .82rem; font-variant-numeric: tabular-nums; }
+.cal__c--mark { background: var(--fg); color: var(--surface); border-radius: 50%; font-weight: 600; }
+.cal__c--pad { visibility: hidden; }
+
+/* Gallery */
+.gallery { display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px; }
+.gallery img { width: 100%; aspect-ratio: 4/5; object-fit: cover; }
+
+/* Amplop Digital */
+.gifts__wrap { display: flex; flex-direction: column; gap: 14px; max-width: 360px; margin-inline: auto; }
+.gift { border: 1px solid var(--line); padding: 22px; display: flex; flex-direction: column; gap: 6px; }
+.gift__bank { font-family: var(--display); font-size: 1.4rem; }
+.gift__no { letter-spacing: .14em; font-variant-numeric: tabular-nums; }
+.gift__name { color: var(--soft); font-size: .88rem; }
+.gift .btn { margin-top: 8px; align-self: center; }
+.qris { margin-top: 6px; }
+.qris img { width: 180px; margin-inline: auto; }
+.qris figcaption { color: var(--soft); font-size: .76rem; margin-top: 8px; }
+
+/* RSVP */
+.rsvp__note { color: var(--soft); margin-bottom: 24px; }
+.form { display: flex; flex-direction: column; gap: 14px; max-width: 360px; margin-inline: auto; text-align: left; }
+.field { display: flex; flex-direction: column; gap: 6px; }
+.field > span { font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; color: var(--soft); }
+.form input, .form select, .form textarea { min-height: 44px; padding: 11px 13px; border: 1px solid var(--line); background: var(--surface); color: var(--fg); border-radius: 2px; }
+.form textarea { min-height: 84px; resize: vertical; }
+
+/* Wishes */
+.wishes { max-width: 400px; margin-inline: auto; display: flex; flex-direction: column; gap: 12px; text-align: left; }
+.wish { border: 1px solid var(--line); padding: 16px; }
+.wish__name { font-family: var(--display); font-size: 1.1rem; }
+.wish__msg { color: var(--soft); font-size: .92rem; margin-top: 6px; }
+
+/* Footer + music */
+.footer { border-top: 1px solid var(--line); padding: 44px var(--pad) 60px; text-align: center; }
+.footer__c { margin: 4px 0; }
+.footer__c a { text-decoration: none; }
+.footer__mark { color: var(--soft); font-size: .72rem; letter-spacing: .1em; margin-top: 18px; }
+.music { position: fixed; right: 16px; bottom: 16px; z-index: 40; width: 46px; height: 46px; border-radius: 50%; border: 1px solid var(--line); background: var(--surface); color: var(--accent); font-size: 1.1rem; }
+
+/* load reveal ringan */
+@keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+.reveal { animation: fadeUp .7s ease both; }
+
+/* ---- mesin interaktif (shared/invite.js) ---- */
+.is-copied { background: var(--accent) !important; color: var(--surface) !important; border-color: var(--accent) !important; }
+.rsvp__ok { margin-top: 14px; padding: 12px 14px; border: 1px solid var(--line); background: var(--surface); color: var(--fg); font-size: .92rem; }
+.music.is-playing { animation: musicPulse 1.4s ease-in-out infinite; }
+@keyframes musicPulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.12); } }
+
+/* elemen botani melayang */
+.float { position: absolute; z-index: 1; pointer-events: none; will-change: transform; opacity: .9; }
+
+/* lightbox galeri */
+.lightbox { position: fixed; inset: 0; z-index: 90; display: none; align-items: center; justify-content: center;
+  background: rgba(12,8,4,.92); padding: 40px 12px; }
+.lightbox.is-open { display: flex; }
+.lightbox__img { max-width: 92vw; max-height: 82vh; object-fit: contain; border: 1px solid rgba(255,255,255,.2); }
+.lightbox__x { position: absolute; top: 14px; right: 16px; width: 44px; height: 44px; border: none; background: transparent; color: #fff; font-size: 2rem; line-height: 1; cursor: pointer; }
+.lightbox__nav { position: absolute; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; border: none;
+  background: rgba(255,255,255,.08); color: #fff; font-size: 1.8rem; cursor: pointer; border-radius: 50%; }
+.lightbox__prev { left: 10px; } .lightbox__next { right: 10px; }
+@media (prefers-reduced-motion: reduce) { .music.is-playing { animation: none; } }
+
+/* SKIN KARTU RESTU (base; tema menajamkan warna di style.css) */
+body.is-restu { font-size: 19px; }
+body.is-restu .page { line-height: 1.7; }
+body.is-restu .eyebrow { letter-spacing: .1em; font-weight: 600; }
+body.is-restu .btn { min-height: 48px; font-size: .9rem; letter-spacing: .06em; }
+body.is-restu .btn--sm { min-height: 48px; }
+body.is-restu .hairline { display: none; }
+body.is-restu .sess__addr, body.is-restu .host__role, body.is-restu .rsvp__note { font-size: 1.02rem; }

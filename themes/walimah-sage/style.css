@@ -1,0 +1,51 @@
+/* Walimah Sage — Islami (plan2 P1-4). Sage + emerald + emas di atas krem.
+   Lengkung mihrab, bintang 8 sudut, geometri samar. Default tanpa foto.
+   Struktur di shared/base.css. Teks religius: hanya Bismillah + salam, ayat placeholder. */
+@import url('https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600&display=swap');
+
+:root {
+  --bg: #ECE8DD;
+  --surface: #FBFAF6;
+  --fg: #273F31;         /* emerald gelap, teks */
+  --soft: #4C6153;       /* ≥4.5:1 di surface */
+  --accent: #7C6124;     /* emas gelap untuk teks kecil (≥4.5:1) */
+  --line: #D7D4C4;
+  --sage: #9CAF88;
+  --emerald: #2F4A3A;
+  --gold: #B8925A;       /* dekoratif / teks besar */
+  --display: 'Amiri', 'Scheherazade New', Georgia, serif;
+  --body: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+.title, .host__name, .sess__name, .cover__names { font-family: var(--display); font-weight: 400; }
+.title { color: var(--emerald); }
+.eyebrow { letter-spacing: .24em; color: var(--soft); }
+.cd-d { color: var(--gold); }
+
+/* Cover mihrab */
+.cover--mihrab { text-align: center; padding: clamp(40px, 10vw, 70px) var(--pad) 48px; background:
+  radial-gradient(120% 80% at 50% 0%, rgba(156,175,136,.22), transparent 60%), var(--surface); }
+.bismillah { font-family: var(--display); color: var(--emerald); font-size: clamp(1.5rem, 7vw, 2.1rem); direction: rtl; }
+.cover--mihrab .salam { color: var(--soft); font-size: .72rem; letter-spacing: .22em; text-transform: uppercase; margin-top: 8px; }
+.mihrab { position: relative; width: 190px; max-width: 70%; margin: 26px auto 22px; aspect-ratio: 3/4.4; }
+.mihrab svg { position: absolute; inset: 0; width: 100%; height: 100%; color: var(--gold); }
+.mihrab .mono { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: var(--display); font-size: 2rem; color: var(--emerald); letter-spacing: .06em; }
+.cover--mihrab .cover__names { color: var(--emerald); font-size: clamp(2.2rem, 10vw, 3rem); }
+.cover--mihrab .cover__date { color: var(--soft); }
+
+/* bintang 8 (divider) */
+.star8 { position: relative; width: 22px; height: 22px; margin: 16px auto 0; color: var(--gold); }
+.star8::before, .star8::after { content: ""; position: absolute; inset: 0; border: 1px solid currentColor; }
+.star8::after { transform: rotate(45deg); }
+
+/* ayat */
+.verse { max-width: 44ch; margin: 0 auto; }
+.verse__ar { font-family: var(--display); font-size: 1.35rem; line-height: 1.9; direction: rtl; color: var(--emerald); }
+.verse__ph { color: var(--soft); font-style: italic; margin-top: 10px; font-size: .92rem; }
+.verse__src { color: var(--gold); letter-spacing: .14em; font-size: .76rem; margin-top: 8px; text-transform: uppercase; }
+
+/* panel sage untuk sesi */
+.sess { background: rgba(156,175,136,.12); border-color: rgba(47,74,58,.18); }
+
+/* Kartu Restu (≥7:1) */
+body.is-restu { --fg: #16281D; --soft: #2E4435; --accent: #5A471A; }

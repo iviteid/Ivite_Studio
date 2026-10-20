@@ -1,0 +1,57 @@
+/* Baby Doodle — Gen Z Pop versi anak (plan2 P2-4). Doodle SVG orisinal (matahari,
+   awan, bintang, balon), goresan crayon, badge usia. Varian aqiqah (body.aqiqah).
+   Fredoka + Nunito. */
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700&display=swap');
+
+:root {
+  --bg: #FFF8EC;
+  --surface: #FFFFFF;
+  --fg: #2E2A26;
+  --soft: #6B6158;        /* ≥4.5:1 */
+  --accent: #E8743B;      /* coral gelap (teks aman) */
+  --line: #2E2A26;
+  --coral: #FFB4A2;
+  --mint: #8FD3C1;
+  --kuning: #FFD166;
+  --peri: #6C8EEF;
+  --display: 'Fredoka', system-ui, sans-serif;
+  --body: 'Nunito', system-ui, sans-serif;
+}
+
+.title, .host__name, .sess__name, .cover__names, .opening__names { font-family: var(--display); font-weight: 600; letter-spacing: 0; }
+.eyebrow { display: inline-block; font-family: var(--display); font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--fg); background: var(--kuning); border: 2px solid var(--line); border-radius: 999px; padding: 5px 14px; }
+
+.btn { background: var(--peri); color: #fff; border: 2px solid var(--line); border-radius: 999px; font-family: var(--display); font-weight: 600; text-transform: none; letter-spacing: .01em; box-shadow: 3px 3px 0 var(--line); }
+.btn--ghost { background: #fff; color: var(--fg); }
+.btn:active { transform: translate(2px,2px); box-shadow: 1px 1px 0 var(--line); }
+
+/* cover dengan doodle */
+.opening { background: var(--bg); }
+.cover { position: relative; text-align: center; padding: 48px 24px 40px; background: var(--bg); overflow: hidden; }
+.doodle { position: absolute; color: var(--line); opacity: .9; }
+.doodle--sun { top: 20px; left: 18px; color: var(--kuning); }
+.doodle--cloud { top: 36px; right: 16px; color: var(--peri); }
+.doodle--star { bottom: 60px; left: 24px; color: var(--coral); }
+.doodle--balloon { bottom: 30px; right: 26px; color: var(--mint); }
+.agebadge { width: 84px; height: 84px; margin: 0 auto 14px; border-radius: 50%; background: var(--coral); border: 3px solid var(--line); display: flex; align-items: center; justify-content: center; font-family: var(--display); font-weight: 700; font-size: 1.6rem; color: var(--fg); box-shadow: 4px 4px 0 var(--line); }
+.cover__names { font-size: clamp(2.4rem, 12vw, 3.4rem); position: relative; }
+.cover__date { color: var(--soft); font-weight: 700; }
+
+/* kartu bulat + outline */
+.sess, .gift, .wish { border: 2px solid var(--line); border-radius: 20px; box-shadow: 4px 4px 0 var(--line); background: #fff; }
+.cd__u { border: 2px solid var(--line); border-radius: 16px; }
+.cd__u:nth-child(1){ background: var(--coral);} .cd__u:nth-child(2){ background: var(--kuning);} .cd__u:nth-child(3){ background: var(--mint);} .cd__u:nth-child(4){ background: var(--peri); }
+.cd__v { font-family: var(--display); font-weight: 700; color: var(--fg); }
+.cd-d { font-family: var(--display); font-weight: 700; color: var(--accent); }
+.gallery img { border: 2px solid var(--line); border-radius: 16px; }
+.music { border: 2px solid var(--line); background: var(--kuning); color: var(--fg); border-radius: 16px; box-shadow: 3px 3px 0 var(--line); }
+
+/* ---- varian aqiqah ---- */
+body.aqiqah { --bg: #F3F7F2; --coral: #BFE3D6; --kuning: #F4E3B8; --peri: #9DB8C9; }
+body.aqiqah .doodle--sun { color: var(--kuning); }  /* bulan sabit via markup */
+body.aqiqah .agebadge { background: var(--mint); }
+
+/* Kartu Restu — tenang & kontras tinggi */
+body.is-restu { --bg: #F5F2EC; }
+body.is-restu .doodle { display: none; }
+body.is-restu .sess, body.is-restu .gift { box-shadow: none; }

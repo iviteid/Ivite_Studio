@@ -1,0 +1,28 @@
+/* Seoul Cream — Korean Minimal 감성 (plan2 P1-1). Token + ciri khas tema.
+   Struktur komponen di shared/base.css. */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600&display=swap');
+
+:root {
+  --bg: #F6F1E9;
+  --surface: #FBF7F0;
+  --fg: #2B2620;
+  --soft: #645A4D;      /* lolos 4.5:1 */
+  --accent: #99846C;    /* dekoratif / teks sangat besar (≥3:1) */
+  --line: #DDD2C2;
+  --display: 'Cormorant Garamond', 'Iowan Old Style', Georgia, serif;
+  --body: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+/* ciri khas */
+.eyebrow { letter-spacing: .34em; }
+.cover__names, .opening__names, .host__name { font-weight: 500; letter-spacing: -.005em; }
+.cover__meta::after, .opening__inner::after { content: ""; display: block; width: 44px; height: 1px; background: var(--accent); margin: 24px auto 0; }
+.opening__inner { position: relative; }
+.cover--nophoto .cover__frame { padding: 64px 28px; }
+.gallery { gap: 6px; }
+.cal__c--mark { font-weight: 600; }
+
+/* Kartu Restu — ≥7:1 */
+body.is-restu { --fg: #1E1A14; --soft: #3B3528; --accent: #7A6442; }
+body.is-restu .eyebrow { color: var(--soft); }
+body.is-restu .cover__meta::after, body.is-restu .opening__inner::after { display: none; }

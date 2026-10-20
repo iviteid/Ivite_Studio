@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1120" width="800" height="1120" role="img" aria-label="Placeholder foto sampul">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#E7DCC9"/>
+      <stop offset="1" stop-color="#CDBDA6"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="1120" fill="url(#g)"/>
+  <circle cx="400" cy="500" r="118" fill="none" stroke="#B7A587" stroke-width="2"/>
+  <text x="400" y="516" text-anchor="middle" font-family="Georgia, serif" font-size="32" fill="#8C7A5E" letter-spacing="6">FOTO</text>
+  <text x="400" y="1052" text-anchor="middle" font-family="system-ui, sans-serif" font-size="19" fill="#9A8A6C" letter-spacing="8">PLACEHOLDER</text>
+</svg>
