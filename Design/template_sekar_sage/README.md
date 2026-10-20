@@ -1,5 +1,7 @@
 # Sekar Sage
 
+The couple section includes separate large portraits above each person's name. An eight-photo gallery appears immediately before RSVP, with a dedicated bottom-navigation link and an accessible full-screen viewer (previous/next buttons, arrow keys, Escape to close). `gallery.css` styles these sections. The website uses optimized WebP versions in `assets/photos/`; original PNG files remain unchanged.
+
 The invitation now uses a continuous illustrated stage: cover, a 5.4-second entrance sequence (birds, landscape, garden, descending arch, names), blessing, couple, story, ceremony/reception, RSVP and closing. The botanical frame remains fixed while the content scrolls. The entrance plays through automatically without a skip button; reduced-motion preferences bypass it automatically. `cinematic.css` contains the stage layout and entrance sequence; the original artwork remains in `assets/`.
 
 Animated invitation using all ten supplied illustrations. Open `index.html` through a local HTTP server or static host. The catalog links to this theme.

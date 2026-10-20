@@ -11,6 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="cinematic.css">
+  <link rel="stylesheet" href="gallery.css">
   <script src="invitation.js" defer></script>
 </head>
 <body class="locked">
@@ -91,10 +92,17 @@
 
       <section class="couple section" id="couple" aria-labelledby="couple-title">
         <div class="reveal"><p class="overline">SANG MEMPELAI</p><h2 id="couple-title">Bersama,<br><em>menjadi selamanya.</em></h2></div>
-        <div class="couple-stage reveal"><img class="gunungan" src="assets/gunungan.webp" alt="Gunungan bermotif bunga berwarna sage dan emas"><img class="wayang" src="assets/wayang.webp" alt="Wayang Jawa berbusana sage dan emas"></div>
-        <div class="person reveal"><h3 data-bride-full>Sekar Ayuningtyas</h3><p data-bride-parents>Putri dari Bapak &amp; Ibu Keluarga Mempelai Wanita</p></div>
+        <article class="person reveal">
+          <div class="portrait-frame"><img src="assets/photos/09-pengantin-wanita.webp" alt="Potret Sekar dalam kebaya adat Jawa berwarna sage dan emas" width="1024" height="1536" loading="lazy" decoding="async"></div>
+          <p class="portrait-label">MEMPELAI WANITA</p>
+          <h3 data-bride-full>Sekar Ayuningtyas</h3><p data-bride-parents>Putri dari Bapak &amp; Ibu Keluarga Mempelai Wanita</p>
+        </article>
         <p class="ampersand reveal">&amp;</p>
-        <div class="person reveal"><h3 data-groom-full>Bagas Pradipta</h3><p data-groom-parents>Putra dari Bapak &amp; Ibu Keluarga Mempelai Pria</p></div>
+        <article class="person reveal">
+          <div class="portrait-frame"><img src="assets/photos/10-pengantin-pria.webp" alt="Potret Bagas dalam beskap adat Jawa berwarna sage dan emas" width="1024" height="1536" loading="lazy" decoding="async"></div>
+          <p class="portrait-label">MEMPELAI PRIA</p>
+          <h3 data-groom-full>Bagas Pradipta</h3><p data-groom-parents>Putra dari Bapak &amp; Ibu Keluarga Mempelai Pria</p>
+        </article>
       </section>
 
       <section class="story section" id="story" aria-labelledby="story-title">
@@ -114,6 +122,21 @@
         <div class="event-actions"><button class="button" id="calendar" type="button">Simpan Tanggal <span aria-hidden="true">↗</span></button><a class="text-link" id="map-link" href="https://www.google.com/maps/search/?api=1&amp;query=Yogyakarta" target="_blank" rel="noopener">Lihat area di peta ↗</a></div>
       </section>
 
+      <section class="gallery section" id="gallery" aria-labelledby="gallery-title">
+        <div class="reveal"><p class="overline">OUR MOMENTS</p><h2 id="gallery-title">Cerita dalam<br><em>sebuah bingkai.</em></h2><p class="gallery-intro">Momen sederhana, kenangan yang akan selalu kami simpan.</p></div>
+        <div class="gallery-grid">
+          <button class="gallery-item reveal" type="button" data-photo="0" aria-label="Buka foto 1: Bersama di pendopo"><img src="assets/photos/01-formal.webp" alt="Sekar dan Bagas berdiri bersama di pendopo" width="1024" height="1536" loading="lazy" decoding="async"><span>Bersama di pendopo <i aria-hidden="true">↗</i></span></button>
+          <button class="gallery-item reveal" type="button" data-photo="1" aria-label="Buka foto 2: Melangkah bersama"><img src="assets/photos/02-berjalan.webp" alt="Kedua mempelai berjalan bergandengan tangan" width="1024" height="1536" loading="lazy" decoding="async"><span>Melangkah bersama <i aria-hidden="true">↗</i></span></button>
+          <button class="gallery-item reveal" type="button" data-photo="2" aria-label="Buka foto 3: Saling menatap"><img src="assets/photos/03-saling-menatap.webp" alt="Sekar dan Bagas saling menatap sambil berpegangan tangan" width="1024" height="1536" loading="lazy" decoding="async"><span>Saling menatap <i aria-hidden="true">↗</i></span></button>
+          <button class="gallery-item reveal" type="button" data-photo="3" aria-label="Buka foto 4: Duduk berdua"><img src="assets/photos/04-duduk-bersama.webp" alt="Kedua mempelai duduk bersama di bangku kayu berukir" width="1024" height="1536" loading="lazy" decoding="async"><span>Duduk berdua <i aria-hidden="true">↗</i></span></button>
+          <button class="gallery-item reveal" type="button" data-photo="4" aria-label="Buka foto 5: Sedekat ini"><img src="assets/photos/05-sentuhan-dahi.webp" alt="Sekar dan Bagas dengan dahi saling bersentuhan" width="1024" height="1536" loading="lazy" decoding="async"><span>Sedekat ini <i aria-hidden="true">↗</i></span></button>
+          <button class="gallery-item reveal" type="button" data-photo="5" aria-label="Buka foto 6: Menuju cerita baru"><img src="assets/photos/06-tampak-belakang.webp" alt="Kedua mempelai bergandengan dilihat dari belakang" width="1024" height="1536" loading="lazy" decoding="async"><span>Menuju cerita baru <i aria-hidden="true">↗</i></span></button>
+          <button class="gallery-item reveal" type="button" data-photo="6" aria-label="Buka foto 7: Dengan kasih dan restu"><img src="assets/photos/07-sungkem.webp" alt="Sekar memberi salam hormat kepada Bagas" width="1024" height="1536" loading="lazy" decoding="async"><span>Kasih dan restu <i aria-hidden="true">↗</i></span></button>
+          <button class="gallery-item reveal" type="button" data-photo="7" aria-label="Buka foto 8: Senyum bahagia"><img src="assets/photos/08-potret-dekat.webp" alt="Potret dekat Sekar dan Bagas tersenyum bahagia" width="1024" height="1536" loading="lazy" decoding="async"><span>Senyum bahagia <i aria-hidden="true">↗</i></span></button>
+        </div>
+        <p class="small gallery-hint">Ketuk foto untuk melihat lebih dekat.</p>
+      </section>
+
       <section class="rsvp section" id="rsvp" aria-labelledby="rsvp-title">
         <div class="reveal"><p class="overline">YOUR PRESENCE, OUR HAPPINESS</p><h2 id="rsvp-title">Hadir &amp;<br><em>titipkan doa.</em></h2><p>Kehadiran dan doa baik Anda adalah hadiah terindah bagi kami.</p></div>
         <form id="rsvp-form" class="reveal">
@@ -131,9 +154,14 @@
       <footer class="closing section"><img class="closing-blossom" src="assets/blossom.webp" alt=""><div class="reveal"><p class="overline">TERIMA KASIH</p><h2>Sampai bertemu<br><em>di hari bahagia.</em></h2><p>Dengan cinta dan rasa syukur,</p><p class="closing-names"><span data-bride>Sekar</span> &amp; <span data-groom>Bagas</span></p><img class="ornament" src="assets/ornament.webp" alt=""><a href="#home" class="text-link">ivite · Sekar Sage</a></div></footer>
     </main>
 
-    <nav class="bottom-nav" aria-label="Navigasi undangan"><a href="#home" aria-label="Pembuka"><span aria-hidden="true">⌂</span><small>Pembuka</small></a><a href="#couple"><span aria-hidden="true">♡</span><small>Mempelai</small></a><a href="#event"><span aria-hidden="true">◷</span><small>Acara</small></a><a href="#rsvp"><span aria-hidden="true">✉</span><small>RSVP</small></a></nav>
+    <nav class="bottom-nav" aria-label="Navigasi undangan"><a href="#home" aria-label="Pembuka"><span aria-hidden="true">⌂</span><small>Pembuka</small></a><a href="#couple"><span aria-hidden="true">♡</span><small>Mempelai</small></a><a href="#event"><span aria-hidden="true">◷</span><small>Acara</small></a><a href="#gallery"><span aria-hidden="true">▧</span><small>Galeri</small></a><a href="#rsvp"><span aria-hidden="true">✉</span><small>RSVP</small></a></nav>
     <button id="motion" class="motion" type="button" aria-pressed="false" aria-label="Jeda animasi">Ⅱ</button>
   </div>
+  <dialog class="photo-viewer" id="photo-viewer" aria-label="Galeri foto mempelai">
+    <button class="viewer-close" id="viewer-close" type="button" aria-label="Tutup foto">×</button>
+    <figure><img id="viewer-image" alt=""><figcaption id="viewer-caption" aria-live="polite"></figcaption></figure>
+    <div class="viewer-controls"><button id="viewer-prev" type="button" aria-label="Foto sebelumnya">←</button><span id="viewer-count" aria-live="polite"></span><button id="viewer-next" type="button" aria-label="Foto berikutnya">→</button></div>
+  </dialog>
   <noscript><style>.cover{display:none}#invitation{display:block}body{overflow:auto}.reveal{opacity:1;transform:none}</style><p>Aktifkan JavaScript untuk membuka undangan interaktif dan mengisi RSVP.</p></noscript>
 </body>
 </html>

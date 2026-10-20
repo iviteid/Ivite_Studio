@@ -73,7 +73,7 @@ const navLinks=[...document.querySelectorAll('.bottom-nav a')];
 const sectionObserver=new IntersectionObserver(entries=>{
   entries.forEach(entry=>{if(entry.isIntersecting){navLinks.forEach(link=>{const active=link.hash==='#'+entry.target.id;link.classList.toggle('active',active);if(active)link.setAttribute('aria-current','location');else link.removeAttribute('aria-current');});}});
 },{rootMargin:'-10% 0px -55% 0px'});
-['home','couple','event','rsvp'].forEach(id=>sectionObserver.observe(document.getElementById(id)));
+['home','couple','event','gallery','rsvp'].forEach(id=>sectionObserver.observe(document.getElementById(id)));
 function tick(){
   const seconds=Math.max(0,Math.floor((weddingDate-Date.now())/1000));
   const values={days:Math.floor(seconds/86400),hours:Math.floor(seconds/3600)%24,minutes:Math.floor(seconds/60)%60,seconds:seconds%60};
@@ -118,3 +118,29 @@ document.getElementById('rsvp-form').addEventListener('submit',async event=>{
   finally{button.disabled=false;}
 });
 document.getElementById('guest-name').addEventListener('input',event=>event.target.setCustomValidity(''));
+
+// Native dialog provides keyboard focus containment and Escape-to-close.
+const photoButtons=[...document.querySelectorAll('[data-photo]')];
+const photoViewer=document.getElementById('photo-viewer');
+let currentPhoto=0;
+function displayPhoto(index){
+  currentPhoto=(index+photoButtons.length)%photoButtons.length;
+  const tile=photoButtons[currentPhoto];
+  const source=tile.querySelector('img');
+  const image=document.getElementById('viewer-image');
+  image.src=source.getAttribute('src');image.alt=source.alt;
+  document.getElementById('viewer-caption').textContent=tile.querySelector('span').firstChild.textContent.trim();
+  document.getElementById('viewer-count').textContent=(currentPhoto+1)+' / '+photoButtons.length;
+}
+photoButtons.forEach((button,index)=>button.addEventListener('click',()=>{
+  displayPhoto(index);photoViewer.showModal();document.body.classList.add('photo-open');
+}));
+document.getElementById('viewer-close').addEventListener('click',()=>photoViewer.close());
+document.getElementById('viewer-prev').addEventListener('click',()=>displayPhoto(currentPhoto-1));
+document.getElementById('viewer-next').addEventListener('click',()=>displayPhoto(currentPhoto+1));
+photoViewer.addEventListener('close',()=>document.body.classList.remove('photo-open'));
+photoViewer.addEventListener('click',event=>{if(event.target===photoViewer)photoViewer.close();});
+photoViewer.addEventListener('keydown',event=>{
+  if(event.key==='ArrowLeft'){event.preventDefault();displayPhoto(currentPhoto-1);}
+  if(event.key==='ArrowRight'){event.preventDefault();displayPhoto(currentPhoto+1);}
+});
