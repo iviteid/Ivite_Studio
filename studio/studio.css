@@ -6,3 +6,8 @@ summary{cursor:pointer;list-style-position:outside;padding:8px 0}summary:focus-v
 @media(max-width:760px){.tab{flex-direction:column;gap:4px;padding:9px 0}.tab-label{display:block;font-size:8px}.rail nav{gap:7px}}
 
 .artwork-connection{display:flex;align-items:center;gap:8px;margin:-7px 0 15px;color:#849477;font-size:9px;line-height:1.6}.artwork-connection span{flex:1}.artwork-connection button{flex:none;font-size:9px}.field input[type=search]{width:100%;border:1px solid var(--line);border-radius:6px;padding:10px 11px;background:#fcfdfb;color:#34442f;font-size:12px;min-width:0}.asset-tile span{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.asset-grid+.btn{margin-bottom:20px}
+
+/* Keep a true 390 × 780 mobile viewport and scale the whole device to fit. */
+.preview-fit{position:relative;flex:none}.preview-fit .device{box-sizing:content-box;max-width:none;min-height:0;max-height:none;transform-origin:top left;transition:none}.preview-scroll{overflow:hidden}
+
+.position-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.position-grid .field{min-width:0}.position-grid input{width:100%;min-width:0}

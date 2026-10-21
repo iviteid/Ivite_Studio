@@ -68,3 +68,27 @@ The lower garden remains in its final position when the entrance completes. Navi
 The invitation reserves a stable scrollbar gutter before scrolling unlocks. On mobile, the fixed illustrated panel uses the available viewport width rather than 100vw so the arch remains centered without clipping into the reserved gutter.
 
 The cinematic handoff keeps the completed visual tracks attached instead of replacing them with freshly started idle animations. Scene and title movement settle early; completion follows the overlay's actual animationend event, with a delayed fallback. Skipping/jumping explicitly finishes finite animation tracks, and replay starts a fresh sequence. This prevents cloud drift/flower rotation resets and cuts in the last text reveal.
+
+The separate **Cinematic gateway** option opens a dark sage gateway onto the landscape. **Cinematic journey** remains the previous entrance and the default selection. Near and distant mist move in opposite directions while the pavilion, mountains and foreground flowers pull back at different depths. A warm halo fades before the staggered name reveal. These effects share the existing duration, atmosphere, skip and reduced-motion controls; completed scene tracks retain their final positions through the handoff.
+
+The Mobile preview uses a 390 × 780 (9:18) viewport. The complete device scales to fit the workspace without changing the invitation layout; Wide uses 720 × 780.
+
+Content → Event details includes GPS coordinates in latitude, longitude format (for example -7.7956, 110.3695). Lihat lokasi opens a Google Maps universal URL using valid coordinates; blank coordinates use the existing map search/address. Invalid coordinates are flagged and disable the location link. Settings are included in saved designs and exports. Mobile app opening depends on the device's Google Maps installation and link settings; otherwise the web map opens.
+
+## Imported Gusti & Zidni design
+Designs → Gusti & Zidni → Open creates a separate editable invitation from andika-putri-wedding-main/dist. The imported layout, original botanical opening, photos, artwork, gift cards and local RSVP remain available. Content includes the original text groups; Elements includes original artwork and layer transforms. Saved projects remember their renderer. Export HTML embeds the imported renderer, artwork and soundtrack.
+
+## Music
+The Music tab works with both renderers. Upload MP3, M4A, OGG, WAV or WebM (up to 20 MB), enable/disable music, adjust volume, and choose whether it starts when the invitation is opened. Guests have a play/pause button. Uploads remain in browser storage and are embedded in project/HTML exports. Playback requires a guest gesture and browser audio-format support. The imported design starts with its original local soundtrack.
+
+## Element animations
+The Animations tab discovers artwork, photos, text, buttons, cards, sections and decorative elements in both renderers. Filter by element type or use Pick element in preview. Matching text/artwork instances share a setting; stagger can offset their start times.
+
+Choose entrance effects (fade, directional slide, zoom), reveals (soft focus, curtain, circle), emphasis (bounce, pulse, swing, shake, rotation), ambient movement (float, drift, breathing), or lift interaction. Controls include duration, delay, intensity, easing, looping, stagger and visible/entrance/hover triggers. Preview animation tests a selected element; Reset restores the original design motion. Existing designs default to their original animation.
+
+Custom transforms compose with the existing placement. Motion observes the global Cinematic entrance switch and reduced-motion preferences; loops pause offscreen. Saved projects and HTML exports include the per-element settings and runtime.
+
+## Position any element
+The Position tab uses the same element discovery as Animations and adds control over individual copies. Choose an element and copy, or pick it in the preview. Drag elements in preview moves the selection directly; turn drag mode off to use invitation links and scrolling normally. X/Y inputs, arrow nudges (1/5/10/25 pixels), scale and rotation are available.
+
+Shared and individual offsets add together. Placement composes with existing layer adjustments and animations, remains active when motion is disabled, and uses invitation pixels independent of editor zoom. Reset position removes only the selected copy/group setting; Undo and saved projects/HTML exports include placement changes.

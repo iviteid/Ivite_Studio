@@ -10,8 +10,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
   <link id="font-link" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@400;500;600&display=swap">
-  <link rel="stylesheet" href="template.css?v=12">
-  <script src="app.js?v=12" defer></script>
+  <link rel="stylesheet" href="template.css?v=14">
+  <script src="../animation-engine.js?v=4" defer></script><script src="../music-player.js?v=1" defer></script><script src="app.js?v=18" defer></script>
 </head>
 <body class="locked">
   <div class="cover" id="cover" role="dialog" aria-modal="true" aria-labelledby="cover-title">
@@ -65,7 +65,7 @@
       <div class="stage-pendant"></div>
       <div class="stage-garden"><img data-slot="gardenLeft" class="garden-left" alt=""><img data-slot="gardenMiddle" class="garden-middle" alt=""><img data-slot="gardenRight" class="garden-right" alt=""></div>
     </div>
-    <div class="cinema-overlay" aria-hidden="true"><div class="cinema-light"></div><div class="cinema-grain"></div><div class="cinema-dust"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="cinema-progress"></span></div>
+    <div class="cinema-overlay" aria-hidden="true"><div class="cinema-gate cinema-gate-left"></div><div class="cinema-gate cinema-gate-right"></div><div class="cinema-halo"></div><div class="cinema-mist cinema-mist-far"></div><div class="cinema-mist cinema-mist-near"></div><div class="cinema-light"></div><div class="cinema-grain"></div><div class="cinema-dust"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="cinema-progress"></span></div>
     <button id="cinema-skip" class="cinema-skip" type="button" hidden>Lewati intro <span aria-hidden="true">↗</span></button>
     <p class="arrival-caption" role="status" aria-live="polite" id="arrival-caption" tabindex="-1"></p>
     <main id="main" tabindex="-1">
@@ -120,7 +120,7 @@
         <article class="event-block reveal"><p class="event-number" data-field="ceremonyLabel">01 / THE PROMISE</p><h3 data-field="ceremonyName">Akad Nikah</h3><p data-ceremony-time data-field="ceremonyTime">08.00 – 09.00 WIB</p><span class="fine-rule"></span><p class="venue" data-venue data-field="venue">Pendopo Keluarga</p><p data-address data-field="address">Yogyakarta, Daerah Istimewa Yogyakarta</p></article>
         <article class="event-block reveal"><p class="event-number" data-field="receptionLabel">02 / THE CELEBRATION</p><h3 data-field="receptionName">Resepsi</h3><p data-reception-time data-field="receptionTime">11.00 – 14.00 WIB</p><span class="fine-rule"></span><p class="venue" data-venue data-field="venue">Pendopo Keluarga</p><p data-address data-field="address">Yogyakarta, Daerah Istimewa Yogyakarta</p></article>
         <p class="small">Tanggal dan lokasi di atas adalah contoh.</p>
-        <div class="event-actions"><button class="button" id="calendar" type="button"><span data-field="calendarButton">Simpan Tanggal</span> <span aria-hidden="true">↗</span></button><a class="text-link" data-field="mapButton" id="map-link" href="https://www.google.com/maps/search/?api=1&amp;query=Yogyakarta" target="_blank" rel="noopener">Lihat area di peta ↗</a></div>
+        <div class="event-actions"><button class="button" id="calendar" type="button"><span data-field="calendarButton">Simpan Tanggal</span> <span aria-hidden="true">↗</span></button><a class="text-link" data-field="mapButton" id="map-link" href="https://www.google.com/maps/search/?api=1&amp;query=Yogyakarta" target="_blank" rel="noopener">Lihat lokasi</a></div>
       </section>
 
       <section class="gallery section" data-section="gallery" id="gallery" aria-labelledby="gallery-title">
