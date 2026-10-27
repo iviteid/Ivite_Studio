@@ -92,3 +92,31 @@ Custom transforms compose with the existing placement. Motion observes the globa
 The Position tab uses the same element discovery as Animations and adds control over individual copies. Choose an element and copy, or pick it in the preview. Drag elements in preview moves the selection directly; turn drag mode off to use invitation links and scrolling normally. X/Y inputs, arrow nudges (1/5/10/25 pixels), scale and rotation are available.
 
 Shared and individual offsets add together. Placement composes with existing layer adjustments and animations, remains active when motion is disabled, and uses invitation pixels independent of editor zoom. Reset position removes only the selected copy/group setting; Undo and saved projects/HTML exports include placement changes.
+
+## Botanical Garden · Romi & Nadia
+Designs → Romi & Nadia → Open creates a separate editable botanical invitation inspired by the supplied [Romi & Nadia reference](https://invitato.net/template-rominadia/?code=DUMMY-P0001). It has a white-flower garden cover, a camera-and-flower entrance, desktop portrait panel, couple profiles, story, countdown, three events, RSVP, two gift accounts, optional live-stream link, photo lightbox and closing. Existing designs remain in My designs.
+
+Content includes Garden details, Wedding gift and Live streaming. Clear the tea ceremony name to hide that event. Add an account number to enable its copy button, and an HTTP(S) streaming URL to show the streaming card. Date input uses Jakarta time; this Bali sample displays the calendar date in Asia/Makassar. Music, artwork, typography, colors, per-element animation/position, section visibility/order and standalone/project exports use the existing Studio controls.
+
+RSVP and wishes are explicitly local browser records, with no shared guest database, check-in QR code or external submission. Sample account numbers are blank and no commercial soundtrack is bundled. Sample photos and decorative images were obtained from the user-supplied reference; image source URLs are recorded in designs/rominadia/assets/sources.json. The renderer is implemented locally and makes no requests to the reference's guest-data API. Replace the sample photos/content with the couple's own materials before sharing.
+
+Verified mobile artwork, live editing, valid/invalid GPS, gallery empty/repopulate, gift fields, section ordering/visibility, reduced-motion entrance bypass, entrance replay/completion, placement with motion disabled, local RSVP/wishes, lightbox navigation, responsive overflow and standalone HTML embedding.
+
+## Silver Blue · Lxa & Clarashinta
+Designs → Lxa & Clarashinta → Open adds a separate editable design inspired by the supplied [Clara & Lxa reference](https://invitato.net/template-claralxa/?code=DUMMY-P0001). The photographic cover has dusty-blue and silver flowers, floating petals, glitter, a fountain and a slow camera opening. It includes a desktop photo/quote panel, couple portraits, story, countdown, two events, RSVP, gift accounts, optional streaming, gallery and closing. Dates display in Jakarta time.
+
+Photos includes dedicated cover and desktop replacements. Elements names the fountain, glitter, petals, orchids, lilies, portrait frame and floor. Content, typography, colors, music, animations, per-copy placement, layout, saving and exports use the Studio controls. The shared botanical renderer is selected explicitly during standalone export; each design keeps its own markup, stylesheet, default configuration and assets.
+
+RSVP/wishes remain local to the guest browser. No reference-site RSVP service, QR check-in, account numbers or soundtrack are included. Decorative/sample photo URLs are documented in designs/claralxa/assets/sources.json. Verified responsive artwork, live text, map validation, section ordering/visibility, entrance/replay, position and animation composition, local RSVP, gallery/lightbox and independent HTML export.
+
+## Latest Andika Putri folder design
+Designs → Gusti & Zidni · Latest → Open imports the current `D:/ai/andika-putri-wedding/dist` as a separate editable invitation. The original folder contains Gusti & Zidni content; its newer source artwork, mountain layers, mobile optimizations and staged entrance are retained. The earlier Gusti & Zidni design is still available.
+
+Content, artwork, typography, music, animations, element placement and layout use the Studio controls. The original entrance supports replay and preview navigation; calendar/GPS and gift-copy links use edited values. Local RSVP records are separated from the older renderer. HTML export embeds the current renderer, images and selected song. The source folder can be previewed separately at `http://127.0.0.1:8083/` while its local server is running.
+
+## Three additional invitation profiles
+Designs now also includes **Clarissa & Sandro · Javanese Lilac**, **Omar & Yasmina · Golden Arch**, and **Aurélie & Noah · Ivory Garden**, each as a separate saved invitation. Their carved gate/lilac trees, gilded arch/pastel flowers, and modern ivory garden/wayang compositions follow the supplied references. Each profile has its own markup, CSS, images and editable defaults in collection-designs.js; the shared renderer is selected explicitly for exports.
+
+Photos supports cover-background and desktop-photo replacement alongside portraits/gallery. Elements lists the full downloaded artwork collection with design-specific labels. Layout, colors, fonts, music, element animation and per-copy positioning work across all three. The gate, arch and garden have separate entrance tracks. Aurélie & Noah also exposes a second event date, venue, address and GPS/map search; the second date displays in Singapore time while date inputs are entered in Jakarta time. Its labels and date formatting are English.
+
+Reference images and sample photographs are recorded in each assets/sources.json. No reference-site RSVP backend, QR access service or soundtrack is bundled. RSVP/wishes remain local browser records. Verified mobile layouts, live edits, map validation, section ordering/visibility, replay/motion bypass, placement + animation, gallery/lightbox, local RSVP, the second event's timezone/venue/map, persistence and independent standalone exports.

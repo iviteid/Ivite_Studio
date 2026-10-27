@@ -52,3 +52,10 @@ var CONTENT_FIELDS=[
  ['venue','Lokasi'],['address','Alamat'],['mapQuery','Query Peta'],
  ['galleryTitle','Galeri — Judul'],['rsvpTitle','RSVP — Judul'],['closingTitle','Penutup — Judul'],['arrivalText','Teks Sekuens Masuk']];
 var COLORS=[['ink','Teks / Ink'],['gold','Emas'],['paper','Kertas'],['bg','Latar'],['accent','Aksen'],['soft','Teks Lembut'],['line','Garis'],['dark','Panel Gelap'],['darkFg','Teks di Panel Gelap']];
+
+DISPLAY_FONTS.push({n:'Great Vibes',q:'Great+Vibes',s:"'Great Vibes',cursive"});
+BODY_FONTS.push({n:'Cormorant Upright',q:'Cormorant+Upright:wght@400;500;600',s:"'Cormorant Upright',Georgia,serif"});
+
+BODY_FONTS.push({n:'Bodoni Moda',q:'Bodoni+Moda:wght@400;500',s:"'Bodoni Moda',Georgia,serif"});
+
+BODY_FONTS.push({n:'Cormorant Garamond',q:'Cormorant+Garamond:wght@400;500;600',s:"'Cormorant Garamond',Georgia,serif"});

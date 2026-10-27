@@ -11,3 +11,17 @@ summary{cursor:pointer;list-style-position:outside;padding:8px 0}summary:focus-v
 .preview-fit{position:relative;flex:none}.preview-fit .device{box-sizing:content-box;max-width:none;min-height:0;max-height:none;transform-origin:top left;transition:none}.preview-scroll{overflow:hidden}
 
 .position-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.position-grid .field{min-width:0}.position-grid input{width:100%;min-width:0}
+
+.design-art.botanical{background:#99beb9;overflow:hidden}.design-art.botanical>img{position:absolute;inset:0;width:100%;height:100%;max-width:none;object-fit:cover;object-position:center 60%;opacity:1}.design-art.botanical .mini-copy{top:20px;color:#46635d;text-shadow:0 1px 12px #fff}.design-art.botanical .mini-copy strong{font-style:italic;font-size:35px}
+
+.design-art.botanical+.design-info>div{min-width:0}.design-art.botanical+.design-info small{white-space:normal}.design-art.botanical+.design-info button{flex-shrink:0}
+
+.design-art.botanical+.design-info button{width:auto;min-width:54px;height:32px;border-radius:18px;font-size:12px;padding:7px 14px}
+
+.design-art.silver-blue>img{object-position:center 40%;filter:brightness(.8)}.design-art.silver-blue .mini-copy{color:#fffaf1;text-shadow:0 2px 12px #142338}.design-art.silver-blue .mini-copy strong{font-size:30px}
+
+.design-art.andika-putri{background:#dce4d7}.design-art.andika-putri>img{object-fit:contain;object-position:center bottom;height:80%;top:20%}.design-art.andika-putri .mini-copy{top:13px;color:#304839}.design-art.andika-putri .mini-copy strong{font-size:27px}
+
+.design-art.collection-clarissasandro>img{object-position:center 40%;filter:brightness(.8)}.design-art.collection-clarissasandro .mini-copy{color:#faf4e6}.design-art.collection-omaryasmina>img{object-fit:cover}.design-art.collection-omaryasmina .mini-copy{color:#7c694f}.design-art.collection-aurelienoah>img{object-position:center 50%}.design-art.collection-aurelienoah .mini-copy{color:#873a4c}.design-art[class*=collection-] .mini-copy strong{font-size:28px}
+
+.design-art[class*=collection-]>img{object-fit:cover;object-position:50% 38%;filter:none}.design-art[class*=collection-] .mini-copy{display:none}

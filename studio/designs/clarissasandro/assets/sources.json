@@ -1,0 +1,101 @@
+[
+  {
+    "file": "asset-bg-pattern.webp",
+    "source": "https://invitato.net/public/invitato.net/template-clarissasandro/Asset%20BG%20Pattern.png"
+  },
+  {
+    "file": "asset-gebyok.webp",
+    "source": "https://invitato.net/public/invitato.net/template-clarissasandro/Asset%20Gebyok.png"
+  },
+  {
+    "file": "asset-gunungan.webp",
+    "source": "https://invitato.net/public/invitato.net/template-clarissasandro/Asset%20Gunungan.png"
+  },
+  {
+    "file": "asset-purple-tree.webp",
+    "source": "https://invitato.net/public/invitato.net/template-clarissasandro/Asset%20Purple%20Tree.png"
+  },
+  {
+    "file": "asset-wayang-shinta.webp",
+    "source": "https://invitato.net/public/invitato.net/template-clarissasandro/Asset%20Wayang%20Shinta.png"
+  },
+  {
+    "file": "asset-flower-1.webp",
+    "source": "https://invitato.net/public/invitato.net/template-clarissasandro/Asset%20Flower%201.png"
+  },
+  {
+    "file": "asset-wayang-rama.webp",
+    "source": "https://invitato.net/public/invitato.net/template-clarissasandro/Asset%20Wayang%20Rama.png"
+  },
+  {
+    "file": "asset-flower-2.webp",
+    "source": "https://invitato.net/public/invitato.net/template-clarissasandro/Asset%20Flower%202.png"
+  },
+  {
+    "file": "asset-butterfly.webp",
+    "source": "https://invitato.net/public/invitato.net/template-clarissasandro/Asset%20Butterfly.png"
+  },
+  {
+    "file": "desktop-rev.webp",
+    "source": "https://invitato.net/public/invitato.net/template-clarissasandro/DESKTOP_REV.jpg"
+  },
+  {
+    "file": "foto-bride.webp",
+    "source": "https://invitato.net/public/invitato.net/template-clarissasandro/FOTO%20BRIDE.jpg"
+  },
+  {
+    "file": "foto-groom.webp",
+    "source": "https://invitato.net/public/invitato.net/template-clarissasandro/FOTO%20GROOM.jpg"
+  },
+  {
+    "file": "cover-gallery-2.webp",
+    "source": "https://invitato.net/public/invitato.net/template-clarissasandro/Cover%20Gallery%202.jpg"
+  },
+  {
+    "file": "cover-gallery-1.webp",
+    "source": "https://invitato.net/public/invitato.net/template-clarissasandro/Cover%20Gallery%201.jpg"
+  },
+  {
+    "file": "cover-gallery-3.webp",
+    "source": "https://invitato.net/public/invitato.net/template-clarissasandro/Cover%20Gallery%203.jpg"
+  },
+  {
+    "file": "galeri-dalam-rev.webp",
+    "source": "https://invitato.net/public/invitato.net/template-clarissasandro/GALERI_DALAM_REV.jpg"
+  },
+  {
+    "file": "bg-pattern-2.webp",
+    "source": "https://invitato.net/public/invitato.net/template-clarissasandro/BG%20Pattern%202.jpg"
+  },
+  {
+    "file": "asset-bg-texture.webp",
+    "source": "https://invitato.net/public/invitato.net/template-clarissasandro/Asset%20BG%20Texture.png"
+  },
+  {
+    "file": "assets-gebyok-top.webp",
+    "source": "https://invitato.net/public/invitato.net/template-clarissasandro/ASSETS_GEBYOK_TOP.png"
+  },
+  {
+    "file": "assets-gebyok-left.webp",
+    "source": "https://invitato.net/public/invitato.net/template-clarissasandro/ASSETS_GEBYOK_LEFT.png"
+  },
+  {
+    "file": "assets-gebyok-right.webp",
+    "source": "https://invitato.net/public/invitato.net/template-clarissasandro/ASSETS_GEBYOK_RIGHT.png"
+  },
+  {
+    "file": "welcome-silent.mp4",
+    "source": "https://github.com/Invitato/public/raw/main/invitato.net/template-clarissasandro/welcome.mp4",
+    "processing": "Original video stream remuxed without audio; scenery and timing unchanged."
+  },
+  {
+    "file": "welcome-poster.webp",
+    "source": "welcome-silent.mp4",
+    "processing": "Final frame used for reduced motion and playback fallback."
+  },
+  {
+    "file": "welcome-settled.mp4",
+    "source": "welcome-silent.mp4",
+    "processing": "Opening retained through 9s; settled motion followed by its reverse forms a continuous tail loop. Browser repeats only from 9s."
+  }
+]
