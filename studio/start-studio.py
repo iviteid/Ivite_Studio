@@ -11,7 +11,8 @@ import webbrowser
 import urllib.request
 
 STUDIO = Path(__file__).resolve().parent
-CATALOG = STUDIO.parent
+PROJECT = STUDIO.parent
+CATALOG = PROJECT / 'catalog'
 IMAGE_TYPES = {'.png', '.jpg', '.jpeg', '.webp', '.svg', '.gif', '.avif'}
 
 
@@ -44,7 +45,7 @@ def artwork_index():
             })
         for name, items in groups.items():
             collections.append({'id': name, 'label': name, 'items': items})
-    return {'collections': collections, 'root': 'invitation_catalog',
+    return {'collections': collections, 'root': PROJECT.name,
             'count': sum(len(c['items']) for c in collections)}
 
 

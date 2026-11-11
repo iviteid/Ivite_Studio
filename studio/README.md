@@ -39,9 +39,12 @@ RSVP is explicitly a local browser demo. It stores confirmations in the guest's 
 
 ## Files
 
-`index.html`, `config.js`, `studio.js`, `studio.css`: editor, design defaults and controls.
+`index.html`: editor entry point.
+`src/core/`: editor runtime, design defaults, animation, music and styles.
+`src/designs/`: renderer-specific configuration and content schemas.
 `template/`: invitation markup, renderer and styles used for preview and export.
 `assets/sage/`, `assets/prada/`, `assets/photos/`: local artwork and sample photographs.
+`designs/`: complete markup, runtime and assets for the active custom renderers.
 
 ## Verification
 
@@ -49,7 +52,7 @@ Checked text, artwork upload/replacement, layer transforms, colors, fonts, undo/
 
 ## Connected catalog artwork
 
-Elements → Artwork collection reads image files directly from `invitation_catalog/assets/` and `invitation_catalog/themes/*/assets/`. Nested subfolders become separate collections. Original files are used in place, without copying them into Studio. Use filename search to find an image and **Refresh folder** after adding or removing files. The built-in Studio Sage/Prada collections remain available.
+Elements → Artwork collection reads image files directly from `invitation_catalog/catalog/assets/` and `invitation_catalog/catalog/themes/*/assets/`. Nested subfolders become separate collections. Original files are used in place, without copying them into Studio. Use filename search to find an image and **Refresh folder** after adding or removing files. The built-in Studio Sage/Prada collections remain available.
 
 The local launcher serves `/api/artwork` for the current folder index and `/catalog-artwork/` for allowed images. Other catalog files are not exposed through these routes. The server stays on loopback. Catalog artwork is embedded into standalone HTML exports; editable projects retain their catalog paths.
 

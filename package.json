@@ -1,0 +1,12 @@
+{
+  "name": "ivite-invitation-workspace",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Studio and design catalog for ivite digital invitations",
+  "scripts": {
+    "studio": "python3 studio/start-studio.py",
+    "studio:no-browser": "python3 studio/start-studio.py --no-browser",
+    "catalog": "python3 -m http.server 8080 --bind 127.0.0.1 --directory catalog",
+    "check": "python3 scripts/check-workspace.py"
+  }
+}

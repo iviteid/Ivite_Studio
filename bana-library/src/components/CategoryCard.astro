@@ -1,9 +1,0 @@
----
-import type { Category } from '../data/library';
-interface Props { category: Category; count: number; }
-const { category, count } = Astro.props;
----
-<a href={`/kategori/${category.slug}`} class="group paper-card rounded-2xl p-6 transition hover:-translate-y-1 hover:border-forest/30">
-  <div class="flex items-start justify-between"><span class="display grid size-11 place-items-center rounded-full bg-forest/8 text-2xl text-forest">{category.icon}</span><span class="text-sm text-ink/40 transition group-hover:translate-x-1">→</span></div>
-  <h3 class="mt-7 text-lg font-bold text-ink">{category.name}</h3><p class="mt-2 text-sm leading-6 text-ink/55">{category.description}</p><p class="mt-5 text-xs font-bold uppercase tracking-wider text-forest/70">{count} buku</p>
-</a>
